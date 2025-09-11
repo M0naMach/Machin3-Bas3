@@ -82,6 +82,17 @@ const CommandNavigation = () => {
 
   const commands: NavigationCommand[] = [
     {
+      command: "hom3bas3",
+      label: "Hom3 Bas3",
+      description: "Return to the M0na Machin3 home page",
+      action: () => {
+        console.log("[v0] Navigating to Hom3 Bas3")
+        window.location.href = "/"
+        setIsOpen(false)
+        setInput("")
+      },
+    },
+    {
       command: "journey",
       label: "Our Journey",
       description: "Explore the M0na Machin3 timeline and philosophy",
@@ -102,6 +113,7 @@ const CommandNavigation = () => {
         setInput("")
       },
     },
+    ...easterEggCommands,
     {
       command: "readme",
       label: "README",
@@ -112,7 +124,6 @@ const CommandNavigation = () => {
         setInput("")
       },
     },
-    ...easterEggCommands,
   ]
 
   const filteredCommands = commands.filter((cmd) => {
@@ -230,7 +241,7 @@ const CommandNavigation = () => {
           />
 
           <div
-            className="relative w-full max-w-2xl max-h-[80vh] command-overlay-enter terminal-glassmorphic rounded-2xl overflow-hidden shadow-2xl"
+            className="relative w-full max-w-4xl max-h-[80vh] command-overlay-enter terminal-glassmorphic rounded-2xl overflow-hidden shadow-2xl"
             style={{ pointerEvents: "auto" }}
           >
             <div className="flex flex-col h-full">
@@ -238,7 +249,11 @@ const CommandNavigation = () => {
               <div className="flex items-center justify-between p-6 border-b border-white/10">
                 <div className="flex items-center gap-3">
                   <Terminal className="w-6 h-6" style={{ color: "var(--command-text)" }} />
-                  <h1 className="text-xl font-bold opalescent-text-small" style={{ color: "var(--command-text)" }}>
+                  {/* Increased font size from text-xl to text-3xl for better visibility */}
+                  <h1
+                    className="text-3xl font-bold opalescent-text-small"
+                    style={{ color: "var(--command-text)", fontFamily: "var(--font-terminal)" }}
+                  >
                     M0na Machin3 Navigation
                   </h1>
                 </div>
@@ -368,7 +383,14 @@ const CommandNavigation = () => {
                                   </span>
                                 </div>
                                 <div className="flex-1">
-                                  <div className="font-semibold" style={{ color: "var(--command-text)" }}>
+                                  {/* Increased font size from default to text-lg for better visibility */}
+                                  <div
+                                    className="font-semibold text-lg"
+                                    style={{
+                                      color: "var(--command-text)",
+                                      fontFamily: "var(--font-terminal)",
+                                    }}
+                                  >
                                     {cmd.label}
                                   </div>
                                   <div className="text-sm mt-1" style={{ color: "var(--command-muted)" }}>
@@ -389,7 +411,7 @@ const CommandNavigation = () => {
                               No commands found
                             </div>
                             <div className="text-sm" style={{ color: "var(--command-muted)" }}>
-                              Try typing "journey", "work", "readme", or "hello"
+                              Try typing "journey", "work", "readme", "hom3bas3", or discover hidden commands...
                             </div>
                           </div>
                         )}
@@ -404,7 +426,7 @@ const CommandNavigation = () => {
                           Start typing or hover over the input to see available commands
                         </div>
                         <div className="text-sm" style={{ color: "var(--command-muted)" }}>
-                          Try "journey", "work", "readme", or discover hidden commands...
+                          Try "journey", "work", "readme", "hom3bas3", or discover hidden commands...
                         </div>
                       </div>
                     </div>

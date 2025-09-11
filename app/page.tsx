@@ -15,7 +15,7 @@ export default function Home() {
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <div className="mb-8">
-            <h1 className="font-aspal text-4xl md:text-6xl mb-2 tracking-wide opalescent-text">M0na Machin3</h1>
+            <h1 className="font-sans text-5xl md:text-8xl mb-2 tracking-wide opalescent-text">M0na Machin3</h1>
             <p className="text-lg text-muted-foreground font-light">Human connection, coded with care.</p>
           </div>
 
@@ -152,7 +152,7 @@ export default function Home() {
 
             <div>
               <p className="text-muted-foreground text-sm">
-                © <span className="font-aspal opalescent-text-small">M0na Machin3</span> 2025
+                © <span className="font-sans opalescent-text-small">M0na Machin3</span> 2025
               </p>
             </div>
           </div>
