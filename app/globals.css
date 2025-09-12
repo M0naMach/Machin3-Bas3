@@ -52,6 +52,11 @@
   /* Enhanced Anurati font variable with better fallbacks */
   --font-anurati: "Anurati", "Courier New", "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", "Source Code Pro",
     monospace;
+
+  /* Command navigation specific variables */
+  --command-text: #fefcf8;
+  --command-accent: #b45309;
+  --command-muted: rgba(254, 252, 248, 0.6);
 }
 
 .light {
@@ -88,6 +93,11 @@
   --sidebar-accent-foreground: #fefcf8;
   --sidebar-border: #e8e5e1;
   --sidebar-ring: rgba(8, 56, 53, 0.2);
+
+  /* Command navigation specific variables */
+  --command-text: #2c2c2c;
+  --command-accent: #b45309;
+  --command-muted: rgba(44, 44, 44, 0.6);
 }
 
 @layer base {
