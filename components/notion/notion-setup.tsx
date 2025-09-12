@@ -68,7 +68,7 @@ export function NotionSetup() {
     },
     {
       key: "notes",
-      title: "Project Notes",
+      title: "Hamilton Notes",
       description: "AI-assisted notes with categorization and search",
       icon: FileText,
       color: "text-green-500",
@@ -92,7 +92,7 @@ export function NotionSetup() {
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-6">
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold">M0na Machin3 + Notion Integration</h1>
+        <h1 className="text-3xl font-bold">Hamilton + Notion Integration</h1>
         <p className="text-muted-foreground">
           Create your personalized workspace structure with AI-powered organization
         </p>
@@ -103,7 +103,7 @@ export function NotionSetup() {
           <CardHeader>
             <CardTitle>Setup Your Notion Workspace</CardTitle>
             <CardDescription>
-              Enter your Notion page ID where you want to create your workspace structure
+              Enter your Notion page ID where you want to create Hamilton's workspace structure
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -136,7 +136,7 @@ export function NotionSetup() {
             </div>
 
             <Button onClick={handleSetup} disabled={isLoading} className="w-full">
-              {isLoading ? "Creating Workspace..." : "Create M0na Machin3 Workspace"}
+              {isLoading ? "Creating Workspace..." : "Create Hamilton Workspace"}
             </Button>
           </CardContent>
         </Card>
@@ -147,7 +147,7 @@ export function NotionSetup() {
               <CheckCircle className="w-5 h-5 text-green-500" />
               <span>Workspace Created Successfully!</span>
             </CardTitle>
-            <CardDescription>Your M0na Machin3 + Notion integration is ready to use</CardDescription>
+            <CardDescription>Your Hamilton + Notion integration is ready to use</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -177,8 +177,8 @@ export function NotionSetup() {
             <div className="bg-blue-50 p-4 rounded-lg">
               <h3 className="font-medium text-blue-900 mb-2">Next Steps:</h3>
               <ul className="text-sm text-blue-800 space-y-1">
-                <li>• Share your Notion databases with the M0na Machin3 integration</li>
-                <li>• The system can now create and manage content in your workspace</li>
+                <li>• Share your Notion databases with the Hamilton integration</li>
+                <li>• Hamilton can now create and manage content in your workspace</li>
                 <li>• Use voice commands to add appointments, notes, and track progress</li>
                 <li>• Your M0na Machin3 journey timeline is ready for updates</li>
               </ul>

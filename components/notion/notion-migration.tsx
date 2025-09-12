@@ -47,7 +47,7 @@ export function NotionMigration() {
       description: "Migrate your AI-assisted notes and custom templates",
       icon: FileText,
       color: "text-green-500",
-      notionDatabase: "Project Notes",
+      notionDatabase: "Hamilton Notes",
     },
     {
       key: "schedules",
@@ -106,7 +106,7 @@ export function NotionMigration() {
       const url = URL.createObjectURL(blob)
       const a = document.createElement("a")
       a.href = url
-      a.download = `mona-machin3-backup-${new Date().toISOString().split("T")[0]}.json`
+      a.download = `hamilton-backup-${new Date().toISOString().split("T")[0]}.json`
       document.body.appendChild(a)
       a.click()
       document.body.removeChild(a)
@@ -225,7 +225,7 @@ export function NotionMigration() {
       <div className="text-center space-y-2">
         <h1 className="text-3xl font-bold">Migrate to Notion</h1>
         <p className="text-muted-foreground">
-          Organize your M0na Machin3 project data and prepare for future integrations
+          Transform Hamilton into a streamlined AI companion while organizing your data in Notion
         </p>
       </div>
 
@@ -241,13 +241,13 @@ export function NotionMigration() {
             <CardHeader>
               <CardTitle>Why Migrate to Notion?</CardTitle>
               <CardDescription>
-                Organize your project data while maintaining clean integration points
+                Keep Hamilton's core AI capabilities while gaining unlimited organizational space
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <h3 className="font-semibold text-green-600">Website Features:</h3>
+                  <h3 className="font-semibold text-green-600">Hamilton Keeps:</h3>
                   <ul className="text-sm space-y-1 text-muted-foreground">
                     <li>• Hume API emotion detection</li>
                     <li>• Voice interaction & personality</li>
@@ -301,7 +301,7 @@ export function NotionMigration() {
                 <Download className="w-5 h-5" />
                 <span>Export Your Data</span>
               </CardTitle>
-              <CardDescription>Create a backup of your project data before migration</CardDescription>
+              <CardDescription>Create a backup of all your Hamilton data before migration</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="bg-blue-50 p-4 rounded-lg">
@@ -323,7 +323,7 @@ export function NotionMigration() {
                 ) : (
                   <>
                     <Download className="w-4 h-4 mr-2" />
-                    Export Project Data
+                    Export Hamilton Data
                   </>
                 )}
               </Button>
@@ -356,7 +356,7 @@ export function NotionMigration() {
                 <Upload className="w-5 h-5" />
                 <span>Migrate to Notion</span>
               </CardTitle>
-              <CardDescription>Transfer your data to Notion databases for better organization</CardDescription>
+              <CardDescription>Transfer your data to Notion databases and streamline Hamilton</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               {!migrationData ? (
@@ -427,7 +427,7 @@ export function NotionMigration() {
                         </div>
                         <div className="text-sm text-green-700 space-y-1">
                           <p>Your data has been successfully migrated to Notion</p>
-                          <p>Your data is now organized in Notion</p>
+                          <p>Hamilton is now streamlined for AI companionship</p>
                           <Button variant="outline" size="sm" className="mt-2 bg-transparent" asChild>
                             <a href="/notion-setup" target="_blank" rel="noopener noreferrer">
                               <ExternalLink className="w-3 h-3 mr-1" />

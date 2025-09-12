@@ -9,13 +9,14 @@ import "./globals.css"
 const anurati = localFont({
   src: [
     {
-      path: "../public/fonts/Anurati-Regular.ttf",
+      path: "./fonts/Anurati-Regular.ttf",
       weight: "400",
       style: "normal",
     },
   ],
   variable: "--font-anurati",
   display: "swap",
+  fallback: ["Courier New", "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", "Source Code Pro", "monospace"],
 })
 
 export const metadata: Metadata = {

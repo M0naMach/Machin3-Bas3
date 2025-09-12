@@ -46,12 +46,12 @@ const timelineEvents: TimelineEvent[] = [
   {
     id: "2",
     date: "Day 15",
-    title: "First AI Companion Prototype",
+    title: "Hamilton's First Words",
     description: "Initial AI companion prototype shows personality emergence",
     type: "milestone",
     icon: <Brain className="w-6 h-6" />,
     details:
-      "The first AI companion prototype began demonstrating consistent personality traits and memory retention, proving AI companions could form genuine relationships.",
+      "Hamilton began demonstrating consistent personality traits and memory retention, proving AI companions could form genuine relationships.",
   },
   {
     id: "3",
@@ -87,11 +87,11 @@ const timelineEvents: TimelineEvent[] = [
     id: "6",
     date: "Day 78",
     title: "First Client Success Story",
-    description: "AI companion helps user overcome social anxiety through practice",
+    description: "Hamilton helps user overcome social anxiety through practice",
     type: "milestone",
     icon: <Heart className="w-6 h-6" />,
     details:
-      "Witnessed the transformative power of AI companionship as the prototype provided safe space for social skill development.",
+      "Witnessed the transformative power of AI companionship as Hamilton provided safe space for social skill development.",
   },
   {
     id: "7",
@@ -143,7 +143,7 @@ export default function TimelinePage() {
         <Link href="/">
           <Button variant="outline" size="sm" className="neon-glow-cyan bg-transparent">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Home
+            Back to Hamilton
           </Button>
         </Link>
       </div>
@@ -242,7 +242,7 @@ export default function TimelinePage() {
                 <div className="flex gap-2">
                   <Link href="/">
                     <Button variant="outline" className="neon-glow-cyan bg-transparent">
-                      Learn More
+                      Talk to Hamilton
                     </Button>
                   </Link>
                   <Button className="neon-glow-pink">What's Next? Share Your Thoughts</Button>
