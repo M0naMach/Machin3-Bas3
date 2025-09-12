@@ -9,7 +9,7 @@ import "./globals.css"
 const anurati = localFont({
   src: [
     {
-      path: "./fonts/Anurati-Regular.ttf",
+      path: "../public/fonts/Anurati-Regular.ttf",
       weight: "400",
       style: "normal",
     },
