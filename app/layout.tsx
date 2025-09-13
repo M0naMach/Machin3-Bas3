@@ -7,7 +7,7 @@ import localFont from "next/font/local"
 import "./globals.css"
 
 const anurati = localFont({
-  src: "./fonts/Anurati-Regular.ttf",
+  src: "./public/fonts/Anurati-Regular.ttf",
   variable: "--font-anurati",
   display: "swap",
 })
