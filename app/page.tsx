@@ -15,15 +15,23 @@ export default function Home() {
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <div className="mb-8">
-            <h1 className="font-sans text-5xl md:text-8xl mb-2 tracking-wide opalescent-text">M0na Machin3</h1>
-            <p className="text-lg text-muted-foreground font-light">Human connection, coded with care.</p>
+            <h1 className="font-title text-5xl md:text-8xl mb-2 tracking-wide opalescent-text">M0na Machin3</h1>
+            <p className="text-lg font-light" style={{ color: "oklch(0.5144 0.1701 33.55)" }}>
+              Human connection, coded with care.
+            </p>
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-light mb-6 text-foreground leading-tight">
+          <h2
+            className="text-4xl md:text-6xl font-light mb-6 leading-tight"
+            style={{ color: "oklch(0.214 0.097 257.1)" }}
+          >
             Where reflection becomes connection.
           </h2>
 
-          <p className="text-xl md:text-2xl text-muted-foreground mb-16 max-w-2xl mx-auto leading-relaxed font-light">
+          <p
+            className="text-xl md:text-2xl mb-16 max-w-2xl mx-auto leading-relaxed font-light"
+            style={{ color: "oklch(0.5144 0.1701 33.55)" }}
+          >
             A soft, steady buffer between the world and the nervous system.
           </p>
         </div>
@@ -32,7 +40,9 @@ export default function Home() {
       {/* The Invitation Section */}
       <section className="py-20 bg-card">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-light text-foreground mb-12">Begin Your Journey.</h2>
+          <h2 className="text-3xl md:text-4xl font-light mb-12" style={{ color: "oklch(0.214 0.097 257.1)" }}>
+            Begin Your Journey.
+          </h2>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <button
@@ -57,7 +67,9 @@ export default function Home() {
       <section className="py-20 bg-background">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light text-foreground mb-8">Follow the Living Timeline.</h2>
+            <h2 className="text-3xl md:text-4xl font-light mb-8" style={{ color: "oklch(0.214 0.097 257.1)" }}>
+              Follow the Living Timeline.
+            </h2>
 
             <div className="flex items-center justify-center mb-8">
               <div className="relative w-full max-w-4xl">
@@ -72,7 +84,10 @@ export default function Home() {
               </div>
             </div>
 
-            <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p
+              className="text-lg mb-8 max-w-3xl mx-auto leading-relaxed"
+              style={{ color: "oklch(0.5144 0.1701 33.55)" }}
+            >
               This isn't just a project; it's a process we're building in the open. Follow our journey from an idea to a
               living network, and see how you can be a part of it.
             </p>

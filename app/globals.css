@@ -1,53 +1,85 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-/* Removed incorrect font-anurati import that was causing MIME type error */
 
-/* Added explicit font-face declaration for mobile Safari compatibility */
+@custom-variant dark (&:is(.dark *));
+
+/* Font-face declarations for all custom fonts */
 @font-face {
   font-family: "Anurati";
   src: url("/fonts/Anurati-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-  /* Added font-feature-settings for better mobile rendering */
   font-feature-settings: "kern" 1, "liga" 1;
+}
+
+@font-face {
+  font-family: "Aspal";
+  src: url("/fonts/Aspal.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PoiretOne";
+  src: url("/fonts/PoiretOne-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Custom font utility classes */
+.font-anurati {
+  font-family: "Anurati", sans-serif;
+}
+
+.font-aspal {
+  font-family: "Aspal", sans-serif;
+}
+
+.font-poiret {
+  font-family: "PoiretOne", sans-serif;
 }
 
 :root {
   /* M0na Machin3 Command Navigation - Creamy ivory opal theme with dark text */
-  --background: #fefcf8; /* Creamy ivory background like white opal */
-  --foreground: #2c2c2c; /* Dark charcoal text for contrast */
-  --card: #f9f7f4; /* Slightly darker ivory for cards */
-  --card-foreground: #2c2c2c; /* Dark text on cards */
-  --popover: rgba(249, 247, 244, 0.95); /* Ivory popover background */
-  --popover-foreground: #2c2c2c; /* Dark text on popovers */
-  --primary: #083835; /* Deep teal primary */
-  --primary-foreground: #fefcf8; /* Ivory text on primary */
-  --secondary: #b45309; /* Copper/rose gold secondary */
-  --secondary-foreground: #fefcf8; /* Ivory text on secondary */
-  --muted: #f5f3f0; /* Muted ivory background */
-  --muted-foreground: #6b6b6b; /* Medium gray for muted text */
-  --accent: #dc2626; /* Coral red accent */
-  --accent-foreground: #fefcf8; /* Ivory text on accent */
-  --destructive: #dc2626; /* Color for destructive actions */
-  --destructive-foreground: #fefcf8; /* Ivory text for destructive actions */
-  --border: #e8e5e1; /* Soft ivory border */
-  --input: #fefcf8; /* Ivory input background */
+  --background: oklch(0.9915 0.0057 84.57); /* Creamy ivory background like white opal */
+  --foreground: oklch(0.3233 0.1025 253.89); /* Dark charcoal text for contrast */
+  --card: oklch(0.9768 0.0045 78.3); /* Slightly darker ivory for cards */
+  --card-foreground: oklch(0.3233 0.1025 253.89); /* Dark text on cards */
+  --popover: oklch(1 0 0); /* Ivory popover background */
+  --popover-foreground: oklch(0.3233 0.1025 253.89); /* Dark text on popovers */
+  --primary: oklch(0.3094 0.049 188.65); /* Deep teal primary */
+  --primary-foreground: oklch(0.9915 0.0057 84.57); /* Ivory text on primary */
+  --secondary: oklch(0.5553 0.1455 49); /* Copper/rose gold secondary */
+  --secondary-foreground: oklch(0.9915 0.0057 84.57); /* Ivory text on secondary */
+  --muted: oklch(0.9649 0.0045 78.3); /* Muted ivory background */
+  --muted-foreground: oklch(0.4761 0.1066 250.75); /* Medium gray for muted text */
+  --accent: oklch(0.5771 0.2152 27.33); /* Coral red accent */
+  --accent-foreground: oklch(0.9915 0.0057 84.57); /* Ivory text on accent */
+  --command-text: #2c2c2c; /* Dark text for command navigation */
+  --command-accent: #dc2626; /* Coral accent for command navigation */
+  --font-terminal: "Anurati", monospace; /* Terminal font for command headers */
+  --destructive: oklch(0.5771 0.2152 27.33); /* Copper Color for destructive actions */
+  --destructive-foreground: oklch(0.9915 0.0057 84.57); /* Ivory text for destructive actions */
+  --border: oklch(0.9231 0.0063 75.4); /* Soft ivory border */
+  --input: oklch(0.9915 0.0057 84.57); /* Ivory input background */
   --ring: rgba(8, 56, 53, 0.3); /* Teal focus ring */
-  --chart-1: #b45309; /* Copper chart color */
-  --chart-2: #dc2626; /* Coral chart color */
-  --chart-3: #083835; /* Teal chart color */
-  --chart-4: #7c3aed; /* Purple chart color */
-  --chart-5: #059669; /* Green chart color */
+  --chart-1: oklch(0.5553 0.1455 49); /* Copper chart color */
+  --chart-2: oklch(0.5771 0.2152 27.33); /*  chart color */
+  --chart-3: oklch(0.3094 0.049 188.65); /* Blue chart color */
+  --chart-4: oklch(0.5021 0.2292 322.72); /* Purple chart color */
+  --chart-5: oklch(0.596 0.1274 163.23); /* Green chart color */
   --radius: 0.5rem; /* Corner rounding for elements */
-  --sidebar: #fefcf8; /* Ivory sidebar background */
-  --sidebar-foreground: #2c2c2c; /* Dark sidebar text */
-  --sidebar-primary: #083835; /* Teal primary for sidebar */
-  --sidebar-primary-foreground: #fefcf8; /* Ivory sidebar primary text */
-  --sidebar-accent: #b45309; /* Copper sidebar accent */
-  --sidebar-accent-foreground: #fefcf8; /* Ivory sidebar accent text */
-  --sidebar-border: #e8e5e1; /* Soft ivory sidebar border */
-  --sidebar-ring: rgba(8, 56, 53, 0.2); /* Teal sidebar focus ring */
+  --sidebar: oklch(0.9915 0.0057 84.57); /* Ivory sidebar background */
+  --sidebar-foreground: oklch(0.3233 0.1025 253.89); /* Dark sidebar text */
+  --sidebar-primary: oklch(0.3094 0.049 188.65); /* Teal primary for sidebar */
+  --sidebar-primary-foreground: oklch(0.9915 0.0057 84.57); /* Ivory sidebar primary text */
+  --sidebar-accent: oklch(0.97 0 0); /* Copper sidebar accent */
+  --sidebar-accent-foreground: oklch(0.9915 0.0057 84.57); /* Ivory sidebar accent text */
+  --sidebar-border: oklch(0.9231 0.0063 75.4); /* Soft ivory sidebar border */
+  --sidebar-ring: rgba(8, 56, 53, 0.3); /* Teal sidebar focus ring */
   --font-geist-sans: "Geist Sans", sans-serif;
   --font-geist-mono: "Geist Mono", monospace;
 
@@ -58,40 +90,92 @@
   --font-anurati: "Anurati", monospace; /* Added Anurati font variable */
 }
 
-.light {
-  --background: #fefcf8;
-  --foreground: #2c2c2c;
-  --card: #f9f7f4;
-  --card-foreground: #2c2c2c;
-  --popover: rgba(249, 247, 244, 0.95);
-  --popover-foreground: #2c2c2c;
-  --primary: #083835;
-  --primary-foreground: #fefcf8;
-  --secondary: #b45309;
-  --secondary-foreground: #fefcf8;
-  --muted: #f5f3f0;
-  --muted-foreground: #6b6b6b;
-  --accent: #dc2626;
-  --accent-foreground: #fefcf8;
-  --destructive: #dc2626;
-  --destructive-foreground: #fefcf8;
-  --border: #e8e5e1;
-  --input: #fefcf8;
-  --ring: rgba(8, 56, 53, 0.3);
-  --chart-1: #b45309;
-  --chart-2: #dc2626;
-  --chart-3: #083835;
-  --chart-4: #7c3aed;
-  --chart-5: #059669;
+.dark {
+  /* Enhanced dark theme with vibrant opalescent OKLCH colors */
+  /* Updated background to darker color per user request */
+  --background: oklch(0.256 0.031 195.4); /* Darker background with lower saturation */
+  --foreground: oklch(0.965 0.008 85); /* Warm ivory white */
+
+  /* Added custom font colors for user */
+  --font-warm: oklch(0.5144 0.1701 33.55); /* Warm coral-orange font color */
+  --font-cool: oklch(0.214 0.097 257.1); /* Cool dark blue font color */
+
+  /* Adjusted card and other colors to complement darker background */
+  --card: oklch(0.28 0.04 198); /* Slightly lighter than background */
+  --card-foreground: oklch(0.965 0.008 85); /* Warm ivory */
+  --popover: oklch(0.3 0.045 200); /* Adjusted popover */
+  --popover-foreground: oklch(0.965 0.008 85); /* Warm ivory */
+  --primary: oklch(0.65 0.18 188); /* Vibrant teal-cyan */
+  --primary-foreground: rgb(15, 40, 40); /* Dark background for contrast */
+  --secondary: oklch(0.58 0.16 35); /* Rich copper-orange */
+  --secondary-foreground: oklch(0.965 0.008 85); /* Warm ivory */
+  --muted: oklch(0.32 0.035 200); /* Muted dark surface matching background tone */
+  --muted-foreground: oklch(0.72 0.015 85); /* Muted warm text */
+  --accent: oklch(0.68 0.22 25); /* Vibrant coral-red */
+  --accent-foreground: oklch(0.12 0.015 240); /* Dark text on accent */
+  --destructive: oklch(0.62 0.25 15); /* Bright red-orange */
+  --destructive-foreground: oklch(0.965 0.008 85); /* Warm ivory */
+  --border: oklch(0.35 0.04 200); /* Subtle border matching background tone */
+  --input: oklch(0.34 0.04 200); /* Input background matching theme */
+  --ring: oklch(0.65 0.18 188); /* Teal focus ring */
+  --chart-1: oklch(0.65 0.18 188); /* Vibrant teal */
+  --chart-2: oklch(0.58 0.16 35); /* Rich copper */
+  --chart-3: oklch(0.68 0.22 25); /* Vibrant coral */
+  --chart-4: oklch(0.62 0.2 280); /* Purple-magenta */
+  --chart-5: oklch(0.6 0.15 140); /* Emerald green */
   --radius: 0.5rem;
-  --sidebar: #fefcf8;
-  --sidebar-foreground: #2c2c2c;
-  --sidebar-primary: #083835;
-  --sidebar-primary-foreground: #fefcf8;
-  --sidebar-accent: #b45309;
-  --sidebar-accent-foreground: #fefcf8;
-  --sidebar-border: #e8e5e1;
-  --sidebar-ring: rgba(8, 56, 53, 0.2);
+  --sidebar: oklch(0.24 0.03 195); /* Sidebar background darker than main */
+  --sidebar-foreground: oklch(0.965 0.008 85); /* Warm ivory */
+  --sidebar-primary: oklch(0.65 0.18 188); /* Vibrant teal */
+  --sidebar-primary-foreground: oklch(0.12 0.015 240); /* Dark text */
+  --sidebar-accent: oklch(0.58 0.16 35); /* Rich copper */
+  --sidebar-accent-foreground: oklch(0.965 0.008 85); /* Warm ivory */
+  --sidebar-border: oklch(0.35 0.04 200); /* Subtle border */
+  --sidebar-ring: oklch(0.65 0.18 188); /* Teal focus ring */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Added custom font color variables to theme */
+  --color-font-warm: var(--font-warm);
+  --color-font-cool: var(--font-cool);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 @layer base {
@@ -353,6 +437,10 @@
     background-position: 0% 100%;
     opacity: 0.5;
   }
+  75% {
+    background-position: 150% 150%;
+    opacity: 0.7;
+  }
 }
 
 /* Added new opalescent shimmer animation for more fluorescent effect */
@@ -447,48 +535,24 @@
   }
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+@keyframes opalShimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
 
-  /* Reset to default system fonts, removed Poiret One completely */
-  --font-sans: ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace;
-  --font-terminal: var(--font-anurati); /* Added terminal font mapping for Anurati */
+@keyframes opalGlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 @layer utilities {
@@ -590,5 +654,103 @@
 
   .mosaic-card-large:hover::before {
     opacity: 1;
+  }
+}
+
+/* Standard font size improvements for better readability */
+html {
+  font-size: 16px; /* Ensure base font size is standard */
+}
+
+body {
+  font-size: 1rem; /* 16px base */
+  line-height: 1.6;
+  font-family: "PoiretOne", sans-serif; /* Set PoiretOne as default body font */
+}
+
+/* Font hierarchy for M0na Machin3 */
+.font-title {
+  font-family: "Aspal", sans-serif; /* Company titles use Aspal */
+}
+
+.font-terminal {
+  font-family: "Anurati", monospace; /* Terminal/command elements use Anurati */
+}
+
+.font-body {
+  font-family: "PoiretOne", sans-serif; /* Body text uses PoiretOne */
+}
+
+/* Make headings more prominent and readable */
+h1 {
+  font-size: 3rem !important; /* 48px */
+  line-height: 1.2 !important;
+}
+
+h2 {
+  font-size: 2.25rem !important; /* 36px */
+  line-height: 1.3 !important;
+}
+
+h3 {
+  font-size: 1.875rem !important; /* 30px */
+  line-height: 1.4 !important;
+}
+
+/* Make paragraphs more readable */
+p {
+  font-size: 1.125rem !important; /* 18px */
+  line-height: 1.7 !important;
+}
+
+/* Make buttons more prominent */
+button {
+  font-size: 1.125rem !important; /* 18px */
+  padding: 0.75rem 1.5rem !important;
+}
+
+/* Override Tailwind's small text classes */
+.text-lg {
+  font-size: 1.25rem !important; /* 20px */
+}
+
+.text-xl {
+  font-size: 1.5rem !important; /* 24px */
+}
+
+.text-2xl {
+  font-size: 1.875rem !important; /* 30px */
+}
+
+.text-3xl {
+  font-size: 2.25rem !important; /* 36px */
+}
+
+.text-4xl {
+  font-size: 3rem !important; /* 48px */
+}
+
+.text-5xl {
+  font-size: 4rem !important; /* 64px */
+}
+
+/* Make the main title extra prominent */
+.opalescent-text {
+  font-size: 4.5rem !important; /* 72px */
+  font-weight: 700 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .opalescent-text {
+    font-size: 3rem !important; /* 48px on mobile */
+  }
+
+  h1 {
+    font-size: 2.5rem !important; /* 40px on mobile */
+  }
+
+  h2 {
+    font-size: 2rem !important; /* 32px on mobile */
   }
 }
