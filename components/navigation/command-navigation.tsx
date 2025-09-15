@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { Search, Terminal } from "lucide-react"
+import { Terminal } from "lucide-react"
 
 interface NavigationCommand {
   command: string
@@ -221,11 +221,16 @@ const CommandNavigation = () => {
             startBootSequence()
           }}
         >
-          <div className="flex items-center gap-3 bg-input border border-border rounded-lg px-4 py-3 shadow-lg hover:shadow-xl transition-all duration-200 hover:border-primary/50">
-            <Search className="w-4 h-4 text-muted-foreground" />
-            <span className="text-muted-foreground select-none transition-all duration-500">{currentPrompt}</span>
-            <div className="text-xs text-muted-foreground/60 ml-auto">
-              Press <kbd className="px-1.5 py-0.5 bg-muted rounded text-xs">/</kbd>
+          <div className="flex items-center gap-3 terminal-glassmorphic border border-primary/30 rounded-lg px-4 py-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/60 hover:shadow-[0_0_20px_rgba(184,83,9,0.3)] group-hover:scale-105">
+            <Terminal className="w-5 h-5 text-primary opalescent-text-small" />
+            <span className="text-foreground select-none transition-all duration-500 font-terminal text-lg opalescent-text-small">
+              {currentPrompt}
+            </span>
+            <div className="text-xs text-foreground/90 ml-auto">
+              Press{" "}
+              <kbd className="px-1.5 py-0.5 bg-primary/80 text-primary-foreground rounded text-xs font-terminal border border-primary">
+                {"/"}
+              </kbd>
             </div>
           </div>
         </div>
