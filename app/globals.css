@@ -29,6 +29,39 @@
   font-display: swap;
 }
 
+/* Added Caviar Dreams font-face declarations */
+@font-face {
+  font-family: "Caviar Dreams";
+  src: url("/fonts/CaviarDreams.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Caviar Dreams";
+  src: url("/fonts/CaviarDreams_Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Caviar Dreams";
+  src: url("/fonts/CaviarDreams_Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Caviar Dreams";
+  src: url("/fonts/CaviarDreams_BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* Custom font utility classes */
 .font-anurati {
   font-family: "Anurati", sans-serif;
@@ -40,6 +73,10 @@
 
 .font-poiret {
   font-family: "PoiretOne", sans-serif;
+}
+
+.font-caviar {
+  font-family: "Caviar Dreams", sans-serif;
 }
 
 :root {
@@ -662,7 +699,7 @@ html {
 body {
   font-size: 1rem; /* 16px base */
   line-height: 1.6;
-  font-family: "PoiretOne", sans-serif; /* Set PoiretOne as default body font */
+  font-family: "Caviar Dreams", sans-serif; /* Set Caviar Dreams as default body font */
 }
 
 /* Font hierarchy for M0na Machin3 */
@@ -675,7 +712,7 @@ body {
 }
 
 .font-body {
-  font-family: "PoiretOne", sans-serif; /* Body text uses PoiretOne */
+  font-family: "Caviar Dreams", sans-serif; /* Body text uses Caviar Dreams */
 }
 
 /* Make headings more prominent and readable */

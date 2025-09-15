@@ -15,7 +15,7 @@ export default function Home() {
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <div className="mb-8">
-            <h1 className="font-title text-5xl md:text-8xl mb-2 tracking-wide opalescent-text">M0na Machin3</h1>
+            <h1 className="font-title text-6xl md:text-9xl mb-2 tracking-wide opalescent-text">M0na Machin3</h1>
             <p className="text-lg font-light text-foreground">Human connection, coded with care.</p>
           </div>
 

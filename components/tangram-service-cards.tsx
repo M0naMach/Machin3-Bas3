@@ -27,7 +27,7 @@ const services: TangramPiece[] = [
     shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Large triangle 1
     color: "oklch(0.65 0.18 188)", // Vibrant teal
     scatteredPosition: { x: 10, y: 15, rotation: 45 },
-    assembledPosition: { x: 20, y: 20, rotation: 0 },
+    assembledPosition: { x: 30, y: 5, rotation: 0 }, // Main roof triangle
   },
   {
     id: "business-support",
@@ -42,7 +42,7 @@ const services: TangramPiece[] = [
     shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Large triangle 2
     color: "oklch(0.58 0.16 35)", // Rich copper
     scatteredPosition: { x: 70, y: 10, rotation: -30 },
-    assembledPosition: { x: 50, y: 20, rotation: 90 },
+    assembledPosition: { x: 15, y: 25, rotation: 45 }, // Left wall
   },
   {
     id: "design-branding",
@@ -52,7 +52,7 @@ const services: TangramPiece[] = [
     shape: "polygon(0% 0%, 100% 50%, 0% 100%)", // Medium triangle
     color: "oklch(0.68 0.22 25)", // Vibrant coral
     scatteredPosition: { x: 20, y: 70, rotation: 120 },
-    assembledPosition: { x: 35, y: 50, rotation: 45 },
+    assembledPosition: { x: 55, y: 25, rotation: -45 }, // Right wall
   },
   {
     id: "future-vision",
@@ -67,7 +67,7 @@ const services: TangramPiece[] = [
     shape: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", // Square
     color: "oklch(0.62 0.2 280)", // Purple-magenta
     scatteredPosition: { x: 80, y: 60, rotation: -45 },
-    assembledPosition: { x: 50, y: 40, rotation: 0 },
+    assembledPosition: { x: 35, y: 45, rotation: 0 }, // Main body of house
   },
   {
     id: "strategic-clarity",
@@ -77,7 +77,7 @@ const services: TangramPiece[] = [
     shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Small triangle 1
     color: "oklch(0.6 0.15 140)", // Emerald green
     scatteredPosition: { x: 5, y: 45, rotation: 90 },
-    assembledPosition: { x: 20, y: 60, rotation: 0 },
+    assembledPosition: { x: 20, y: 10, rotation: 0 }, // Chimney
   },
   {
     id: "connection-building",
@@ -92,7 +92,7 @@ const services: TangramPiece[] = [
     shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Small triangle 2
     color: "oklch(0.55 0.12 60)", // Warm gold
     scatteredPosition: { x: 60, y: 80, rotation: -60 },
-    assembledPosition: { x: 65, y: 60, rotation: 90 },
+    assembledPosition: { x: 42, y: 65, rotation: 180 }, // Door
   },
   {
     id: "integration-support",
@@ -102,7 +102,7 @@ const services: TangramPiece[] = [
     shape: "polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)", // Parallelogram
     color: "oklch(0.52 0.14 200)", // Deep blue
     scatteredPosition: { x: 40, y: 5, rotation: 180 },
-    assembledPosition: { x: 35, y: 70, rotation: 0 },
+    assembledPosition: { x: 25, y: 70, rotation: 0 }, // Foundation/base
   },
 ]
 

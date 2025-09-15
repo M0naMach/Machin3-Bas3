@@ -221,14 +221,14 @@ const CommandNavigation = () => {
             startBootSequence()
           }}
         >
-          <div className="flex items-center gap-3 terminal-glassmorphic border border-primary/30 rounded-lg px-4 py-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/60 hover:shadow-[0_0_20px_rgba(184,83,9,0.3)] group-hover:scale-105">
-            <Terminal className="w-5 h-5 text-primary opalescent-text-small" />
-            <span className="text-foreground select-none transition-all duration-500 font-terminal text-lg opalescent-text-small">
+          <div className="flex items-center gap-2 md:gap-3 terminal-glassmorphic border border-primary/30 rounded-lg px-3 py-2 md:px-4 md:py-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/60 hover:shadow-[0_0_20px_rgba(184,83,9,0.3)] group-hover:scale-105 max-w-xs md:max-w-md">
+            <Terminal className="w-4 h-4 md:w-5 md:h-5 text-primary opalescent-text-small" />
+            <span className="text-foreground select-none transition-all duration-500 font-terminal text-sm md:text-lg opalescent-text-small truncate">
               {currentPrompt}
             </span>
-            <div className="text-xs text-foreground/90 ml-auto">
+            <div className="text-xs text-foreground/90 ml-auto flex-shrink-0">
               Press{" "}
-              <kbd className="px-1.5 py-0.5 bg-primary/80 text-primary-foreground rounded text-xs font-terminal border border-primary">
+              <kbd className="px-1 py-0.5 md:px-1.5 md:py-0.5 bg-primary/80 text-primary-foreground rounded text-xs font-terminal border border-primary">
                 {"/"}
               </kbd>
             </div>
