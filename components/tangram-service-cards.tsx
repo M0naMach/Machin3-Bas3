@@ -186,16 +186,16 @@ export default function TangramServiceCards() {
   }
 
   return (
-    <div className="relative w-full h-96 mb-12 overflow-hidden">
+    <div className="relative w-full h-[600px] mb-12 overflow-hidden">
       {/* Inspirational message overlay */}
       {showMessage && (
         <div className="absolute inset-0 z-50 flex items-center justify-center">
           <div className="bg-background/90 backdrop-blur-sm rounded-lg p-6 text-center border border-border shadow-lg">
-            <p className="text-lg font-medium mb-2" style={{ color: "oklch(0.214 0.097 257.1)" }}>
+            <p className="text-lg font-medium mb-2 text-foreground">
               You're not broken — you're just not lined up yet.
             </p>
-            <p className="text-sm" style={{ color: "oklch(0.5144 0.1701 33.55)" }}>
-              Your word: <span className="font-semibold">{randomWord}</span>
+            <p className="text-sm text-muted-foreground">
+              Your word: <span className="font-semibold text-foreground">{randomWord}</span>
             </p>
           </div>
         </div>
@@ -210,7 +210,7 @@ export default function TangramServiceCards() {
           return (
             <div
               key={service.id}
-              className="absolute w-20 h-20 cursor-pointer transition-all duration-1000 ease-out hover:scale-110"
+              className="absolute w-36 h-36 cursor-pointer transition-all duration-1000 ease-out hover:scale-110"
               style={{
                 left: `${position.x}%`,
                 top: `${position.y}%`,
@@ -248,9 +248,7 @@ export default function TangramServiceCards() {
               return (
                 <>
                   <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-semibold" style={{ color: "oklch(0.214 0.097 257.1)" }}>
-                      {service.title}
-                    </h3>
+                    <h3 className="text-xl font-semibold text-foreground">{service.title}</h3>
                     <button
                       onClick={() => setExpandedCard(null)}
                       className="text-muted-foreground hover:text-foreground text-xl"
@@ -258,9 +256,7 @@ export default function TangramServiceCards() {
                       ×
                     </button>
                   </div>
-                  <p className="mb-4" style={{ color: "oklch(0.5144 0.1701 33.55)" }}>
-                    {service.description}
-                  </p>
+                  <p className="mb-4 text-muted-foreground">{service.description}</p>
                   <ul className="space-y-2">
                     {service.details.map((detail, i) => (
                       <li key={i} className="text-muted-foreground text-sm">

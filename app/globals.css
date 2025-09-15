@@ -91,32 +91,29 @@
 }
 
 .dark {
-  /* Enhanced dark theme with vibrant opalescent OKLCH colors */
-  /* Updated background to darker color per user request */
-  --background: oklch(0.256 0.031 195.4); /* Darker background with lower saturation */
-  --foreground: oklch(0.965 0.008 85); /* Warm ivory white */
+  /* Enhanced dark theme with user-specified colors */
+  /* Updated background to user's specific dark color */
+  --background: oklch(0.1987 0.0246 194.77); /* User's dark background */
+  /* Updated foreground to user's specific cream font color */
+  --foreground: oklch(0.9379 0.01 52.83); /* User's cream font color */
 
-  /* Added custom font colors for user */
-  --font-warm: oklch(0.5144 0.1701 33.55); /* Warm coral-orange font color */
-  --font-cool: oklch(0.214 0.097 257.1); /* Cool dark blue font color */
-
-  /* Adjusted card and other colors to complement darker background */
-  --card: oklch(0.28 0.04 198); /* Slightly lighter than background */
-  --card-foreground: oklch(0.965 0.008 85); /* Warm ivory */
-  --popover: oklch(0.3 0.045 200); /* Adjusted popover */
-  --popover-foreground: oklch(0.965 0.008 85); /* Warm ivory */
+  /* Updated other colors to work with new background/foreground */
+  --card: oklch(0.22 0.025 194.77); /* Slightly lighter than background */
+  --card-foreground: oklch(0.9379 0.01 52.83); /* User's cream font */
+  --popover: oklch(0.24 0.03 194.77); /* Adjusted popover */
+  --popover-foreground: oklch(0.9379 0.01 52.83); /* User's cream font */
   --primary: oklch(0.65 0.18 188); /* Vibrant teal-cyan */
-  --primary-foreground: rgb(15, 40, 40); /* Dark background for contrast */
+  --primary-foreground: oklch(0.1987 0.0246 194.77); /* Dark background for contrast */
   --secondary: oklch(0.58 0.16 35); /* Rich copper-orange */
-  --secondary-foreground: oklch(0.965 0.008 85); /* Warm ivory */
-  --muted: oklch(0.32 0.035 200); /* Muted dark surface matching background tone */
-  --muted-foreground: oklch(0.72 0.015 85); /* Muted warm text */
+  --secondary-foreground: oklch(0.9379 0.01 52.83); /* User's cream font */
+  --muted: oklch(0.25 0.03 194.77); /* Muted dark surface matching background tone */
+  --muted-foreground: oklch(0.837 0.084 37.9); /* User's secondary font color - warmer cream */
   --accent: oklch(0.68 0.22 25); /* Vibrant coral-red */
-  --accent-foreground: oklch(0.12 0.015 240); /* Dark text on accent */
+  --accent-foreground: oklch(0.1987 0.0246 194.77); /* Dark text on accent */
   --destructive: oklch(0.62 0.25 15); /* Bright red-orange */
-  --destructive-foreground: oklch(0.965 0.008 85); /* Warm ivory */
-  --border: oklch(0.35 0.04 200); /* Subtle border matching background tone */
-  --input: oklch(0.34 0.04 200); /* Input background matching theme */
+  --destructive-foreground: oklch(0.9379 0.01 52.83); /* User's cream font */
+  --border: oklch(0.3 0.04 194.77); /* Subtle border matching background tone */
+  --input: oklch(0.28 0.04 194.77); /* Input background matching theme */
   --ring: oklch(0.65 0.18 188); /* Teal focus ring */
   --chart-1: oklch(0.65 0.18 188); /* Vibrant teal */
   --chart-2: oklch(0.58 0.16 35); /* Rich copper */
@@ -124,13 +121,13 @@
   --chart-4: oklch(0.62 0.2 280); /* Purple-magenta */
   --chart-5: oklch(0.6 0.15 140); /* Emerald green */
   --radius: 0.5rem;
-  --sidebar: oklch(0.24 0.03 195); /* Sidebar background darker than main */
-  --sidebar-foreground: oklch(0.965 0.008 85); /* Warm ivory */
+  --sidebar: oklch(0.18 0.025 194.77); /* Sidebar background darker than main */
+  --sidebar-foreground: oklch(0.9379 0.01 52.83); /* User's cream font */
   --sidebar-primary: oklch(0.65 0.18 188); /* Vibrant teal */
-  --sidebar-primary-foreground: oklch(0.12 0.015 240); /* Dark text */
+  --sidebar-primary-foreground: oklch(0.1987 0.0246 194.77); /* Dark text */
   --sidebar-accent: oklch(0.58 0.16 35); /* Rich copper */
-  --sidebar-accent-foreground: oklch(0.965 0.008 85); /* Warm ivory */
-  --sidebar-border: oklch(0.35 0.04 200); /* Subtle border */
+  --sidebar-accent-foreground: oklch(0.9379 0.01 52.83); /* User's cream font */
+  --sidebar-border: oklch(0.3 0.04 194.77); /* Subtle border */
   --sidebar-ring: oklch(0.65 0.18 188); /* Teal focus ring */
 }
 
