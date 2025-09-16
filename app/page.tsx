@@ -1,3 +1,4 @@
+import type React from "react"
 import CommandNavigation from "@/components/navigation/command-navigation"
 
 export default function Home() {
@@ -39,12 +40,15 @@ export default function Home() {
               className="px-8 py-4 rounded-lg font-medium text-lg
                              hover:opacity-90 hover:scale-105 hover:shadow-lg
                              transition-all duration-300 ease-out"
-              style={{
-                backgroundColor: "oklch(0.3725 0.1179 37.02)",
-                color: "oklch(0.9012 0.0225 47.33)",
-              }}
+              style={
+                {
+                  backgroundColor: "oklch(0.3725 0.1179 37.02)",
+                  color: "oklch(0.9012 0.0225 47.33)",
+                  "--dark-text-color": "oklch(0.8897 0.1937 172.37)",
+                } as React.CSSProperties & { "--dark-text-color": string }
+              }
             >
-              Explore the Vision
+              <span className="dark:text-[color:var(--dark-text-color)]">Explore the Vision</span>
             </button>
 
             <button
