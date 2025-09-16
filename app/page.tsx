@@ -36,9 +36,13 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <button
-              className="px-8 py-4 bg-secondary text-secondary-foreground rounded-lg font-medium text-lg
-                             hover:opacity-90 hover:scale-105 hover:shadow-lg hover:shadow-secondary/20
+              className="px-8 py-4 rounded-lg font-medium text-lg
+                             hover:opacity-90 hover:scale-105 hover:shadow-lg
                              transition-all duration-300 ease-out"
+              style={{
+                backgroundColor: "oklch(0.5144 0.1701 33.55)",
+                color: "oklch(0.9379 0.01 52.83)",
+              }}
             >
               Explore the Vision
             </button>
