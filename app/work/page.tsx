@@ -3,7 +3,7 @@ import TangramServiceCards from "@/components/tangram-service-cards"
 
 export default function WorkPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background">
       <div className="container mx-auto px-6 py-16">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center text-foreground">Work With Me</h1>
@@ -47,6 +47,6 @@ export default function WorkPage() {
         </div>
       </div>
       <CommandNavigation />
-    </div>
+    </main>
   )
 }
