@@ -1,5 +1,16 @@
-// PC Local Agent - Run this script on your PC to enable remote access
-// Usage: node scripts/pc-agent.js
+// ⚠️ SECURITY WARNING: This script contains CRITICAL VULNERABILITIES ⚠️
+// DO NOT USE IN PRODUCTION - Use pc-agent-secure.js instead
+// 
+// CRITICAL ISSUES:
+// - Command Injection: Allows arbitrary command execution
+// - Path Traversal: Unrestricted file system access  
+// - No Authentication: Anyone can access this agent
+// - Information Disclosure: Exposes system details
+// - CORS Wildcard: Accepts requests from any origin
+//
+// For secure usage, use: node scripts/pc-agent-secure.js
+//
+// PC Local Agent - INSECURE VERSION - DO NOT USE
 
 const fs = require("fs")
 const path = require("path")
@@ -242,6 +253,31 @@ class PCAgent {
   }
 }
 
+// ⚠️ SECURITY WARNING: This agent is INSECURE and should NOT be used ⚠️
+console.error("=" .repeat(80))
+console.error("⚠️  CRITICAL SECURITY WARNING  ⚠️")
+console.error("=" .repeat(80))
+console.error("")
+console.error("This pc-agent.js contains CRITICAL SECURITY VULNERABILITIES:")
+console.error("• Command Injection - Allows arbitrary command execution")
+console.error("• Path Traversal - Unrestricted file system access")
+console.error("• No Authentication - Anyone can access this agent")
+console.error("• Information Disclosure - Exposes system details")
+console.error("• CORS Wildcard - Accepts requests from any origin")
+console.error("")
+console.error("🛡️  USE THE SECURE VERSION INSTEAD:")
+console.error("   node scripts/pc-agent-secure.js")
+console.error("")
+console.error("See SECURITY.md for detailed security information")
+console.error("=" .repeat(80))
+console.error("")
+
+// Refuse to start the insecure version
+console.error("Refusing to start insecure agent. Exiting...")
+process.exit(1)
+
+// Original insecure code commented out for reference
+/*
 try {
   const agent = new PCAgent()
   agent.start()
@@ -249,3 +285,4 @@ try {
   console.error("[PC Agent] Failed to start:", error)
   process.exit(1)
 }
+*/

@@ -25,3 +25,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Security - API keys and sensitive files
+api-keys.txt
+.secret
+*.key
+*.pem
+agent-config.json
+pc-agent-keys/
