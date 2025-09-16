@@ -51,6 +51,8 @@ const CommandNavigation = () => {
   const [input, setInput] = useState("")
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [currentPrompt, setCurrentPrompt] = useState(dynamicPrompts[0])
+  const [bootSequence, setBootSequence] = useState(false)
+  const [bootText, setBootText] = useState("")
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -91,6 +93,36 @@ const CommandNavigation = () => {
       return () => {}
     }
   }, [isOpen])
+
+  useEffect(() => {
+    if (isOpen) {
+      setBootSequence(true)
+      setBootText("")
+
+      const bootMessages = [
+        "Initializing M0na Machin3...",
+        "Loading neural pathways...",
+        "Establishing connection...",
+        "Ready for interaction.",
+      ]
+
+      let messageIndex = 0
+      const bootInterval = setInterval(() => {
+        if (messageIndex < bootMessages.length) {
+          setBootText(bootMessages[messageIndex])
+          messageIndex++
+        } else {
+          clearInterval(bootInterval)
+          setTimeout(() => setBootSequence(false), 500)
+        }
+      }, 800)
+
+      return () => clearInterval(bootInterval)
+    } else {
+      setBootSequence(false)
+      setBootText("")
+    }
+  }, [isOpen]) // Removed bootSequence from dependencies to allow re-triggering
 
   const commands: NavigationCommand[] = [
     {
@@ -234,7 +266,7 @@ const CommandNavigation = () => {
             </span>
             <div className="text-xs text-foreground/90 ml-auto flex-shrink-0">
               Press{" "}
-              <kbd className="px-1 py-0.5 md:px-1.5 md:py-0.5 bg-primary/80 text-primary-foreground rounded text-xs font-terminal border border-primary">
+              <kbd className="px-1 py-0.5 md:px-1.5 md:py-0.5 bg-primary text-primary-foreground rounded text-xs font-terminal border border-primary">
                 {"/"}
               </kbd>
             </div>
@@ -266,7 +298,9 @@ const CommandNavigation = () => {
               <div className="p-6">
                 <div className="relative">
                   <div className="flex items-center gap-3 text-lg">
-                    <span className="font-mono text-primary">$</span>
+                    <span className="font-mono text-sm px-2 py-1 rounded shadow-sm bg-primary text-primary-foreground">
+                      $
+                    </span>
                     <input
                       ref={inputRef}
                       type="text"
@@ -285,45 +319,62 @@ const CommandNavigation = () => {
 
               {/* Commands List */}
               <div className="flex-1 px-6 pb-6 overflow-y-auto">
-                <div className="space-y-2">
-                  {filteredCommands.length > 0 ? (
-                    filteredCommands.map((cmd, index) => (
-                      <div
-                        key={cmd.command}
-                        className={`p-4 rounded-lg cursor-pointer transition-all duration-150 ${
-                          index === selectedIndex
-                            ? "bg-white/10 border border-white/20 shadow-lg backdrop-blur-sm"
-                            : "hover:bg-white/5 hover:backdrop-blur-sm"
-                        }`}
-                        onClick={cmd.action}
-                      >
-                        <div className="flex items-center gap-4">
-                          <div className="flex items-center gap-2">
-                            <span className="font-mono text-sm px-2 py-1 rounded shadow-sm bg-primary text-primary-foreground">
-                              {cmd.command}
-                            </span>
-                          </div>
-                          <div className="flex-1">
-                            <div className="font-semibold text-lg text-foreground font-terminal">{cmd.label}</div>
-                            <div className="text-sm mt-1 text-muted-foreground">{cmd.description}</div>
-                          </div>
-                          {index === selectedIndex && (
-                            <div className="text-sm text-muted-foreground">
-                              <kbd className="px-2 py-1 bg-white/10 rounded text-xs backdrop-blur-sm">ENTER</kbd>
+                {bootSequence ? (
+                  <div className="flex items-center justify-center h-32">
+                    <div className="text-center">
+                      <div className="text-lg font-mono text-primary mb-2">{bootText}</div>
+                      <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto"></div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="space-y-2">
+                    {filteredCommands.length > 0 ? (
+                      filteredCommands.map((cmd, index) => (
+                        <div
+                          key={cmd.command}
+                          className={`p-4 rounded-lg cursor-pointer transition-all duration-150 ${
+                            index === selectedIndex
+                              ? "bg-white/10 border border-white/20 shadow-lg backdrop-blur-sm"
+                              : "hover:bg-white/5 hover:backdrop-blur-sm"
+                          }`}
+                          onClick={cmd.action}
+                        >
+                          <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-2">
+                              <span
+                                className="font-mono text-sm px-2 py-1 rounded shadow-sm text-white"
+                                style={{ backgroundColor: "oklch(0.6 0.3 240)" }}
+                              >
+                                {cmd.command}
+                              </span>
                             </div>
-                          )}
+                            <div className="flex-1">
+                              <div
+                                className="font-semibold text-lg font-terminal"
+                                style={{ color: "oklch(0.3391 0.138557 356.7284)" }}
+                              >
+                                {cmd.label}
+                              </div>
+                              <div className="text-sm mt-1 text-muted-foreground">{cmd.description}</div>
+                            </div>
+                            {index === selectedIndex && (
+                              <div className="text-sm text-muted-foreground">
+                                <kbd className="px-2 py-1 bg-white/10 rounded text-xs backdrop-blur-sm">ENTER</kbd>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="text-center py-8">
+                        <div className="text-lg mb-2 text-muted-foreground">No commands found</div>
+                        <div className="text-sm text-muted-foreground">
+                          Try typing "work", "readme", "hom3bas3", or discover hidden commands...
                         </div>
                       </div>
-                    ))
-                  ) : (
-                    <div className="text-center py-8">
-                      <div className="text-lg mb-2 text-muted-foreground">No commands found</div>
-                      <div className="text-sm text-muted-foreground">
-                        Try typing "work", "readme", "hom3bas3", or discover hidden commands...
-                      </div>
-                    </div>
-                  )}
-                </div>
+                    )}
+                  </div>
+                )}
               </div>
 
               {/* Footer Help */}

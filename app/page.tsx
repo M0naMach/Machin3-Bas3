@@ -39,7 +39,11 @@ export default function Home() {
             <button
               className="px-8 py-4 rounded-lg font-medium text-lg
                              hover:opacity-90 hover:scale-105 hover:shadow-lg
-                             transition-all duration-300 ease-out"
+                             transition-all duration-300 ease-out
+                             relative overflow-hidden
+                             before:absolute before:inset-0 before:rounded-lg before:p-[2px] 
+                             before:bg-gradient-to-r before:from-cyan-400 before:via-purple-500 before:to-pink-500
+                             before:animate-pulse before:opacity-75"
               style={
                 {
                   backgroundColor: "oklch(0.3725 0.1179 37.02)",
@@ -48,15 +52,25 @@ export default function Home() {
                 } as React.CSSProperties & { "--dark-text-color": string }
               }
             >
-              <span className="dark:text-[color:var(--dark-text-color)]">Explore the Vision</span>
+              <span className="relative z-10 dark:text-[color:var(--dark-text-color)]">Explore the Vision</span>
             </button>
 
             <button
-              className="px-8 py-4 border-2 border-primary text-primary rounded-lg font-medium text-lg
-                             hover:bg-primary hover:text-primary-foreground hover:scale-105 hover:shadow-lg hover:shadow-primary/20
-                             transition-all duration-300 ease-out bg-background"
+              className="px-8 py-4 rounded-lg font-medium text-lg
+                             hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30
+                             transition-all duration-300 ease-out
+                             relative overflow-hidden
+                             before:absolute before:inset-0 before:rounded-lg before:p-[2px] 
+                             before:bg-gradient-to-r before:from-cyan-400 before:via-purple-500 before:to-pink-500
+                             before:animate-pulse before:opacity-75"
+              style={
+                {
+                  backgroundColor: "oklch(0.7 0.3 240)", // Bright blue
+                  color: "white",
+                } as React.CSSProperties
+              }
             >
-              Work With Me
+              <span className="relative z-10">Work With Me</span>
             </button>
           </div>
         </div>
