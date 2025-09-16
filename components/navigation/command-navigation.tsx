@@ -66,17 +66,25 @@ const CommandNavigation = () => {
   }, [isOpen])
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden"
-      document.body.style.pointerEvents = "none"
-    } else {
-      document.body.style.overflow = "unset"
-      document.body.style.pointerEvents = "auto"
-    }
+    try {
+      if (isOpen) {
+        document.body.style.overflow = "hidden"
+        document.body.style.pointerEvents = "none"
+      } else {
+        document.body.style.overflow = "unset"
+        document.body.style.pointerEvents = "auto"
+      }
 
-    return () => {
-      document.body.style.overflow = "unset"
-      document.body.style.pointerEvents = "auto"
+      return () => {
+        try {
+          document.body.style.overflow = "unset"
+          document.body.style.pointerEvents = "auto"
+        } catch (error) {
+          console.error("[v0] Cleanup error:", error)
+        }
+      }
+    } catch (error) {
+      console.error("[v0] DOM manipulation error:", error)
     }
   }, [isOpen])
 
@@ -173,41 +181,51 @@ const CommandNavigation = () => {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setIsOpen(false)
-        setInput("")
-        setSelectedIndex(0)
-        setIsBooting(false)
-        setBootStep(0)
-        setShowCommands(false)
-      }
-
-      if (e.key === "/" && !isOpen) {
-        e.preventDefault()
-        setIsOpen(true)
-        startBootSequence()
-      }
-
-      if (isOpen && !isBooting) {
-        if (e.key === "ArrowDown") {
-          e.preventDefault()
-          setSelectedIndex((prev) => (prev < filteredCommands.length - 1 ? prev + 1 : 0))
+      try {
+        if (e.key === "Escape") {
+          setIsOpen(false)
+          setInput("")
+          setSelectedIndex(0)
+          setIsBooting(false)
+          setBootStep(0)
+          setShowCommands(false)
         }
 
-        if (e.key === "ArrowUp") {
+        if (e.key === "/" && !isOpen) {
           e.preventDefault()
-          setSelectedIndex((prev) => (prev > 0 ? prev - 1 : filteredCommands.length - 1))
+          setIsOpen(true)
+          startBootSequence()
         }
 
-        if (e.key === "Enter" && filteredCommands[selectedIndex]) {
-          e.preventDefault()
-          filteredCommands[selectedIndex].action()
+        if (isOpen && !isBooting) {
+          if (e.key === "ArrowDown") {
+            e.preventDefault()
+            setSelectedIndex((prev) => (prev < filteredCommands.length - 1 ? prev + 1 : 0))
+          }
+
+          if (e.key === "ArrowUp") {
+            e.preventDefault()
+            setSelectedIndex((prev) => (prev > 0 ? prev - 1 : filteredCommands.length - 1))
+          }
+
+          if (e.key === "Enter" && filteredCommands[selectedIndex]) {
+            e.preventDefault()
+            filteredCommands[selectedIndex].action()
+          }
         }
+      } catch (error) {
+        console.error("[v0] Command navigation error:", error)
+        // Gracefully handle errors without breaking the page
       }
     }
 
-    document.addEventListener("keydown", handleKeyDown)
-    return () => document.removeEventListener("keydown", handleKeyDown)
+    try {
+      document.addEventListener("keydown", handleKeyDown)
+      return () => document.removeEventListener("keydown", handleKeyDown)
+    } catch (error) {
+      console.error("[v0] Event listener error:", error)
+      return () => {} // Return empty cleanup function
+    }
   }, [isOpen, filteredCommands, selectedIndex, isBooting])
 
   return (
