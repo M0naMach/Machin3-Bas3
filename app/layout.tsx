@@ -6,9 +6,9 @@ import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "M0na Machin3 - Bespoke AI Companions",
+  title: "M0na Machin3 - Human connection, coded with care",
   description:
-    "Creating meaningful digital relationships through bespoke AI companions. Experience genuine connection, emotional support, and growth with personalized digital entities.",
+    "Creating meaningful digital experiences through thoughtful design and development. Where reflection becomes connection in the digital space.",
   generator: "v0.app",
   other: {
     "Cache-Control": "no-cache, no-store, must-revalidate",
