@@ -40,8 +40,8 @@ export default function Home() {
                              hover:opacity-90 hover:scale-105 hover:shadow-lg
                              transition-all duration-300 ease-out"
               style={{
-                backgroundColor: "oklch(0.5144 0.1701 33.55)",
-                color: "oklch(0.9379 0.01 52.83)",
+                backgroundColor: "oklch(0.3725 0.1179 37.02)",
+                color: "oklch(0.9012 0.0225 47.33)",
               }}
             >
               Explore the Vision
