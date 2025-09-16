@@ -68,24 +68,26 @@ const CommandNavigation = () => {
   useEffect(() => {
     try {
       if (isOpen) {
-        document.body.style.overflow = "hidden"
-        document.body.style.pointerEvents = "none"
+        if (typeof document !== "undefined" && document.body) {
+          document.body.style.overflow = "hidden"
+          document.body.style.pointerEvents = "none"
+        }
       } else {
-        document.body.style.overflow = "unset"
-        document.body.style.pointerEvents = "auto"
+        if (typeof document !== "undefined" && document.body) {
+          document.body.style.overflow = "unset"
+          document.body.style.pointerEvents = "auto"
+        }
       }
 
       return () => {
         try {
-          document.body.style.overflow = "unset"
-          document.body.style.pointerEvents = "auto"
-        } catch (error) {
-          console.error("[v0] Cleanup error:", error)
-        }
+          if (typeof document !== "undefined" && document.body) {
+            document.body.style.overflow = "unset"
+            document.body.style.pointerEvents = "auto"
+          }
+        } catch (error) {}
       }
-    } catch (error) {
-      console.error("[v0] DOM manipulation error:", error)
-    }
+    } catch (error) {}
   }, [isOpen])
 
   const commands: NavigationCommand[] = [
@@ -94,10 +96,16 @@ const CommandNavigation = () => {
       label: "Hom3 Bas3",
       description: "Return to the M0na Machin3 home page",
       action: () => {
-        console.log("[v0] Navigating to Hom3 Bas3")
-        window.location.href = "/"
-        setIsOpen(false)
-        setInput("")
+        try {
+          if (typeof window !== "undefined") {
+            window.location.href = "/"
+          }
+          setIsOpen(false)
+          setInput("")
+        } catch (error) {
+          setIsOpen(false)
+          setInput("")
+        }
       },
     },
     {
@@ -115,10 +123,16 @@ const CommandNavigation = () => {
       label: "Work With Me",
       description: "Discover AI companion services and collaboration",
       action: () => {
-        console.log("[v0] Navigating to Work With Me")
-        window.location.href = "/work"
-        setIsOpen(false)
-        setInput("")
+        try {
+          if (typeof window !== "undefined") {
+            window.location.href = "/work"
+          }
+          setIsOpen(false)
+          setInput("")
+        } catch (error) {
+          setIsOpen(false)
+          setInput("")
+        }
       },
     },
     ...easterEggCommands,
@@ -213,18 +227,16 @@ const CommandNavigation = () => {
             filteredCommands[selectedIndex].action()
           }
         }
-      } catch (error) {
-        console.error("[v0] Command navigation error:", error)
-        // Gracefully handle errors without breaking the page
-      }
+      } catch (error) {}
     }
 
     try {
-      document.addEventListener("keydown", handleKeyDown)
-      return () => document.removeEventListener("keydown", handleKeyDown)
+      if (typeof document !== "undefined") {
+        document.addEventListener("keydown", handleKeyDown)
+        return () => document.removeEventListener("keydown", handleKeyDown)
+      }
     } catch (error) {
-      console.error("[v0] Event listener error:", error)
-      return () => {} // Return empty cleanup function
+      return () => {}
     }
   }, [isOpen, filteredCommands, selectedIndex, isBooting])
 

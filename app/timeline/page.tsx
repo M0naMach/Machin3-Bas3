@@ -124,17 +124,19 @@ export default function TimelinePage() {
   const [scrollPosition, setScrollPosition] = useState(0)
 
   const scrollTimeline = (direction: "left" | "right") => {
-    const container = document.getElementById("timeline-container")
-    if (container) {
-      const scrollAmount = 400
-      const newPosition =
-        direction === "left"
-          ? Math.max(0, scrollPosition - scrollAmount)
-          : Math.min(container.scrollWidth - container.clientWidth, scrollPosition + scrollAmount)
+    try {
+      const container = typeof document !== "undefined" ? document.getElementById("timeline-container") : null
+      if (container) {
+        const scrollAmount = 400
+        const newPosition =
+          direction === "left"
+            ? Math.max(0, scrollPosition - scrollAmount)
+            : Math.min(container.scrollWidth - container.clientWidth, scrollPosition + scrollAmount)
 
-      container.scrollTo({ left: newPosition, behavior: "smooth" })
-      setScrollPosition(newPosition)
-    }
+        container.scrollTo({ left: newPosition, behavior: "smooth" })
+        setScrollPosition(newPosition)
+      }
+    } catch (error) {}
   }
 
   return (
@@ -193,7 +195,7 @@ export default function TimelinePage() {
               {/* Event Card */}
               <Card
                 className={`w-80 cursor-pointer transition-all duration-300 hover:scale-105 ${
-                  selectedEvent?.id === event.id ? typeColors[event.type] : ""
+                  selectedEvent?.id === event.id ? typeColors[selectedEvent.type] : ""
                 }`}
                 onClick={() => setSelectedEvent(event)}
               >
