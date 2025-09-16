@@ -50,32 +50,30 @@ const CommandNavigation = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [input, setInput] = useState("")
   const [selectedIndex, setSelectedIndex] = useState(0)
-  const [isBooting, setIsBooting] = useState(false)
-  const [bootStep, setBootStep] = useState(0)
   const [currentPrompt, setCurrentPrompt] = useState(dynamicPrompts[0])
-  const [showCommands, setShowCommands] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (!isOpen) {
-      const interval = setInterval(() => {
-        setCurrentPrompt(dynamicPrompts[Math.floor(Math.random() * dynamicPrompts.length)])
-      }, 3000)
-      return () => clearInterval(interval)
+      try {
+        const interval = setInterval(() => {
+          setCurrentPrompt(dynamicPrompts[Math.floor(Math.random() * dynamicPrompts.length)])
+        }, 3000)
+        return () => clearInterval(interval)
+      } catch (error) {
+        // Fail silently for accessibility tools
+        return () => {}
+      }
     }
   }, [isOpen])
 
   useEffect(() => {
     try {
-      if (isOpen) {
-        if (typeof document !== "undefined" && document.body) {
+      if (typeof document !== "undefined" && document.body) {
+        if (isOpen) {
           document.body.style.overflow = "hidden"
-          document.body.style.pointerEvents = "none"
-        }
-      } else {
-        if (typeof document !== "undefined" && document.body) {
+        } else {
           document.body.style.overflow = "unset"
-          document.body.style.pointerEvents = "auto"
         }
       }
 
@@ -83,11 +81,15 @@ const CommandNavigation = () => {
         try {
           if (typeof document !== "undefined" && document.body) {
             document.body.style.overflow = "unset"
-            document.body.style.pointerEvents = "auto"
           }
-        } catch (error) {}
+        } catch (error) {
+          // Fail silently
+        }
       }
-    } catch (error) {}
+    } catch (error) {
+      // Fail silently for accessibility tools
+      return () => {}
+    }
   }, [isOpen])
 
   const commands: NavigationCommand[] = [
@@ -97,15 +99,14 @@ const CommandNavigation = () => {
       description: "Return to the M0na Machin3 home page",
       action: () => {
         try {
-          if (typeof window !== "undefined") {
+          if (typeof window !== "undefined" && window.location) {
             window.location.href = "/"
           }
-          setIsOpen(false)
-          setInput("")
         } catch (error) {
-          setIsOpen(false)
-          setInput("")
+          // Fail silently
         }
+        setIsOpen(false)
+        setInput("")
       },
     },
     {
@@ -113,7 +114,13 @@ const CommandNavigation = () => {
       label: "Our Journey",
       description: "Explore the M0na Machin3 timeline and philosophy",
       action: () => {
-        console.log("[v0] Navigating to Our Journey")
+        try {
+          if (typeof window !== "undefined" && window.location) {
+            window.location.href = "/timeline"
+          }
+        } catch (error) {
+          // Fail silently
+        }
         setIsOpen(false)
         setInput("")
       },
@@ -124,15 +131,14 @@ const CommandNavigation = () => {
       description: "Discover AI companion services and collaboration",
       action: () => {
         try {
-          if (typeof window !== "undefined") {
+          if (typeof window !== "undefined" && window.location) {
             window.location.href = "/work"
           }
-          setIsOpen(false)
-          setInput("")
         } catch (error) {
-          setIsOpen(false)
-          setInput("")
+          // Fail silently
         }
+        setIsOpen(false)
+        setInput("")
       },
     },
     ...easterEggCommands,
@@ -161,38 +167,6 @@ const CommandNavigation = () => {
     )
   })
 
-  const startBootSequence = () => {
-    setIsBooting(true)
-    setBootStep(0)
-    setShowCommands(false)
-
-    const bootMessages = [
-      "> Initializing M0na Machin3 interface...",
-      "> Connection established.",
-      "> Welcome. How can I assist your journey?",
-    ]
-
-    bootMessages.forEach((_, index) => {
-      setTimeout(
-        () => {
-          setBootStep(index + 1)
-          if (index === bootMessages.length - 1) {
-            setTimeout(() => {
-              setIsBooting(false)
-            }, 800)
-          }
-        },
-        (index + 1) * 800,
-      )
-    })
-  }
-
-  useEffect(() => {
-    if (isOpen && inputRef.current && !isBooting) {
-      inputRef.current.focus()
-    }
-  }, [isOpen, isBooting])
-
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       try {
@@ -200,18 +174,14 @@ const CommandNavigation = () => {
           setIsOpen(false)
           setInput("")
           setSelectedIndex(0)
-          setIsBooting(false)
-          setBootStep(0)
-          setShowCommands(false)
         }
 
         if (e.key === "/" && !isOpen) {
           e.preventDefault()
           setIsOpen(true)
-          startBootSequence()
         }
 
-        if (isOpen && !isBooting) {
+        if (isOpen) {
           if (e.key === "ArrowDown") {
             e.preventDefault()
             setSelectedIndex((prev) => (prev < filteredCommands.length - 1 ? prev + 1 : 0))
@@ -227,7 +197,9 @@ const CommandNavigation = () => {
             filteredCommands[selectedIndex].action()
           }
         }
-      } catch (error) {}
+      } catch (error) {
+        // Fail silently for accessibility tools
+      }
     }
 
     try {
@@ -238,19 +210,23 @@ const CommandNavigation = () => {
     } catch (error) {
       return () => {}
     }
-  }, [isOpen, filteredCommands, selectedIndex, isBooting])
+  }, [isOpen, filteredCommands, selectedIndex])
+
+  useEffect(() => {
+    try {
+      if (isOpen && inputRef.current) {
+        inputRef.current.focus()
+      }
+    } catch (error) {
+      // Fail silently
+    }
+  }, [isOpen])
 
   return (
     <>
       {/* Trigger Input */}
       <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-40">
-        <div
-          className="relative group cursor-pointer"
-          onClick={() => {
-            setIsOpen(true)
-            startBootSequence()
-          }}
-        >
+        <div className="relative group cursor-pointer" onClick={() => setIsOpen(true)}>
           <div className="flex items-center gap-2 md:gap-3 terminal-glassmorphic border border-primary/30 rounded-lg px-3 py-2 md:px-4 md:py-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/60 hover:shadow-[0_0_20px_rgba(184,83,9,0.3)] group-hover:scale-105 max-w-xs md:max-w-md">
             <Terminal className="w-4 h-4 md:w-5 md:h-5 text-primary opalescent-text-small" />
             <span className="text-foreground select-none transition-all duration-500 font-terminal text-sm md:text-lg opalescent-text-small truncate">
@@ -269,26 +245,15 @@ const CommandNavigation = () => {
       {/* Command Popup Modal */}
       {isOpen && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
-          <div
-            className="absolute inset-0 bg-black/30 backdrop-blur-md"
-            onClick={() => setIsOpen(false)}
-            style={{ pointerEvents: "auto" }}
-          />
+          <div className="absolute inset-0 bg-black/30 backdrop-blur-md" onClick={() => setIsOpen(false)} />
 
-          <div
-            className="relative w-full max-w-4xl max-h-[80vh] command-overlay-enter terminal-glassmorphic rounded-2xl overflow-hidden shadow-2xl"
-            style={{ pointerEvents: "auto" }}
-          >
+          <div className="relative w-full max-w-4xl max-h-[80vh] command-overlay-enter terminal-glassmorphic rounded-2xl overflow-hidden shadow-2xl">
             <div className="flex flex-col h-full">
               {/* Header */}
               <div className="flex items-center justify-between p-6 border-b border-white/10">
                 <div className="flex items-center gap-3">
-                  <Terminal className="w-6 h-6" style={{ color: "var(--command-text)" }} />
-                  {/* Increased font size from text-xl to text-3xl for better visibility */}
-                  <h1
-                    className="text-3xl font-bold opalescent-text-small"
-                    style={{ color: "var(--command-text)", fontFamily: "var(--font-terminal)" }}
-                  >
+                  <Terminal className="w-6 h-6 text-primary" />
+                  <h1 className="text-3xl font-bold opalescent-text-small text-foreground font-terminal">
                     M0na Machin3 Navigation
                   </h1>
                 </div>
@@ -297,184 +262,73 @@ const CommandNavigation = () => {
                 </button>
               </div>
 
-              {isBooting ? (
-                <div className="flex-1 flex items-center justify-center p-8">
-                  <div className="max-w-xl mx-auto space-y-4">
-                    {bootStep >= 1 && (
-                      <div
-                        className="font-mono text-lg animate-pulse"
-                        style={{ color: "var(--command-text)", fontFamily: "var(--font-terminal)" }}
-                      >
-                        &gt; Initializing M0na Machin3 interface...
-                      </div>
-                    )}
-                    {bootStep >= 2 && (
-                      <div
-                        className="font-mono text-lg animate-pulse"
-                        style={{ color: "var(--command-accent)", fontFamily: "var(--font-terminal)" }}
-                      >
-                        &gt; Connection established.
-                      </div>
-                    )}
-                    {bootStep >= 3 && (
-                      <div
-                        className="font-mono text-lg"
-                        style={{ color: "var(--command-text)", fontFamily: "var(--font-terminal)" }}
-                      >
-                        &gt; Welcome. How can I assist your journey?
-                      </div>
-                    )}
-                    {bootStep >= 3 && (
-                      <div className="flex items-center gap-2 mt-6">
-                        <span
-                          style={{ color: "var(--command-accent)", fontFamily: "var(--font-terminal)" }}
-                          className="text-lg"
-                        >
-                          $
-                        </span>
-                        <span
-                          className="command-prompt-blink text-lg"
-                          style={{ color: "var(--command-accent)", fontFamily: "var(--font-terminal)" }}
-                        >
-                          |
-                        </span>
-                      </div>
-                    )}
+              {/* Command Input */}
+              <div className="p-6">
+                <div className="relative">
+                  <div className="flex items-center gap-3 text-lg">
+                    <span className="font-mono text-primary">$</span>
+                    <input
+                      ref={inputRef}
+                      type="text"
+                      value={input}
+                      onChange={(e) => {
+                        setInput(e.target.value)
+                        setSelectedIndex(0)
+                      }}
+                      placeholder={currentPrompt}
+                      className="flex-1 bg-transparent border-none outline-none text-lg font-mono text-foreground"
+                    />
+                    <span className="command-prompt-blink text-lg text-primary">|</span>
                   </div>
                 </div>
-              ) : (
-                <>
-                  {/* Command Input */}
-                  <div className="p-6">
-                    <div className="relative">
-                      <div className="flex items-center gap-3 text-lg">
-                        <span
-                          style={{ color: "var(--command-accent)", fontFamily: "var(--font-terminal)" }}
-                          className="font-mono"
-                        >
-                          $
-                        </span>
-                        <input
-                          ref={inputRef}
-                          type="text"
-                          value={input}
-                          onChange={(e) => {
-                            setInput(e.target.value)
-                            setSelectedIndex(0)
-                            setShowCommands(true)
-                          }}
-                          onFocus={() => setShowCommands(true)}
-                          onBlur={() => {
-                            setTimeout(() => setShowCommands(false), 150)
-                          }}
-                          onMouseEnter={() => setShowCommands(true)}
-                          placeholder={currentPrompt}
-                          className="flex-1 bg-transparent border-none outline-none text-lg font-mono"
-                          style={{ color: "var(--command-text)", fontFamily: "var(--font-terminal)" }}
-                        />
-                        <span
-                          className="command-prompt-blink text-lg"
-                          style={{ color: "var(--command-accent)", fontFamily: "var(--font-terminal)" }}
-                        >
-                          |
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+              </div>
 
-                  {showCommands && (
-                    <div className="flex-1 px-6 pb-6 overflow-y-auto">
-                      <div className="space-y-2">
-                        {filteredCommands.length > 0 ? (
-                          filteredCommands.map((cmd, index) => (
-                            <div
-                              key={cmd.command}
-                              className={`p-4 rounded-lg cursor-pointer transition-all duration-150 ${
-                                index === selectedIndex
-                                  ? "bg-white/10 border border-white/20 shadow-lg backdrop-blur-sm"
-                                  : "hover:bg-white/5 hover:backdrop-blur-sm"
-                              }`}
-                              onClick={cmd.action}
-                              onMouseEnter={() => setShowCommands(true)}
-                              style={{
-                                boxShadow:
-                                  index === selectedIndex
-                                    ? "0 4px 20px rgba(184, 83, 9, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
-                                    : undefined,
-                              }}
-                            >
-                              <div className="flex items-center gap-4">
-                                <div className="flex items-center gap-2">
-                                  <span
-                                    className="font-mono text-sm px-2 py-1 rounded shadow-sm"
-                                    style={{
-                                      backgroundColor: "var(--command-accent)",
-                                      color: "var(--accent-foreground)",
-                                      boxShadow: "0 2px 8px rgba(184, 83, 9, 0.3)",
-                                      fontFamily: "var(--font-terminal)",
-                                    }}
-                                  >
-                                    {cmd.command}
-                                  </span>
-                                </div>
-                                <div className="flex-1">
-                                  {/* Increased font size from default to text-lg for better visibility */}
-                                  <div
-                                    className="font-semibold text-lg"
-                                    style={{
-                                      color: "var(--command-text)",
-                                      fontFamily: "var(--font-terminal)",
-                                    }}
-                                  >
-                                    {cmd.label}
-                                  </div>
-                                  <div className="text-sm mt-1" style={{ color: "var(--command-muted)" }}>
-                                    {cmd.description}
-                                  </div>
-                                </div>
-                                {index === selectedIndex && (
-                                  <div className="text-sm" style={{ color: "var(--command-muted)" }}>
-                                    <kbd className="px-2 py-1 bg-white/10 rounded text-xs backdrop-blur-sm">ENTER</kbd>
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                          ))
-                        ) : (
-                          <div className="text-center py-8">
-                            <div className="text-lg mb-2" style={{ color: "var(--command-muted)" }}>
-                              No commands found
-                            </div>
-                            <div className="text-sm" style={{ color: "var(--command-muted)" }}>
-                              Try typing "journey", "work", "readme", "hom3bas3", or discover hidden commands...
-                            </div>
+              {/* Commands List */}
+              <div className="flex-1 px-6 pb-6 overflow-y-auto">
+                <div className="space-y-2">
+                  {filteredCommands.length > 0 ? (
+                    filteredCommands.map((cmd, index) => (
+                      <div
+                        key={cmd.command}
+                        className={`p-4 rounded-lg cursor-pointer transition-all duration-150 ${
+                          index === selectedIndex
+                            ? "bg-white/10 border border-white/20 shadow-lg backdrop-blur-sm"
+                            : "hover:bg-white/5 hover:backdrop-blur-sm"
+                        }`}
+                        onClick={cmd.action}
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="flex items-center gap-2">
+                            <span className="font-mono text-sm px-2 py-1 rounded shadow-sm bg-primary text-primary-foreground">
+                              {cmd.command}
+                            </span>
                           </div>
-                        )}
+                          <div className="flex-1">
+                            <div className="font-semibold text-lg text-foreground font-terminal">{cmd.label}</div>
+                            <div className="text-sm mt-1 text-muted-foreground">{cmd.description}</div>
+                          </div>
+                          {index === selectedIndex && (
+                            <div className="text-sm text-muted-foreground">
+                              <kbd className="px-2 py-1 bg-white/10 rounded text-xs backdrop-blur-sm">ENTER</kbd>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="text-center py-8">
+                      <div className="text-lg mb-2 text-muted-foreground">No commands found</div>
+                      <div className="text-sm text-muted-foreground">
+                        Try typing "journey", "work", "readme", "hom3bas3", or discover hidden commands...
                       </div>
                     </div>
                   )}
-
-                  {!showCommands && (
-                    <div className="flex-1 flex items-center justify-center p-8">
-                      <div className="text-center">
-                        <div className="text-lg mb-2" style={{ color: "var(--command-muted)" }}>
-                          Start typing or hover over the input to see available commands
-                        </div>
-                        <div className="text-sm" style={{ color: "var(--command-muted)" }}>
-                          Try "journey", "work", "readme", "hom3bas3", or discover hidden commands...
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </>
-              )}
+                </div>
+              </div>
 
               {/* Footer Help */}
               <div className="p-6 border-t border-white/10">
-                <div
-                  className="text-sm flex items-center justify-center gap-6"
-                  style={{ color: "var(--command-muted)" }}
-                >
+                <div className="text-sm flex items-center justify-center gap-6 text-muted-foreground">
                   <span>
                     <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-xs mr-1 backdrop-blur-sm">↑↓</kbd>
                     Navigate
