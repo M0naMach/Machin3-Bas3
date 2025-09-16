@@ -261,10 +261,13 @@ const CommandNavigation = () => {
         <div className="relative group cursor-pointer" onClick={() => setIsOpen(true)}>
           <div className="flex items-center gap-2 md:gap-3 terminal-glassmorphic border border-primary/30 rounded-lg px-3 py-2 md:px-4 md:py-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/60 hover:shadow-[0_0_20px_rgba(184,83,9,0.3)] group-hover:scale-105 max-w-xs md:max-w-md">
             <Terminal className="w-4 h-4 md:w-5 md:h-5 text-primary opalescent-text-small" />
-            <span className="text-foreground select-none transition-all duration-500 font-terminal text-sm md:text-lg opalescent-text-small truncate">
+            <span
+              className="text-foreground select-none transition-all duration-500 font-terminal text-lg md:text-2xl opalescent-text-small truncate"
+              style={{ color: "oklch(0.4 0.05 100)" }}
+            >
               {currentPrompt}
             </span>
-            <div className="text-xs text-foreground/90 ml-auto flex-shrink-0">
+            <div className="text-sm text-foreground/90 ml-auto flex-shrink-0">
               Press{" "}
               <kbd className="px-1 py-0.5 md:px-1.5 md:py-0.5 bg-primary text-primary-foreground rounded text-xs font-terminal border border-primary">
                 {"/"}
@@ -285,7 +288,7 @@ const CommandNavigation = () => {
               <div className="flex items-center justify-between p-6 border-b border-white/10">
                 <div className="flex items-center gap-3">
                   <Terminal className="w-6 h-6 text-primary" />
-                  <h1 className="text-3xl font-bold opalescent-text-small text-foreground font-terminal">
+                  <h1 className="text-4xl font-bold opalescent-text-small text-foreground font-terminal">
                     M0na Machin3 Navigation
                   </h1>
                 </div>
@@ -297,7 +300,7 @@ const CommandNavigation = () => {
               {/* Command Input */}
               <div className="p-6">
                 <div className="relative">
-                  <div className="flex items-center gap-3 text-lg">
+                  <div className="flex items-center gap-3 text-xl">
                     <span className="font-mono text-sm px-2 py-1 rounded shadow-sm bg-primary text-primary-foreground">
                       $
                     </span>
@@ -310,19 +313,19 @@ const CommandNavigation = () => {
                         setSelectedIndex(0)
                       }}
                       placeholder={currentPrompt}
-                      className="flex-1 bg-transparent border-none outline-none text-lg font-mono text-foreground"
+                      className="flex-1 bg-transparent border-none outline-none text-xl font-mono text-[rgba(0,255,205,1)]"
                     />
-                    <span className="command-prompt-blink text-lg text-primary">|</span>
+                    <span className="command-prompt-blink text-xl text-primary">|</span>
                   </div>
                 </div>
               </div>
 
               {/* Commands List */}
-              <div className="flex-1 px-6 pb-6 overflow-y-auto">
+              <div className="flex-1 px-6 pb-6 overflow-y-auto max-h-96">
                 {bootSequence ? (
                   <div className="flex items-center justify-center h-32">
                     <div className="text-center">
-                      <div className="text-lg font-mono text-primary mb-2">{bootText}</div>
+                      <div className="text-2xl font-mono text-primary mb-2">{bootText}</div>
                       <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto"></div>
                     </div>
                   </div>
@@ -342,20 +345,25 @@ const CommandNavigation = () => {
                           <div className="flex items-center gap-4">
                             <div className="flex items-center gap-2">
                               <span
-                                className="font-mono text-sm px-2 py-1 rounded shadow-sm text-white"
-                                style={{ backgroundColor: "oklch(0.6 0.3 240)" }}
+                                className="font-mono text-base px-2 py-1 rounded shadow-sm"
+                                style={{
+                                  backgroundColor: "oklch(0.4572 0.1828 10.2)",
+                                  color: "oklch(0.9779 0.02 100.44)",
+                                }}
                               >
                                 {cmd.command}
                               </span>
                             </div>
                             <div className="flex-1">
                               <div
-                                className="font-semibold text-lg font-terminal"
-                                style={{ color: "oklch(0.3391 0.138557 356.7284)" }}
+                                className="font-semibold text-2xl font-terminal"
+                                style={{ color: "oklch(0.4572 0.1828 10.2)" }}
                               >
                                 {cmd.label}
                               </div>
-                              <div className="text-sm mt-1 text-muted-foreground">{cmd.description}</div>
+                              <div className="text-lg mt-1" style={{ color: "oklch(0.9779 0.02 100.44)" }}>
+                                {cmd.description}
+                              </div>
                             </div>
                             {index === selectedIndex && (
                               <div className="text-sm text-muted-foreground">

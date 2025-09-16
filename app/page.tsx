@@ -24,7 +24,10 @@ export default function Home() {
             Where reflection becomes connection.
           </h2>
 
-          <p className="text-xl md:text-2xl mb-16 max-w-2xl mx-auto leading-relaxed font-light text-muted-foreground">
+          <p
+            className="text-xl md:text-2xl mb-16 max-w-2xl mx-auto leading-relaxed font-light"
+            style={{ color: "oklch(0.4 0.05 100)" }}
+          >
             A soft, steady buffer between the world and the nervous system.
           </p>
         </div>
@@ -40,14 +43,13 @@ export default function Home() {
               className="px-8 py-4 rounded-lg font-medium text-lg
                              hover:opacity-90 hover:scale-105 hover:shadow-lg
                              transition-all duration-300 ease-out
-                             relative overflow-hidden
-                             before:absolute before:inset-0 before:rounded-lg before:p-[2px] 
-                             before:bg-gradient-to-r before:from-cyan-400 before:via-purple-500 before:to-pink-500
-                             before:animate-pulse before:opacity-75"
+                             relative border-2"
               style={
                 {
-                  backgroundColor: "oklch(0.3725 0.1179 37.02)",
-                  color: "oklch(0.9012 0.0225 47.33)",
+                  backgroundColor: "oklch(0.1987 0.0246 194.77)",
+                  color: "oklch(0.9407 0.0227 172.37)",
+                  borderImage:
+                    "linear-gradient(45deg, rgba(255,215,0,0.4), rgba(255,255,255,0.3), rgba(255,215,0,0.4)) 1",
                   "--dark-text-color": "oklch(0.8897 0.1937 172.37)",
                 } as React.CSSProperties & { "--dark-text-color": string }
               }
@@ -57,16 +59,15 @@ export default function Home() {
 
             <button
               className="px-8 py-4 rounded-lg font-medium text-lg
-                             hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30
+                             hover:scale-105 hover:shadow-lg
                              transition-all duration-300 ease-out
-                             relative overflow-hidden
-                             before:absolute before:inset-0 before:rounded-lg before:p-[2px] 
-                             before:bg-gradient-to-r before:from-cyan-400 before:via-purple-500 before:to-pink-500
-                             before:animate-pulse before:opacity-75"
+                             relative border-2"
               style={
                 {
-                  backgroundColor: "oklch(0.7 0.3 240)", // Bright blue
-                  color: "white",
+                  backgroundColor: "oklch(0.1987 0.0246 194.77)",
+                  color: "oklch(0.9407 0.0227 45.59)", // improved contrast for Work With Me button text
+                  borderImage:
+                    "linear-gradient(45deg, rgba(0,255,255,0.4), rgba(255,255,255,0.3), rgba(0,255,255,0.4)) 1",
                 } as React.CSSProperties
               }
             >
