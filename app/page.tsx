@@ -1,3 +1,5 @@
+"use client"
+
 import type React from "react"
 import CommandNavigation from "@/components/navigation/command-navigation"
 
@@ -43,7 +45,7 @@ export default function Home() {
               className="px-8 py-4 rounded-lg font-medium text-lg
                              hover:opacity-90 hover:scale-105 hover:shadow-lg
                              transition-all duration-300 ease-out
-                             relative border-2"
+                             relative border-2 cursor-pointer"
               style={
                 {
                   backgroundColor: "oklch(0.1987 0.0246 194.77)",
@@ -53,6 +55,7 @@ export default function Home() {
                   "--dark-text-color": "oklch(0.8897 0.1937 172.37)",
                 } as React.CSSProperties & { "--dark-text-color": string }
               }
+              onClick={() => (window.location.href = "/vision")}
             >
               <span className="relative z-10 dark:text-[color:var(--dark-text-color)]">Explore the Vision</span>
             </button>
@@ -61,15 +64,16 @@ export default function Home() {
               className="px-8 py-4 rounded-lg font-medium text-lg
                              hover:scale-105 hover:shadow-lg
                              transition-all duration-300 ease-out
-                             relative border-2"
+                             relative border-2 cursor-pointer"
               style={
                 {
                   backgroundColor: "oklch(0.1987 0.0246 194.77)",
-                  color: "oklch(0.9407 0.0227 45.59)", // improved contrast for Work With Me button text
+                  color: "oklch(0.9407 0.0227 45.59)",
                   borderImage:
                     "linear-gradient(45deg, rgba(0,255,255,0.4), rgba(255,255,255,0.3), rgba(0,255,255,0.4)) 1",
                 } as React.CSSProperties
               }
+              onClick={() => (window.location.href = "/work")}
             >
               <span className="relative z-10">Work With Me</span>
             </button>
@@ -103,7 +107,8 @@ export default function Home() {
             <button
               className="px-6 py-3 border border-border text-foreground rounded-lg font-medium
                              hover:border-primary hover:bg-card hover:scale-105 hover:shadow-md
-                             transition-all duration-300 ease-out"
+                             transition-all duration-300 ease-out cursor-pointer"
+              onClick={() => (window.location.href = "/timeline")}
             >
               View Our Journey
             </button>
@@ -119,17 +124,17 @@ export default function Home() {
               <h3 className="font-semibold text-foreground mb-4">Explore</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li>
-                  <a href="#" className="hover:text-secondary transition-colors">
+                  <a href="/timeline" className="hover:text-secondary transition-colors cursor-pointer">
                     Our Journey
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-secondary transition-colors">
+                  <a href="/readme" className="hover:text-secondary transition-colors cursor-pointer">
                     README
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-secondary transition-colors">
+                  <a href="/timeline" className="hover:text-secondary transition-colors cursor-pointer">
                     Timeline
                   </a>
                 </li>
@@ -140,19 +145,19 @@ export default function Home() {
               <h3 className="font-semibold text-foreground mb-4">Connect</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li>
-                  <a href="#" className="hover:text-secondary transition-colors">
+                  <a href="/work" className="hover:text-secondary transition-colors cursor-pointer">
                     Collaborate
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-secondary transition-colors">
-                    Twitter
-                  </a>
+                  <span className="cursor-not-allowed opacity-60 text-sm">
+                    Twitter <span className="text-xs">(Coming Soon)</span>
+                  </span>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-secondary transition-colors">
-                    LinkedIn
-                  </a>
+                  <span className="cursor-not-allowed opacity-60 text-sm">
+                    LinkedIn <span className="text-xs">(Coming Soon)</span>
+                  </span>
                 </li>
               </ul>
             </div>
@@ -161,12 +166,12 @@ export default function Home() {
               <h3 className="font-semibold text-foreground mb-4">Info</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li>
-                  <a href="#" className="hover:text-secondary transition-colors">
+                  <a href="/privacy" className="hover:text-secondary transition-colors cursor-pointer">
                     Privacy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-secondary transition-colors">
+                  <a href="/terms" className="hover:text-secondary transition-colors cursor-pointer">
                     Terms
                   </a>
                 </li>

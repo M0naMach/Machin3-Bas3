@@ -141,22 +141,38 @@ const CommandNavigation = () => {
         setInput("")
       },
     },
-    // {
-    //   command: "journey",
-    //   label: "Our Journey",
-    //   description: "Explore the M0na Machin3 timeline and philosophy",
-    //   action: () => {
-    //     try {
-    //       if (typeof window !== "undefined" && window.location) {
-    //         window.location.href = "/timeline"
-    //       }
-    //     } catch (error) {
-    //       // Fail silently
-    //     }
-    //     setIsOpen(false)
-    //     setInput("")
-    //   },
-    // },
+    {
+      command: "journey",
+      label: "Our Journey",
+      description: "Explore the M0na Machin3 timeline and philosophy",
+      action: () => {
+        try {
+          if (typeof window !== "undefined" && window.location) {
+            window.location.href = "/timeline"
+          }
+        } catch (error) {
+          // Fail silently
+        }
+        setIsOpen(false)
+        setInput("")
+      },
+    },
+    {
+      command: "vision",
+      label: "The Vision",
+      description: "Discover the future of human-AI connection",
+      action: () => {
+        try {
+          if (typeof window !== "undefined" && window.location) {
+            window.location.href = "/vision"
+          }
+        } catch (error) {
+          // Fail silently
+        }
+        setIsOpen(false)
+        setInput("")
+      },
+    },
     {
       command: "work",
       label: "Work With Me",
@@ -188,9 +204,10 @@ const CommandNavigation = () => {
 
   const filteredCommands = commands.filter((cmd) => {
     const searchTerm = input.toLowerCase()
-    // if (searchTerm === "lost") return cmd.command === "journey"
+    if (searchTerm === "lost" || searchTerm === "timeline") return cmd.command === "journey"
     if (searchTerm === "collaborate" || searchTerm === "partnership") return cmd.command === "work"
     if (searchTerm === "philosophy" || searchTerm === "mission") return cmd.command === "readme"
+    if (searchTerm === "future" || searchTerm === "ai" || searchTerm === "companion") return cmd.command === "vision"
 
     return (
       cmd.command.toLowerCase().includes(searchTerm) ||
@@ -377,7 +394,7 @@ const CommandNavigation = () => {
                       <div className="text-center py-8">
                         <div className="text-lg mb-2 text-muted-foreground">No commands found</div>
                         <div className="text-sm text-muted-foreground">
-                          Try typing "work", "readme", "hom3bas3", or discover hidden commands...
+                          Try typing "work", "readme", "hom3bas3", "journey", "vision", or discover hidden commands...
                         </div>
                       </div>
                     )}
