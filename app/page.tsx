@@ -45,7 +45,8 @@ export default function Home() {
               className="px-8 py-4 rounded-lg font-medium text-lg
                              hover:opacity-90 hover:scale-105 hover:shadow-lg
                              transition-all duration-300 ease-out
-                             relative border-2 cursor-pointer"
+                             relative border-2 cursor-pointer
+                             terminal-glassmorphic border-primary/30 hover:border-primary/60 hover:shadow-[0_0_20px_rgba(184,83,9,0.3)]"
               style={
                 {
                   backgroundColor: "oklch(0.1987 0.0246 194.77)",
@@ -64,7 +65,8 @@ export default function Home() {
               className="px-8 py-4 rounded-lg font-medium text-lg
                              hover:scale-105 hover:shadow-lg
                              transition-all duration-300 ease-out
-                             relative border-2 cursor-pointer"
+                             relative border-2 cursor-pointer
+                             terminal-glassmorphic border-primary/30 hover:border-primary/60 hover:shadow-[0_0_20px_rgba(184,83,9,0.3)]"
               style={
                 {
                   backgroundColor: "oklch(0.1987 0.0246 194.77)",

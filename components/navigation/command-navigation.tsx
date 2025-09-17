@@ -280,7 +280,7 @@ const CommandNavigation = () => {
             <Terminal className="w-4 h-4 md:w-5 md:h-5 text-primary opalescent-text-small" />
             <span
               className="text-foreground select-none transition-all duration-500 font-terminal text-lg md:text-2xl opalescent-text-small truncate"
-              style={{ color: "oklch(0.4 0.05 100)" }}
+              style={{ color: "oklch(0.85 0.05 100)" }}
             >
               {currentPrompt}
             </span>
