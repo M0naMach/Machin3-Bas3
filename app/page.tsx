@@ -26,10 +26,7 @@ export default function Home() {
             Where reflection becomes connection.
           </h2>
 
-          <p
-            className="text-xl md:text-2xl mb-16 max-w-2xl mx-auto leading-relaxed font-light"
-            style={{ color: "oklch(0.4 0.05 100)" }}
-          >
+          <p className="text-xl md:text-2xl mb-16 max-w-2xl mx-auto leading-relaxed font-light">
             A soft, steady buffer between the world and the nervous system.
           </p>
         </div>
