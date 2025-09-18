@@ -149,12 +149,12 @@ export default function Home() {
                   </a>
                 </li>
                 <li>
-                  <span className="cursor-not-allowed opacity-60 text-sm">
+                  <span className="text-muted-foreground/70 text-sm cursor-not-allowed">
                     Twitter <span className="text-xs">(Coming Soon)</span>
                   </span>
                 </li>
                 <li>
-                  <span className="cursor-not-allowed opacity-60 text-sm">
+                  <span className="text-muted-foreground/70 text-sm cursor-not-allowed">
                     LinkedIn <span className="text-xs">(Coming Soon)</span>
                   </span>
                 </li>
