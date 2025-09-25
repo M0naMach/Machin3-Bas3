@@ -11,7 +11,7 @@ interface TangramPiece {
   color: string
   scatteredPosition: { x: number; y: number; rotation: number }
   assembledPosition: { x: number; y: number; rotation: number }
-  size: { width: number; height: number } // Add size for proper scaling
+  size: { width: number; height: number } // Individual piece dimensions for proper Tangram house assembly scaling
 }
 
 const services: TangramPiece[] = [
