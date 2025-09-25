@@ -218,7 +218,7 @@ export default function TangramServiceCards() {
           return (
             <div
               key={service.id}
-              className="absolute cursor-pointer transition-all duration-1000 ease-out hover:scale-110"
+              className={`absolute cursor-pointer transition-all duration-1000 ease-out hover:scale-110 w-[${service.size.width}px] h-[${service.size.height}px]`}
               style={{
                 left: `${position.x}%`,
                 top: `${position.y}%`,
