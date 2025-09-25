@@ -26,16 +26,27 @@ export default function WorkPage() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-      setSubmitStatus("success")
-      setFormData({ name: "", email: "", project: "", message: "" })
-      setTimeout(() => {
-        setShowContactForm(false)
-        setSubmitStatus("idle")
-      }, 3000)
+      const response = await fetch("/api/form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitStatus("success")
+        setFormData({ name: "", email: "", project: "", message: "" })
+        setTimeout(() => {
+          setShowContactForm(false)
+          setSubmitStatus("idle")
+        }, 3000)
+      } else {
+        throw new Error("Failed to submit form")
+      }
     } catch (error) {
+      console.error("Form submission error:", error)
       setSubmitStatus("error")
     } finally {
       setIsSubmitting(false)
@@ -158,12 +169,12 @@ export default function WorkPage() {
                     className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                   >
                     <option value="">Select a project type</option>
-                    <option value="bot-development">Custom Bot Development</option>
-                    <option value="business-support">Business Support Services</option>
-                    <option value="design-branding">Design & Branding</option>
-                    <option value="strategic-clarity">Strategic Clarity</option>
-                    <option value="integration-support">Integration Support</option>
-                    <option value="other">Other / Not Sure</option>
+                    <option value="Custom Bot Development">Custom Bot Development</option>
+                    <option value="Business Support Services">Business Support Services</option>
+                    <option value="Design & Branding">Design & Branding</option>
+                    <option value="Strategic Clarity">Strategic Clarity</option>
+                    <option value="Integration Support">Integration Support</option>
+                    <option value="Other / Not Sure">Other / Not Sure</option>
                   </select>
                 </div>
 

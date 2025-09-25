@@ -26,11 +26,6 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <head>
-        <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-        <meta httpEquiv="Pragma" content="no-cache" />
-        <meta httpEquiv="Expires" content="0" />
-      </head>
       <body className="font-caviar antialiased" data-cache-key={cacheKey}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
