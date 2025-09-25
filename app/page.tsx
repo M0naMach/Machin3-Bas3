@@ -40,8 +40,8 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <button
               className="px-8 py-4 rounded-lg font-medium text-lg
-                             hover:opacity-90 hover:scale-105 hover:shadow-lg
-                             transition-all duration-300 ease-out
+                             hover:opacity-90 transform hover:translate-y-[-2px]
+                             transition-all duration-300 ease-out will-change-transform
                              relative border-2 cursor-pointer
                              terminal-glassmorphic border-primary/30 hover:border-primary/60 hover:shadow-[0_0_20px_rgba(184,83,9,0.3)]"
               style={
@@ -60,8 +60,8 @@ export default function Home() {
 
             <button
               className="px-8 py-4 rounded-lg font-medium text-lg
-                             hover:scale-105 hover:shadow-lg
-                             transition-all duration-300 ease-out
+                             transform hover:translate-y-[-2px]
+                             transition-all duration-300 ease-out will-change-transform
                              relative border-2 cursor-pointer
                              terminal-glassmorphic border-primary/30 hover:border-primary/60 hover:shadow-[0_0_20px_rgba(184,83,9,0.3)]"
               style={
@@ -105,8 +105,8 @@ export default function Home() {
 
             <button
               className="px-6 py-3 border border-border text-foreground rounded-lg font-medium
-                             hover:border-primary hover:bg-card hover:scale-105 hover:shadow-md
-                             transition-all duration-300 ease-out cursor-pointer"
+                             hover:border-primary hover:bg-card transform hover:translate-y-[-1px]
+                             transition-all duration-300 ease-out cursor-pointer will-change-transform"
               onClick={() => (window.location.href = "/timeline")}
             >
               View Our Journey
