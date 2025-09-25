@@ -25,11 +25,11 @@ const services: TangramPiece[] = [
       "Custom personality development",
       "Task automation & workflows",
     ],
-    shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Large triangle 1 (roof left)
-    color: "oklch(0.65 0.18 188)", // Vibrant teal
+    shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Large triangle 1 (cat's head/ear)
+    color: "oklch(0.65 0.18 280)", // Purple-magenta for head
     scatteredPosition: { x: 10, y: 15, rotation: 45 },
-    assembledPosition: { x: 25, y: 5, rotation: 0 }, // Left roof triangle
-    size: { width: 120, height: 120 }, // Large triangle size
+    assembledPosition: { x: 30, y: 10, rotation: 0 }, // Cat's head triangle
+    size: { width: 100, height: 100 },
   },
   {
     id: "business-support",
@@ -41,22 +41,22 @@ const services: TangramPiece[] = [
       "Process optimization",
       "Creative project support",
     ],
-    shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Large triangle 2 (roof right)
-    color: "oklch(0.58 0.16 35)", // Rich copper
+    shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Medium triangle (cat's ear/head detail)
+    color: "oklch(0.68 0.22 60)", // Yellow for ear accent
     scatteredPosition: { x: 70, y: 10, rotation: -30 },
-    assembledPosition: { x: 35, y: 5, rotation: 0 }, // Right roof triangle
-    size: { width: 120, height: 120 }, // Large triangle size
+    assembledPosition: { x: 20, y: 15, rotation: 45 }, // Cat's ear triangle
+    size: { width: 70, height: 70 },
   },
   {
     id: "design-branding",
     title: "Design & Branding",
     description: "Branded designs for merch and digital content.",
     details: ["Merchandise design", "Digital content creation", "Brand identity development", "Visual storytelling"],
-    shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Medium triangle (chimney)
-    color: "oklch(0.68 0.22 25)", // Vibrant coral
+    shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Large triangle 2 (cat's body)
+    color: "oklch(0.6 0.15 140)", // Green for body
     scatteredPosition: { x: 20, y: 70, rotation: 120 },
-    assembledPosition: { x: 45, y: 2, rotation: 0 }, // Chimney
-    size: { width: 85, height: 85 }, // Medium triangle size
+    assembledPosition: { x: 25, y: 35, rotation: -45 }, // Cat's main body
+    size: { width: 100, height: 100 },
   },
   {
     id: "future-vision",
@@ -68,22 +68,22 @@ const services: TangramPiece[] = [
       "Emotional intelligence systems",
       "Human-AI connection research",
     ],
-    shape: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", // Square (house body)
-    color: "oklch(0.62 0.2 280)", // Purple-magenta
+    shape: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", // Square (cat's chest/middle)
+    color: "oklch(0.58 0.16 35)", // Red-orange square
     scatteredPosition: { x: 80, y: 60, rotation: -45 },
-    assembledPosition: { x: 30, y: 25, rotation: 0 }, // Main body of house
-    size: { width: 60, height: 60 }, // Square size
+    assembledPosition: { x: 35, y: 45, rotation: 45 }, // Cat's chest area
+    size: { width: 60, height: 60 },
   },
   {
     id: "strategic-clarity",
     title: "Strategic Clarity",
     description: "Help you see the patterns and connections that were always there.",
     details: ["System architecture review", "Process optimization", "Strategic planning", "Clarity architecture"],
-    shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Small triangle 1 (left wall)
-    color: "oklch(0.6 0.15 140)", // Emerald green
+    shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Small triangle 1 (cat's front leg)
+    color: "oklch(0.68 0.22 25)", // Red for small triangle
     scatteredPosition: { x: 5, y: 45, rotation: 90 },
-    assembledPosition: { x: 20, y: 25, rotation: 0 }, // Left wall triangle
-    size: { width: 60, height: 60 }, // Small triangle size
+    assembledPosition: { x: 20, y: 55, rotation: 90 }, // Cat's front leg
+    size: { width: 50, height: 50 },
   },
   {
     id: "connection-building",
@@ -95,22 +95,22 @@ const services: TangramPiece[] = [
       "Digital relationship building",
       "Sanctuary creation",
     ],
-    shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Small triangle 2 (right wall)
-    color: "oklch(0.55 0.12 60)", // Warm gold
+    shape: "polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)", // Parallelogram (cat's tail)
+    color: "oklch(0.52 0.14 200)", // Blue parallelogram for tail
     scatteredPosition: { x: 60, y: 80, rotation: -60 },
-    assembledPosition: { x: 40, y: 25, rotation: 0 }, // Right wall triangle
-    size: { width: 60, height: 60 }, // Small triangle size
+    assembledPosition: { x: 55, y: 40, rotation: 30 }, // Cat's curved tail
+    size: { width: 80, height: 40 },
   },
   {
     id: "integration-support",
     title: "Integration Support",
     description: "Helping disconnected pieces find their way to work together.",
     details: ["System integration", "Workflow automation", "Tool connectivity", "Seamless operations"],
-    shape: "polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)", // Parallelogram (foundation)
-    color: "oklch(0.52 0.14 200)", // Deep blue
+    shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Small triangle 2 (cat's back leg)
+    color: "oklch(0.55 0.12 60)", // Gold for small triangle
     scatteredPosition: { x: 40, y: 5, rotation: 180 },
-    assembledPosition: { x: 25, y: 45, rotation: 0 }, // Foundation/base
-    size: { width: 85, height: 42 }, // Parallelogram size
+    assembledPosition: { x: 40, y: 60, rotation: 135 }, // Cat's back leg
+    size: { width: 50, height: 50 },
   },
 ]
 
@@ -131,8 +131,7 @@ const getSeasonalShape = () => {
   if (month === 1 && day === 14) {
     return "heart"
   }
-  // Default house shape
-  return "house"
+  return "cat"
 }
 
 const getRandomWord = () => {
