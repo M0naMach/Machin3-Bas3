@@ -28,7 +28,7 @@ const services: TangramPiece[] = [
     shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Large triangle 1 (roof left)
     color: "oklch(0.65 0.18 188)", // Vibrant teal
     scatteredPosition: { x: 10, y: 15, rotation: 45 },
-    assembledPosition: { x: 15, y: 10, rotation: 0 }, // Left roof triangle
+    assembledPosition: { x: 25, y: 5, rotation: 0 }, // Left roof triangle
     size: { width: 120, height: 120 }, // Large triangle size
   },
   {
@@ -44,7 +44,7 @@ const services: TangramPiece[] = [
     shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Large triangle 2 (roof right)
     color: "oklch(0.58 0.16 35)", // Rich copper
     scatteredPosition: { x: 70, y: 10, rotation: -30 },
-    assembledPosition: { x: 45, y: 10, rotation: 0 }, // Right roof triangle
+    assembledPosition: { x: 35, y: 5, rotation: 0 }, // Right roof triangle
     size: { width: 120, height: 120 }, // Large triangle size
   },
   {
@@ -55,7 +55,7 @@ const services: TangramPiece[] = [
     shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Medium triangle (chimney)
     color: "oklch(0.68 0.22 25)", // Vibrant coral
     scatteredPosition: { x: 20, y: 70, rotation: 120 },
-    assembledPosition: { x: 60, y: 5, rotation: 0 }, // Chimney
+    assembledPosition: { x: 45, y: 2, rotation: 0 }, // Chimney
     size: { width: 85, height: 85 }, // Medium triangle size
   },
   {
@@ -71,7 +71,7 @@ const services: TangramPiece[] = [
     shape: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", // Square (house body)
     color: "oklch(0.62 0.2 280)", // Purple-magenta
     scatteredPosition: { x: 80, y: 60, rotation: -45 },
-    assembledPosition: { x: 30, y: 35, rotation: 0 }, // Main body of house
+    assembledPosition: { x: 30, y: 25, rotation: 0 }, // Main body of house
     size: { width: 60, height: 60 }, // Square size
   },
   {
@@ -82,7 +82,7 @@ const services: TangramPiece[] = [
     shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Small triangle 1 (left wall)
     color: "oklch(0.6 0.15 140)", // Emerald green
     scatteredPosition: { x: 5, y: 45, rotation: 90 },
-    assembledPosition: { x: 15, y: 35, rotation: 0 }, // Left wall triangle
+    assembledPosition: { x: 20, y: 25, rotation: 0 }, // Left wall triangle
     size: { width: 60, height: 60 }, // Small triangle size
   },
   {
@@ -98,7 +98,7 @@ const services: TangramPiece[] = [
     shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Small triangle 2 (right wall)
     color: "oklch(0.55 0.12 60)", // Warm gold
     scatteredPosition: { x: 60, y: 80, rotation: -60 },
-    assembledPosition: { x: 45, y: 35, rotation: 0 }, // Right wall triangle
+    assembledPosition: { x: 40, y: 25, rotation: 0 }, // Right wall triangle
     size: { width: 60, height: 60 }, // Small triangle size
   },
   {
@@ -109,7 +109,7 @@ const services: TangramPiece[] = [
     shape: "polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)", // Parallelogram (foundation)
     color: "oklch(0.52 0.14 200)", // Deep blue
     scatteredPosition: { x: 40, y: 5, rotation: 180 },
-    assembledPosition: { x: 30, y: 55, rotation: 0 }, // Foundation/base
+    assembledPosition: { x: 25, y: 45, rotation: 0 }, // Foundation/base
     size: { width: 85, height: 42 }, // Parallelogram size
   },
 ]
@@ -218,28 +218,27 @@ export default function TangramServiceCards() {
           return (
             <div
               key={service.id}
-              className={`absolute cursor-pointer transition-all duration-1000 ease-out hover:scale-110 w-[${service.size.width}px] h-[${service.size.height}px]`}
+              className="absolute cursor-pointer transition-all duration-1000 ease-out hover:scale-110 hover:z-10"
               style={{
                 left: `${position.x}%`,
                 top: `${position.y}%`,
+                width: `${service.size.width}px`,
+                height: `${service.size.height}px`,
                 transform: `rotate(${position.rotation}deg)`,
                 transitionDelay: `${delay}s`,
                 clipPath: service.shape,
                 backgroundColor: service.color,
                 boxShadow: `0 4px 12px ${service.color}40, inset 0 1px 0 rgba(255,255,255,0.2)`,
-                width: `${service.size.width}px`,
-                height: `${service.size.height}px`,
               }}
               onClick={() => toggleCard(service.id)}
             >
-              {/* Shimmer effect */}
               <div
                 className="absolute inset-0 opacity-30"
                 style={{
                   background: `linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%)`,
                   backgroundSize: "200% 200%",
-                  animation: "opalShimmer 3s ease-in-out infinite",
                   clipPath: "inherit",
+                  animation: "opalShimmer 3s ease-in-out infinite",
                 }}
               />
             </div>

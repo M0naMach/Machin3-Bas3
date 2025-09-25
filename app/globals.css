@@ -503,6 +503,17 @@
   }
 }
 
+/* Added shimmer animation for tangram pieces */
+@keyframes shimmer {
+  0%,
+  100% {
+    background-position: -200% 0;
+  }
+  50% {
+    background-position: 200% 0;
+  }
+}
+
 /* Added horizontal circuit timeline styles */
 .circuit-timeline {
   position: relative;
