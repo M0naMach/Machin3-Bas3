@@ -1,0 +1,119 @@
+TANGRAM HOUSE ASSEMBLY LAYOUT
+=============================
+
+Visual representation of how the pieces should fit together:
+
+     [Chimney - Medium Triangle]
+           (60%, 5%)
+              🔺
+             /|\
+            / | \
+           /  |  \
+          /   |   \
+         /    |    \
+        /     |     \
+       /      |      \
+      /       |       \
+     /        |        \
+    /         |         \
+   /          |          \
+  /           |           \
+ /            |            \
+/             |             \
+[Left Roof]   |   [Right Roof]
+Large Tri 1   |   Large Tri 2
+(15%, 10%)    |   (45%, 10%)
+🔺            |            🔺
+/|\           |           /|\
+/ | \         |         / | \
+/  |  \       |       /  |  \
+/   |   \     |     /   |   \
+/    |    \   |   /    |    \
+/     |     \ | /     |     \
+/      |      X      |      \
+/       |    / | \    |       \
+/        |  /  |  \  |        \
+/         |/   |   \|         \
+/          |   |   |          \
+/           |  |  |           \
+/            | | |            \
+/             |||             \
+/              ||              \
+/               |               \
+[Left Wall]     |     [Right Wall]
+Small Tri 1     |     Small Tri 2
+(15%, 35%)      |     (45%, 35%)
+🔺              |              🔺
+/|\             |             /|\
+/ | \           |           / | \
+/  |  \         |         /  |  \
+/   |   \       |       /   |   \
+/    |    \     |     /    |    \
+/     |     \   |   /     |     \
+/      |      \ | /      |      \
+/       |       X       |       \
+/        |     / | \     |        \
+/         |   /  |  \   |         \
+/          | /   |   \ |          \
+/           |/   |   \|           \
+/            |   |   |            \
+/             |  |  |             \
+/              | | |              \
+/               |||               \
+/                ||                \
+/                 |                 \
+[Foundation - Parallelogram]
+(30%, 55%)
+████████████████████████████████████████
+
+PIECE DETAILS:
+==============
+
+1. Large Triangle 1 (Bot Development)
+   - Position: 15%, 10%
+   - Size: 120x120px
+   - Shape: polygon(0% 0%, 100% 0%, 50% 100%)
+   - Color: Vibrant teal
+
+2. Large Triangle 2 (Business Support)
+   - Position: 45%, 10%
+   - Size: 120x120px
+   - Shape: polygon(0% 0%, 100% 0%, 50% 100%)
+   - Color: Rich copper
+
+3. Medium Triangle (Design & Branding)
+   - Position: 60%, 5%
+   - Size: 85x85px
+   - Shape: polygon(0% 0%, 100% 0%, 50% 100%)
+   - Color: Vibrant coral
+   - Role: Chimney
+
+4. Square (Future Vision)
+   - Position: 30%, 35%
+   - Size: 60x60px
+   - Shape: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
+   - Color: Purple-magenta
+   - Role: Main house body
+
+5. Small Triangle 1 (Strategic Clarity)
+   - Position: 15%, 35%
+   - Size: 60x60px
+   - Shape: polygon(0% 0%, 100% 0%, 50% 100%)
+   - Color: Emerald green
+   - Role: Left wall
+
+6. Small Triangle 2 (Connection Building)
+   - Position: 45%, 35%
+   - Size: 60x60px
+   - Shape: polygon(0% 0%, 100% 0%, 50% 100%)
+   - Color: Warm gold
+   - Role: Right wall
+
+7. Parallelogram (Integration Support)
+   - Position: 30%, 55%
+   - Size: 85x42px
+   - Shape: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)
+   - Color: Deep blue
+   - Role: Foundation
+
+The key is that these pieces should fit together seamlessly to form a recognizable house shape when assembled.
