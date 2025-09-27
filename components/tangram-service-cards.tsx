@@ -10,8 +10,8 @@ interface TangramPiece {
   shape: string
   color: string
   scatteredPosition: { x: number; y: number; rotation: number }
-  assembledPosition: { x: number; y: number; rotation: number }
-  size: { width: number; height: number } // Individual piece dimensions for proper Tangram house assembly scaling
+  assembledPosition: { x: number; y: number; rotation: number } // Now using pixels for precise alignment
+  size: { width: number; height: number } // Pixel-based sizing for consistent alignment
 }
 
 const services: TangramPiece[] = [
@@ -25,11 +25,11 @@ const services: TangramPiece[] = [
       "Custom personality development",
       "Task automation & workflows",
     ],
-    shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Large triangle 1 (cat's head/ear)
+    shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Large triangle 1 (cat's head)
     color: "oklch(0.65 0.18 280)", // Purple-magenta for head
     scatteredPosition: { x: 10, y: 15, rotation: 45 },
-    assembledPosition: { x: 30, y: 10, rotation: 0 }, // Cat's head triangle
-    size: { width: 100, height: 100 },
+    assembledPosition: { x: 200, y: 50, rotation: -45 }, // Cat's head triangle - precise pixel positioning
+    size: { width: 120, height: 120 },
   },
   {
     id: "business-support",
@@ -41,11 +41,11 @@ const services: TangramPiece[] = [
       "Process optimization",
       "Creative project support",
     ],
-    shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Medium triangle (cat's ear/head detail)
+    shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Medium triangle (cat's ear)
     color: "oklch(0.68 0.22 60)", // Yellow for ear accent
     scatteredPosition: { x: 70, y: 10, rotation: -30 },
-    assembledPosition: { x: 20, y: 15, rotation: 45 }, // Cat's ear triangle
-    size: { width: 70, height: 70 },
+    assembledPosition: { x: 280, y: 80, rotation: 45 }, // Cat's ear triangle
+    size: { width: 85, height: 85 },
   },
   {
     id: "design-branding",
@@ -55,8 +55,8 @@ const services: TangramPiece[] = [
     shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Large triangle 2 (cat's body)
     color: "oklch(0.6 0.15 140)", // Green for body
     scatteredPosition: { x: 20, y: 70, rotation: 120 },
-    assembledPosition: { x: 25, y: 35, rotation: -45 }, // Cat's main body
-    size: { width: 100, height: 100 },
+    assembledPosition: { x: 150, y: 200, rotation: 0 }, // Cat's main body
+    size: { width: 120, height: 120 },
   },
   {
     id: "future-vision",
@@ -68,10 +68,10 @@ const services: TangramPiece[] = [
       "Emotional intelligence systems",
       "Human-AI connection research",
     ],
-    shape: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", // Square (cat's chest/middle)
+    shape: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", // Square (cat's chest)
     color: "oklch(0.58 0.16 35)", // Red-orange square
     scatteredPosition: { x: 80, y: 60, rotation: -45 },
-    assembledPosition: { x: 35, y: 45, rotation: 45 }, // Cat's chest area
+    assembledPosition: { x: 210, y: 260, rotation: 45 }, // Cat's chest area
     size: { width: 60, height: 60 },
   },
   {
@@ -82,8 +82,8 @@ const services: TangramPiece[] = [
     shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Small triangle 1 (cat's front leg)
     color: "oklch(0.68 0.22 25)", // Red for small triangle
     scatteredPosition: { x: 5, y: 45, rotation: 90 },
-    assembledPosition: { x: 20, y: 55, rotation: 90 }, // Cat's front leg
-    size: { width: 50, height: 50 },
+    assembledPosition: { x: 120, y: 320, rotation: 135 }, // Cat's front leg
+    size: { width: 60, height: 60 },
   },
   {
     id: "connection-building",
@@ -98,8 +98,8 @@ const services: TangramPiece[] = [
     shape: "polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)", // Parallelogram (cat's tail)
     color: "oklch(0.52 0.14 200)", // Blue parallelogram for tail
     scatteredPosition: { x: 60, y: 80, rotation: -60 },
-    assembledPosition: { x: 55, y: 40, rotation: 30 }, // Cat's curved tail
-    size: { width: 80, height: 40 },
+    assembledPosition: { x: 350, y: 200, rotation: -30 }, // Cat's curved tail
+    size: { width: 100, height: 50 },
   },
   {
     id: "integration-support",
@@ -109,8 +109,8 @@ const services: TangramPiece[] = [
     shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Small triangle 2 (cat's back leg)
     color: "oklch(0.55 0.12 60)", // Gold for small triangle
     scatteredPosition: { x: 40, y: 5, rotation: 180 },
-    assembledPosition: { x: 40, y: 60, rotation: 135 }, // Cat's back leg
-    size: { width: 50, height: 50 },
+    assembledPosition: { x: 270, y: 300, rotation: 90 }, // Cat's back leg
+    size: { width: 60, height: 60 },
   },
 ]
 
@@ -193,7 +193,16 @@ export default function TangramServiceCards() {
   }
 
   return (
-    <div className="relative w-full h-[600px] mb-12 overflow-hidden">
+    <div
+      className="relative w-[600px] h-[600px] mx-auto mb-12 overflow-hidden border border-border/20 rounded-lg"
+      style={{
+        backgroundImage: `url('/images/tangram-cat-reference.png')`,
+        backgroundSize: "contain",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        opacity: 0.1, // Subtle reference for alignment
+      }}
+    >
       {/* Inspirational message overlay */}
       {showMessage && (
         <div className="absolute inset-0 z-50 flex items-center justify-center">
@@ -215,12 +224,12 @@ export default function TangramServiceCards() {
           const delay = isFirstVisit ? index * 0.2 : 0
 
           return (
-            <div
+            <button
               key={service.id}
-              className="absolute cursor-pointer transition-all duration-1000 ease-out hover:scale-110 hover:z-10"
+              className="absolute cursor-pointer transition-all duration-1000 ease-out hover:scale-110 hover:z-10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               style={{
-                left: `${position.x}%`,
-                top: `${position.y}%`,
+                left: isAssembled ? `${position.x}px` : `${position.x}%`,
+                top: isAssembled ? `${position.y}px` : `${position.y}%`,
                 width: `${service.size.width}px`,
                 height: `${service.size.height}px`,
                 transform: `rotate(${position.rotation}deg)`,
@@ -230,6 +239,13 @@ export default function TangramServiceCards() {
                 boxShadow: `0 4px 12px ${service.color}40, inset 0 1px 0 rgba(255,255,255,0.2)`,
               }}
               onClick={() => toggleCard(service.id)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault()
+                  toggleCard(service.id)
+                }
+              }}
+              aria-label={`${service.title} - Click to learn more`}
             >
               <div
                 className="absolute inset-0 opacity-30"
@@ -240,7 +256,7 @@ export default function TangramServiceCards() {
                   animation: "opalShimmer 3s ease-in-out infinite",
                 }}
               />
-            </div>
+            </button>
           )
         })}
       </div>
