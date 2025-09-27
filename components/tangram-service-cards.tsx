@@ -1,6 +1,8 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import type React from "react"
+
+import { useState, useEffect, useCallback } from "react"
 
 interface TangramPiece {
   id: string
@@ -185,9 +187,18 @@ export default function TangramServiceCards() {
     }
   }, [])
 
-  const toggleCard = (cardId: string) => {
-    setExpandedCard(expandedCard === cardId ? null : cardId)
-  }
+  const toggleCard = useCallback(
+    (cardId: string) => {
+      setExpandedCard(expandedCard === cardId ? null : cardId)
+    },
+    [expandedCard],
+  )
+
+  const handleBackdropClick = useCallback((e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      setExpandedCard(null)
+    }
+  }, [])
 
   return (
     <div
@@ -197,6 +208,7 @@ export default function TangramServiceCards() {
         backgroundSize: "contain",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
+        backgroundOpacity: 0.3,
       }}
     >
       {showMessage && (
@@ -256,7 +268,10 @@ export default function TangramServiceCards() {
       </div>
 
       {expandedCard && (
-        <div className="absolute inset-0 z-40 flex items-center justify-center bg-background/80 backdrop-blur-sm">
+        <div
+          className="absolute inset-0 z-40 flex items-center justify-center bg-background/80 backdrop-blur-sm"
+          onClick={handleBackdropClick}
+        >
           <div className="bg-card rounded-xl p-8 max-w-md w-full mx-4 border border-border shadow-xl">
             {(() => {
               const service = services.find((s) => s.id === expandedCard)
@@ -268,7 +283,8 @@ export default function TangramServiceCards() {
                     <h3 className="text-xl font-semibold text-foreground">{service.title}</h3>
                     <button
                       onClick={() => setExpandedCard(null)}
-                      className="text-muted-foreground hover:text-foreground text-xl"
+                      className="text-muted-foreground hover:text-foreground text-2xl w-8 h-8 flex items-center justify-center rounded hover:bg-muted/50 transition-colors"
+                      aria-label="Close"
                     >
                       ×
                     </button>
