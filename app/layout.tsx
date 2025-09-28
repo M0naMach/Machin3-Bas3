@@ -6,25 +6,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 
 import "./globals.css"
 
-import { Geist, Geist_Mono, Source_Serif_4 } from "next/font/google"
-
-const geist = Geist({
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  subsets: ["latin"],
-  variable: "--font-geist",
-})
-
-const geistMono = Geist_Mono({
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
-})
-
-const sourceSerif = Source_Serif_4({
-  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
-  subsets: ["latin"],
-  variable: "--font-source-serif",
-})
+// Custom fonts are defined in globals.css and loaded via @font-face
+// No need to import Google Fonts since we're using custom fonts
 
 export const metadata: Metadata = {
   title: "M0na Machin3 - Human connection, coded with care",
@@ -46,7 +29,7 @@ export default function RootLayout({
   const cacheKey = Date.now()
 
   return (
-    <html lang="en" className={`${geist.variable} ${geistMono.variable} ${sourceSerif.variable}`}>
+    <html lang="en">
       <body className="font-sans antialiased" data-cache-key={cacheKey}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
