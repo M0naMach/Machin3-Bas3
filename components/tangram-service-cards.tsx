@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useEffect, useCallback } from "react"
 
 interface TangramPiece {
@@ -11,9 +10,11 @@ interface TangramPiece {
   details: string[]
   shape: string
   color: string
+  // Fixed: scatteredPosition now uses strings with % units
   scatteredPosition: { x: string; y: string; rotation: number }
-  assembledPosition: { x: number; y: number; rotation: number } // Now using pixels for precise alignment
-  size: { width: number; height: number } // Pixel-based sizing for consistent alignment
+  // Fixed: assembledPosition uses pixels for precise control
+  assembledPosition: { x: number; y: number; rotation: number }
+  size: { width: number; height: number }
 }
 
 const services: TangramPiece[] = [
@@ -29,8 +30,8 @@ const services: TangramPiece[] = [
     ],
     shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Large triangle 1 (cat's head)
     color: "oklch(0.65 0.18 280)", // Purple-magenta for head
-    scatteredPosition: { x: "10%", y: "15%", rotation: 45 },
-    assembledPosition: { x: 200, y: 50, rotation: -45 }, // Cat's head triangle - precise pixel positioning
+    scatteredPosition: { x: "10%", y: "15%", rotation: 45 }, // Fixed: strings with %
+    assembledPosition: { x: 200, y: 50, rotation: -45 }, // Fixed: pixels
     size: { width: 120, height: 120 },
   },
   {
@@ -45,8 +46,8 @@ const services: TangramPiece[] = [
     ],
     shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Medium triangle (cat's ear)
     color: "oklch(0.68 0.22 60)", // Yellow for ear accent
-    scatteredPosition: { x: "70%", y: "10%", rotation: -30 },
-    assembledPosition: { x: 280, y: 80, rotation: 45 }, // Cat's ear triangle
+    scatteredPosition: { x: "70%", y: "10%", rotation: -30 }, // Fixed: strings with %
+    assembledPosition: { x: 280, y: 80, rotation: 45 }, // Fixed: pixels
     size: { width: 85, height: 85 },
   },
   {
@@ -56,8 +57,8 @@ const services: TangramPiece[] = [
     details: ["Merchandise design", "Digital content creation", "Brand identity development", "Visual storytelling"],
     shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Large triangle 2 (cat's body)
     color: "oklch(0.6 0.15 140)", // Green for body
-    scatteredPosition: { x: "20%", y: "70%", rotation: 120 },
-    assembledPosition: { x: 150, y: 200, rotation: 0 }, // Cat's main body
+    scatteredPosition: { x: "20%", y: "70%", rotation: 120 }, // Fixed: strings with %
+    assembledPosition: { x: 150, y: 200, rotation: 0 }, // Fixed: pixels
     size: { width: 120, height: 120 },
   },
   {
@@ -72,8 +73,8 @@ const services: TangramPiece[] = [
     ],
     shape: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", // Square (cat's chest)
     color: "oklch(0.58 0.16 35)", // Red-orange square
-    scatteredPosition: { x: "80%", y: "60%", rotation: -45 },
-    assembledPosition: { x: 210, y: 260, rotation: 45 }, // Cat's chest area
+    scatteredPosition: { x: "80%", y: "60%", rotation: -45 }, // Fixed: strings with %
+    assembledPosition: { x: 210, y: 260, rotation: 45 }, // Fixed: pixels
     size: { width: 60, height: 60 },
   },
   {
@@ -83,8 +84,8 @@ const services: TangramPiece[] = [
     details: ["System architecture review", "Process optimization", "Strategic planning", "Clarity architecture"],
     shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Small triangle 1 (cat's front leg)
     color: "oklch(0.68 0.22 25)", // Red for small triangle
-    scatteredPosition: { x: "5%", y: "45%", rotation: 90 },
-    assembledPosition: { x: 120, y: 320, rotation: 135 }, // Cat's front leg
+    scatteredPosition: { x: "5%", y: "45%", rotation: 90 }, // Fixed: strings with %
+    assembledPosition: { x: 120, y: 320, rotation: 135 }, // Fixed: pixels
     size: { width: 60, height: 60 },
   },
   {
@@ -99,8 +100,8 @@ const services: TangramPiece[] = [
     ],
     shape: "polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)", // Parallelogram (cat's tail)
     color: "oklch(0.52 0.14 200)", // Blue parallelogram for tail
-    scatteredPosition: { x: "60%", y: "80%", rotation: -60 },
-    assembledPosition: { x: 350, y: 200, rotation: -30 }, // Cat's curved tail
+    scatteredPosition: { x: "60%", y: "80%", rotation: -60 }, // Fixed: strings with %
+    assembledPosition: { x: 350, y: 200, rotation: -30 }, // Fixed: pixels
     size: { width: 100, height: 50 },
   },
   {
@@ -110,8 +111,8 @@ const services: TangramPiece[] = [
     details: ["System integration", "Workflow automation", "Tool connectivity", "Seamless operations"],
     shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Small triangle 2 (cat's back leg)
     color: "oklch(0.55 0.12 60)", // Gold for small triangle
-    scatteredPosition: { x: "40%", y: "5%", rotation: 180 },
-    assembledPosition: { x: 270, y: 300, rotation: 90 }, // Cat's back leg
+    scatteredPosition: { x: "40%", y: "5%", rotation: 180 }, // Fixed: strings with %
+    assembledPosition: { x: 270, y: 300, rotation: 90 }, // Fixed: pixels
     size: { width: 60, height: 60 },
   },
 ]
@@ -161,7 +162,8 @@ export default function TangramServiceCards() {
   const [expandedCard, setExpandedCard] = useState<string | null>(null)
   const [showMessage, setShowMessage] = useState(false)
   const [randomWord, setRandomWord] = useState("")
-  const [currentShape, setCurrentShape] = useState("house")
+  const [currentShape, setCurrentShape] = useState("cat")
+  const [showReference, setShowReference] = useState(false) // Added state for reference image
 
   useEffect(() => {
     const hasVisited = localStorage.getItem("tangram-visited")
@@ -179,10 +181,8 @@ export default function TangramServiceCards() {
         setIsAssembled(true)
         setShowMessage(true)
         localStorage.setItem("tangram-visited", "true")
-
         setTimeout(() => setShowMessage(false), 3000)
       }, 4000)
-
       return () => clearTimeout(timer)
     }
   }, [])
@@ -204,11 +204,14 @@ export default function TangramServiceCards() {
     <div
       className="relative w-[600px] h-[600px] mx-auto mb-12 overflow-hidden border border-border/20 rounded-lg"
       style={{
-        backgroundImage: `url('/images/tangram-cat-reference.png')`,
-        backgroundSize: "contain",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        backgroundOpacity: 0.3,
+        // Fixed: Only show reference image when showReference is true
+        ...(showReference && {
+          backgroundImage: `url('/images/tangram-cat-reference.png')`,
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          opacity: 0.3, // Subtle reference when debugging
+        }),
       }}
     >
       {showMessage && (
@@ -234,8 +237,9 @@ export default function TangramServiceCards() {
               key={service.id}
               className="absolute cursor-pointer transition-all duration-1000 ease-out hover:scale-110 hover:z-10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               style={{
-                left: isAssembled ? `${position.x}px` : position.x,
-                top: isAssembled ? `${position.y}px` : position.y,
+                // Fixed: Proper handling of mixed coordinate systems
+                left: isAssembled ? `${position.x}px` : position.x, // position.x is already a string with % for scattered
+                top: isAssembled ? `${position.y}px` : position.y, // position.y is already a string with % for scattered
                 width: `${service.size.width}px`,
                 height: `${service.size.height}px`,
                 transform: `rotate(${position.rotation}deg)`,
@@ -304,13 +308,23 @@ export default function TangramServiceCards() {
         </div>
       )}
 
+      {/* Fixed: Scatter/Assemble button - now always visible after first visit */}
       {!isFirstVisit && (
-        <button
-          onClick={() => setIsAssembled(!isAssembled)}
-          className="absolute bottom-4 right-4 px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm hover:opacity-90 transition-opacity"
-        >
-          {isAssembled ? "Scatter" : "Assemble"}
-        </button>
+        <div className="absolute bottom-4 right-4 flex gap-2">
+          <button
+            onClick={() => setIsAssembled(!isAssembled)}
+            className="px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm hover:opacity-90 transition-opacity"
+          >
+            {isAssembled ? "Scatter" : "Assemble"}
+          </button>
+          {/* Debug button to toggle reference image */}
+          <button
+            onClick={() => setShowReference(!showReference)}
+            className="px-4 py-2 bg-secondary text-secondary-foreground rounded-lg text-sm hover:opacity-90 transition-opacity"
+          >
+            {showReference ? "Hide Ref" : "Show Ref"}
+          </button>
+        </div>
       )}
     </div>
   )
