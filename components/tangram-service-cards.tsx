@@ -1,21 +1,25 @@
 "use client"
 
 import type React from "react"
-import { useState, useEffect, useCallback } from "react"
 
-interface TangramPiece {
+import { useState, useEffect, useCallback, useRef } from "react"
+
+type TangramPiece = {
   id: string
   title: string
   description: string
   details: string[]
-  shape: string
+  shape: string // clip-path: polygon(...) in %
   color: string
-  scatteredPosition: { x: string; y: string; rotation: number }
-  assembledPosition: { x: number; y: number; rotation: number }
-  size: { width: number; height: number }
+  scatteredPosition: { x: string; y: string; rotation: number } // % strings
+  assembledPosition: { x: number; y: number; rotation: number } // px numbers
+  size: { width: number; height: number } // px
 }
 
-const services: TangramPiece[] = [
+/* =========================
+   YOUR DATA (edit this only)
+   ========================= */
+const SERVICES_INITIAL: TangramPiece[] = [
   {
     id: "bot-development",
     title: "Custom Bot Development",
@@ -26,10 +30,10 @@ const services: TangramPiece[] = [
       "Custom personality development",
       "Task automation & workflows",
     ],
-    shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Large triangle 1 (cat's head)
-    color: "oklch(0.65 0.18 280)", // Purple-magenta for head
+    shape: "polygon(0% 0%, 100% 0%, 50% 100%)",
+    color: "oklch(0.65 0.18 280)",
     scatteredPosition: { x: "10%", y: "15%", rotation: 45 },
-    assembledPosition: { x: 250, y: 80, rotation: 0 }, // Cat's head - adjusted position
+    assembledPosition: { x: 250, y: 80, rotation: 0 },
     size: { width: 120, height: 120 },
   },
   {
@@ -42,10 +46,10 @@ const services: TangramPiece[] = [
       "Process optimization",
       "Creative project support",
     ],
-    shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Medium triangle (cat's left ear)
-    color: "oklch(0.68 0.22 60)", // Yellow for ear accent
+    shape: "polygon(0% 0%, 100% 0%, 50% 100%)",
+    color: "oklch(0.68 0.22 60)",
     scatteredPosition: { x: "70%", y: "10%", rotation: -30 },
-    assembledPosition: { x: 220, y: 60, rotation: 0 }, // Left ear - adjusted position
+    assembledPosition: { x: 220, y: 60, rotation: 0 },
     size: { width: 60, height: 60 },
   },
   {
@@ -53,10 +57,10 @@ const services: TangramPiece[] = [
     title: "Design & Branding",
     description: "Branded designs for merch and digital content.",
     details: ["Merchandise design", "Digital content creation", "Brand identity development", "Visual storytelling"],
-    shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Large triangle 2 (cat's body)
-    color: "oklch(0.6 0.15 140)", // Green for body
+    shape: "polygon(0% 0%, 100% 0%, 50% 100%)",
+    color: "oklch(0.6 0.15 140)",
     scatteredPosition: { x: "20%", y: "70%", rotation: 120 },
-    assembledPosition: { x: 200, y: 200, rotation: 0 }, // Cat's body - adjusted position
+    assembledPosition: { x: 200, y: 200, rotation: 0 },
     size: { width: 120, height: 120 },
   },
   {
@@ -69,10 +73,10 @@ const services: TangramPiece[] = [
       "Emotional intelligence systems",
       "Human-AI connection research",
     ],
-    shape: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", // Square (cat's chest)
-    color: "oklch(0.58 0.16 35)", // Red-orange square
+    shape: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    color: "oklch(0.58 0.16 35)",
     scatteredPosition: { x: "80%", y: "60%", rotation: -45 },
-    assembledPosition: { x: 320, y: 60, rotation: 0 }, // Right ear - adjusted position
+    assembledPosition: { x: 320, y: 60, rotation: 0 },
     size: { width: 60, height: 60 },
   },
   {
@@ -80,10 +84,10 @@ const services: TangramPiece[] = [
     title: "Strategic Clarity",
     description: "Help you see the patterns and connections that were always there.",
     details: ["System architecture review", "Process optimization", "Strategic planning", "Clarity architecture"],
-    shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Small triangle 1 (cat's front leg)
-    color: "oklch(0.68 0.22 25)", // Red for small triangle
+    shape: "polygon(0% 0%, 100% 0%, 50% 100%)",
+    color: "oklch(0.68 0.22 25)",
     scatteredPosition: { x: "5%", y: "45%", rotation: 90 },
-    assembledPosition: { x: 180, y: 320, rotation: 0 }, // Front leg - adjusted position
+    assembledPosition: { x: 180, y: 320, rotation: 0 },
     size: { width: 60, height: 60 },
   },
   {
@@ -96,10 +100,10 @@ const services: TangramPiece[] = [
       "Digital relationship building",
       "Sanctuary creation",
     ],
-    shape: "polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)", // Parallelogram (cat's tail)
-    color: "oklch(0.52 0.14 200)", // Blue parallelogram for tail
+    shape: "polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)",
+    color: "oklch(0.52 0.14 200)",
     scatteredPosition: { x: "60%", y: "80%", rotation: -60 },
-    assembledPosition: { x: 380, y: 250, rotation: 0 }, // Tail - adjusted position
+    assembledPosition: { x: 380, y: 250, rotation: 0 },
     size: { width: 100, height: 50 },
   },
   {
@@ -107,96 +111,195 @@ const services: TangramPiece[] = [
     title: "Integration Support",
     description: "Helping disconnected pieces find their way to work together.",
     details: ["System integration", "Workflow automation", "Tool connectivity", "Seamless operations"],
-    shape: "polygon(0% 0%, 100% 0%, 50% 100%)", // Small triangle 2 (cat's back leg)
-    color: "oklch(0.55 0.12 60)", // Gold for small triangle
+    shape: "polygon(0% 0%, 100% 0%, 50% 100%)",
+    color: "oklch(0.55 0.12 60)",
     scatteredPosition: { x: "40%", y: "5%", rotation: 180 },
-    assembledPosition: { x: 320, y: 320, rotation: 0 }, // Back leg - adjusted position
+    assembledPosition: { x: 320, y: 320, rotation: 0 },
     size: { width: 60, height: 60 },
   },
 ]
 
-const getSeasonalShape = () => {
-  const now = new Date()
-  const month = now.getMonth()
-  const day = now.getDate()
-
-  if (month === 9) {
-    return "cat"
+/* ============ helpers ============ */
+function rand(min: number, max: number) {
+  return Math.random() * (max - min) + min
+}
+function randInt(min: number, max: number) {
+  return Math.floor(rand(min, max))
+}
+function randomizeScattered(p: TangramPiece): TangramPiece {
+  // Keep scattered in percentages for responsiveness
+  return {
+    ...p,
+    scatteredPosition: {
+      x: `${randInt(5, 85)}%`,
+      y: `${randInt(5, 85)}%`,
+      rotation: randInt(-180, 180),
+    },
   }
-  if (month === 11) {
-    return "tree"
-  }
-  if (month === 1 && day === 14) {
-    return "heart"
-  }
-  return "cat"
 }
 
-const getRandomWord = () => {
-  const words = [
-    "clarity",
-    "connection",
-    "trust",
-    "breathe",
-    "begin",
-    "home",
-    "flow",
-    "align",
-    "integrate",
-    "transform",
-    "discover",
-    "create",
-    "belong",
-  ]
-  return words[Math.floor(Math.random() * words.length)]
-}
-
+/* ============ component ============ */
 export default function TangramServiceCards() {
+  // Work with a copy in state while editing
+  const [data, setData] = useState<TangramPiece[]>(() => JSON.parse(JSON.stringify(SERVICES_INITIAL)))
   const [isFirstVisit, setIsFirstVisit] = useState(true)
   const [isAssembled, setIsAssembled] = useState(false)
   const [expandedCard, setExpandedCard] = useState<string | null>(null)
   const [showMessage, setShowMessage] = useState(false)
   const [randomWord, setRandomWord] = useState("")
-  const [currentShape, setCurrentShape] = useState("cat")
   const [showReference, setShowReference] = useState(false)
 
+  // Editor
+  const [devMode, setDevMode] = useState(false)
+  const [selectedId, setSelectedId] = useState<string | null>(null)
+  const containerRef = useRef<HTMLDivElement | null>(null)
+  const dragState = useRef<{ id: string; dx: number; dy: number } | null>(null)
+
+  // Init: randomize scattered for first visit, then auto-assemble
   useEffect(() => {
     const hasVisited = localStorage.getItem("tangram-visited")
-    const shape = getSeasonalShape()
-    const word = getRandomWord()
-
-    setCurrentShape(shape)
-    setRandomWord(word)
-
+    const words = [
+      "clarity",
+      "connection",
+      "trust",
+      "breathe",
+      "begin",
+      "home",
+      "flow",
+      "align",
+      "integrate",
+      "transform",
+      "discover",
+      "create",
+      "belong",
+    ]
+    setRandomWord(words[Math.floor(Math.random() * words.length)])
+    if (!hasVisited) {
+      setData((prev) => prev.map(randomizeScattered))
+    }
     if (hasVisited) {
       setIsFirstVisit(false)
-      setIsAssembled(true) // Start assembled for returning visitors
+      setIsAssembled(true)
     } else {
-      const timer = setTimeout(() => {
+      const t = setTimeout(() => {
         setIsAssembled(true)
         setShowMessage(true)
         localStorage.setItem("tangram-visited", "true")
         setTimeout(() => setShowMessage(false), 3000)
       }, 4000)
-      return () => clearTimeout(timer)
+      return () => clearTimeout(t)
     }
   }, [])
 
+  /* -------- Dev drag + rotate (assembled only) -------- */
+  const beginDrag = useCallback(
+    (e: React.PointerEvent, id: string) => {
+      if (!devMode || !isAssembled) return
+      const target = e.currentTarget as HTMLElement
+      const rect = target.getBoundingClientRect()
+      dragState.current = { id, dx: e.clientX - rect.left, dy: e.clientY - rect.top }
+      setSelectedId(id)
+      ;(e.currentTarget as HTMLElement).setPointerCapture?.((e as any).pointerId)
+    },
+    [devMode, isAssembled],
+  )
+
+  const onDragMove = useCallback((e: React.PointerEvent) => {
+    if (!dragState.current || !containerRef.current) return
+    const id = dragState.current.id
+    const crect = containerRef.current.getBoundingClientRect()
+    const x = Math.round(e.clientX - crect.left - dragState.current.dx)
+    const y = Math.round(e.clientY - crect.top - dragState.current.dy)
+    setData((prev) =>
+      prev.map((p) => (p.id === id ? { ...p, assembledPosition: { ...p.assembledPosition, x, y } } : p)),
+    )
+  }, [])
+
+  const endDrag = useCallback(() => {
+    dragState.current = null
+  }, [])
+
+  // Rotate with Q/E and nudge with arrows
+  useEffect(() => {
+    if (!devMode || !selectedId) return
+    const onKey = (e: KeyboardEvent) => {
+      if (!selectedId) return
+      const k = e.key.toLowerCase()
+      if (k === "q" || k === "e") {
+        setData((prev) =>
+          prev.map((p) =>
+            p.id === selectedId
+              ? {
+                  ...p,
+                  assembledPosition: {
+                    ...p.assembledPosition,
+                    rotation: p.assembledPosition.rotation + (k === "q" ? -1 : 1),
+                  },
+                }
+              : p,
+          ),
+        )
+      }
+      if (["arrowup", "arrowdown", "arrowleft", "arrowright"].includes(k)) {
+        e.preventDefault()
+        const dx = k === "arrowleft" ? -1 : k === "arrowright" ? 1 : 0
+        const dy = k === "arrowup" ? -1 : k === "arrowdown" ? 1 : 0
+        setData((prev) =>
+          prev.map((p) =>
+            p.id === selectedId
+              ? {
+                  ...p,
+                  assembledPosition: {
+                    ...p.assembledPosition,
+                    x: p.assembledPosition.x + dx,
+                    y: p.assembledPosition.y + dy,
+                  },
+                }
+              : p,
+          ),
+        )
+      }
+    }
+    window.addEventListener("keydown", onKey)
+    return () => window.removeEventListener("keydown", onKey)
+  }, [devMode, selectedId])
+
+  // Copy current JSON back to clipboard
+  const copyJSON = async () => {
+    const payload = JSON.stringify(data, null, 2)
+    try {
+      await navigator.clipboard.writeText(payload)
+      alert("Updated Tangram JSON copied.")
+    } catch {
+      console.log(payload)
+      alert("Clipboard blocked. Printed in console.")
+    }
+  }
+
+  // Assemble/Scatter with fresh random scatter
+  const toggleAssemble = () => {
+    if (isAssembled) setData((prev) => prev.map(randomizeScattered))
+    setIsAssembled(!isAssembled)
+  }
+
   const toggleCard = useCallback(
     (cardId: string) => {
-      setExpandedCard(expandedCard === cardId ? null : cardId)
+      if (devMode) {
+        setSelectedId(cardId)
+        return
+      }
+      setExpandedCard((prev) => (prev === cardId ? null : cardId))
     },
-    [expandedCard],
+    [devMode],
   )
 
   const handleBackdropClick = useCallback((e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) {
-      setExpandedCard(null)
-    }
+    if (e.target === e.currentTarget) setExpandedCard(null)
   }, [])
 
   return (
     <div
+      ref={containerRef}
       className="relative w-[600px] h-[600px] mx-auto mb-12 overflow-hidden border border-border/20 rounded-lg"
       style={{
         ...(showReference && {
@@ -207,12 +310,15 @@ export default function TangramServiceCards() {
           opacity: 0.3,
         }),
       }}
+      onPointerMove={onDragMove}
+      onPointerUp={endDrag}
+      onPointerLeave={endDrag}
     >
       {showMessage && (
         <div className="absolute inset-0 z-50 flex items-center justify-center">
           <div className="bg-background/90 backdrop-blur-sm rounded-lg p-6 text-center border border-border shadow-lg">
             <p className="text-lg font-medium mb-2 text-foreground">
-              You're not broken — you're just not lined up yet.
+              {"You're not broken — you're just not lined up yet."}
             </p>
             <p className="text-sm text-muted-foreground">
               Your word: <span className="font-semibold text-foreground">{randomWord}</span>
@@ -222,41 +328,41 @@ export default function TangramServiceCards() {
       )}
 
       <div className="relative w-full h-full">
-        {services.map((service, index) => {
+        {data.map((service, index) => {
           const position = isAssembled ? service.assembledPosition : service.scatteredPosition
           const delay = isFirstVisit ? index * 0.2 : 0
+          const left = isAssembled ? `${(position as any).x}px` : (position as any).x
+          const top = isAssembled ? `${(position as any).y}px` : (position as any).y
+
+          const isSelected = devMode && selectedId === service.id
 
           return (
             <button
               key={service.id}
-              className="absolute cursor-pointer transition-all duration-1000 ease-out hover:scale-110 hover:z-10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              className={`absolute cursor-pointer transition-all duration-1000 ease-out hover:scale-110 hover:z-10 focus:outline-none ${isSelected ? "ring-2 ring-primary" : ""}`}
               style={{
-                left: isAssembled ? `${position.x}px` : position.x,
-                top: isAssembled ? `${position.y}px` : position.y,
+                left,
+                top,
                 width: `${service.size.width}px`,
                 height: `${service.size.height}px`,
-                transform: `rotate(${position.rotation}deg)`,
+                transform: `rotate(${(position as any).rotation}deg)`,
                 transitionDelay: `${delay}s`,
                 clipPath: service.shape,
                 backgroundColor: service.color,
                 boxShadow: `0 4px 12px ${service.color}40, inset 0 1px 0 rgba(255,255,255,0.2)`,
+                // in dev, move immediately while dragging
+                transitionProperty: devMode ? "box-shadow, transform" : undefined,
               }}
               onClick={() => toggleCard(service.id)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault()
-                  toggleCard(service.id)
-                }
-              }}
+              onPointerDown={(e) => beginDrag(e, service.id)}
               aria-label={`${service.title} - Click to learn more`}
             >
               <div
-                className="absolute inset-0 opacity-30"
+                className="absolute inset-0 opacity-30 pointer-events-none"
                 style={{
                   background: `linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%)`,
                   backgroundSize: "200% 200%",
                   clipPath: "inherit",
-                  animation: "opalShimmer 3s ease-in-out infinite",
                 }}
               />
             </button>
@@ -264,16 +370,15 @@ export default function TangramServiceCards() {
         })}
       </div>
 
-      {expandedCard && (
+      {expandedCard && !devMode && (
         <div
           className="absolute inset-0 z-40 flex items-center justify-center bg-background/80 backdrop-blur-sm"
           onClick={handleBackdropClick}
         >
           <div className="bg-card rounded-xl p-8 max-w-md w-full mx-4 border border-border shadow-xl">
             {(() => {
-              const service = services.find((s) => s.id === expandedCard)
+              const service = data.find((s) => s.id === expandedCard)
               if (!service) return null
-
               return (
                 <>
                   <div className="flex justify-between items-start mb-4">
@@ -301,23 +406,59 @@ export default function TangramServiceCards() {
         </div>
       )}
 
-      {!isFirstVisit && (
-        <div className="absolute bottom-4 right-4 flex gap-2">
-          {/* Fixed: Corrected button logic */}
+      {/* Controls */}
+      <div className="absolute bottom-4 right-4 flex gap-2">
+        {!isFirstVisit && (
           <button
-            onClick={() => setIsAssembled(!isAssembled)}
+            onClick={toggleAssemble}
             className="px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm hover:opacity-90 transition-opacity"
           >
             {isAssembled ? "Scatter" : "Assemble"}
           </button>
+        )}
+        {!isFirstVisit && (
           <button
             onClick={() => setShowReference(!showReference)}
             className="px-4 py-2 bg-secondary text-secondary-foreground rounded-lg text-sm hover:opacity-90 transition-opacity"
           >
             {showReference ? "Hide Ref" : "Show Ref"}
           </button>
-        </div>
-      )}
+        )}
+        <button
+          onClick={() => {
+            setDevMode(!devMode)
+            setSelectedId(null)
+          }}
+          className="px-3 py-2 bg-amber-600 text-white rounded-lg text-sm hover:opacity-90"
+          title="Toggle in-app editor"
+        >
+          {devMode ? "Exit Dev" : "Dev Mode"}
+        </button>
+        {devMode && (
+          <>
+            <select
+              value={selectedId ?? ""}
+              onChange={(e) => setSelectedId(e.target.value || null)}
+              className="px-2 py-2 bg-muted text-foreground rounded text-sm"
+              title="Select piece"
+            >
+              <option value="">Select piece…</option>
+              {data.map((d) => (
+                <option key={d.id} value={d.id}>
+                  {d.title}
+                </option>
+              ))}
+            </select>
+            <button
+              onClick={copyJSON}
+              className="px-3 py-2 bg-emerald-600 text-white rounded-lg text-sm hover:opacity-90"
+              title="Copy updated JSON to clipboard"
+            >
+              Copy JSON
+            </button>
+          </>
+        )}
+      </div>
     </div>
   )
 }
