@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Footer } from "@/components/footer"
 
 import "./globals.css"
 import { Geist as V0_Font_Geist, Geist_Mono as V0_Font_Geist_Mono, Source_Serif_4 as V0_Font_Source_Serif_4 } from 'next/font/google'
@@ -41,6 +42,7 @@ export default function RootLayout({
           <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
             {children}
           </Suspense>
+          <Footer />
         </ThemeProvider>
         <Analytics />
       </body>
