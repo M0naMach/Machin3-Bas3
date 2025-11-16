@@ -195,7 +195,45 @@ const CommandNavigation = () => {
       label: "README",
       description: "Read about AI-human relationships and our mission",
       action: () => {
-        console.log("[v0] Navigating to README")
+        try {
+          if (typeof window !== "undefined" && window.location) {
+            window.location.href = "/readme"
+          }
+        } catch (error) {
+          // Fail silently
+        }
+        setIsOpen(false)
+        setInput("")
+      },
+    },
+    {
+      command: "privacy",
+      label: "Privacy Policy",
+      description: "Learn about data privacy and security practices",
+      action: () => {
+        try {
+          if (typeof window !== "undefined" && window.location) {
+            window.location.href = "/privacy"
+          }
+        } catch (error) {
+          // Fail silently
+        }
+        setIsOpen(false)
+        setInput("")
+      },
+    },
+    {
+      command: "terms",
+      label: "Terms of Service",
+      description: "View the terms and conditions",
+      action: () => {
+        try {
+          if (typeof window !== "undefined" && window.location) {
+            window.location.href = "/terms"
+          }
+        } catch (error) {
+          // Fail silently
+        }
         setIsOpen(false)
         setInput("")
       },
