@@ -101,7 +101,7 @@ This PR delivers a comprehensive audit and cleanup of the machin3-bas3 repositor
 
 #### Fixed Broken README Command
 **Before**:
-```typescript
+\`\`\`typescript
 {
   command: "readme",
   action: () => {
@@ -109,10 +109,10 @@ This PR delivers a comprehensive audit and cleanup of the machin3-bas3 repositor
     setIsOpen(false)
   }
 }
-```
+\`\`\`
 
 **After**:
-```typescript
+\`\`\`typescript
 {
   command: "readme",
   action: () => {
@@ -122,7 +122,7 @@ This PR delivers a comprehensive audit and cleanup of the machin3-bas3 repositor
     setIsOpen(false)
   }
 }
-```
+\`\`\`
 
 #### Added Privacy & Terms Commands
 **New commands added**:
@@ -202,9 +202,9 @@ This PR delivers a comprehensive audit and cleanup of the machin3-bas3 repositor
 
 ## 📁 File Changes Summary
 
-```
+\`\`\`
 8 files changed, 1,249 insertions(+), 421 deletions(-)
-```
+\`\`\`
 
 ### Added Files (2):
 - ✅ `REPOSITORY_AUDIT.md` (531 lines) - Comprehensive codebase audit

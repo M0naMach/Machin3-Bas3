@@ -6,12 +6,14 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Footer } from "@/components/footer"
 
 import "./globals.css"
+
 import { Geist as V0_Font_Geist, Geist_Mono as V0_Font_Geist_Mono, Source_Serif_4 as V0_Font_Source_Serif_4 } from 'next/font/google'
 
 // Initialize fonts
-V0_Font_Geist({ weight: ["100","200","300","400","500","600","700","800","900"] })
-V0_Font_Geist_Mono({ weight: ["100","200","300","400","500","600","700","800","900"] })
-V0_Font_Source_Serif_4({ weight: ["200","300","400","500","600","700","800","900"] })
+const _geist = V0_Font_Geist({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700","800","900"], variable: '--v0-font-geist' })
+const _geistMono = V0_Font_Geist_Mono({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700","800","900"], variable: '--v0-font-geist-mono' })
+const _sourceSerif_4 = V0_Font_Source_Serif_4({ subsets: ['latin'], weight: ["200","300","400","500","600","700","800","900"], variable: '--v0-font-source-serif-4' })
+const _v0_fontVariables = `${_geist.variable} ${_geistMono.variable} ${_sourceSerif_4.variable}`
 
 // Custom fonts are defined in globals.css and loaded via @font-face
 // No need to import Google Fonts since we're using custom fonts
@@ -37,7 +39,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className="font-sans antialiased" data-cache-key={cacheKey}>
+      <body className={`font-sans antialiased ${_v0_fontVariables}`} data-cache-key={cacheKey}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
             {children}

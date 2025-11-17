@@ -58,7 +58,7 @@ The repository contains THREE distinct, conflicting purposes:
 - **Notion Integration**: Full API wrapper (93 lines) - functional but barely used
 
 ### Non-Functional/Stub Components ❌
-```typescript
+\`\`\`typescript
 // lib/database/azure-sql-client.ts (7 lines)
 export const azureDB = {
   connected: false,
@@ -79,7 +79,7 @@ export const memoryManager = {
   init: () => Promise.resolve(),
   cleanup: () => Promise.resolve(),
 }
-```
+\`\`\`
 
 **These are placeholder files with zero functionality** - classic signs of incomplete feature development.
 
@@ -168,14 +168,14 @@ From `CRITICAL_CONFIG.md`:
 ## 4. Development History Red Flags 🚩
 
 ### Recent Commit History Analysis
-```
+\`\`\`
 0674e01 refactor: restore v193 to create v197
 09bcb7f refactor: restore v193 to create v195
 715fb45 fix: fix syntax errors in tangram-service-cards
 9cc2642 fix: remove duplicate font imports and unassigned calls
 91a4f5f fix: remove duplicate font imports and unassigned calls
 [... 8 more identical commits ...]
-```
+\`\`\`
 
 **Issues Identified**:
 1. **Version thrashing**: Multiple restores to v193
@@ -194,7 +194,7 @@ From `CRITICAL_CONFIG.md`:
 **Recommended Setup for ACTUAL FUNCTIONALITY**:
 
 #### Option 1: Streamlined Next.js (Recommended)
-```
+\`\`\`
 Dependencies needed:
 - next, react, react-dom
 - tailwindcss (with built-in components, no Radix UI)
@@ -205,7 +205,7 @@ Dependencies needed:
 
 Total: ~8 dependencies vs current 48
 Reduction: 83%
-```
+\`\`\`
 
 #### Option 2: Static Site Generator
 Since there's no real backend/database:
@@ -272,7 +272,7 @@ If you actually want to build the AI companion system:
 **Problem**: 83% of dependencies unused
 
 **Recommendation**:
-```bash
+\`\`\`bash
 # Remove unused dependencies
 pnpm remove recharts vaul embla-carousel-react react-day-picker \
   date-fns input-otp react-hook-form @hookform/resolvers zod \
@@ -281,7 +281,7 @@ pnpm remove recharts vaul embla-carousel-react react-day-picker \
 # Review Radix UI usage and remove unused packages
 # Keep only: button, card, badge, dialog, slot, tabs
 # Remove: 19 other @radix-ui packages
-```
+\`\`\`
 
 **Estimated savings**:
 - Package size reduction: ~40%
@@ -364,11 +364,11 @@ pnpm remove recharts vaul embla-carousel-react react-day-picker \
 ### Immediate Actions (This Week)
 
 1. **Delete Dead Code**
-   ```bash
+   \`\`\`bash
    rm -rf lib/auth lib/database lib/memory
    rm scripts/pc-agent.js
    rm tangram-house-layout.txt
-   ```
+   \`\`\`
 
 2. **Remove Unused Dependencies**
    - Uninstall 19 unused Radix UI packages
@@ -381,9 +381,9 @@ pnpm remove recharts vaul embla-carousel-react react-day-picker \
    - Remove fake testimonials
 
 4. **Clean Git History**
-   ```bash
+   \`\`\`bash
    git rebase -i HEAD~20  # Squash duplicate commits
-   ```
+   \`\`\`
 
 ### Short-term Actions (This Month)
 
