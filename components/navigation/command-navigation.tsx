@@ -354,13 +354,13 @@ const CommandNavigation = () => {
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/30 backdrop-blur-md" onClick={() => setIsOpen(false)} />
 
-          <div className="relative w-full max-w-4xl max-h-[80vh] command-overlay-enter terminal-glassmorphic rounded-2xl overflow-hidden shadow-2xl">
+          <div className="relative w-full max-w-2xl max-h-[70vh] command-overlay-enter terminal-glassmorphic rounded-2xl overflow-hidden shadow-2xl">
             <div className="flex flex-col h-full">
               {/* Header */}
-              <div className="flex items-center justify-between p-6 border-b border-white/10">
-                <div className="flex items-center gap-3">
-                  <Terminal className="w-6 h-6 text-primary" />
-                  <h1 className="text-4xl font-bold opalescent-text-small text-foreground font-terminal">
+              <div className="flex items-center justify-between p-4 border-b border-white/10">
+                <div className="flex items-center gap-2">
+                  <Terminal className="w-5 h-5 text-primary" />
+                  <h1 className="text-2xl md:text-3xl font-bold opalescent-text-small text-foreground font-terminal">
                     M0na Machin3 Navigation
                   </h1>
                 </div>
@@ -370,10 +370,10 @@ const CommandNavigation = () => {
               </div>
 
               {/* Command Input */}
-              <div className="p-6">
+              <div className="p-4">
                 <div className="relative">
-                  <div className="flex items-center gap-3 text-xl">
-                    <span className="font-mono text-sm px-2 py-1 rounded shadow-sm bg-primary text-primary-foreground">
+                  <div className="flex items-center gap-2 text-base">
+                    <span className="font-mono text-xs px-1.5 py-0.5 rounded shadow-sm bg-primary text-primary-foreground">
                       $
                     </span>
                     <input
@@ -385,20 +385,20 @@ const CommandNavigation = () => {
                         setSelectedIndex(0)
                       }}
                       placeholder={currentPrompt}
-                      className="flex-1 bg-transparent border-none outline-none text-xl font-mono text-[rgba(0,255,205,1)]"
+                      className="flex-1 bg-transparent border-none outline-none text-base font-mono text-[rgba(0,255,205,1)]"
                     />
-                    <span className="command-prompt-blink text-xl text-primary">|</span>
+                    <span className="command-prompt-blink text-base text-primary">|</span>
                   </div>
                 </div>
               </div>
 
               {/* Commands List */}
-              <div className="flex-1 px-6 pb-6 overflow-y-auto max-h-96">
+              <div className="flex-1 px-4 pb-4 overflow-y-auto max-h-80">
                 {bootSequence ? (
                   <div className="flex items-center justify-center h-32">
                     <div className="text-center">
-                      <div className="text-2xl font-mono text-primary mb-2">{bootText}</div>
-                      <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto"></div>
+                      <div className="text-lg font-mono text-primary mb-2">{bootText}</div>
+                      <div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto"></div>
                     </div>
                   </div>
                 ) : (
@@ -407,17 +407,17 @@ const CommandNavigation = () => {
                       filteredCommands.map((cmd, index) => (
                         <div
                           key={cmd.command}
-                          className={`p-4 rounded-lg cursor-pointer transition-all duration-150 ${
+                          className={`p-3 rounded-lg cursor-pointer transition-all duration-150 ${
                             index === selectedIndex
                               ? "bg-white/10 border border-white/20 shadow-lg backdrop-blur-sm"
                               : "hover:bg-white/5 hover:backdrop-blur-sm"
                           }`}
                           onClick={cmd.action}
                         >
-                          <div className="flex items-center gap-4">
+                          <div className="flex items-center gap-3">
                             <div className="flex items-center gap-2">
                               <span
-                                className="font-mono text-base px-2 py-1 rounded shadow-sm"
+                                className="font-mono text-xs px-1.5 py-0.5 rounded shadow-sm"
                                 style={{
                                   backgroundColor: "oklch(0.4572 0.1828 10.2)",
                                   color: "oklch(0.9779 0.02 100.44)",
@@ -428,12 +428,12 @@ const CommandNavigation = () => {
                             </div>
                             <div className="flex-1">
                               <div
-                                className="font-semibold text-2xl font-terminal"
+                                className="font-semibold text-base font-terminal"
                                 style={{ color: "oklch(0.4572 0.1828 10.2)" }}
                               >
                                 {cmd.label}
                               </div>
-                              <div className="text-lg mt-1" style={{ color: "oklch(0.9779 0.02 100.44)" }}>
+                              <div className="text-sm mt-1" style={{ color: "oklch(0.9779 0.02 100.44)" }}>
                                 {cmd.description}
                               </div>
                             </div>
@@ -447,7 +447,7 @@ const CommandNavigation = () => {
                       ))
                     ) : (
                       <div className="text-center py-8">
-                        <div className="text-lg mb-2 text-muted-foreground">No commands found</div>
+                        <div className="text-base mb-2 text-muted-foreground">No commands found</div>
                         <div className="text-sm text-muted-foreground">
                           Try typing "work", "services", "readme", "hom3bas3", "journey", "vision", or discover hidden commands...
                         </div>
@@ -458,7 +458,7 @@ const CommandNavigation = () => {
               </div>
 
               {/* Footer Help */}
-              <div className="p-6 border-t border-white/10">
+              <div className="p-4 border-t border-white/10">
                 <div className="text-sm flex items-center justify-center gap-6 text-muted-foreground">
                   <span>
                     <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-xs mr-1 backdrop-blur-sm">↑↓</kbd>
