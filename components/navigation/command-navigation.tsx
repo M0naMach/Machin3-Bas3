@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { Terminal } from "lucide-react"
+import { Terminal } from 'lucide-react'
 
 interface NavigationCommand {
   command: string
@@ -189,6 +189,22 @@ const CommandNavigation = () => {
         setInput("")
       },
     },
+    {
+      command: "services",
+      label: "Services",
+      description: "View all available services and offerings",
+      action: () => {
+        try {
+          if (typeof window !== "undefined" && window.location) {
+            window.location.href = "/services"
+          }
+        } catch (error) {
+          // Fail silently
+        }
+        setIsOpen(false)
+        setInput("")
+      },
+    },
     ...easterEggCommands,
     {
       command: "readme",
@@ -246,6 +262,7 @@ const CommandNavigation = () => {
     if (searchTerm === "collaborate" || searchTerm === "partnership") return cmd.command === "work"
     if (searchTerm === "philosophy" || searchTerm === "mission") return cmd.command === "readme"
     if (searchTerm === "future" || searchTerm === "ai" || searchTerm === "companion") return cmd.command === "vision"
+    if (searchTerm === "services" || searchTerm === "offerings") return cmd.command === "services"
 
     return (
       cmd.command.toLowerCase().includes(searchTerm) ||
@@ -432,7 +449,7 @@ const CommandNavigation = () => {
                       <div className="text-center py-8">
                         <div className="text-lg mb-2 text-muted-foreground">No commands found</div>
                         <div className="text-sm text-muted-foreground">
-                          Try typing "work", "readme", "hom3bas3", "journey", "vision", or discover hidden commands...
+                          Try typing "work", "services", "readme", "hom3bas3", "journey", "vision", or discover hidden commands...
                         </div>
                       </div>
                     )}
