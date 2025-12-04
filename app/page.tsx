@@ -18,16 +18,14 @@ export default function Home() {
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <div className="mb-8">
-            <h1 className="font-title text-6xl md:text-9xl mb-2 tracking-wide opalescent-text">M0na Machin3</h1>
-            <p className="text-lg font-light text-foreground">Human connection, coded with care.</p>
+            <h1 className="font-title text-7xl md:text-[10rem] lg:text-[12rem] mb-6 tracking-wide opalescent-text leading-none">M0na Machin3</h1>
+            <p className="text-lg md:text-xl font-light text-foreground/90 mb-4">
+              Creative by Nature. Systems by Design. Human at Heart.
+            </p>
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-light mb-6 leading-tight text-foreground">
-            Where reflection becomes connection.
-          </h2>
-
-          <p className="text-xl md:text-2xl mb-16 max-w-2xl mx-auto leading-relaxed font-light">
-            A soft, steady buffer between the world and the nervous system.
+          <p className="text-base md:text-lg font-light leading-relaxed text-foreground/80 italic">
+            Giving Structure to Chaos, Personality to Code, and making Systems make Sense.
           </p>
         </div>
       </section>
@@ -35,7 +33,7 @@ export default function Home() {
       {/* The Invitation Section */}
       <section className="py-20 bg-card">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-light mb-12 text-foreground">Begin Your Journey.</h2>
+          <h2 className="text-3xl md:text-4xl font-light mb-12 text-foreground">Ready to render your vision?</h2>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <button
@@ -55,7 +53,7 @@ export default function Home() {
               }
               onClick={() => (window.location.href = "/vision")}
             >
-              <span className="relative z-10 dark:text-[color:var(--dark-text-color)]">Explore the Vision</span>
+              <span className="relative z-10 dark:text-[color:var(--dark-text-color)]">See the Canvas</span>
             </button>
 
             <button
@@ -74,7 +72,7 @@ export default function Home() {
               }
               onClick={() => (window.location.href = "/work")}
             >
-              <span className="relative z-10">Work With Me</span>
+              <span className="relative z-10">Let's Collaborate</span>
             </button>
           </div>
         </div>
@@ -83,7 +81,7 @@ export default function Home() {
       <section className="py-20 bg-background">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light mb-8 text-foreground">Follow the Living Timeline.</h2>
+            <h2 className="text-3xl md:text-4xl font-light mb-8 text-foreground">Process in progress.</h2>
 
             <div className="flex items-center justify-center mb-8">
               <div className="relative w-full max-w-4xl">
@@ -99,8 +97,8 @@ export default function Home() {
             </div>
 
             <p className="text-lg mb-8 max-w-3xl mx-auto leading-relaxed text-muted-foreground">
-              This isn't just a project; it's a process we're building in the open. Follow our journey from an idea to a
-              living network, and see how you can be part of it.
+              Building in the open. From concept to canvas to code. Each iteration adds another layer, another pixel. 
+              Watch the design take shape.
             </p>
 
             <button
@@ -109,7 +107,7 @@ export default function Home() {
                              transition-all duration-300 ease-out cursor-pointer will-change-transform"
               onClick={() => (window.location.href = "/timeline")}
             >
-              View Our Journey
+              View the Process
             </button>
           </div>
         </div>

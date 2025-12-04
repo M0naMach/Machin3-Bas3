@@ -117,7 +117,7 @@ The site has a **dual navigation system**:
 **Navigation status**: ⚠️ **PARTIALLY ACCESSIBLE** - Footer only (command broken)
 
 **Bug**: Command navigation line 194-202:
-```typescript
+\`\`\`typescript
 {
   command: "readme",
   label: "README",
@@ -128,7 +128,7 @@ The site has a **dual navigation system**:
     setInput("")
   },
 }
-```
+\`\`\`
 
 ---
 
@@ -338,14 +338,14 @@ The site has a **dual navigation system**:
 **File**: `app/business/page.tsx`
 
 Has its own header navigation (lines 11-35):
-```tsx
+\`\`\`tsx
 <nav className="hidden md:flex items-center space-x-6">
   <a href="#about">About</a>
   <a href="#services">Services</a>
   <a href="#testimonials">Testimonials</a>
   <a href="#contact">Contact</a>
 </nav>
-```
+\`\`\`
 
 **Issues**:
 - Anchor navigation only (same-page sections)
@@ -411,7 +411,7 @@ Found 2 API endpoints:
 **Location**: `components/navigation/command-navigation.tsx:194-202`
 
 **Current code**:
-```typescript
+\`\`\`typescript
 {
   command: "readme",
   label: "README",
@@ -422,10 +422,10 @@ Found 2 API endpoints:
     setInput("")
   },
 }
-```
+\`\`\`
 
 **Fix**:
-```typescript
+\`\`\`typescript
 {
   command: "readme",
   label: "README",
@@ -438,7 +438,7 @@ Found 2 API endpoints:
     setInput("")
   },
 }
-```
+\`\`\`
 
 #### 2. 305-Line Business Page is Orphaned
 **Impact**: High
@@ -456,10 +456,10 @@ Found 2 API endpoints:
 **Compliance Risk**: Users may not find privacy policy easily
 
 **Fix**: Add to command palette:
-```typescript
+\`\`\`typescript
 { command: "privacy", label: "Privacy", ... },
 { command: "terms", label: "Terms", ... }
-```
+\`\`\`
 
 ### 🟡 Moderate Issues
 
@@ -511,10 +511,10 @@ Found 2 API endpoints:
 ### Immediate (This Week)
 
 1. **Fix Broken README Command** ⏱️ 2 minutes
-   ```typescript
+   \`\`\`typescript
    // components/navigation/command-navigation.tsx:198
    window.location.href = "/readme"
-   ```
+   \`\`\`
 
 2. **Decide on Business Page** ⏱️ 1 hour
    - Option A: Delete (if not using)
@@ -522,15 +522,15 @@ Found 2 API endpoints:
    - Option C: Link from `/work` page
 
 3. **Delete Demo Page** ⏱️ 1 minute
-   ```bash
+   \`\`\`bash
    rm -rf app/command-nav-demo
-   ```
+   \`\`\`
 
 4. **Add Legal Pages to Command Palette** ⏱️ 5 minutes
-   ```typescript
+   \`\`\`typescript
    { command: "privacy", label: "Privacy", ... },
    { command: "terms", label: "Terms", ... }
-   ```
+   \`\`\`
 
 ### Short-term (This Month)
 
