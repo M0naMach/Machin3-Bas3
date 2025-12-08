@@ -339,7 +339,7 @@ const CommandNavigation = () => {
             >
               {currentPrompt}
             </span>
-            <div className="text-sm text-foreground/90 ml-auto flex-shrink-0">
+            <div className="text-xs md:text-sm text-foreground/90 ml-auto flex-shrink-0">
               Press{" "}
               <kbd className="px-1 py-0.5 md:px-1.5 md:py-0.5 bg-primary text-primary-foreground rounded text-xs font-terminal border border-primary">
                 {"/"}
