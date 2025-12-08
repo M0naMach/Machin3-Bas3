@@ -22,7 +22,7 @@ export default function ReadmePage() {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-6">
             <Book className="w-12 h-12 text-primary" />
-            <h1 className="font-aspal text-5xl md:text-6xl tracking-wide opalescent-text">R3ADM3</h1>
+            <h1 className="font-title text-5xl md:text-6xl tracking-wide opalescent-text">R3ADM3</h1>
           </div>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Understanding M0na Machin3: AI-Human relationships and our mission to create meaningful digital
