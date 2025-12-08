@@ -72,7 +72,7 @@ export default function Home() {
                     "linear-gradient(45deg, rgba(0,255,255,0.4), rgba(255,255,255,0.3), rgba(0,255,255,0.4)) 1",
                 } as React.CSSProperties
               }
-              onClick={() => (window.location.href = "/work")}
+              onClick={() => (window.location.href = "/services")}
             >
               <span className="relative z-10">Let's Collaborate</span>
             </button>
