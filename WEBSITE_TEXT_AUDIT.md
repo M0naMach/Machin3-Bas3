@@ -683,7 +683,7 @@ Rotating phases:
    - Command input is too large (`text-xl`)
 
    **Recommended fixes**:
-   ```tsx
+   \`\`\`tsx
    // Bottom trigger (line 320)
    - className="... text-lg md:text-2xl ..."
    + className="... text-sm md:text-base ..."
@@ -699,7 +699,7 @@ Rotating phases:
    // Command input (line 371)
    - className="... text-xl ..."
    + className="... text-base ..."
-   ```
+   \`\`\`
 
 ### Unused/Unreachable Pages
 
