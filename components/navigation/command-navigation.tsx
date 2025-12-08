@@ -334,12 +334,12 @@ const CommandNavigation = () => {
           <div className="flex items-center gap-2 md:gap-3 terminal-glassmorphic border border-primary/30 rounded-lg px-3 py-2 md:px-4 md:py-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/60 hover:shadow-[0_0_20px_rgba(184,83,9,0.3)] group-hover:scale-105 max-w-xs md:max-w-md">
             <Terminal className="w-4 h-4 md:w-5 md:h-5 text-primary opalescent-text-small" />
             <span
-              className="text-foreground select-none transition-all duration-500 font-terminal text-sm md:text-base opalescent-text-small truncate"
+              className="text-foreground select-none transition-all duration-500 font-terminal text-lg md:text-2xl opalescent-text-small truncate"
               style={{ color: "oklch(0.85 0.05 100)" }}
             >
               {currentPrompt}
             </span>
-            <div className="text-xs md:text-sm text-foreground/90 ml-auto flex-shrink-0">
+            <div className="text-sm text-foreground/90 ml-auto flex-shrink-0">
               Press{" "}
               <kbd className="px-1 py-0.5 md:px-1.5 md:py-0.5 bg-primary text-primary-foreground rounded text-xs font-terminal border border-primary">
                 {"/"}

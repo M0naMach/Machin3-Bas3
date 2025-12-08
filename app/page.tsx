@@ -18,13 +18,15 @@ export default function Home() {
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <div className="mb-8">
-            <h1 className="font-title text-7xl md:text-[10rem] lg:text-[12rem] mb-6 tracking-wide opalescent-text leading-none">M0na Machin3</h1>
-            <p className="text-lg md:text-xl font-light text-foreground/90 mb-4">
+            <h1 className="font-title text-7xl md:text-[10rem] lg:text-[12rem] mb-6 tracking-wide opalescent-text leading-none">
+              M0na Machin3
+            </h1>
+            <p className="text-xl md:text-2xl font-light text-foreground/90 mb-4">
               Creative by Nature. Systems by Design. Human at Heart.
             </p>
           </div>
 
-          <p className="text-base md:text-lg font-light leading-relaxed text-foreground/80 italic">
+          <p className="text-lg md:text-xl font-light leading-relaxed text-foreground/80 italic">
             Giving Structure to Chaos, Personality to Code, and making Systems make Sense.
           </p>
         </div>
@@ -97,7 +99,7 @@ export default function Home() {
             </div>
 
             <p className="text-lg mb-8 max-w-3xl mx-auto leading-relaxed text-muted-foreground">
-              Building in the open. From concept to canvas to code. Each iteration adds another layer, another pixel. 
+              Building in the open. From concept to canvas to code. Each iteration adds another layer, another pixel.
               Watch the design take shape.
             </p>
 
