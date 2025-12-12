@@ -1,0 +1,46 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "live-deploy" ]
+  pull_request:
+    branches: [ "live-deploy" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test
+    
+  - name: Vercel Production Deployment
+  # You may pin to the exact commit or the version.
+  # uses: yuito-it/GitHub-Vercel-Actions@7179aef8f01fba3a22009888b453498a7863b16c
+  uses: yuito-it/GitHub-Vercel-Actions@v1.0.2
+  with:
+    # Vercel API Token
+    vercel-token: 
+    # Vercel project name
+    vercel-project: machin3-bas3
+          
+- name: 'notify vercel'
+  uses: 'vercel/repository-dispatch/actions/status@v1'
+  with:
+    name: Vercel - machin3-bas3: lint
