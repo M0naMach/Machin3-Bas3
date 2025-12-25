@@ -1,6 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { Client } from "@notionhq/client"
 
+export const runtime = 'edge'
+
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 })
