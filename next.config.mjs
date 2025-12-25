@@ -8,6 +8,7 @@ const nextConfig = {
   },
   images: {
     unoptimized: true, // Allows images without Next.js optimization (necessary for static hosting)
-  };
+  },
+};
 
 export default nextConfig;

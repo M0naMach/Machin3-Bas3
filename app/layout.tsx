@@ -7,31 +7,19 @@ import { Footer } from "@/components/footer"
 
 import "./globals.css"
 
-import { Geist, Geist_Mono, Source_Serif_4, Geist as V0_Font_Geist, Geist_Mono as V0_Font_Geist_Mono, Source_Serif_4 as V0_Font_Source_Serif_4 } from 'next/font/google'
+import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
 
-// Initialize fonts
-const _geist = V0_Font_Geist({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700","800","900"] })
-const _geistMono = V0_Font_Geist_Mono({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700","800","900"] })
-const _sourceSerif_4 = V0_Font_Source_Serif_4({ subsets: ['latin'], weight: ["200","300","400","500","600","700","800","900"] })
+// Using local Geist fonts from the geist package for Cloudflare compatibility
+// Source Serif will use system serif fonts as fallback
+const geist = GeistSans
+const geistMono = GeistMono
 
-const geist = Geist({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-geist",
-})
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-geist-mono",
-})
-const sourceSerif4 = Source_Serif_4({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+// Create a variable for Source Serif fallback
+const sourceSerif4 = {
   variable: "--font-source-serif",
-})
-
-// Custom fonts are defined in globals.css and loaded via @font-face
-// No need to import Google Fonts since we're using custom fonts
+  className: ""
+}
 
 export const metadata: Metadata = {
   title: "M0na Machin3 - Human connection, coded with care",
