@@ -100,7 +100,6 @@ machin3-bas3/
 - **UI Components**: Radix UI primitives
 - **Icons**: Lucide React
 - **Fonts**: Custom fonts (Anurati, Aspal, PoiretOne)
-- **Deployment**: Vercel
 
 ## 📝 Development
 
@@ -119,13 +118,6 @@ pnpm lint         # Run ESLint
 - `tailwindcss` - Utility-first CSS
 - `lucide-react` - Icon library
 - `cmdk` - Command palette functionality
-
-## 🌐 Deployment
-
-The project is configured for Vercel deployment with:
-- Automatic builds from main branch
-- Environment variable management
-- Analytics integration
 
 ## 📄 License
 

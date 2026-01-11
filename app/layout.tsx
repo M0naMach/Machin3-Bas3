@@ -1,6 +1,5 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Footer } from "@/components/footer"
@@ -25,7 +24,6 @@ export const metadata: Metadata = {
   title: "M0na Machin3 - Human connection, coded with care",
   description:
     "Creating meaningful digital experiences through thoughtful design and development. Where reflection becomes connection in the digital space.",
-  generator: "v0.app",
   other: {
     "Cache-Control": "no-cache, no-store, must-revalidate",
     Pragma: "no-cache",
@@ -52,7 +50,6 @@ export default function RootLayout({
           </Suspense>
           <Footer />
         </ThemeProvider>
-        <Analytics />
       </body>
     </html>
   )
