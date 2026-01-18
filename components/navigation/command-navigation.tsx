@@ -142,6 +142,22 @@ const CommandNavigation = () => {
       },
     },
     {
+      command: "portfolio",
+      label: "Portfolio",
+      description: "View my portfolio showcase",
+      action: () => {
+        try {
+          if (typeof window !== "undefined" && window.location) {
+            window.location.href = "/portfolio"
+          }
+        } catch (error) {
+          // Fail silently
+        }
+        setIsOpen(false)
+        setInput("")
+      },
+    },
+    {
       command: "journey",
       label: "Our Journey",
       description: "Explore the M0na Machin3 timeline and philosophy",
