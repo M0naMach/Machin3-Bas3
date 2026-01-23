@@ -1,18 +1,14 @@
+import { useState } from "react";
 import { motion } from "motion/react";
 import { Download, FileText, Briefcase, Award, GraduationCap, Shield } from "lucide-react";
 import { getResumeData } from "@/data/portfolio/resumeStats";
 import { isCertificationActive } from "@/data/portfolio/certifications";
+import { ResumeGenerator } from "./ResumeGenerator";
 
 export function ResumeSection() {
   const resumeData = getResumeData();
   const { stats, skills, certifications } = resumeData;
-
-  const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = '/resume.pdf';
-    link.download = 'Bryanna_Barley_Resume.pdf';
-    link.click();
-  };
+  const [showGenerator, setShowGenerator] = useState(false);
 
   // Determine which stats to show (include certs if any exist)
   const displayStats = stats.certifications.total > 0
@@ -81,15 +77,15 @@ export function ResumeSection() {
               })}
             </div>
 
-            {/* Download Button */}
+            {/* Generate Resume Button */}
             <motion.button
-              onClick={handleDownload}
+              onClick={() => setShowGenerator(true)}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="w-full bg-gradient-to-r from-primary to-emerald-500 text-emerald-950 py-6 px-8 rounded-2xl font-black uppercase tracking-[0.2em] text-sm flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(184,115,51,0.3)] hover:shadow-[0_0_50px_rgba(184,115,51,0.5)] transition-all duration-500 group"
             >
               <Download className="w-5 h-5 group-hover:animate-bounce" />
-              Download Full Resume
+              Generate Dynamic Resume
             </motion.button>
 
             {/* Additional Info */}
@@ -175,6 +171,9 @@ export function ResumeSection() {
           )}
         </motion.div>
       </div>
+
+      {/* Dynamic Resume Generator Modal */}
+      <ResumeGenerator isOpen={showGenerator} onClose={() => setShowGenerator(false)} />
     </section>
   );
 }
