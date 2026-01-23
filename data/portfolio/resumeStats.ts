@@ -77,7 +77,7 @@ export function getResumeData() {
     ],
 
     // Optional: Add certifications to quick stats if you have any
-    quickStatsWithCerts: certStats.totalCertifications > 0
+    quickStatsWithCerts: stats.certifications.total > 0
       ? [stats.experience, stats.projects, stats.skills, stats.certifications]
       : [stats.experience, stats.projects, stats.skills],
   };

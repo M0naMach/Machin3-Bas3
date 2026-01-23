@@ -804,3 +804,59 @@ button {
     font-size: 2rem !important; /* 32px on mobile */
   }
 }
+
+/* Print-specific styles for dynamic resume */
+@media print {
+  @page {
+    size: letter;
+    margin: 0.5in;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Hide everything except the print template */
+  body > *:not(.print\:block) {
+    display: none !important;
+  }
+
+  /* Ensure print template shows */
+  .print\:block {
+    display: block !important;
+    position: static !important;
+    background: white !important;
+  }
+
+  /* Page breaks */
+  .page-break-before {
+    page-break-before: always;
+  }
+
+  .page-break-after {
+    page-break-after: always;
+  }
+
+  .page-break-avoid {
+    page-break-inside: avoid;
+  }
+
+  /* Remove shadows and effects for print */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Ensure links are visible */
+  a {
+    text-decoration: underline;
+    color: #000;
+  }
+
+  /* Print colors accurately */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
