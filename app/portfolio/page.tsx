@@ -19,6 +19,7 @@ import { siteConfig } from "@/data/portfolio/siteConfig";
 import { caseStudies } from "@/data/portfolio/caseStudies";
 import { opalShowcase } from "@/data/portfolio/opalShowcase";
 
+// Force rebuild - Jan 23, 2026
 export default function PortfolioPage() {
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy | null>(null);
   const [activeCategory, setActiveCategory] = useState("all");
