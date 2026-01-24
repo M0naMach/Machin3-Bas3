@@ -7,10 +7,39 @@ export interface Skill {
   name: string;
   category: "coding" | "design" | "systems" | "craft" | "tools";
   proficiency: number; // 0-1 scale (0.9 = 90% proficient)
-  yearsUsed: number;
+  startDate: string; // YYYY-MM-DD format
   projectsUsed: number;
   certifications?: string[]; // IDs of related certifications
   displayInResume: boolean;
+}
+
+/**
+ * Calculate years of experience from start date to now
+ */
+export function calculateYearsFromStart(startDate: string): number {
+  const start = new Date(startDate);
+  const now = new Date();
+  const diffInMs = now.getTime() - start.getTime();
+  const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+  const years = diffInDays / 365.25; // Account for leap years
+  return Math.round(years * 10) / 10; // Round to 1 decimal place
+}
+
+/**
+ * Get human-readable duration (e.g., "1.2 years", "3 months")
+ */
+export function getSkillDuration(startDate: string): string {
+  const years = calculateYearsFromStart(startDate);
+
+  if (years >= 1) {
+    return `${years} year${years !== 1 ? 's' : ''}`;
+  }
+
+  const start = new Date(startDate);
+  const now = new Date();
+  const months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+
+  return `${months} month${months !== 1 ? 's' : ''}`;
 }
 
 export const skills: Skill[] = [
@@ -19,7 +48,7 @@ export const skills: Skill[] = [
     name: "React",
     category: "coding",
     proficiency: 0.85,
-    yearsUsed: 2,
+    startDate: "2023-01-01", // Adjust to your actual start date
     projectsUsed: 5,
     displayInResume: true,
   },
@@ -27,7 +56,7 @@ export const skills: Skill[] = [
     name: "TypeScript",
     category: "coding",
     proficiency: 0.80,
-    yearsUsed: 2,
+    startDate: "2023-01-01", // Adjust to your actual start date
     projectsUsed: 5,
     displayInResume: true,
   },
@@ -35,7 +64,7 @@ export const skills: Skill[] = [
     name: "Next.js",
     category: "coding",
     proficiency: 0.75,
-    yearsUsed: 1,
+    startDate: "2024-01-01", // Adjust to your actual start date
     projectsUsed: 3,
     displayInResume: true,
   },
@@ -43,7 +72,7 @@ export const skills: Skill[] = [
     name: "Python",
     category: "coding",
     proficiency: 0.70,
-    yearsUsed: 2,
+    startDate: "2023-12-01", // Based on Python cert date
     projectsUsed: 4,
     displayInResume: true,
   },
@@ -53,7 +82,7 @@ export const skills: Skill[] = [
     name: "UI/UX Design",
     category: "design",
     proficiency: 0.90,
-    yearsUsed: 3,
+    startDate: "2022-01-01", // Adjust to your actual start date
     projectsUsed: 10,
     displayInResume: true,
   },
@@ -61,7 +90,7 @@ export const skills: Skill[] = [
     name: "Digital Art",
     category: "design",
     proficiency: 0.95,
-    yearsUsed: 5,
+    startDate: "2020-01-01", // Adjust to your actual start date
     projectsUsed: 50,
     displayInResume: true,
   },
@@ -69,7 +98,7 @@ export const skills: Skill[] = [
     name: "Adobe Creative Suite",
     category: "tools",
     proficiency: 0.85,
-    yearsUsed: 4,
+    startDate: "2021-01-01", // Adjust to your actual start date
     projectsUsed: 40,
     displayInResume: true,
   },
@@ -79,7 +108,7 @@ export const skills: Skill[] = [
     name: "System Design",
     category: "systems",
     proficiency: 0.90,
-    yearsUsed: 3,
+    startDate: "2022-01-01", // Adjust to your actual start date
     projectsUsed: 8,
     displayInResume: true,
   },
@@ -87,7 +116,7 @@ export const skills: Skill[] = [
     name: "Notion Architecture",
     category: "systems",
     proficiency: 0.95,
-    yearsUsed: 3,
+    startDate: "2022-01-01", // Adjust based on when you started The Neighborhood
     projectsUsed: 1, // The Neighborhood
     displayInResume: true,
   },
@@ -95,7 +124,7 @@ export const skills: Skill[] = [
     name: "Prompt Engineering",
     category: "systems",
     proficiency: 0.90,
-    yearsUsed: 2,
+    startDate: "2024-01-01", // Adjust to your actual start date
     projectsUsed: 3,
     displayInResume: true,
   },
@@ -105,7 +134,7 @@ export const skills: Skill[] = [
     name: "Generative Art",
     category: "craft",
     proficiency: 0.85,
-    yearsUsed: 2,
+    startDate: "2024-11-01", // You said November 2024
     projectsUsed: 15,
     displayInResume: true,
   },
@@ -113,7 +142,7 @@ export const skills: Skill[] = [
     name: "AI-Assisted Art",
     category: "craft",
     proficiency: 0.90,
-    yearsUsed: 2,
+    startDate: "2024-01-01", // Adjust to your actual start date
     projectsUsed: 60,
     displayInResume: true,
   },
@@ -123,7 +152,7 @@ export const skills: Skill[] = [
     name: "AI/ML Fundamentals",
     category: "systems",
     proficiency: 0.85,
-    yearsUsed: 2,
+    startDate: "2024-01-01", // Adjust based on when you started learning AI
     projectsUsed: 5,
     displayInResume: true,
   },
@@ -131,7 +160,7 @@ export const skills: Skill[] = [
     name: "Data Analysis",
     category: "systems",
     proficiency: 0.75,
-    yearsUsed: 2,
+    startDate: "2024-01-01", // Adjust to your actual start date
     projectsUsed: 4,
     displayInResume: true,
   },
@@ -139,7 +168,7 @@ export const skills: Skill[] = [
     name: "Workflow Automation",
     category: "systems",
     proficiency: 0.80,
-    yearsUsed: 2,
+    startDate: "2024-01-01", // Adjust to your actual start date
     projectsUsed: 6,
     displayInResume: true,
   },
@@ -147,7 +176,7 @@ export const skills: Skill[] = [
     name: "Photoshop",
     category: "tools",
     proficiency: 0.85,
-    yearsUsed: 4,
+    startDate: "2021-01-01", // Adjust to your actual start date
     projectsUsed: 35,
     displayInResume: true,
   },
@@ -155,7 +184,7 @@ export const skills: Skill[] = [
     name: "Custom GPT Development",
     category: "systems",
     proficiency: 0.85,
-    yearsUsed: 1,
+    startDate: "2024-06-01", // Based on Custom GPT cert date
     projectsUsed: 3,
     displayInResume: true,
   },
@@ -163,7 +192,7 @@ export const skills: Skill[] = [
     name: "Agentic AI Systems",
     category: "systems",
     proficiency: 0.75,
-    yearsUsed: 1,
+    startDate: "2024-04-01", // Based on Agentic Automation cert date
     projectsUsed: 2,
     displayInResume: true,
   },
@@ -175,9 +204,13 @@ export const skills: Skill[] = [
 export function calculateSkillStats() {
   const displaySkills = skills.filter(s => s.displayInResume);
 
+  // Calculate years for each skill and get the maximum
+  const yearsArray = displaySkills.map(s => calculateYearsFromStart(s.startDate));
+  const maxYears = Math.max(...yearsArray);
+
   return {
     totalSkills: displaySkills.length,
-    totalYears: Math.max(...displaySkills.map(s => s.yearsUsed)),
+    totalYears: Math.ceil(maxYears), // Round up for display (e.g., 2.1 years → 3 years)
     totalProjects: displaySkills.reduce((sum, s) => sum + s.projectsUsed, 0),
     averageProficiency: (
       displaySkills.reduce((sum, s) => sum + s.proficiency, 0) / displaySkills.length
