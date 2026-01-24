@@ -23,8 +23,8 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: "neighborhood",
-    title: "The Neighborhood",
-    description: "A narrative-driven knowledge management system built in Notion with 13 interconnected volumes. Features the Paper Processing Plant (PPP) for document intake and USPS-inspired routing. Designed as an accessibility solution for aphantasia through world-building and systematic organization.",
+    title: "The N3ighb0rh00d",
+    description: "A knowledge management system built in Notion designed world-building concepts, with 13 interconnected volumes. Features the Paper Processing Plant (PPP) for document intake and USPS-inspired routing. Designed as a personal accessibility solution for aphantasia through narrative-based systematic organization.",
     category: "coding",
     image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
     tags: ["Notion", "System Design", "Knowledge Management", "Narrative Architecture"],

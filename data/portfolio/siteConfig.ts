@@ -6,8 +6,8 @@
 export const siteConfig = {
   // Brand Information
   brand: {
-    name: "Mona Machin3",
-    tagline: "System Terminal",
+    name: "M0na Machin3",
+    tagline: "M0na's Pr0ductivity M3tric",
     logo: "Sparkles", // Lucide icon name
     available: true,
     availabilityMessage: "Available for creative collaborations.",
@@ -23,7 +23,7 @@ export const siteConfig = {
 
   // Social Links
   social: [
-    { label: "Twitter", href: "#" },
+    { label: "Upwork", href: "#" },
     { label: "GitHub", href: "#" },
     { label: "LinkedIn", href: "#" },
   ],
