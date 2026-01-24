@@ -117,6 +117,56 @@ export const skills: Skill[] = [
     projectsUsed: 60,
     displayInResume: true,
   },
+
+  // Additional Skills (Certified)
+  {
+    name: "AI/ML Fundamentals",
+    category: "systems",
+    proficiency: 0.85,
+    yearsUsed: 2,
+    projectsUsed: 5,
+    displayInResume: true,
+  },
+  {
+    name: "Data Analysis",
+    category: "systems",
+    proficiency: 0.75,
+    yearsUsed: 2,
+    projectsUsed: 4,
+    displayInResume: true,
+  },
+  {
+    name: "Workflow Automation",
+    category: "systems",
+    proficiency: 0.80,
+    yearsUsed: 2,
+    projectsUsed: 6,
+    displayInResume: true,
+  },
+  {
+    name: "Photoshop",
+    category: "tools",
+    proficiency: 0.85,
+    yearsUsed: 4,
+    projectsUsed: 35,
+    displayInResume: true,
+  },
+  {
+    name: "Custom GPT Development",
+    category: "systems",
+    proficiency: 0.85,
+    yearsUsed: 1,
+    projectsUsed: 3,
+    displayInResume: true,
+  },
+  {
+    name: "Agentic AI Systems",
+    category: "systems",
+    proficiency: 0.75,
+    yearsUsed: 1,
+    projectsUsed: 2,
+    displayInResume: true,
+  },
 ];
 
 /**
