@@ -134,7 +134,7 @@ Triggered on push to `live-deploy` branch:
 
 ### Styling
 - Use Tailwind utility classes for styling
-- Custom fonts: Anurati (headings), Aspal, PoiretOne
+- Custom fonts: Anurati (headings), Aspal, PoiretOne, Caviar Dreams (body default)
 - Glassmorphic design with blur effects and gradients
 - Theme support via `next-themes`
 
@@ -159,6 +159,8 @@ Triggered on push to `live-deploy` branch:
 - Node.js-specific APIs (fs, path, os) in client/edge code
 - Dynamic imports that aren't Edge-compatible
 - Large server-side dependencies
+
+**Note**: The package.json incorrectly lists Node.js built-ins (child_process, fs, http, os, path) as dependencies. These should not be used in Edge Runtime code and ideally should be removed from dependencies.
 
 If you add new dependencies or server-side code:
 1. **Test with `npm run pages:build`** before committing
