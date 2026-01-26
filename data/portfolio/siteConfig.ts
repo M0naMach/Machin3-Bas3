@@ -3,46 +3,49 @@
  * Edit this file to update site-wide settings
  */
 
+// 1. IMPORT YOUR DATA SOURCES
+import { caseStudies } from "@/data/portfolio/caseStudies"; 
+// Assuming you have a skills file based on our Resume discussion:
+import { skills } from "@/data/portfolio/skills"; 
+
+// 2. CALCULATE THE NUMBERS
+const projectCount = caseStudies.filter(p => !p.tags.includes("Coming Soon")).length;
+const techCount = skills.length; // Or use a unique count of tags from projects if you prefer
+
 export const siteConfig = {
   // Brand Information
   brand: {
     name: "M0na Machin3",
     tagline: "M0na's Pr0ductivity M3tric",
-    logo: "Sparkles", // Lucide icon name
+    logo: "Sparkles", 
     available: true,
-    availabilityMessage: "Available for creative collaborations.",
+    availabilityMessage: "Status: Eagerly Idle. On Call for Craft, Code, & Collaboration.",
   },
 
-  // Navigation
-  navigation: [
-    { label: "Experiments", href: "#experiments" },
-    { label: "Extensions", href: "#extensions" },
-    { label: "Process", href: "#process" },
-    { label: "Resume", href: "#resume" },
-  ],
+  // ... [Navigation, Social, Categories remain the same] ...
 
-  // Social Links
-  social: [
-    { label: "Upwork", href: "#" },
-    { label: "GitHub", href: "#" },
-    { label: "LinkedIn", href: "#" },
-  ],
-
-  // Project Categories
-  categories: [
-    { id: "all", label: "All" },
-    { id: "coding", label: "Coding" },
-    { id: "craft", label: "Craft" },
-    { id: "compositions", label: "Compositions" },
-  ],
-
-  // Stats
+  // Stats (WIRED UP)
   stats: [
-    { label: "Refined Projects", value: "12+" },
-    { label: "Core Technologies", value: "18+" },
-    { label: "Awards & Recog", value: "04" },
-    { label: "Hours Crafted", value: "2.4k" },
+    { 
+      label: "Refined Projects", 
+      value: projectCount.toString() // Automatically counts your real projects
+    },
+    { 
+      label: "Core Technologies", 
+      value: techCount.toString() // Automatically counts your skills
+    },
+    { 
+      label: "Awards & Recog", 
+      value: "3" // Manual for now (Certs? Upwork completions? Keep this one manual)
+    },
+    { 
+      label: "Hours Crafted", 
+      value: "∞" // The "Mastery" number. Or use your "550k Words" metric?
+    },
   ],
+
+  // ... [View Modes remain the same] ...
+};
 
   // View Modes
   viewModes: [
