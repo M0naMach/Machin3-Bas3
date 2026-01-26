@@ -51,7 +51,7 @@ npm run pages:build
 ```
 ⏱️ Expected time: 60-120 seconds
 
-**DO NOT use `npm run build`** - it builds for standard Node.js runtime. The CI uses `pages:build` which creates an Edge Runtime-compatible build via `@cloudflare/next-on-pages`.
+**DO NOT use `npm run build`** - while `npm run build` creates a standard Next.js build, `pages:build` specifically transforms it for Cloudflare Pages Edge Runtime compatibility using `@cloudflare/next-on-pages`. The CI uses `pages:build` to ensure Edge Runtime compatibility.
 
 Output location: `.vercel/output/static/`
 
@@ -75,11 +75,17 @@ machin3-bas3/
 ├── app/                   # Next.js App Router pages
 │   ├── page.tsx          # Home page (main entry)
 │   ├── layout.tsx        # Root layout with fonts and theme
-│   ├── work/             # Work/portfolio section
+│   ├── api/              # API routes
+│   ├── work/             # Work section
+│   ├── portfolio/        # Portfolio projects
 │   ├── timeline/         # Project timeline page
+│   ├── vision/           # Vision/about page
+│   ├── services/         # Services page
+│   ├── readme/           # README documentation page
 │   ├── notion-setup/     # Notion integration setup
 │   ├── notion-migration/ # Notion migration tools
-│   └── command-nav-demo/ # Command palette demo
+│   ├── privacy/          # Privacy policy
+│   └── terms/            # Terms of service
 ├── components/
 │   ├── navigation/       # Command palette system (cmdk)
 │   ├── notion/          # Notion API integration components
