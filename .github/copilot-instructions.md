@@ -104,7 +104,8 @@ machin3-bas3/
 - **next.config.mjs**: Next.js configuration with image optimization disabled for static hosting
 - **tsconfig.json**: TypeScript config with strict mode, path aliases (`@/*`)
 - **.eslintrc.json**: Extends `next/core-web-vitals` and `next/typescript`
-- **tailwind.config.ts**: Tailwind CSS configuration (if exists)
+- **postcss.config.mjs**: PostCSS configuration with Tailwind CSS 4.x via `@tailwindcss/postcss`
+- **app/globals.css**: Global styles with Tailwind CSS 4.x imports (`@import "tailwindcss"`)
 - **components.json**: shadcn/ui component configuration
 - **wrangler.jsonc**: Cloudflare Workers/Pages configuration
 
