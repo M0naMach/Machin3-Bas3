@@ -71,7 +71,7 @@ machin3-bas3/
 │   │   ├── ci.yml         # PR validation (lint + pages:build)
 │   │   ├── deploy.yml     # Production deploy to Cloudflare
 │   │   └── node.js.yml    # Additional Node.js checks
-│   └── agents/            # Custom Copilot agents (DO NOT MODIFY)
+│   └── agents/            # Custom Copilot agents (managed separately)
 ├── app/                   # Next.js App Router pages
 │   ├── page.tsx          # Home page (main entry)
 │   ├── layout.tsx        # Root layout with fonts and theme
@@ -134,7 +134,7 @@ Triggered on push to `live-deploy` branch:
 
 ### Styling
 - Use Tailwind utility classes for styling
-- Custom fonts: Anurati (headings), Aspal, PoiretOne, Caviar Dreams (body default)
+- Custom fonts: Anurati (display/headings), Aspal, PoiretOne, Caviar Dreams (default body font)
 - Glassmorphic design with blur effects and gradients
 - Theme support via `next-themes`
 
@@ -160,7 +160,7 @@ Triggered on push to `live-deploy` branch:
 - Dynamic imports that aren't Edge-compatible
 - Large server-side dependencies
 
-**Note**: The package.json incorrectly lists Node.js built-ins (child_process, fs, http, os, path) as dependencies. These should not be used in Edge Runtime code and ideally should be removed from dependencies.
+**Note**: The package.json lists Node.js built-ins (child_process, fs, http, os, path) as dependencies. While these may be used in build scripts, avoid using them in Edge Runtime code (app/ routes, components).
 
 If you add new dependencies or server-side code:
 1. **Test with `npm run pages:build`** before committing
