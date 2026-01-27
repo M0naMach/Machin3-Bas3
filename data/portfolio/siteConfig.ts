@@ -22,7 +22,27 @@ export const siteConfig = {
     availabilityMessage: "Status: Eagerly Idle. On Call for Craft, Code, & Collaboration.",
   },
 
-  // ... [Navigation, Social, Categories remain the same] ...
+  // Navigation
+  navigation: [
+    { label: "Work", href: "#work" },
+    { label: "About", href: "#about" },
+    { label: "Contact", href: "#contact" },
+  ],
+
+  // Social Links
+  social: [
+    { label: "GitHub", href: "https://github.com/M0naMach" },
+    { label: "LinkedIn", href: "#" },
+    { label: "Twitter", href: "#" },
+  ],
+
+  // Categories
+  categories: [
+    { id: "all", label: "All" },
+    { id: "coding", label: "Code" },
+    { id: "craft", label: "Craft" },
+    { id: "compositions", label: "Compositions" },
+  ],
 
   // Stats (WIRED UP)
   stats: [
@@ -43,9 +63,6 @@ export const siteConfig = {
       value: "∞" // The "Mastery" number. Or use your "550k Words" metric?
     },
   ],
-
-  // ... [View Modes remain the same] ...
-};
 
   // View Modes
   viewModes: [
