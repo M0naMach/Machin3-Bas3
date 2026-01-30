@@ -1,4 +1,6 @@
 {
+  // Cloudflare Workers/Pages Configuration
+  // Custom Domain: audit.machin3.space (configured in Cloudflare Dashboard)
   "observability": {
     "enabled": false,
     "head_sampling_rate": 1,
