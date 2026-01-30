@@ -268,23 +268,42 @@ Once you're happy with your custom error pages:
 **A:** Yes, but you'll need to configure the domain in `next.config.mjs`. Local images are recommended.
 
 ### Q: What if I want different images for light/dark mode?
-**A:** You can conditionally render different images based on the theme! Here's an example:
+**A:** You can conditionally render different images based on the theme! 
+
+**For the error.tsx page (Client Component):**
 
 ```tsx
-import { useTheme } from "next-themes"
+"use client"
 
-export default function NotFound() {
-  const { theme } = useTheme()
+import { useTheme } from "next-themes"
+import { useEffect, useState } from "react"
+
+export default function Error({ error, reset }) {
+  const { theme, systemTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  
+  // Avoid hydration mismatch
+  useEffect(() => setMounted(true), [])
+  
+  if (!mounted) return null
+  
+  const currentTheme = theme === 'system' ? systemTheme : theme
   
   return (
     <Image 
-      src={theme === 'dark' ? '/error-dark.png' : '/error-light.png'}
+      src={currentTheme === 'dark' ? '/error-dark.png' : '/error-light.png'}
       alt="Error"
       width={500}
       height={500}
     />
   )
 }
+```
+
+**For not-found.tsx (Server Component):**
+Server Components can't use theme hooks directly. You have two options:
+1. Convert to a Client Component by adding `"use client"` at the top
+2. Use CSS to show/hide different images based on the `dark` class on the `<html>` element
 ```
 
 ## 🎯 Next Steps

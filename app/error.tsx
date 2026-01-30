@@ -2,6 +2,7 @@
 
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
+// Image component pre-imported for your convenience when adding custom artwork
 import Image from "next/image"
 
 export default function Error({

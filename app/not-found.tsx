@@ -1,4 +1,5 @@
 import Link from "next/link"
+// Image component pre-imported for your convenience when adding custom artwork
 import Image from "next/image"
 
 export default function NotFound() {
