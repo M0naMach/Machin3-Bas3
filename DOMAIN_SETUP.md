@@ -99,7 +99,10 @@ If you're seeing a 403 error:
 ### DNS Not Resolving
 1. Verify CNAME record in Cloudflare DNS settings
 2. Wait for DNS propagation (can take up to 48 hours, usually < 5 minutes)
-3. Clear local DNS cache: `sudo dnsflush` (macOS) or `ipconfig /flushdns` (Windows)
+3. Clear local DNS cache:
+   - macOS: `sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder`
+   - Windows: `ipconfig /flushdns`
+   - Linux: `sudo resolvectl flush-caches` (or `sudo systemd-resolve --flush-caches` on older systems)
 
 ### Deployment Failures
 1. Check GitHub Actions logs for errors
