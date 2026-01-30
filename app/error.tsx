@@ -2,6 +2,7 @@
 
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 
 export default function Error({
   error,
@@ -25,19 +26,38 @@ export default function Error({
       />
       
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
+        {/* 🎨 CUSTOMIZABLE: Add your own image here! 
+            Replace the commented section below with your custom artwork.
+            Supported formats: PNG, JPG, SVG, GIF, WebP
+            Example:
+            <div className="mb-8 flex justify-center">
+              <Image 
+                src="/your-custom-error-image.png" 
+                alt="Error" 
+                width={400} 
+                height={400}
+                className="w-full max-w-md"
+              />
+            </div>
+        */}
+        
         <div className="mb-8">
+          {/* 🎨 CUSTOMIZABLE: Change the heading text and styling */}
           <h1 className="font-title text-7xl md:text-[10rem] lg:text-[12rem] mb-6 tracking-wide opalescent-text leading-none">
             Error
           </h1>
+          {/* 🎨 CUSTOMIZABLE: Change the subtitle */}
           <p className="text-lg md:text-xl font-light text-foreground/90 mb-4">
             Something went wrong
           </p>
         </div>
 
+        {/* 🎨 CUSTOMIZABLE: Change the description text */}
         <p className="text-base md:text-lg font-light leading-relaxed text-foreground/80 mb-12">
           An unexpected error occurred. Don't worry, you can try again.
         </p>
 
+        {/* 🎨 CUSTOMIZABLE: Change button text and styling */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <button
             onClick={() => reset()}
