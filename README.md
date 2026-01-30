@@ -169,6 +169,8 @@ The custom domain `audit.machin3.space` is configured through:
 2. **Cloudflare Dashboard**: Custom domain added to project settings
 3. **SSL/TLS**: Automatic HTTPS via Cloudflare
 
+For detailed setup instructions and troubleshooting, see [DOMAIN_SETUP.md](./DOMAIN_SETUP.md).
+
 To verify deployment:
 \`\`\`bash
 # Check recent deployments
