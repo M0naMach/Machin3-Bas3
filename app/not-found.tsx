@@ -45,7 +45,7 @@ export default function NotFound() {
           <Link
             href="/work"
             className="px-8 py-4 rounded-lg font-medium text-lg
-                       transform hover:translate-y-[-2px]
+                       hover:opacity-90 transform hover:translate-y-[-2px]
                        transition-all duration-300 ease-out will-change-transform
                        relative border-2 cursor-pointer
                        terminal-glassmorphic border-primary/30 hover:border-primary/60 hover:shadow-[0_0_20px_rgba(184,83,9,0.3)]"

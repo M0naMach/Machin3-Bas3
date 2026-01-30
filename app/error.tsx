@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect } from "react"
+import { useRouter } from "next/navigation"
 
 export default function Error({
   error,
@@ -9,6 +10,8 @@ export default function Error({
   error: Error & { digest?: string }
   reset: () => void
 }) {
+  const router = useRouter()
+
   useEffect(() => {
     // Log the error to an error reporting service
     console.error(error)
@@ -56,9 +59,9 @@ export default function Error({
           </button>
 
           <button
-            onClick={() => (window.location.href = "/")}
+            onClick={() => router.push("/")}
             className="px-8 py-4 rounded-lg font-medium text-lg
-                       transform hover:translate-y-[-2px]
+                       hover:opacity-90 transform hover:translate-y-[-2px]
                        transition-all duration-300 ease-out will-change-transform
                        relative border-2 cursor-pointer
                        terminal-glassmorphic border-primary/30 hover:border-primary/60 hover:shadow-[0_0_20px_rgba(184,83,9,0.3)]"
