@@ -1,7 +1,8 @@
 "use client"
 
 import { CommandNavigation } from "@/components/navigation/command-navigation"
-import { ArrowLeft, Construction, HardHat } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 
 export default function VisionPage() {
@@ -21,14 +22,14 @@ export default function VisionPage() {
       <section className="relative min-h-screen flex items-center justify-center">
         <div className="text-center max-w-2xl mx-auto px-6">
           <div className="mb-8 flex justify-center">
-            <div className="relative">
-              <div className="w-32 h-32 rounded-2xl bg-yellow-500/20 border-4 border-yellow-500/60 border-dashed flex items-center justify-center rotate-3">
-                <Construction className="w-16 h-16 text-yellow-500" />
-              </div>
-              <div className="absolute -top-3 -right-3">
-                <HardHat className="w-10 h-10 text-yellow-600" />
-              </div>
-            </div>
+            <Image
+              src="/Under_Machin3_Construction03.png"
+              alt="Under Machin3 Construction"
+              width={600}
+              height={338}
+              className="rounded-2xl shadow-2xl border border-border"
+              priority
+            />
           </div>
 
           <h1 className="font-title text-5xl md:text-7xl mb-4 tracking-wide opalescent-text">
@@ -36,14 +37,6 @@ export default function VisionPage() {
           </h1>
 
           <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-border shadow-lg">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="h-1 w-8 bg-yellow-500 rounded-full" />
-              <span className="text-sm font-medium uppercase tracking-widest text-yellow-500">
-                Under Construction
-              </span>
-              <div className="h-1 w-8 bg-yellow-500 rounded-full" />
-            </div>
-
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto mb-6">
               This page is being remodeled to better reflect where we're heading.
               Check back soon for the updated vision.
@@ -55,19 +48,6 @@ export default function VisionPage() {
                   Return Home
                 </button>
               </Link>
-            </div>
-          </div>
-
-          {/* Decorative construction stripes */}
-          <div className="mt-12 flex justify-center">
-            <div className="flex gap-2">
-              {Array.from({ length: 7 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="w-3 h-8 bg-yellow-500/40 rounded-sm"
-                  style={{ transform: `skewX(-12deg)` }}
-                />
-              ))}
             </div>
           </div>
         </div>

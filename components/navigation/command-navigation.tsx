@@ -113,9 +113,9 @@ const CommandNavigation = () => {
           messageIndex++
         } else {
           clearInterval(bootInterval)
-          setTimeout(() => setBootSequence(false), 500)
+          setTimeout(() => setBootSequence(false), 150)
         }
-      }, 800)
+      }, 300)
 
       return () => clearInterval(bootInterval)
     } else {
