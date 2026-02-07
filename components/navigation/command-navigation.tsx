@@ -95,34 +95,11 @@ const CommandNavigation = () => {
   }, [isOpen])
 
   useEffect(() => {
-    if (isOpen) {
-      setBootSequence(true)
-      setBootText("")
-
-      const bootMessages = [
-        "Initializing M0na Machin3...",
-        "Loading neural pathways...",
-        "Establishing connection...",
-        "Ready for interaction.",
-      ]
-
-      let messageIndex = 0
-      const bootInterval = setInterval(() => {
-        if (messageIndex < bootMessages.length) {
-          setBootText(bootMessages[messageIndex])
-          messageIndex++
-        } else {
-          clearInterval(bootInterval)
-          setTimeout(() => setBootSequence(false), 150)
-        }
-      }, 300)
-
-      return () => clearInterval(bootInterval)
-    } else {
+    if (!isOpen) {
       setBootSequence(false)
       setBootText("")
     }
-  }, [isOpen]) // Removed bootSequence from dependencies to allow re-triggering
+  }, [isOpen])
 
   const commands: NavigationCommand[] = [
     {
