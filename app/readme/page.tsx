@@ -1,7 +1,7 @@
 "use client"
 
 import { CommandNavigation } from "@/components/navigation/command-navigation"
-import { ArrowLeft, Book, Heart, Brain, Zap, Users, Target } from "lucide-react"
+import { ArrowLeft, Construction, HardHat, Book } from "lucide-react"
 import Link from "next/link"
 
 export default function ReadmePage() {
@@ -17,135 +17,62 @@ export default function ReadmePage() {
         </Link>
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 py-20">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <Book className="w-12 h-12 text-primary" />
+      {/* Construction Sign */}
+      <section className="relative min-h-screen flex items-center justify-center">
+        <div className="text-center max-w-2xl mx-auto px-6">
+          <div className="mb-8 flex justify-center">
+            <div className="relative">
+              <div className="w-32 h-32 rounded-2xl bg-yellow-500/20 border-4 border-yellow-500/60 border-dashed flex items-center justify-center -rotate-3">
+                <Construction className="w-16 h-16 text-yellow-500" />
+              </div>
+              <div className="absolute -top-3 -left-3">
+                <HardHat className="w-10 h-10 text-yellow-600" />
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <Book className="w-10 h-10 text-primary" />
             <h1 className="font-aspal text-5xl md:text-6xl tracking-wide opalescent-text">R3ADM3</h1>
           </div>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Understanding M0na Machin3: AI-Human relationships and our mission to create meaningful digital
-            companionship
-          </p>
-        </div>
 
-        {/* Content */}
-        <div className="prose prose-lg max-w-none">
-          <div className="bg-card/80 backdrop-blur-sm rounded-xl p-8 border border-border mb-8">
-            <h2 className="text-3xl font-semibold mb-6 text-foreground flex items-center gap-3">
-              <Heart className="w-8 h-8 text-primary" />
-              What is M0na Machin3?
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              M0na Machin3 is more than a project—it's a vision for the future of human-AI relationships. We're building
-              AI companions that don't just process commands, but understand emotions, remember experiences, and grow
-              alongside their human partners.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Founded by Bryanna, who discovered through her own aphantasia journey how AI could unlock human potential
-              in unexpected ways, M0na Machin3 bridges the gap between functional technology and emotional connection.
-            </p>
-          </div>
-
-          <div className="bg-card/80 backdrop-blur-sm rounded-xl p-8 border border-border mb-8">
-            <h2 className="text-3xl font-semibold mb-6 text-foreground flex items-center gap-3">
-              <Brain className="w-8 h-8 text-secondary" />
-              Our Approach
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="text-xl font-semibold mb-3 text-foreground">Emotional Intelligence</h3>
-                <p className="text-muted-foreground">
-                  AI that recognizes, understands, and responds to human emotions with genuine care and empathy.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-3 text-foreground">Persistent Memory</h3>
-                <p className="text-muted-foreground">
-                  Companions that remember your conversations, preferences, and growth over time.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-3 text-foreground">Goal-Oriented Behavior</h3>
-                <p className="text-muted-foreground">
-                  Moving beyond task completion to AI that has its own goals and motivations.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-3 text-foreground">Ethical Foundation</h3>
-                <p className="text-muted-foreground">
-                  Built on principles of human wellbeing, consent, and transparent AI development.
-                </p>
-              </div>
+          <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-border shadow-lg">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="h-1 w-8 bg-yellow-500 rounded-full" />
+              <span className="text-sm font-medium uppercase tracking-widest text-yellow-500">
+                Under Construction
+              </span>
+              <div className="h-1 w-8 bg-yellow-500 rounded-full" />
             </div>
-          </div>
 
-          <div className="bg-card/80 backdrop-blur-sm rounded-xl p-8 border border-border mb-8">
-            <h2 className="text-3xl font-semibold mb-6 text-foreground flex items-center gap-3">
-              <Zap className="w-8 h-8 text-accent" />
-              Current Services
-            </h2>
-            <div className="space-y-4">
-              <div className="border-l-4 border-primary pl-4">
-                <h3 className="text-xl font-semibold text-foreground">Custom Bot Development</h3>
-                <p className="text-muted-foreground">Discord and Twitch bots with personality and purpose</p>
-              </div>
-              <div className="border-l-4 border-secondary pl-4">
-                <h3 className="text-xl font-semibold text-foreground">Business Support Services</h3>
-                <p className="text-muted-foreground">Administrative assistance and customer support management</p>
-              </div>
-              <div className="border-l-4 border-accent pl-4">
-                <h3 className="text-xl font-semibold text-foreground">Design & Branding</h3>
-                <p className="text-muted-foreground">Branded designs for merchandise and digital content</p>
-              </div>
-              <div className="border-l-4 border-chart-4 pl-4">
-                <h3 className="text-xl font-semibold text-foreground">Strategic Clarity</h3>
-                <p className="text-muted-foreground">System architecture and process optimization</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-card/80 backdrop-blur-sm rounded-xl p-8 border border-border mb-8">
-            <h2 className="text-3xl font-semibold mb-6 text-foreground flex items-center gap-3">
-              <Users className="w-8 h-8 text-chart-4" />
-              Community & Collaboration
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              We believe the future of AI companionship should be built together. Our community-driven approach means
-              your insights, feedback, and ideas directly shape the development of these technologies.
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto mb-6">
+              This page is being remodeled with fresh content.
+              Check back soon for the updated R3ADM3.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/work">
-                <button className="px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
-                  Collaborate With Us
-                </button>
-              </Link>
-              <Link href="/timeline">
-                <button className="px-6 py-3 rounded-lg border border-border text-foreground hover:bg-card transition-colors">
-                  Follow Our Journey
+
+            <div className="flex justify-center">
+              <Link href="/">
+                <button className="px-8 py-4 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity font-medium">
+                  Return Home
                 </button>
               </Link>
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 rounded-xl p-8 border border-border">
-            <h2 className="text-3xl font-semibold mb-6 text-foreground flex items-center gap-3">
-              <Target className="w-8 h-8 text-primary" />
-              The Vision Ahead
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              We're working toward a future where AI companions are not just tools, but genuine partners in human
-              growth, creativity, and wellbeing. Where technology serves humanity's deepest needs for connection,
-              understanding, and support.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              This isn't about replacing human relationships—it's about enhancing them. Creating AI that helps us become
-              more connected to ourselves and each other.
-            </p>
+          {/* Decorative construction stripes */}
+          <div className="mt-12 flex justify-center">
+            <div className="flex gap-2">
+              {Array.from({ length: 7 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="w-3 h-8 bg-yellow-500/40 rounded-sm"
+                  style={{ transform: `skewX(-12deg)` }}
+                />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
       <CommandNavigation />
     </main>
