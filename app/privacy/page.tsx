@@ -27,7 +27,7 @@ export default function PrivacyPage() {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Your privacy and data security are fundamental to everything we build at M0na Machin3
           </p>
-          <p className="text-sm text-muted-foreground mt-4">Last updated: January 2025</p>
+          <p className="text-sm text-muted-foreground mt-4">Last updated: January 2026</p>
         </div>
 
         {/* Content */}
@@ -151,7 +151,7 @@ export default function PrivacyPage() {
               If you have any questions about this Privacy Policy or how we handle your data, please don't hesitate to
               reach out. We're committed to transparency and will respond to all privacy-related inquiries promptly.
             </p>
-            <Link href="/work">
+            <Link href="/services">
               <button className="px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
                 Contact Us About Privacy
               </button>
