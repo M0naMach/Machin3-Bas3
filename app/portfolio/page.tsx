@@ -248,7 +248,7 @@ export default function PortfolioPage() {
         onClose={() => setSelectedCaseStudy(null)}
       />
 
-      <CommandNavigation />
+      <CommandNavigation compact />
     </div>
   );
 }
