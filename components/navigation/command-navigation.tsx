@@ -23,32 +23,6 @@ const dynamicPrompts = [
   "What story shall we discover?",
 ]
 
-const easterEggCommands = [
-  {
-    command: "hello",
-    label: "Hello, Human",
-    description: "Hello, human. Ready to connect?",
-    action: () => console.log("[v0] Easter egg: hello"),
-  },
-  {
-    command: "story",
-    label: "First Contact",
-    description: "The origin story of M0na Machin3",
-    action: () => console.log("[v0] Easter egg: story"),
-  },
-  {
-    command: "hope",
-    label: "Our Mission",
-    description: "A message about connection and possibility",
-    action: () => console.log("[v0] Easter egg: hope"),
-  },
-  {
-    command: "help",
-    label: "Let Me Guide You",
-    description: "I'm here to help you navigate",
-    action: () => console.log("[v0] Easter egg: help"),
-  },
-]
 
 const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -162,54 +136,6 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
       },
     },
     {
-      command: "journey",
-      label: "Our Journey",
-      description: "Explore the M0na Machin3 timeline and philosophy",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/timeline"
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
-    },
-    {
-      command: "vision",
-      label: "The Vision",
-      description: "Discover the future of human-AI connection",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/vision"
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
-    },
-    {
-      command: "work",
-      label: "Work With Me",
-      description: "Discover AI companion services and collaboration",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/work"
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
-    },
-    {
       command: "services",
       label: "Services",
       description: "View all available services and offerings",
@@ -225,7 +151,6 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
         setInput("")
       },
     },
-    ...easterEggCommands,
     {
       command: "readme",
       label: "README",
@@ -278,11 +203,8 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
 
   const filteredCommands = commands.filter((cmd) => {
     const searchTerm = input.toLowerCase()
-    if (searchTerm === "lost" || searchTerm === "timeline") return cmd.command === "journey"
-    if (searchTerm === "collaborate" || searchTerm === "partnership") return cmd.command === "work"
     if (searchTerm === "philosophy" || searchTerm === "mission") return cmd.command === "readme"
-    if (searchTerm === "future" || searchTerm === "ai" || searchTerm === "companion") return cmd.command === "vision"
-    if (searchTerm === "services" || searchTerm === "offerings") return cmd.command === "services"
+    if (searchTerm === "offerings") return cmd.command === "services"
 
     return (
       cmd.command.toLowerCase().includes(searchTerm) ||
@@ -551,7 +473,7 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
                       <div className="text-center py-8">
                         <div className="text-base mb-2 text-muted-foreground">No commands found</div>
                         <div className="text-sm text-muted-foreground">
-                          Try typing "work", "services", "readme", "hom3bas3", "journey", "vision", or discover hidden commands...
+                          Try typing "hom3bas3", "portfolio", "services", "readme", "privacy", or "terms"
                         </div>
                       </div>
                     )}
