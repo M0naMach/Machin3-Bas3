@@ -13,7 +13,9 @@ export interface CaseStudy {
   link?: string;
   github?: string;
   featured?: boolean;
-  displayMode?: "minimal" | "detailed" | "image-only"; // NEW: Control how card displays
+  displayMode?: "minimal" | "detailed" | "image-only";
+  overview?: string;
+  features?: string[];
 }
 
 interface CaseStudyCardProps {
