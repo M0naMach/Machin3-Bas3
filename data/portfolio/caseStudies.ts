@@ -97,7 +97,7 @@ export const caseStudies: CaseStudy[] = [
     tags: ["Digital Art", "Mixed Media", "Abstract", "0il C0ll3cti0n"],
     date: "Dec 2024",
     displayMode: "detailed",
-    overview: "This blunt request was my second artistic attempt with AI after discovering the fulfillment it gave me. For someone living with aphantasia, seeing simple statements molded to embody a vivid, fluidity that modeled your favorite kicks, gave way to pure curiosity of the possibilities. Experiencing visceral joy in finally seeing MY thoughts manifest in real time left a mark... that unknowingly became a stepping stone towards a career engineering AI and Software.",
+    overview: "This blunt request was my second artistic attempt with AI after discovering the fulfillment it gave me. For someone living with aphantasia, seeing simple statements molded to embody a vivid, fluidity that modeled your favorite kicks, gave way to pure curiosity of the possibilities. Experiencing visceral joy in finally seeing MY thoughts manifest in real time left a mark... that unknowingly became a stepping stone towards a career in AI and software engineering.",
     features: [
       "8 unique pieces exploring paint fluidity on iconic silhouettes",
       "Composed and curated from a single creative vision",
