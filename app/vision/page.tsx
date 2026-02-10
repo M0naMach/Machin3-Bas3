@@ -44,7 +44,7 @@ export default function VisionPage() {
             </p>
 
             <div className="flex justify-center">
-              <Button asChild size="lg" className="px-8 py-4 font-medium">
+              <Button asChild size="lg" className="font-medium">
                 <Link href="/">
                   Return Home
                 </Link>
