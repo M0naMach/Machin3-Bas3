@@ -47,12 +47,12 @@ export default function WorkPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="px-8 py-4 font-medium">
+              <Button asChild size="lg" className="font-medium">
                 <Link href="/">
                   Return Home
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="px-8 py-4 font-medium">
+              <Button asChild size="lg" variant="outline" className="font-medium">
                 <Link href="/services">
                   View Services
                 </Link>
