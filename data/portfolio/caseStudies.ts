@@ -100,7 +100,7 @@ export const caseStudies: CaseStudy[] = [
     overview: "This blunt request was my second artistic attempt with AI after discovering the fulfillment it gave me. For someone living with aphantasia, seeing simple statements molded to embody a vivid, fluidity that modeled your favorite kicks, gave way to pure curiosity of the possibilities. Experiencing visceral joy in finally seeing MY thoughts manifest in real time left a mark... that unknowingly became a stepping stone towards a career engineering AI and Software.",
     features: [
       "8 unique pieces exploring paint fluidity on iconic silhouettes",
-      "AI-generated art born from a two-word creative prompt",
+      "AI-generated art born from a single creative prompt",
       "Part of the 0il C0ll3cti0n series",
       "A personal milestone in the journey from aphantasia to visual creation",
     ],
