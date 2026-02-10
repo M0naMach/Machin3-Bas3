@@ -1,6 +1,7 @@
 "use client"
 
 import { CommandNavigation } from "@/components/navigation/command-navigation"
+import { Button } from "@/components/ui/button"
 import { ArrowLeft, Book } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -10,12 +11,12 @@ export default function ReadmePage() {
     <main className="min-h-screen bg-background">
       {/* Back Navigation */}
       <div className="absolute top-6 left-6 z-20">
-        <Link href="/">
-          <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card/80 backdrop-blur-sm border border-border text-foreground hover:bg-card transition-colors">
+        <Button asChild variant="outline" className="bg-card/80 backdrop-blur-sm hover:bg-card">
+          <Link href="/">
             <ArrowLeft className="w-4 h-4" />
             Back to Home
-          </button>
-        </Link>
+          </Link>
+        </Button>
       </div>
 
       {/* Construction Sign */}
@@ -44,11 +45,11 @@ export default function ReadmePage() {
             </p>
 
             <div className="flex justify-center">
-              <Link href="/">
-                <button className="px-8 py-4 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity font-medium">
+              <Button asChild size="lg" className="font-medium">
+                <Link href="/">
                   Return Home
-                </button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
