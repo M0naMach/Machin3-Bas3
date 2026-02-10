@@ -270,9 +270,12 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
 
   // Compact command item (no description, tighter spacing)
   const renderCompactCommand = (cmd: NavigationCommand, index: number) => (
-    <div
+    <button
       key={cmd.command}
-      className={`px-3 py-2 rounded-lg cursor-pointer transition-all duration-150 ${
+      type="button"
+      role="option"
+      aria-selected={index === selectedIndex}
+      className={`w-full px-3 py-2 rounded-lg cursor-pointer transition-all duration-150 text-left ${
         index === selectedIndex
           ? "bg-white/10 border border-white/20"
           : "hover:bg-white/5"
@@ -299,14 +302,17 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
           <kbd className="ml-auto px-1.5 py-0.5 bg-white/10 rounded text-xs backdrop-blur-sm text-muted-foreground">ENTER</kbd>
         )}
       </div>
-    </div>
+    </button>
   )
 
   // Full command item (with description)
   const renderFullCommand = (cmd: NavigationCommand, index: number) => (
-    <div
+    <button
       key={cmd.command}
-      className={`p-3 rounded-lg cursor-pointer transition-all duration-150 ${
+      type="button"
+      role="option"
+      aria-selected={index === selectedIndex}
+      className={`w-full p-3 rounded-lg cursor-pointer transition-all duration-150 text-left ${
         index === selectedIndex
           ? "bg-white/10 border border-white/20 shadow-lg backdrop-blur-sm"
           : "hover:bg-white/5 hover:backdrop-blur-sm"
@@ -342,7 +348,7 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
           </div>
         )}
       </div>
-    </div>
+    </button>
   )
 
   return (
@@ -399,7 +405,7 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
 
             {/* Compact command list */}
             <div className="max-h-64 overflow-y-auto p-2">
-              <div className="space-y-1">
+              <div className="space-y-1" role="listbox" aria-label="Navigation commands">
                 {filteredCommands.length > 0 ? (
                   filteredCommands.map((cmd, index) => renderCompactCommand(cmd, index))
                 ) : (
@@ -466,7 +472,7 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
                     </div>
                   </div>
                 ) : (
-                  <div className="space-y-2">
+                  <div className="space-y-2" role="listbox" aria-label="Navigation commands">
                     {filteredCommands.length > 0 ? (
                       filteredCommands.map((cmd, index) => renderFullCommand(cmd, index))
                     ) : (
