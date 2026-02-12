@@ -1,6 +1,7 @@
 "use client"
 
 import { CommandNavigation } from "@/components/navigation/command-navigation"
+import { Button } from "@/components/ui/button"
 import { ArrowLeft, FileText, Scale, Handshake, AlertTriangle, Gavel, Heart } from "lucide-react"
 import Link from "next/link"
 
@@ -9,12 +10,12 @@ export default function TermsPage() {
     <main className="min-h-screen bg-background">
       {/* Back Navigation */}
       <div className="absolute top-6 left-6 z-20">
-        <Link href="/">
-          <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card/80 backdrop-blur-sm border border-border text-foreground hover:bg-card transition-colors">
+        <Button asChild variant="outline" className="bg-card/80 backdrop-blur-sm hover:bg-card">
+          <Link href="/">
             <ArrowLeft className="w-4 h-4" />
             Back to Home
-          </button>
-        </Link>
+          </Link>
+        </Button>
       </div>
 
       <div className="max-w-4xl mx-auto px-6 py-20">
@@ -27,7 +28,7 @@ export default function TermsPage() {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Clear, fair terms that protect both you and M0na Machin3 as we build the future of AI companionship together
           </p>
-          <p className="text-sm text-muted-foreground mt-4">Last updated: January 2025</p>
+          <p className="text-sm text-muted-foreground mt-4">Last updated: January 2026</p>
         </div>
 
         {/* Content */}
@@ -171,11 +172,11 @@ export default function TermsPage() {
               We're here to help. If anything in these terms is unclear or if you have suggestions for improvement,
               please don't hesitate to reach out.
             </p>
-            <Link href="/work">
-              <button className="px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
+            <Button asChild>
+              <Link href="/services">
                 Contact Us
-              </button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </div>
       </div>

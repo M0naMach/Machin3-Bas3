@@ -1,5 +1,4 @@
 import CommandNavigation from '@/components/navigation/command-navigation'
-import { Footer } from '@/components/footer'
 
 export const metadata = {
   title: 'Services - M0na Machin3',
@@ -230,7 +229,6 @@ export default function ServicesPage() {
         </div>
       </div>
 
-      <Footer />
     </main>
   )
 }

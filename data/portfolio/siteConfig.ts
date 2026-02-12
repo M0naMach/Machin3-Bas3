@@ -24,9 +24,9 @@ export const siteConfig = {
 
   // Navigation
   navigation: [
-    { label: "Work", href: "#work" },
-    { label: "About", href: "#about" },
-    { label: "Contact", href: "#contact" },
+    { label: "Home", href: "/" },
+    { label: "Services", href: "/services" },
+    { label: "README", href: "/readme" },
   ],
 
   // Social Links

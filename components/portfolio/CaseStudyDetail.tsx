@@ -102,40 +102,37 @@ export function CaseStudyDetail({ caseStudy, open, onClose }: CaseStudyDetailPro
             {/* Project Details */}
             <div className="grid md:grid-cols-2 gap-12 border-t border-emerald-900/30 pt-12">
               <div className="space-y-8">
-                <div>
-                  <h3 className="text-xs font-black uppercase tracking-[0.3em] text-emerald-500 mb-4">Project Overview</h3>
-                  <p className="text-emerald-100/40 leading-relaxed font-light">
-                    This {caseStudy.category} project showcases {caseStudy.tags.join(", ")}. 
-                    It demonstrates advanced techniques and creative solutions to complex challenges, 
-                    pushing the boundaries of what's possible in modern web development and design.
-                  </p>
-                </div>
+                {caseStudy.overview && (
+                  <div>
+                    <h3 className="text-xs font-black uppercase tracking-[0.3em] text-emerald-500 mb-4">Project Overview</h3>
+                    <p className="text-emerald-100/40 leading-relaxed font-light">
+                      {caseStudy.overview}
+                    </p>
+                  </div>
+                )}
 
-                <div>
-                  <h3 className="text-xs font-black uppercase tracking-[0.3em] text-emerald-500 mb-4">Key Features</h3>
-                  <ul className="space-y-3 text-emerald-100/40">
-                    {[
-                      "Responsive and mobile-first design approach",
-                      "Modern tech stack with cutting-edge frameworks",
-                      "Optimized performance and accessibility",
-                      "Clean, maintainable, and scalable codebase"
-                    ].map((feature, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-2 shadow-[0_0_10px_rgba(16,185,129,0.8)]" />
-                        <span className="font-light">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {caseStudy.features && caseStudy.features.length > 0 && (
+                  <div>
+                    <h3 className="text-xs font-black uppercase tracking-[0.3em] text-emerald-500 mb-4">Key Features</h3>
+                    <ul className="space-y-3 text-emerald-100/40">
+                      {caseStudy.features.map((feature, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-2 shadow-[0_0_10px_rgba(16,185,129,0.8)]" />
+                          <span className="font-light">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
 
               <div>
                 <h3 className="text-xs font-black uppercase tracking-[0.3em] text-emerald-500 mb-4">Technical Stack</h3>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="flex flex-wrap gap-3">
                   {caseStudy.tags.map((tag, index) => (
                     <div
                       key={index}
-                      className="p-4 bg-emerald-950/40 rounded-xl text-center border border-emerald-900/50 text-emerald-300 text-[11px] font-bold uppercase tracking-widest"
+                      className="px-4 py-3 bg-emerald-950/40 rounded-xl text-center border border-emerald-900/50 text-emerald-300 text-[11px] font-bold uppercase tracking-widest"
                     >
                       {tag}
                     </div>

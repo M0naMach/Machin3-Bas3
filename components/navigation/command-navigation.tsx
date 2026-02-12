@@ -10,6 +10,10 @@ interface NavigationCommand {
   action: () => void
 }
 
+interface CommandNavigationProps {
+  compact?: boolean
+}
+
 const dynamicPrompts = [
   "Where does your curiosity lead?",
   "What brings you here today?",
@@ -19,34 +23,8 @@ const dynamicPrompts = [
   "What story shall we discover?",
 ]
 
-const easterEggCommands = [
-  {
-    command: "hello",
-    label: "Hello, Human",
-    description: "Hello, human. Ready to connect?",
-    action: () => console.log("[v0] Easter egg: hello"),
-  },
-  {
-    command: "story",
-    label: "First Contact",
-    description: "The origin story of M0na Machin3",
-    action: () => console.log("[v0] Easter egg: story"),
-  },
-  {
-    command: "hope",
-    label: "Our Mission",
-    description: "A message about connection and possibility",
-    action: () => console.log("[v0] Easter egg: hope"),
-  },
-  {
-    command: "help",
-    label: "Let Me Guide You",
-    description: "I'm here to help you navigate",
-    action: () => console.log("[v0] Easter egg: help"),
-  },
-]
 
-const CommandNavigation = () => {
+const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const [input, setInput] = useState("")
   const [selectedIndex, setSelectedIndex] = useState(0)
@@ -72,7 +50,7 @@ const CommandNavigation = () => {
   useEffect(() => {
     try {
       if (typeof document !== "undefined" && document.body) {
-        if (isOpen) {
+        if (isOpen && !compact) {
           document.body.style.overflow = "hidden"
         } else {
           document.body.style.overflow = "unset"
@@ -92,10 +70,10 @@ const CommandNavigation = () => {
       // Fail silently for accessibility tools
       return () => {}
     }
-  }, [isOpen])
+  }, [isOpen, compact])
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && !compact) {
       setBootSequence(true)
       setBootText("")
 
@@ -113,16 +91,16 @@ const CommandNavigation = () => {
           messageIndex++
         } else {
           clearInterval(bootInterval)
-          setTimeout(() => setBootSequence(false), 500)
+          setTimeout(() => setBootSequence(false), 150)
         }
-      }, 800)
+      }, 300)
 
       return () => clearInterval(bootInterval)
     } else {
       setBootSequence(false)
       setBootText("")
     }
-  }, [isOpen]) // Removed bootSequence from dependencies to allow re-triggering
+  }, [isOpen, compact])
 
   const commands: NavigationCommand[] = [
     {
@@ -158,54 +136,6 @@ const CommandNavigation = () => {
       },
     },
     {
-      command: "journey",
-      label: "Our Journey",
-      description: "Explore the M0na Machin3 timeline and philosophy",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/timeline"
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
-    },
-    {
-      command: "vision",
-      label: "The Vision",
-      description: "Discover the future of human-AI connection",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/vision"
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
-    },
-    {
-      command: "work",
-      label: "Work With Me",
-      description: "Discover AI companion services and collaboration",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/work"
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
-    },
-    {
       command: "services",
       label: "Services",
       description: "View all available services and offerings",
@@ -221,7 +151,6 @@ const CommandNavigation = () => {
         setInput("")
       },
     },
-    ...easterEggCommands,
     {
       command: "readme",
       label: "README",
@@ -274,11 +203,8 @@ const CommandNavigation = () => {
 
   const filteredCommands = commands.filter((cmd) => {
     const searchTerm = input.toLowerCase()
-    if (searchTerm === "lost" || searchTerm === "timeline") return cmd.command === "journey"
-    if (searchTerm === "collaborate" || searchTerm === "partnership") return cmd.command === "work"
     if (searchTerm === "philosophy" || searchTerm === "mission") return cmd.command === "readme"
-    if (searchTerm === "future" || searchTerm === "ai" || searchTerm === "companion") return cmd.command === "vision"
-    if (searchTerm === "services" || searchTerm === "offerings") return cmd.command === "services"
+    if (searchTerm === "offerings") return cmd.command === "services"
 
     return (
       cmd.command.toLowerCase().includes(searchTerm) ||
@@ -342,6 +268,97 @@ const CommandNavigation = () => {
     }
   }, [isOpen])
 
+  // Compact command item (no description, tighter spacing)
+  const renderCompactCommand = (cmd: NavigationCommand, index: number) => {
+    const optionId = `compact-option-${cmd.command}`
+    return (
+      <button
+        key={cmd.command}
+        id={optionId}
+        type="button"
+        role="option"
+        aria-selected={index === selectedIndex}
+        className={`w-full px-3 py-2 rounded-lg cursor-pointer transition-all duration-150 text-left ${
+          index === selectedIndex
+            ? "bg-white/10 border border-white/20"
+            : "hover:bg-white/5"
+        }`}
+        onClick={cmd.action}
+      >
+        <div className="flex items-center gap-3">
+          <span
+            className="font-mono text-xs px-1.5 py-0.5 rounded shadow-sm"
+            style={{
+              backgroundColor: "oklch(0.4572 0.1828 10.2)",
+              color: "oklch(0.9779 0.02 100.44)",
+            }}
+          >
+            {cmd.command}
+          </span>
+          <span
+            className="font-semibold text-sm font-terminal"
+            style={{ color: "oklch(0.4572 0.1828 10.2)" }}
+          >
+            {cmd.label}
+          </span>
+          {index === selectedIndex && (
+            <kbd className="ml-auto px-1.5 py-0.5 bg-white/10 rounded text-xs backdrop-blur-sm text-muted-foreground">ENTER</kbd>
+          )}
+        </div>
+      </button>
+    )
+  }
+
+  // Full command item (with description)
+  const renderFullCommand = (cmd: NavigationCommand, index: number) => {
+    const optionId = `full-option-${cmd.command}`
+    return (
+      <button
+        key={cmd.command}
+        id={optionId}
+        type="button"
+        role="option"
+        aria-selected={index === selectedIndex}
+        className={`w-full p-3 rounded-lg cursor-pointer transition-all duration-150 text-left ${
+          index === selectedIndex
+            ? "bg-white/10 border border-white/20 shadow-lg backdrop-blur-sm"
+            : "hover:bg-white/5 hover:backdrop-blur-sm"
+        }`}
+        onClick={cmd.action}
+      >
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <span
+              className="font-mono text-xs px-1.5 py-0.5 rounded shadow-sm"
+              style={{
+                backgroundColor: "oklch(0.4572 0.1828 10.2)",
+                color: "oklch(0.9779 0.02 100.44)",
+              }}
+            >
+              {cmd.command}
+            </span>
+          </div>
+          <div className="flex-1">
+            <div
+              className="font-semibold text-base font-terminal"
+              style={{ color: "oklch(0.4572 0.1828 10.2)" }}
+            >
+              {cmd.label}
+            </div>
+            <div className="text-sm mt-1" style={{ color: "oklch(0.9779 0.02 100.44)" }}>
+              {cmd.description}
+            </div>
+          </div>
+          {index === selectedIndex && (
+            <div className="text-sm text-muted-foreground">
+              <kbd className="px-2 py-1 bg-white/10 rounded text-xs backdrop-blur-sm">ENTER</kbd>
+            </div>
+          )}
+        </div>
+      </button>
+    )
+  }
+
   return (
     <>
       {/* Trigger Input */}
@@ -365,8 +382,66 @@ const CommandNavigation = () => {
         </div>
       </div>
 
-      {/* Command Popup Modal */}
-      {isOpen && (
+      {/* Compact Spotlight Mode */}
+      {compact && isOpen && (
+        <div className="fixed bottom-20 left-1/2 transform -translate-x-1/2 z-[9999] w-full max-w-md px-4">
+          <div
+            className="absolute inset-0 -top-[100vh] -left-[100vw] -right-[100vw]"
+            onClick={() => setIsOpen(false)}
+          />
+          <div className="relative terminal-glassmorphic rounded-xl overflow-hidden shadow-2xl border border-primary/20">
+            {/* Input */}
+            <div className="p-3 border-b border-white/10">
+              <div className="flex items-center gap-2 text-sm">
+                <span className="font-mono text-xs px-1.5 py-0.5 rounded shadow-sm bg-primary text-primary-foreground">
+                  $
+                </span>
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={input}
+                  onChange={(e) => {
+                    setInput(e.target.value)
+                    setSelectedIndex(0)
+                  }}
+                  placeholder="Navigate to..."
+                  className="flex-1 bg-transparent border-none outline-none text-sm font-mono text-[rgba(0,255,205,1)]"
+                  role="combobox"
+                  aria-expanded="true"
+                  aria-controls="compact-command-listbox"
+                  aria-activedescendant={
+                    filteredCommands[selectedIndex]
+                      ? `compact-option-${filteredCommands[selectedIndex].command}`
+                      : undefined
+                  }
+                />
+                <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-xs text-muted-foreground">ESC</kbd>
+              </div>
+            </div>
+
+            {/* Compact command list */}
+            <div className="max-h-64 overflow-y-auto p-2">
+              <div
+                id="compact-command-listbox"
+                className="space-y-1"
+                role="listbox"
+                aria-label="Navigation commands"
+              >
+                {filteredCommands.length > 0 ? (
+                  filteredCommands.map((cmd, index) => renderCompactCommand(cmd, index))
+                ) : (
+                  <div className="text-center py-4 text-sm text-muted-foreground">
+                    No commands found
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Full Modal Mode */}
+      {!compact && isOpen && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/30 backdrop-blur-md" onClick={() => setIsOpen(false)} />
 
@@ -402,6 +477,14 @@ const CommandNavigation = () => {
                       }}
                       placeholder={currentPrompt}
                       className="flex-1 bg-transparent border-none outline-none text-base font-mono text-[rgba(0,255,205,1)]"
+                      role="combobox"
+                      aria-expanded="true"
+                      aria-controls="full-command-listbox"
+                      aria-activedescendant={
+                        filteredCommands[selectedIndex]
+                          ? `full-option-${filteredCommands[selectedIndex].command}`
+                          : undefined
+                      }
                     />
                     <span className="command-prompt-blink text-base text-primary">|</span>
                   </div>
@@ -418,54 +501,19 @@ const CommandNavigation = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="space-y-2">
+                  <div
+                    id="full-command-listbox"
+                    className="space-y-2"
+                    role="listbox"
+                    aria-label="Navigation commands"
+                  >
                     {filteredCommands.length > 0 ? (
-                      filteredCommands.map((cmd, index) => (
-                        <div
-                          key={cmd.command}
-                          className={`p-3 rounded-lg cursor-pointer transition-all duration-150 ${
-                            index === selectedIndex
-                              ? "bg-white/10 border border-white/20 shadow-lg backdrop-blur-sm"
-                              : "hover:bg-white/5 hover:backdrop-blur-sm"
-                          }`}
-                          onClick={cmd.action}
-                        >
-                          <div className="flex items-center gap-3">
-                            <div className="flex items-center gap-2">
-                              <span
-                                className="font-mono text-xs px-1.5 py-0.5 rounded shadow-sm"
-                                style={{
-                                  backgroundColor: "oklch(0.4572 0.1828 10.2)",
-                                  color: "oklch(0.9779 0.02 100.44)",
-                                }}
-                              >
-                                {cmd.command}
-                              </span>
-                            </div>
-                            <div className="flex-1">
-                              <div
-                                className="font-semibold text-base font-terminal"
-                                style={{ color: "oklch(0.4572 0.1828 10.2)" }}
-                              >
-                                {cmd.label}
-                              </div>
-                              <div className="text-sm mt-1" style={{ color: "oklch(0.9779 0.02 100.44)" }}>
-                                {cmd.description}
-                              </div>
-                            </div>
-                            {index === selectedIndex && (
-                              <div className="text-sm text-muted-foreground">
-                                <kbd className="px-2 py-1 bg-white/10 rounded text-xs backdrop-blur-sm">ENTER</kbd>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      ))
+                      filteredCommands.map((cmd, index) => renderFullCommand(cmd, index))
                     ) : (
                       <div className="text-center py-8">
                         <div className="text-base mb-2 text-muted-foreground">No commands found</div>
                         <div className="text-sm text-muted-foreground">
-                          Try typing "work", "services", "readme", "hom3bas3", "journey", "vision", or discover hidden commands...
+                          Try typing "hom3bas3", "portfolio", "services", "readme", "privacy", or "terms"
                         </div>
                       </div>
                     )}

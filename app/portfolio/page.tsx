@@ -2,24 +2,19 @@
 
 import { useState } from "react";
 import { motion } from "motion/react";
-import { Sparkles, LayoutGrid, Clock, Maximize, Zap, Flame, Leaf, Droplet } from "lucide-react";
+import { Sparkles, LayoutGrid, Clock, Maximize } from "lucide-react";
 import { CaseStudyHero } from "@/components/portfolio/CaseStudyHero";
-import { CaseStudyGrid } from "@/components/portfolio/CaseStudyGrid";
-import { CaseStudyCarousel } from "@/components/portfolio/CaseStudyCarousel";
 import { CaseStudyTimeline } from "@/components/portfolio/CaseStudyTimeline";
 import { CaseStudyBentoGrid } from "@/components/portfolio/CaseStudyBentoGrid";
 import { CaseStudyJustifiedGrid } from "@/components/portfolio/CaseStudyJustifiedGrid";
 import { CaseStudyDetail } from "@/components/portfolio/CaseStudyDetail";
 import { CaseStudy } from "@/components/portfolio/CaseStudyCard";
-import { OpalCard } from "@/components/portfolio/OpalCard";
-import { OpalCardGrid } from "@/components/portfolio/OpalCardGrid";
 import { ResumeSection } from "@/components/portfolio/ResumeSection";
 import { ThemeToggle } from "@/components/portfolio/ThemeToggle";
+import { CommandNavigation } from "@/components/navigation/command-navigation";
 import { siteConfig } from "@/data/portfolio/siteConfig";
 import { caseStudies } from "@/data/portfolio/caseStudies";
-import { opalShowcase } from "@/data/portfolio/opalShowcase";
 
-// Force rebuild - Jan 23, 2026
 export default function PortfolioPage() {
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy | null>(null);
   const [activeCategory, setActiveCategory] = useState("all");
@@ -31,18 +26,6 @@ export default function PortfolioPage() {
       : caseStudies.filter((cs) => cs.category === activeCategory);
 
   const featuredCaseStudy = caseStudies.find((cs) => cs.featured);
-
-  // Icon mapping for dynamic icon rendering
-  const iconMap: Record<string, any> = {
-    Sparkles,
-    LayoutGrid,
-    Maximize,
-    Clock,
-    Zap,
-    Flame,
-    Leaf,
-    Droplet,
-  };
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-500 font-sans selection:bg-primary/30">
@@ -207,79 +190,6 @@ export default function PortfolioPage() {
           )}
         </motion.div>
 
-        {/* Opal Cards Showcase Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-32 mb-32"
-        >
-          <div className="text-center mb-12">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl font-bold mb-4 bg-gradient-to-r from-emerald-400 via-primary to-emerald-300 bg-clip-text text-transparent"
-            >
-              Opaline Components
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-emerald-400/70 text-sm tracking-wide"
-            >
-              Iridescent UI modules with copper accents and emerald-tinted glassmorphism
-            </motion.p>
-          </div>
-
-          <OpalCardGrid title="Opal Interface Modules">
-            <OpalCard
-              title="Cleymmire"
-              tag="Eff68"
-              description="Cinone style Opal Fire sompraste tinod Preacrourso ant ertho tpseou."
-              actionLabel="Gave"
-              onAction={() => console.log("Gave clicked")}
-              icon={Flame}
-              size="medium"
-              copperAccent
-            />
-
-            <OpalCard
-              title="Tlapper"
-              tag="Gleaknpe"
-              size="medium"
-              icon={Zap}
-              decorative
-              copperAccent
-              opalTexture={opalShowcase.getOpalTexture(1)}
-              copperTexture={opalShowcase.getCopperTexture(2)}
-            />
-
-            <OpalCard
-              title="Gusesse Aiiny"
-              description="Whenna groups opally Ciocjea opnaind you preecoung orient yrom granit silyera aoule.ad sour stermey fonmericad."
-              actionLabel="Gicw"
-              onAction={() => console.log("Gicw clicked")}
-              icon={Leaf}
-              size="medium"
-              decorative
-            />
-
-            <OpalCard
-              title="Buspercs"
-              description="Diary ont Claneinne style Oiercal Fire a sompeaning the peice duffnopal exercital"
-              size="medium"
-              icon={Droplet}
-              decorative
-              copperAccent
-              accentBarTexture={opalShowcase.getCopperTexture(0)}
-            />
-          </OpalCardGrid>
-        </motion.div>
-
         {/* Stats Section with Emerald Theme */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -337,6 +247,8 @@ export default function PortfolioPage() {
         open={selectedCaseStudy !== null}
         onClose={() => setSelectedCaseStudy(null)}
       />
+
+      <CommandNavigation compact />
     </div>
   );
 }
