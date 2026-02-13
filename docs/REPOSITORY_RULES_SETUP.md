@@ -210,8 +210,8 @@ See `.github/rulesets/README.md` for detailed customization options including:
 ## Additional Resources
 
 - [GitHub Rulesets Documentation](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets)
-- [CI Workflow](.github/workflows/ci.yml) - See what checks run
-- [Deploy Workflow](.github/workflows/deploy.yml) - See deployment process
+- [CI Workflow](../.github/workflows/ci.yml) - See what checks run
+- [Deploy Workflow](../.github/workflows/deploy.yml) - See deployment process
 
 ---
 
