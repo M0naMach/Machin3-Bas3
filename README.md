@@ -111,6 +111,17 @@ pnpm start        # Start production server
 pnpm lint         # Run ESLint
 \`\`\`
 
+### Repository Governance
+
+This repository uses GitHub Rulesets to maintain code quality and protect important branches. See the [Repository Rules Setup Guide](docs/REPOSITORY_RULES_SETUP.md) for:
+
+- Branch protection configuration
+- Required status checks (CI/CD)
+- Pull request review requirements
+- How to apply rulesets to your repository
+
+Pre-configured ruleset templates are available in [`.github/rulesets/`](.github/rulesets/).
+
 ### Key Dependencies
 - `next` - React framework
 - `@radix-ui/*` - Accessible UI primitives
