@@ -78,5 +78,5 @@ After applying, test by:
 ---
 
 For complete details, see:
-- [Setup Guide](../docs/REPOSITORY_RULES_SETUP.md)
+- [Setup Guide](../../docs/REPOSITORY_RULES_SETUP.md)
 - [Technical Reference](README.md)
