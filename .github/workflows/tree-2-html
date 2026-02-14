@@ -1,0 +1,35 @@
+name: Generate Repo Tree HTML
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  tree:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # For auto-commit
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Full history if needed
+
+    - name: Install tree command
+      run: sudo apt-get update && sudo apt-get install -y tree
+
+    - name: Generate tree.html
+      run: |
+        tree -H . -o tree.html \
+          --dirsfirst \
+          --filelimit 20 \
+          --noreport \
+          --charset UTF-8
+
+    - name: Commit tree.html
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: 'docs: update repo tree visualization [skip ci]'
+        file_pattern: tree.html
