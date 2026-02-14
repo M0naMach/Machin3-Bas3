@@ -16,7 +16,7 @@ Protects the `main` branch with the following rules:
   - Branches must be up to date before merging
 - **Prevent Deletion**: Main branch cannot be deleted
 - **Prevent Force Push**: Force pushes are blocked
-- **Linear History**: Merge commits required (no fast-forward merges)
+- **Linear History**: Merge commits are prevented (rebase or squash required)
 
 **Bypass**: Repository administrators can bypass these rules
 
