@@ -33,7 +33,7 @@ Protects the `live-deploy` branch with stricter rules:
   - Branches must be up to date before merging
 - **Prevent Deletion**: Deploy branch cannot be deleted
 - **Prevent Force Push**: Force pushes are blocked
-- **Linear History**: Merge commits required
+- **Linear History**: Merge commits are prevented (rebase or squash required)
 
 **Bypass**: Repository administrators can bypass these rules
 
@@ -92,7 +92,7 @@ gh api repos/M0naMach/Machin3-Bas3/rulesets \
 - **`required_status_checks`**: Requires specific CI checks to pass
 - **`deletion`**: Prevents branch deletion
 - **`non_fast_forward`**: Prevents force pushes
-- **`required_linear_history`**: Enforces merge commits
+- **`required_linear_history`**: Prevents merge commits, requires linear history (rebase/squash only)
 
 ### Bypass Actors
 
