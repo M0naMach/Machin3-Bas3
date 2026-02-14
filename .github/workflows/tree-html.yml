@@ -6,14 +6,18 @@ on:
   pull_request:
     branches: [ 0G, OG ]
 
+permissions:
+  contents: read
+
 jobs:
   tree:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # For auto-commit
+      contents: write  # Required for auto-commit
+      
     steps:
     - name: Checkout repo
-      uses: actions/checkout@v4
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       with:
         fetch-depth: 0  # Full history if needed
 
@@ -29,7 +33,7 @@ jobs:
           --charset UTF-8
 
     - name: Commit tree.html
-      uses: stefanzweifel/git-auto-commit-action@v5
+      uses: stefanzweifel/git-auto-commit-action@8621497c8c39c72f3e2a999a26b4ca1b5058a842 # v5.0.1
       with:
         commit_message: 'docs: update repo tree visualization [skip ci]'
         file_pattern: tree.html
