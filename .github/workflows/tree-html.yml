@@ -2,9 +2,9 @@ name: Generate Repo Tree HTML
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ 0G, OG ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ 0G, OG ]
 
 jobs:
   tree:
