@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-02-26T15:19:17Z",
+  "event": "session_start",
+  "governance_level": "standard",
+  "cwd": "/home/runner/work/Machin3-Bas3/Machin3-Bas3"
+}
+{
+  "timestamp": "2026-02-26T15:19:17Z",
+  "event": "prompt_scanned",
+  "governance_level": "standard",
+  "status": "clean"
+}
