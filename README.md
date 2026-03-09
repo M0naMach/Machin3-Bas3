@@ -111,6 +111,16 @@ pnpm start        # Start production server
 pnpm lint         # Run ESLint
 \`\`\`
 
+### GitHub Copilot Agents
+
+This repository ships 34 custom GitHub Copilot agents for specialised AI assistance. See the [Using Copilot Agents guide](docs/USING-COPILOT-AGENTS.md) to learn:
+
+- How to open and select an agent in VS Code or GitHub.com
+- Which agent to use for each type of task
+- Tips for chaining agents together effectively
+
+Agent files live in [`.github/agents/`](.github/agents/).
+
 ### Repository Governance
 
 This repository uses GitHub Rulesets to maintain code quality and protect important branches. See the [Repository Rules Setup Guide](docs/REPOSITORY_RULES_SETUP.md) for:
