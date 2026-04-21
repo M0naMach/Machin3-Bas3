@@ -35,6 +35,7 @@ jobs:
         env:
           # Add any build-time env vars here
           NODE_ENV: production
+          NEXT_PUBLIC_PORTFOLIO_URL: "https://p0rtf0li0-spac3.m0nalisa.workers.dev"
 
       - name: Publish to Cloudflare Pages
         id: cloudflare
