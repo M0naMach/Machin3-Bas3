@@ -100,7 +100,7 @@ export const caseStudies: CaseStudy[] = [
     overview: "This blunt request was my second artistic attempt with AI after discovering the fulfillment it gave me. For someone living with aphantasia, seeing simple statements molded to embody a vivid, fluidity that modeled your favorite kicks, gave way to pure curiosity of the possibilities. Experiencing visceral joy in finally seeing MY thoughts manifest in real time left a mark... that unknowingly became a stepping stone towards a career in AI and software engineering.",
     features: [
       "8 cohesive pieces exploring paint fluidity on favorite means of transportation",
-      "Material Phase-Shift: Overrides the standard AI bias of "wrapping" an object in liquid. This feature ensures the underlying geometry actually dissolves into the pigment flow.",
+      'Material Phase-Shift: Overrides the standard AI bias of "wrapping" an object in liquid. This feature ensures the underlying geometry actually dissolves into the pigment flow.',
       "One of many series in 0il C0ll3cti0n",
       "A personal milestone from curiosity to career",
     ],

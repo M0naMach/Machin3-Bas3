@@ -111,6 +111,16 @@ pnpm start        # Start production server
 pnpm lint         # Run ESLint
 \`\`\`
 
+### Portfolio Routing
+
+If you want the website's `Portfolio` link and `/portfolio` route to hand off to a separate Cloudflare Pages site, set this environment variable in your deployment:
+
+```bash
+NEXT_PUBLIC_PORTFOLIO_URL=https://your-portfolio.pages.dev
+```
+
+If that variable is not set, the site keeps using the local `/portfolio` page.
+
 ### GitHub Copilot Agents
 
 This repository ships 34 custom GitHub Copilot agents for specialised AI assistance. See the [Using Copilot Agents guide](docs/USING-COPILOT-AGENTS.md) to learn:

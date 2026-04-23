@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Sparkles, LayoutGrid, Clock, Maximize } from "lucide-react";
 import { CaseStudyHero } from "@/components/portfolio/CaseStudyHero";
@@ -12,6 +12,7 @@ import { CaseStudy } from "@/components/portfolio/CaseStudyCard";
 import { ResumeSection } from "@/components/portfolio/ResumeSection";
 import { ThemeToggle } from "@/components/portfolio/ThemeToggle";
 import { CommandNavigation } from "@/components/navigation/command-navigation";
+import { getPortfolioHref } from "@/lib/portfolio";
 import { siteConfig } from "@/data/portfolio/siteConfig";
 import { caseStudies } from "@/data/portfolio/caseStudies";
 
@@ -19,6 +20,21 @@ export default function PortfolioPage() {
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy | null>(null);
   const [activeCategory, setActiveCategory] = useState("all");
   const [viewMode, setViewMode] = useState<"bento" | "justified" | "timeline">("bento");
+  const portfolioHref = getPortfolioHref();
+
+  useEffect(() => {
+    if (portfolioHref !== "/portfolio" && typeof window !== "undefined") {
+      window.location.replace(portfolioHref);
+    }
+  }, [portfolioHref]);
+
+  if (portfolioHref !== "/portfolio") {
+    return (
+      <div className="min-h-screen grid place-items-center bg-background text-foreground px-6 text-center">
+        <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">Redirecting to portfolio...</p>
+      </div>
+    );
+  }
 
   const filteredCaseStudies =
     activeCategory === "all"

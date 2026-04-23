@@ -38,19 +38,13 @@ jobs:
           NEXT_PUBLIC_PORTFOLIO_URL: "https://p0rtf0li0-spac3.m0nalisa.workers.dev"
 
       - name: Publish to Cloudflare Pages
-        id: cloudflare
-        uses: cloudflare/pages-action@f0a1cd58cd66095dee69bfa18fa5efd1dde93bca # v1.5.0
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: "machin3-bas3" # Ensure this matches your project name in Cloudflare Dashboard
-          directory: ".vercel/output/static" # Standard output for @cloudflare/next-on-pages
-          # gitHubToken removed to prevent false "failed" deployment statuses in GitHub Deployments tab
+          command: pages deploy .vercel/output/static --project-name=machin3-bas3
 
       - name: Deployment Success
         run: |
           echo "✅ Deployment successful!"
-          echo "📦 Deployment URL: ${{ steps.cloudflare.outputs.url }}"
-          echo "🔗 Deployment ID: ${{ steps.cloudflare.outputs.id }}"
-          echo ""
           echo "Check deployment status at: https://dash.cloudflare.com/"

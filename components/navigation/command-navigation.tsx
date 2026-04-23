@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { Terminal } from 'lucide-react'
+import { getPortfolioHref } from "@/lib/portfolio"
 
 interface NavigationCommand {
   command: string
@@ -126,7 +127,7 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
       action: () => {
         try {
           if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/portfolio"
+            window.location.href = getPortfolioHref()
           }
         } catch (error) {
           // Fail silently

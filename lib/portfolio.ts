@@ -1,4 +1,6 @@
-const rawPortfolioUrl = process.env.NEXT_PUBLIC_PORTFOLIO_URL?.trim() || "";
+const DEFAULT_PORTFOLIO_URL = "https://p0rtf0li0-spac3.m0nalisa.workers.dev";
+
+const rawPortfolioUrl = process.env.NEXT_PUBLIC_PORTFOLIO_URL?.trim() || DEFAULT_PORTFOLIO_URL;
 
 const normalizedPortfolioUrl = rawPortfolioUrl.replace(/\/$/, "");
 
