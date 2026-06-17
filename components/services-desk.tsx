@@ -407,10 +407,12 @@ export default function ServicesDeskClient() {
     <>
       {/* === Desk Surface Background === */}
       <div className="fixed inset-0 z-0">
-        <img
+        <Image
           src="/SERVICE_PAGE-Full.png"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
+          alt="Desk surface background"
+          fill
+          priority
+          className="object-cover"
           style={{ objectPosition: 'center 40%' }}
         />
         <div
