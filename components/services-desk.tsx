@@ -289,9 +289,10 @@ function ExpandedPanel({
             fontSize: '1rem',
             padding: 0,
           }}
-        >
-          &times;
-        </button>
+          >
+            <span aria-hidden="true">&times;</span>
+            <span className="sr-only">Close</span>
+          </button>
 
         <div className="p-6 md:p-8">
           {/* Title */}
