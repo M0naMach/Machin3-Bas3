@@ -7,87 +7,77 @@ export const metadata = {
 
 const services = [
   {
-    number: '01',
-    icon: '◇',
     title: 'Visual Branding & Design',
-    tagline: 'Your identity, rendered with intention.',
-    description:
-      'Purpose-driven visual systems that translate who you are into what people see. From logo suites to full brand ecosystems — color, type, and layout engineered for emotional resonance and cross-medium consistency.',
-    deliverables: [
-      'Brand identity audit & strategic direction',
-      'Logo design & iconography suite',
-      'Color system & typography framework',
-      'Brand guidelines & asset deployment kit',
-      'Templates, layouts & accessibility review',
+    bg: '#FFFAF6',
+    titleColor: '#8B5E3C',
+    labelColor: '#8B5E3C',
+    borderColor: 'rgba(139,94,60,0.15)',
+    quadrants: [
+      { label: 'Logo Design &\nIdentity Systems' },
+      { label: 'Typography\n& Voice' },
+      { label: 'Color Theory\n& Palettes' },
+      { label: 'Brand Structure\n& Frameworks' },
     ],
   },
   {
-    number: '02',
-    icon: '⟁',
+    title: 'Website Design & Development Services',
+    bg: '#FFFAF6',
+    titleColor: '#8B5E3C',
+    labelColor: '#8B5E3C',
+    borderColor: 'rgba(139,94,60,0.15)',
+    quadrants: [
+      { label: 'Digital Landscape\n& Structure' },
+      { label: 'Digital Aesthetics\n& Interaction Design' },
+      { label: 'Website Audit &\nPerformance Review' },
+      { label: 'Global Network &\nInnovation Systems' },
+    ],
+  },
+  {
+    title: 'AI Actuarium Audits',
+    bg: '#EBF2F8',
+    titleColor: '#2C3E5A',
+    labelColor: '#4A6178',
+    borderColor: 'rgba(44,62,90,0.12)',
+    quadrants: [
+      { label: 'Algorithmic Risk &\nCoherence Checks' },
+      { label: 'Forensic &\nDeterministic Calculation' },
+      { label: 'Dual Visual\nModel' },
+      { label: 'Transparent Result\nTranslation' },
+    ],
+  },
+  {
+    title: 'Accountable AI Architecture',
+    bg: '#1A2744',
+    titleColor: '#C9A96E',
+    labelColor: '#C9A96E',
+    borderColor: 'rgba(201,169,110,0.2)',
+    quadrants: [
+      { label: 'Ethical Governance &\nTransparency Protocols' },
+      { label: 'Agent Prompt\n& Identity Design' },
+      { label: 'Scalable Architecture\n& Systems Integration' },
+      { label: 'Impact &\nCompliance Audits' },
+    ],
+  },
+  {
     title: 'Process Optimization & Roadmaps',
-    tagline: 'Clarity from chaos — one system at a time.',
-    description:
-      'Structured thinking for when the workflow doesn\'t match the vision. I diagram what exists, identify friction, and architect a simpler path forward — with milestones you can actually hit.',
-    deliverables: [
-      'Current-state process mapping',
-      'Bottleneck analysis & friction report',
-      'Optimized workflow design',
-      'Implementation roadmap with milestones',
-      'Accountability scaffold & review cadence',
-    ],
-  },
-  {
-    number: '03',
-    icon: '⊞',
-    title: 'Actuarium Audits',
-    tagline: 'Measure twice. Build once.',
-    description:
-      'Comprehensive audits that quantify risk, surface blind spots, and ground decisions in data. Whether it\'s operational exposure, system reliability, or strategic alignment — the numbers tell the story.',
-    deliverables: [
-      'Risk exposure assessment & scoring',
-      'Data integrity & compliance review',
-      'Operational efficiency metrics',
-      'Findings report with severity tiers',
-      'Remediation plan & priority matrix',
-    ],
-  },
-  {
-    number: '04',
-    icon: '⬡',
-    title: 'Website Audits & Design',
-    tagline: 'Performance meets presence.',
-    description:
-      'End-to-end web evaluation and design — from accessibility and performance audits to full redesigns. Sites that load fast, convert intentionally, and look like they belong to you.',
-    deliverables: [
-      'Technical performance & SEO audit',
-      'Accessibility (WCAG) compliance review',
-      'UX audit & conversion analysis',
-      'Redesign mockups & prototypes',
-      'Implementation spec & handoff package',
-    ],
-  },
-  {
-    number: '05',
-    icon: '⟐',
-    title: 'Accountable Agent Architecture',
-    tagline: 'AI that answers to someone.',
-    description:
-      'Design and deployment of AI agent systems with built-in accountability, transparency, and human oversight. Agents that do real work — with audit trails, guardrails, and clear lines of responsibility.',
-    deliverables: [
-      'Agent capability mapping & scope definition',
-      'Guardrail & oversight framework design',
-      'Audit trail & logging architecture',
-      'Integration spec & deployment plan',
-      'Governance documentation & runbook',
+    bg: '#0C3C32',
+    titleColor: '#C9A96E',
+    labelColor: '#C9A96E',
+    borderColor: 'rgba(201,169,110,0.2)',
+    quadrants: [
+      { label: 'Workflow\nOptimization' },
+      { label: 'Strategic\nRoadmapping' },
+      { label: 'Performance\nAnalysis' },
+      { label: 'Systems\nIntegration' },
     ],
   },
 ]
 
 const tools = [
-  { icon: '📐', label: 'Measure' },
+  { icon: '\u{1F4D0}', label: 'Measure' },
   { icon: '✏️', label: 'Draft' },
-  { icon: '📏', label: 'Align' },
-  { icon: '🧹', label: 'Clear' },
+  { icon: '\u{1F4CF}', label: 'Align' },
+  { icon: '\u{1F9F9}', label: 'Clear' },
 ]
 
 export default function ServicesPage() {
@@ -119,15 +109,11 @@ export default function ServicesPage() {
             </div>
           ))}
 
-          <div
-            className="w-6 h-px my-3"
-            style={{ background: 'rgba(0,57,51,0.12)' }}
-          />
+          <div className="w-6 h-px my-3" style={{ background: 'rgba(0,57,51,0.12)' }} />
 
-          {/* Service shortcut dots */}
-          {services.map((s) => (
+          {services.map((s, i) => (
             <div
-              key={s.number}
+              key={i}
               className="w-2 h-2 rounded-full my-1"
               style={{ background: 'rgba(0,57,51,0.2)' }}
               title={s.title}
@@ -150,7 +136,7 @@ export default function ServicesPage() {
           </div>
         </aside>
 
-        {/* Work Canvas — cream grid background */}
+        {/* Work Canvas */}
         <div
           className="flex-1 relative"
           style={{
@@ -164,8 +150,7 @@ export default function ServicesPage() {
             backgroundSize: '80px 80px, 80px 80px, 20px 20px, 20px 20px',
           }}
         >
-          {/* Blueprint content area */}
-          <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10">
+          <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10">
 
             {/* Header */}
             <header className="pt-24 pb-14">
@@ -181,145 +166,127 @@ export default function ServicesPage() {
 
               <h1
                 className="font-aspal tracking-tight mb-4"
-                style={{
-                  fontSize: '3.5rem',
-                  lineHeight: '1.1',
-                  color: '#1a1a1a',
-                }}
+                style={{ fontSize: '3.5rem', lineHeight: '1.1', color: '#1a1a1a' }}
               >
                 The Drafting Table
               </h1>
 
               <p
                 className="font-caviar max-w-xl"
-                style={{
-                  fontSize: '1.125rem',
-                  lineHeight: '1.7',
-                  color: 'rgba(0,57,51,0.55)',
-                }}
+                style={{ fontSize: '1.125rem', lineHeight: '1.7', color: 'rgba(0,57,51,0.55)' }}
               >
                 Every project begins here — measured, considered, and drawn with care.
                 These are the services I draft from.
               </p>
             </header>
 
-            {/* Service cards */}
-            <section className="pb-28 space-y-5">
-              {services.map((service) => (
-                <article
-                  key={service.number}
-                  className="group relative rounded-lg transition-all duration-500"
+            {/* Service book covers */}
+            <section className="pb-28 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.map((service, idx) => (
+                <div
+                  key={idx}
+                  className="group relative rounded-xl overflow-hidden transition-transform duration-500 hover:-translate-y-1"
                   style={{
-                    background: 'rgba(255,255,255,0.72)',
-                    backdropFilter: 'blur(8px)',
-                    border: '1px solid rgba(0,57,51,0.1)',
-                    boxShadow: '0 1px 8px rgba(0,57,51,0.04)',
+                    background: service.bg,
+                    boxShadow: `
+                      0 4px 20px rgba(0,0,0,0.08),
+                      0 1px 4px rgba(0,0,0,0.05),
+                      inset 0 1px 0 rgba(255,255,255,0.4)
+                    `,
+                    aspectRatio: '1 / 1.05',
                   }}
                 >
-                  {/* Hover accent line */}
+                  {/* Book edge texture — left spine */}
                   <div
-                    className="absolute top-0 left-6 right-6 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    className="absolute top-2 bottom-2 left-0 w-1 rounded-r-sm"
                     style={{
-                      background: 'linear-gradient(90deg, transparent, rgba(0,57,51,0.25), transparent)',
+                      background: `linear-gradient(180deg, ${service.borderColor}, transparent 30%, transparent 70%, ${service.borderColor})`,
                     }}
                   />
 
-                  <div className="p-6 md:p-8 lg:p-10">
-                    {/* Number + Icon + Title */}
-                    <div className="flex items-start gap-5 mb-5">
-                      <div className="shrink-0 flex flex-col items-center gap-1 mt-1 select-none">
-                        <span
-                          style={{
-                            fontSize: '1.2rem',
-                            lineHeight: 1,
-                            color: 'rgba(0,57,51,0.3)',
-                          }}
-                        >
-                          {service.icon}
-                        </span>
-                        <span
-                          className="font-anurati"
-                          style={{
-                            fontSize: '0.55rem',
-                            letterSpacing: '0.12em',
-                            color: 'rgba(0,57,51,0.22)',
-                          }}
-                        >
-                          {service.number}
-                        </span>
-                      </div>
-
-                      <div className="flex-1 min-w-0">
-                        <h2
-                          className="font-aspal tracking-tight mb-1 group-hover:translate-x-1 transition-transform duration-300"
-                          style={{
-                            fontSize: '1.65rem',
-                            lineHeight: '1.2',
-                            color: '#1a1a1a',
-                          }}
-                        >
-                          {service.title}
-                        </h2>
-                        <p
-                          className="font-caviar italic"
-                          style={{
-                            fontSize: '0.9rem',
-                            color: 'rgba(0,57,51,0.45)',
-                          }}
-                        >
-                          {service.tagline}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Description + Deliverables */}
-                    <div className="md:flex md:gap-10 md:pl-[3rem]">
-                      <p
-                        className="font-caviar md:flex-1 mb-5 md:mb-0"
+                  {/* Corner ornaments for dark cards */}
+                  {(service.bg === '#1A2744' || service.bg === '#0C3C32') && (
+                    <>
+                      <div
+                        className="absolute top-3 left-3 w-4 h-4"
                         style={{
-                          fontSize: '0.95rem',
-                          lineHeight: '1.75',
-                          color: 'rgba(30,30,30,0.6)',
+                          borderTop: `1px solid ${service.borderColor}`,
+                          borderLeft: `1px solid ${service.borderColor}`,
                         }}
-                      >
-                        {service.description}
-                      </p>
+                      />
+                      <div
+                        className="absolute top-3 right-3 w-4 h-4"
+                        style={{
+                          borderTop: `1px solid ${service.borderColor}`,
+                          borderRight: `1px solid ${service.borderColor}`,
+                        }}
+                      />
+                      <div
+                        className="absolute bottom-3 left-3 w-4 h-4"
+                        style={{
+                          borderBottom: `1px solid ${service.borderColor}`,
+                          borderLeft: `1px solid ${service.borderColor}`,
+                        }}
+                      />
+                      <div
+                        className="absolute bottom-3 right-3 w-4 h-4"
+                        style={{
+                          borderBottom: `1px solid ${service.borderColor}`,
+                          borderRight: `1px solid ${service.borderColor}`,
+                        }}
+                      />
+                    </>
+                  )}
 
-                      <div className="md:w-[260px] shrink-0">
-                        <span
-                          className="font-anurati block mb-2.5"
+                  <div className="relative h-full flex flex-col p-5 md:p-6">
+                    {/* Title */}
+                    <h2
+                      className="font-anurati text-center mb-4 tracking-[0.12em] uppercase"
+                      style={{
+                        fontSize: '0.7rem',
+                        lineHeight: '1.6',
+                        color: service.titleColor,
+                      }}
+                    >
+                      {service.title}
+                    </h2>
+
+                    {/* 2x2 Quadrant Panel */}
+                    <div
+                      className="flex-1 rounded-lg overflow-hidden grid grid-cols-2 grid-rows-2"
+                      style={{
+                        border: `1px solid ${service.borderColor}`,
+                        boxShadow: `inset 0 2px 8px rgba(0,0,0,0.06)`,
+                      }}
+                    >
+                      {service.quadrants.map((q, qi) => (
+                        <div
+                          key={qi}
+                          className="relative flex items-end p-3 md:p-4 transition-colors duration-300"
                           style={{
-                            fontSize: '0.5rem',
-                            letterSpacing: '0.25em',
-                            color: 'rgba(0,57,51,0.3)',
-                            textTransform: 'uppercase',
+                            background: (service.bg === '#1A2744' || service.bg === '#0C3C32')
+                              ? 'rgba(255,255,255,0.04)'
+                              : 'rgba(255,255,255,0.5)',
+                            borderRight: qi % 2 === 0 ? `1px solid ${service.borderColor}` : 'none',
+                            borderBottom: qi < 2 ? `1px solid ${service.borderColor}` : 'none',
                           }}
                         >
-                          Deliverables
-                        </span>
-                        <ul className="space-y-1.5">
-                          {service.deliverables.map((item, i) => (
-                            <li
-                              key={i}
-                              className="font-caviar flex items-start gap-2"
-                              style={{
-                                fontSize: '0.8rem',
-                                lineHeight: '1.5',
-                                color: 'rgba(30,30,30,0.5)',
-                              }}
-                            >
-                              <span
-                                className="shrink-0 mt-[7px] block w-1.5 h-px"
-                                style={{ background: 'rgba(0,57,51,0.2)' }}
-                              />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                          <span
+                            className="font-caviar font-bold uppercase leading-tight"
+                            style={{
+                              fontSize: '0.65rem',
+                              letterSpacing: '0.06em',
+                              color: service.labelColor,
+                              whiteSpace: 'pre-line',
+                            }}
+                          >
+                            {q.label}
+                          </span>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                </article>
+                </div>
               ))}
             </section>
 
@@ -327,26 +294,14 @@ export default function ServicesPage() {
             <section className="pb-20 text-center">
               <div
                 className="h-px mx-auto mb-8 max-w-[180px]"
-                style={{
-                  background: 'linear-gradient(90deg, transparent, rgba(0,57,51,0.12), transparent)',
-                }}
+                style={{ background: 'linear-gradient(90deg, transparent, rgba(0,57,51,0.12), transparent)' }}
               />
-              <p
-                className="font-caviar mb-1"
-                style={{
-                  fontSize: '0.9rem',
-                  color: 'rgba(30,30,30,0.4)',
-                }}
-              >
+              <p className="font-caviar mb-1" style={{ fontSize: '0.9rem', color: 'rgba(30,30,30,0.4)' }}>
                 Ready to draft something together?
               </p>
               <p
                 className="font-anurati"
-                style={{
-                  fontSize: '0.55rem',
-                  letterSpacing: '0.3em',
-                  color: 'rgba(0,57,51,0.35)',
-                }}
+                style={{ fontSize: '0.55rem', letterSpacing: '0.3em', color: 'rgba(0,57,51,0.35)' }}
               >
                 START WITH /CONNECT
               </p>
