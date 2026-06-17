@@ -312,7 +312,7 @@ function ExpandedPanel({
           }}
           >
             <span aria-hidden="true">&times;</span>
-            <span className="sr-only">Close</span>
+            <span className="sr-only">Close service details</span>
           </button>
 
         <div className="p-6 md:p-8">
@@ -447,6 +447,7 @@ export default function ServicesDeskClient() {
 
       {/* === Desktop: Scattered cards === */}
       <div className="relative z-10 hidden md:block" style={{ minHeight: '100vh' }}>
+        <h2 className="sr-only">The Drafting Table</h2>
         {services.map((service) => {
           const posStyle: CSSProperties = {
             position: 'absolute',
@@ -459,7 +460,7 @@ export default function ServicesDeskClient() {
           return (
             <div
               key={service.id}
-              className="group transition-all duration-500 hover:scale-[1.03] hover:z-50 cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#C9A96E]/60"
+              className="group transition-all duration-500 hover:scale-[1.03] hover:z-50 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A96E]/60"
               style={posStyle}
               role="button"
               tabIndex={0}
@@ -483,12 +484,12 @@ export default function ServicesDeskClient() {
                 }}
               >
                 <div className="p-4 pb-3">
-                  <h2
+                  <div
                     className="font-anurati tracking-[0.12em] uppercase text-center"
                     style={{ fontSize: '0.6rem', lineHeight: '1.6', color: service.titleColor }}
                   >
                     {service.title}
-                  </h2>
+                  </div>
                 </div>
 
                 <div className="mx-3 mb-3">
@@ -580,7 +581,7 @@ export default function ServicesDeskClient() {
               fill="none"
               style={{ opacity: 0.2 }}
               aria-hidden="true"
-              focusable={false}
+              focusable="false"
             >
               <polygon points="80,5 130,60 30,60" stroke="#8B5E3C" strokeWidth="0.8" fill="none" />
               <polygon points="80,15 115,52 45,52" stroke="#8B5E3C" strokeWidth="0.5" fill="none" />
@@ -615,7 +616,7 @@ export default function ServicesDeskClient() {
             <button
               key={service.id}
               type="button"
-              className="w-full rounded-xl overflow-hidden cursor-pointer active:scale-[0.98] transition-transform text-left focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#C9A96E]/60"
+              className="w-full rounded-xl overflow-hidden cursor-pointer active:scale-[0.98] transition-transform text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A96E]/60"
               style={{
                 background: service.bg,
                 backdropFilter: 'blur(20px)',
@@ -626,12 +627,12 @@ export default function ServicesDeskClient() {
               aria-haspopup="dialog"
             >
               <div className="p-4 pb-3">
-                <h2
+                <div
                   className="font-anurati tracking-[0.12em] uppercase text-center"
                   style={{ fontSize: '0.6rem', lineHeight: '1.6', color: service.titleColor }}
                 >
                   {service.title}
-                </h2>
+                </div>
               </div>
 
               <div className="mx-3 mb-3">
