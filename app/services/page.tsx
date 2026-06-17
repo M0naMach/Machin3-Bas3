@@ -9,6 +9,7 @@ export const metadata = {
 export default function ServicesPage() {
   return (
     <main className="relative min-h-screen overflow-hidden" style={{ background: '#0a1f1c' }}>
+      <h1 className="sr-only">Services</h1>
       <CommandNavigation />
       <ServicesDeskClient />
     </main>

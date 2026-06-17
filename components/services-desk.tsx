@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef, type CSSProperties } from 'react'
 import Image from 'next/image'
 import { lockBodyScroll, unlockBodyScroll } from '@/lib/body-scroll-lock'
 
@@ -195,7 +195,16 @@ const services: ServiceData[] = [
 ]
 
 function isDarkCard(bg: string) {
-  return bg.includes('26,39,68') || bg.includes('12,60,50') || bg.includes('40,40,40')
+  const match = bg.match(/rgba?\((\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})/i)
+  if (!match) return false
+
+  const [, rText, gText, bText] = match
+  const r = Number.parseInt(rText, 10)
+  const g = Number.parseInt(gText, 10)
+  const b = Number.parseInt(bText, 10)
+  const luminance = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
+
+  return luminance < 0.45
 }
 
 function QuadrantGrid({ service, compact }: { service: ServiceData; compact?: boolean }) {
@@ -243,6 +252,12 @@ function ExpandedPanel({
   service: ServiceData
   onClose: () => void
 }) {
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    closeButtonRef.current?.focus()
+  }, [])
+
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
@@ -284,6 +299,8 @@ function ExpandedPanel({
       >
         {/* Close button */}
         <button
+          ref={closeButtonRef}
+          type="button"
           onClick={onClose}
           className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center transition-colors z-10"
           style={{
@@ -413,7 +430,8 @@ export default function ServicesDeskClient() {
       <div className="fixed inset-0 z-0">
         <Image
           src="/SERVICE_PAGE-Full.png"
-          alt="Desk surface background"
+          alt=""
+          aria-hidden="true"
           fill
           priority
           className="object-cover"
@@ -430,7 +448,7 @@ export default function ServicesDeskClient() {
       {/* === Desktop: Scattered cards === */}
       <div className="relative z-10 hidden md:block" style={{ minHeight: '100vh' }}>
         {services.map((service) => {
-          const posStyle: React.CSSProperties = {
+          const posStyle: CSSProperties = {
             position: 'absolute',
             width: 'clamp(280px, 30vw, 380px)',
             zIndex: service.zIndex,
@@ -555,7 +573,15 @@ export default function ServicesDeskClient() {
             >
               Actuarium Results &amp; Accountability Framework
             </p>
-            <svg width="100%" height="70" viewBox="0 0 160 70" fill="none" style={{ opacity: 0.2 }}>
+            <svg
+              width="100%"
+              height="70"
+              viewBox="0 0 160 70"
+              fill="none"
+              style={{ opacity: 0.2 }}
+              aria-hidden="true"
+              focusable={false}
+            >
               <polygon points="80,5 130,60 30,60" stroke="#8B5E3C" strokeWidth="0.8" fill="none" />
               <polygon points="80,15 115,52 45,52" stroke="#8B5E3C" strokeWidth="0.5" fill="none" />
               <circle cx="80" cy="38" r="18" stroke="#8B5E3C" strokeWidth="0.5" fill="none" />
@@ -569,12 +595,12 @@ export default function ServicesDeskClient() {
       {/* === Mobile: Stacked cards === */}
       <div className="md:hidden relative z-10 px-4 pt-24 pb-20 space-y-5">
         <header className="mb-8">
-          <h1
+          <h2
             className="font-aspal tracking-tight mb-2"
             style={{ fontSize: '2.5rem', lineHeight: '1.1', color: 'rgba(235,225,210,0.95)' }}
           >
             The Drafting Table
-          </h1>
+          </h2>
           <p
             className="font-caviar"
             style={{ fontSize: '0.95rem', lineHeight: '1.6', color: 'rgba(180,170,155,0.6)' }}
@@ -586,9 +612,10 @@ export default function ServicesDeskClient() {
         {[...services]
           .sort((a, b) => a.mobileOrder - b.mobileOrder)
           .map((service) => (
-            <div
+            <button
               key={service.id}
-              className="rounded-xl overflow-hidden cursor-pointer active:scale-[0.98] transition-transform"
+              type="button"
+              className="w-full rounded-xl overflow-hidden cursor-pointer active:scale-[0.98] transition-transform text-left focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#C9A96E]/60"
               style={{
                 background: service.bg,
                 backdropFilter: 'blur(20px)',
@@ -596,6 +623,7 @@ export default function ServicesDeskClient() {
                 boxShadow: '0 6px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06)',
               }}
               onClick={() => setExpandedId(service.id)}
+              aria-haspopup="dialog"
             >
               <div className="p-4 pb-3">
                 <h2
@@ -609,7 +637,7 @@ export default function ServicesDeskClient() {
               <div className="mx-3 mb-3">
                 <QuadrantGrid service={service} compact />
               </div>
-            </div>
+            </button>
           ))}
       </div>
 
