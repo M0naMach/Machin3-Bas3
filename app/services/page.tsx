@@ -2,233 +2,337 @@ import CommandNavigation from '@/components/navigation/command-navigation'
 
 export const metadata = {
   title: 'Services - M0na Machin3',
-  description: 'Building tech through art. Creative design, systems architecture, and strategic clarity.',
+  description: 'Building tech through art. Visual branding, process optimization, audits, web design, and agent architecture.',
 }
+
+const services = [
+  {
+    number: '01',
+    title: 'Visual Branding & Design',
+    tagline: 'Your identity, rendered with intention.',
+    description:
+      'Purpose-driven visual systems that translate who you are into what people see. From logo suites to full brand ecosystems — color, type, and layout engineered for emotional resonance and cross-medium consistency.',
+    deliverables: [
+      'Brand identity audit & strategic direction',
+      'Logo design & iconography suite',
+      'Color system & typography framework',
+      'Brand guidelines & asset deployment kit',
+      'Templates, layouts & accessibility review',
+    ],
+  },
+  {
+    number: '02',
+    title: 'Process Optimization & Roadmaps',
+    tagline: 'Clarity from chaos — one system at a time.',
+    description:
+      'Structured thinking for when the workflow doesn\'t match the vision. I diagram what exists, identify friction, and architect a simpler path forward — with milestones you can actually hit.',
+    deliverables: [
+      'Current-state process mapping',
+      'Bottleneck analysis & friction report',
+      'Optimized workflow design',
+      'Implementation roadmap with milestones',
+      'Accountability scaffold & review cadence',
+    ],
+  },
+  {
+    number: '03',
+    title: 'Actuarium Audits',
+    tagline: 'Measure twice. Build once.',
+    description:
+      'Comprehensive audits that quantify risk, surface blind spots, and ground decisions in data. Whether it\'s operational exposure, system reliability, or strategic alignment — the numbers tell the story.',
+    deliverables: [
+      'Risk exposure assessment & scoring',
+      'Data integrity & compliance review',
+      'Operational efficiency metrics',
+      'Findings report with severity tiers',
+      'Remediation plan & priority matrix',
+    ],
+  },
+  {
+    number: '04',
+    title: 'Website Audits & Design',
+    tagline: 'Performance meets presence.',
+    description:
+      'End-to-end web evaluation and design — from accessibility and performance audits to full redesigns. Sites that load fast, convert intentionally, and look like they belong to you.',
+    deliverables: [
+      'Technical performance & SEO audit',
+      'Accessibility (WCAG) compliance review',
+      'UX audit & conversion analysis',
+      'Redesign mockups & prototypes',
+      'Implementation spec & handoff package',
+    ],
+  },
+  {
+    number: '05',
+    title: 'Accountable Agent Architecture',
+    tagline: 'AI that answers to someone.',
+    description:
+      'Design and deployment of AI agent systems with built-in accountability, transparency, and human oversight. Agents that do real work — with audit trails, guardrails, and clear lines of responsibility.',
+    deliverables: [
+      'Agent capability mapping & scope definition',
+      'Guardrail & oversight framework design',
+      'Audit trail & logging architecture',
+      'Integration spec & deployment plan',
+      'Governance documentation & runbook',
+    ],
+  },
+]
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="relative min-h-screen overflow-hidden">
       <CommandNavigation />
-      
-      <div className="container mx-auto px-4 py-16 max-w-6xl">
-        {/* Header */}
-        <div className="mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Services</h1>
-          <p className="text-xl text-gray-400">
-            Each detail is a pixel. Zoom out to see the design.
-          </p>
-        </div>
 
-        {/* Service Cards */}
-        <div className="space-y-12">
-          
-          {/* Artistic Rendering */}
-          <div className="border border-gray-800 bg-gray-950 p-6 md:p-8 rounded-lg hover:border-gray-700 transition-colors">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Artistic Rendering & Creative Computation
-            </h2>
-            <p className="text-sm text-gray-500 mb-4">(Custom Art with Meaning)</p>
-            
-            <p className="text-gray-400 italic mb-6">
-              "Stories in pixels — symbolism with technical finesse."
-            </p>
-            
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Description:</h3>
-                <p className="text-gray-300">
-                  Purpose-driven computational aesthetics. Spanning identity portraits to coherent visual languages, 
-                  each creation merges narrative intelligence, symbolic resonance, and deployment-ready craftsmanship.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-semibold mb-2">What I do:</h3>
-                <p className="text-gray-300">
-                  Translate requirements into visual systems that scale across mediums with consistency.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Deliverables:</h3>
-                <ul className="text-gray-300 space-y-1 ml-4">
-                  <li>▸ Thought Topology</li>
-                  <li>▸ Digital Entity Design & Metamorphosis</li>
-                  <li>▸ Emblematic Assets & Iconography Compendium</li>
-                  <li>▸ Perceptual Ecosystem Choreography & Meaning Matrices</li>
-                  <li>▸ Asset Alchemy & Cross-Medium Mastercrafts</li>
-                  <li>▸ Source Artifacts Repository</li>
-                  <li>▸ High-Fidelity Digital Canvas</li>
-                  <li>▸ Licensing Protocol & Deployment Plan (Optional)</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+      {/* Drafting desk background */}
+      <div className="fixed inset-0 z-0">
+        {/* Base — warm dark surface like worn drafting paper */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(160deg, #1a1c1e 0%, #1e2024 40%, #1c1e21 70%, #191b1d 100%)',
+          }}
+        />
 
-          {/* Clarity Architecture */}
-          <div className="border border-gray-800 bg-gray-950 p-6 md:p-8 rounded-lg hover:border-gray-700 transition-colors">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Clarity Architecture & Perception Reframing
-            </h2>
-            
-            <p className="text-gray-400 italic mb-6">
-              "Reflections that reset perception — and return you to signal."
-            </p>
-            
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Description:</h3>
-                <p className="text-gray-300">
-                  Structured thinking for when the map and the terrain don't match. We diagram patterns, 
-                  reframe constraints, and choose a simpler path forward.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-semibold mb-2">What I do:</h3>
-                <p className="text-gray-300">
-                  Facilitate clear decisions with visual artifacts and a small, durable plan.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Deliverables:</h3>
-                <ul className="text-gray-300 space-y-1 ml-4">
-                  <li>▸ 1:1 clarity session</li>
-                  <li>▸ Pattern map</li>
-                  <li>▸ Perception reframe plan</li>
-                  <li>▸ Accountability scaffold</li>
-                  <li>▸ Resource kit</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        {/* Blueprint grid — fine lines */}
+        <div
+          className="absolute inset-0 opacity-[0.06]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(100,160,180,0.6) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(100,160,180,0.6) 1px, transparent 1px)
+            `,
+            backgroundSize: '24px 24px',
+          }}
+        />
 
-          {/* Client Experience Operations */}
-          <div className="border border-gray-800 bg-gray-950 p-6 md:p-8 rounded-lg hover:border-gray-700 transition-colors">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Client Experience Operations & Admin Systems
-            </h2>
-            
-            <p className="text-gray-400 italic mb-6">
-              "Back-office with a heartbeat — precision that feels human."
-            </p>
-            
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Description:</h3>
-                <p className="text-gray-300">
-                  Clean, dependable ops that protect your energy and elevate your client experience. 
-                  Quiet systems, clear inboxes, and responses that sound like your voice.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-semibold mb-2">What I do:</h3>
-                <p className="text-gray-300">
-                  Design lightweight admin flows and client support patterns, then run them with care — 
-                  so the engine hums while you create.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Deliverables:</h3>
-                <ul className="text-gray-300 space-y-1 ml-4">
-                  <li>▸ Inbox and calendar architecture</li>
-                  <li>▸ CRM and ticketing workflows</li>
-                  <li>▸ SOPs that read like checklists</li>
-                  <li>▸ Email setup and deliverability audits</li>
-                  <li>▸ Persona chatbots for support</li>
-                  <li>▸ Optional coverage windows</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        {/* Blueprint grid — major lines */}
+        <div
+          className="absolute inset-0 opacity-[0.08]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(100,160,180,0.8) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(100,160,180,0.8) 1px, transparent 1px)
+            `,
+            backgroundSize: '120px 120px',
+          }}
+        />
 
-          {/* Systems Architecture & Automation */}
-          <div className="border border-gray-800 bg-gray-950 p-6 md:p-8 rounded-lg hover:border-gray-700 transition-colors">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Systems Architecture & Automation
-            </h2>
-            
-            <p className="text-gray-400 italic mb-6">
-              "Systems that think with you — Protocol. Process. Presence."
-            </p>
-            
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Description:</h3>
-                <p className="text-gray-300">
-                  Design and deploy calm, resilient systems. We translate messy workflows into modular 
-                  automations and human-friendly interfaces. So momentum manifests motion.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-semibold mb-2">What I do:</h3>
-                <p className="text-gray-300">
-                  Map, simplify, and instrument your stack. Your inputs give me the blueprint to encode 
-                  your rules once — for successful use everywhere.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Deliverables:</h3>
-                <ul className="text-gray-300 space-y-1 ml-4">
-                  <li>▸ Systems blueprint and bottleneck brief</li>
-                  <li>▸ Automation spec</li>
-                  <li>▸ Integration matrix</li>
-                  <li>▸ Operations dashboard</li>
-                  <li>▸ Runbook kit</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        {/* Drafting desk edge shadow — top */}
+        <div
+          className="absolute top-0 left-0 right-0 h-32"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.4), transparent)',
+          }}
+        />
 
-          {/* Visual Branding & Identity */}
-          <div className="border border-gray-800 bg-gray-950 p-6 md:p-8 rounded-lg hover:border-gray-700 transition-colors">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Visual Branding & Identity
-            </h2>
-            
-            <p className="text-gray-400 italic mb-6">
-              "Beyond aesthetics: your unique vision translated into pixels."
-            </p>
-            
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Description:</h3>
-                <p className="text-gray-300">
-                  I decode visual styles by dissecting color palettes and processing parallels found in everyday paragraphs. 
-                  Your brand's essence sings your truth through typographic symphonies. Colors hold weight — 
-                  their pigments spell out your intentions and cross-examine them against your mission.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-semibold mb-2">What I do:</h3>
-                <p className="text-gray-300">
-                  Brand visuals that go beyond "looking nice." I create emotional resonance through typography, color, and layout.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Deliverables:</h3>
-                <ul className="text-gray-300 space-y-1 ml-4">
-                  <li>▸ Identity Forensics & Strategic Aesthetics (Audit & Direction)</li>
-                  <li>▸ Bespoke Identity Evolution Framework (Brand Kit)</li>
-                  <li>▸ Asset Deployment Matrix (Usage Guide)</li>
-                  <li>▸ Insignia Your Way: Reimagined or Refined (Logo)</li>
-                  <li>▸ Organizational Schemas, Visual Architectures, & Content Patterns (Templates & Layouts)</li>
-                  <li>▸ Accessibility-Enhanced Frameworks</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        {/* Desk lamp warm glow — upper right */}
+        <div
+          className="absolute -top-20 -right-20 w-[600px] h-[600px] opacity-[0.04]"
+          style={{
+            background: 'radial-gradient(ellipse, rgba(184,83,9,0.8), transparent 70%)',
+          }}
+        />
 
-        </div>
+        {/* Subtle vignette */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(ellipse at 50% 40%, transparent 40%, rgba(0,0,0,0.3) 100%)',
+          }}
+        />
       </div>
 
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Header */}
+        <header className="pt-24 pb-16 px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="mb-6 flex items-center gap-3">
+              <div className="h-px flex-1 max-w-[60px]" style={{ background: 'rgba(184,83,9,0.5)' }} />
+              <span
+                className="font-anurati text-xs tracking-[0.3em] uppercase"
+                style={{ color: 'rgba(184,83,9,0.7)' }}
+              >
+                Service Index
+              </span>
+            </div>
+
+            <h1
+              className="font-aspal tracking-tight mb-4"
+              style={{
+                fontSize: '3.5rem',
+                lineHeight: '1.1',
+                color: 'rgba(235,225,210,0.95)',
+              }}
+            >
+              The Drafting Table
+            </h1>
+
+            <p
+              className="font-caviar max-w-xl"
+              style={{
+                fontSize: '1.125rem',
+                lineHeight: '1.7',
+                color: 'rgba(180,170,155,0.7)',
+              }}
+            >
+              Every project begins here — measured, considered, and drawn with care.
+              These are the services I draft from.
+            </p>
+          </div>
+        </header>
+
+        {/* Service cards */}
+        <section className="px-4 pb-32">
+          <div className="max-w-5xl mx-auto space-y-6">
+            {services.map((service) => (
+              <article
+                key={service.number}
+                className="group relative rounded-lg transition-all duration-500"
+                style={{
+                  background: 'rgba(28,30,33,0.85)',
+                  backdropFilter: 'blur(8px)',
+                  border: '1px solid rgba(100,160,180,0.1)',
+                }}
+              >
+                {/* Top drafting line accent */}
+                <div
+                  className="absolute top-0 left-8 right-8 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: 'linear-gradient(90deg, transparent, rgba(184,83,9,0.4), transparent)',
+                  }}
+                />
+
+                <div className="p-6 md:p-8 lg:p-10">
+                  {/* Number + Title row */}
+                  <div className="flex items-start gap-6 mb-6">
+                    {/* Number — like a drafting notation */}
+                    <span
+                      className="font-anurati shrink-0 mt-1 select-none"
+                      style={{
+                        fontSize: '0.75rem',
+                        letterSpacing: '0.15em',
+                        color: 'rgba(100,160,180,0.4)',
+                      }}
+                    >
+                      {service.number}
+                    </span>
+
+                    <div className="flex-1 min-w-0">
+                      <h2
+                        className="font-aspal tracking-tight mb-1 group-hover:translate-x-1 transition-transform duration-300"
+                        style={{
+                          fontSize: '1.75rem',
+                          lineHeight: '1.2',
+                          color: 'rgba(235,225,210,0.92)',
+                        }}
+                      >
+                        {service.title}
+                      </h2>
+                      <p
+                        className="font-caviar italic"
+                        style={{
+                          fontSize: '0.95rem',
+                          color: 'rgba(184,83,9,0.6)',
+                        }}
+                      >
+                        {service.tagline}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Description + Deliverables — two-column on desktop */}
+                  <div className="md:flex md:gap-10 md:pl-[3.25rem]">
+                    <p
+                      className="font-caviar md:flex-1 mb-6 md:mb-0"
+                      style={{
+                        fontSize: '1rem',
+                        lineHeight: '1.75',
+                        color: 'rgba(180,170,155,0.7)',
+                      }}
+                    >
+                      {service.description}
+                    </p>
+
+                    {/* Deliverables — styled like drafting annotations */}
+                    <div className="md:w-[280px] shrink-0">
+                      <span
+                        className="font-anurati block mb-3"
+                        style={{
+                          fontSize: '0.6rem',
+                          letterSpacing: '0.25em',
+                          color: 'rgba(100,160,180,0.35)',
+                          textTransform: 'uppercase',
+                        }}
+                      >
+                        Deliverables
+                      </span>
+                      <ul className="space-y-2">
+                        {service.deliverables.map((item, i) => (
+                          <li
+                            key={i}
+                            className="font-caviar flex items-start gap-2"
+                            style={{
+                              fontSize: '0.85rem',
+                              lineHeight: '1.5',
+                              color: 'rgba(180,170,155,0.55)',
+                            }}
+                          >
+                            <span
+                              className="shrink-0 mt-[7px] block w-1.5 h-px"
+                              style={{ background: 'rgba(184,83,9,0.35)' }}
+                            />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom rule */}
+                <div
+                  className="mx-8 h-px"
+                  style={{
+                    background: 'linear-gradient(90deg, rgba(100,160,180,0.08), rgba(100,160,180,0.04), transparent)',
+                  }}
+                />
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* Footer CTA */}
+        <section className="px-4 pb-24">
+          <div className="max-w-5xl mx-auto text-center">
+            <div
+              className="h-px mx-auto mb-10 max-w-[200px]"
+              style={{
+                background: 'linear-gradient(90deg, transparent, rgba(100,160,180,0.15), transparent)',
+              }}
+            />
+            <p
+              className="font-caviar mb-1"
+              style={{
+                fontSize: '0.95rem',
+                color: 'rgba(180,170,155,0.45)',
+              }}
+            >
+              Ready to draft something together?
+            </p>
+            <p
+              className="font-anurati"
+              style={{
+                fontSize: '0.65rem',
+                letterSpacing: '0.3em',
+                color: 'rgba(184,83,9,0.4)',
+              }}
+            >
+              START WITH /CONNECT
+            </p>
+          </div>
+        </section>
+      </div>
     </main>
   )
 }
