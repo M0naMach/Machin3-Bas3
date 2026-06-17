@@ -356,37 +356,66 @@ export default function ServicesDeskClient() {
         />
       </div>
 
-      {/* Desktop: Cards scattered on desk */}
-      <div className="relative z-10 hidden md:block" style={{ minHeight: '100vh' }}>
-        {services.map((service) => (
-          <div
-            key={service.id}
-            className="absolute cursor-pointer transition-all duration-500 hover:scale-[1.06] hover:z-50"
-            style={{
-              width: 'clamp(240px, 26vw, 340px)',
-              zIndex: service.zIndex,
-              transform: `rotate(${service.rotation})`,
-              ...service.position,
-              filter: 'drop-shadow(0 12px 30px rgba(0,0,0,0.4))',
-            }}
-            onClick={() => setExpandedId(service.id)}
-          >
-            <Image
-              src={service.image}
-              alt={service.title}
-              width={680}
-              height={680}
-              className="w-full h-auto rounded-md"
+      {/* Desktop: Glassmorphic UI panels — 2 top, 1 center, 2 bottom */}
+      <div className="relative z-10 hidden md:flex flex-col items-center justify-center gap-8 px-8 py-16" style={{ minHeight: '100vh' }}>
+        {/* Top row */}
+        <div className="flex gap-8 justify-center">
+          {[services[0], services[1]].map((service) => (
+            <div
+              key={service.id}
+              className="cursor-pointer transition-all duration-300 hover:scale-[1.03] rounded-xl overflow-hidden"
               style={{
-                transition: 'filter 0.4s ease',
+                width: 'clamp(240px, 22vw, 320px)',
+                background: 'rgba(255,255,255,0.04)',
+                backdropFilter: 'blur(16px)',
+                border: '1px solid rgba(180,83,9,0.2)',
+                boxShadow: '0 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05)',
               }}
-            />
+              onClick={() => setExpandedId(service.id)}
+            >
+              <Image src={service.image} alt={service.title} width={680} height={680} className="w-full h-auto" />
+            </div>
+          ))}
+        </div>
+        {/* Center */}
+        <div className="flex justify-center">
+          <div
+            className="cursor-pointer transition-all duration-300 hover:scale-[1.03] rounded-xl overflow-hidden"
+            style={{
+              width: 'clamp(240px, 22vw, 320px)',
+              background: 'rgba(255,255,255,0.04)',
+              backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(180,83,9,0.2)',
+              boxShadow: '0 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05)',
+            }}
+            onClick={() => setExpandedId(services[2].id)}
+          >
+            <Image src={services[2].image} alt={services[2].title} width={680} height={680} className="w-full h-auto" />
           </div>
-        ))}
+        </div>
+        {/* Bottom row */}
+        <div className="flex gap-8 justify-center">
+          {[services[3], services[4]].map((service) => (
+            <div
+              key={service.id}
+              className="cursor-pointer transition-all duration-300 hover:scale-[1.03] rounded-xl overflow-hidden"
+              style={{
+                width: 'clamp(240px, 22vw, 320px)',
+                background: 'rgba(255,255,255,0.04)',
+                backdropFilter: 'blur(16px)',
+                border: '1px solid rgba(180,83,9,0.2)',
+                boxShadow: '0 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05)',
+              }}
+              onClick={() => setExpandedId(service.id)}
+            >
+              <Image src={service.image} alt={service.title} width={680} height={680} className="w-full h-auto" />
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Mobile: Stacked cards */}
-      <div className="md:hidden relative z-10 px-4 pt-24 pb-20 space-y-6">
+      {/* Mobile: Stacked glassmorphic panels */}
+      <div className="md:hidden relative z-10 px-4 pt-24 pb-20 space-y-5">
         <header className="mb-6">
           <h2
             className="font-aspal tracking-tight mb-2"
@@ -407,7 +436,13 @@ export default function ServicesDeskClient() {
           .map((service) => (
             <div
               key={service.id}
-              className="cursor-pointer active:scale-[0.98] transition-transform"
+              className="cursor-pointer active:scale-[0.98] transition-transform rounded-xl overflow-hidden"
+              style={{
+                background: 'rgba(255,255,255,0.04)',
+                backdropFilter: 'blur(16px)',
+                border: '1px solid rgba(180,83,9,0.2)',
+                boxShadow: '0 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05)',
+              }}
               onClick={() => setExpandedId(service.id)}
             >
               <Image
@@ -415,10 +450,7 @@ export default function ServicesDeskClient() {
                 alt={service.title}
                 width={680}
                 height={680}
-                className="w-full h-auto rounded-lg"
-                style={{
-                  filter: 'drop-shadow(0 8px 20px rgba(0,0,0,0.35))',
-                }}
+                className="w-full h-auto"
               />
             </div>
           ))}
