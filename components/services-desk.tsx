@@ -270,6 +270,9 @@ function ExpandedPanel({
 
       {/* Panel */}
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="service-dialog-title"
         className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-xl animate-in zoom-in-95 fade-in duration-300"
         style={{
           background: service.bgExpanded,
