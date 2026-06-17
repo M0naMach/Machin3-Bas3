@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { Terminal } from 'lucide-react'
 import { getPortfolioHref } from "@/lib/portfolio"
+import { lockBodyScroll, unlockBodyScroll } from "@/lib/body-scroll-lock"
 
 interface NavigationCommand {
   command: string
@@ -50,22 +51,9 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
 
   useEffect(() => {
     try {
-      if (typeof document !== "undefined" && document.body) {
-        if (isOpen && !compact) {
-          document.body.style.overflow = "hidden"
-        } else {
-          document.body.style.overflow = "unset"
-        }
-      }
-
-      return () => {
-        try {
-          if (typeof document !== "undefined" && document.body) {
-            document.body.style.overflow = "unset"
-          }
-        } catch (error) {
-          // Fail silently
-        }
+      if (isOpen && !compact) {
+        lockBodyScroll()
+        return () => unlockBodyScroll()
       }
     } catch (error) {
       // Fail silently for accessibility tools

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
+import { lockBodyScroll, unlockBodyScroll } from '@/lib/body-scroll-lock'
 
 interface ServiceData {
   id: string
@@ -396,12 +397,10 @@ export default function ServicesDeskClient() {
   const expandedService = services.find((s) => s.id === expandedId) ?? null
 
   useEffect(() => {
-    if (expandedId) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-    return () => { document.body.style.overflow = '' }
+    if (!expandedId) return
+
+    lockBodyScroll()
+    return () => unlockBodyScroll()
   }, [expandedId])
 
   return (
