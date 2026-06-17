@@ -437,9 +437,18 @@ export default function ServicesDeskClient() {
           return (
             <div
               key={service.id}
-              className="group transition-all duration-500 hover:scale-[1.03] hover:z-50 cursor-pointer"
+              className="group transition-all duration-500 hover:scale-[1.03] hover:z-50 cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#C9A96E]/60"
               style={posStyle}
+              role="button"
+              tabIndex={0}
+              aria-haspopup="dialog"
               onClick={() => setExpandedId(service.id)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  setExpandedId(service.id)
+                }
+              }}
             >
               <div
                 className="rounded-xl overflow-hidden"
