@@ -7,308 +7,466 @@ export const metadata = {
 
 const services = [
   {
-    title: 'Visual Branding & Design',
-    bg: '#FFFAF6',
-    titleColor: '#8B5E3C',
-    labelColor: '#8B5E3C',
-    borderColor: 'rgba(139,94,60,0.15)',
-    quadrants: [
-      { label: 'Logo Design &\nIdentity Systems' },
-      { label: 'Typography\n& Voice' },
-      { label: 'Color Theory\n& Palettes' },
-      { label: 'Brand Structure\n& Frameworks' },
-    ],
+    id: 'branding',
+    title: 'Visual Branding and Design',
+    position: 'top-left',
+    items: ['Color palettes', 'Font specimens', 'Logo systems', 'Brand guidelines'],
   },
   {
-    title: 'Website Design & Development Services',
-    bg: '#FFFAF6',
-    titleColor: '#8B5E3C',
-    labelColor: '#8B5E3C',
-    borderColor: 'rgba(139,94,60,0.15)',
-    quadrants: [
-      { label: 'Digital Landscape\n& Structure' },
-      { label: 'Digital Aesthetics\n& Interaction Design' },
-      { label: 'Website Audit &\nPerformance Review' },
-      { label: 'Global Network &\nInnovation Systems' },
-    ],
+    id: 'roadmaps',
+    title: 'Process Optimization and Roadmaps',
+    position: 'top-right',
+    items: ['Workflow mapping', 'Milestone planning', 'Bottleneck analysis', 'Systems integration'],
   },
   {
-    title: 'AI Actuarium Audits',
-    bg: '#EBF2F8',
-    titleColor: '#2C3E5A',
-    labelColor: '#4A6178',
-    borderColor: 'rgba(44,62,90,0.12)',
-    quadrants: [
-      { label: 'Algorithmic Risk &\nCoherence Checks' },
-      { label: 'Forensic &\nDeterministic Calculation' },
-      { label: 'Dual Visual\nModel' },
-      { label: 'Transparent Result\nTranslation' },
-    ],
+    id: 'actuarium',
+    title: 'Actuarium Audits',
+    position: 'bottom-left',
+    items: ['Data classification', 'Risk heatmaps', 'Trend analysis', 'Result translation'],
   },
   {
-    title: 'Accountable AI Architecture',
-    bg: '#1A2744',
-    titleColor: '#C9A96E',
-    labelColor: '#C9A96E',
-    borderColor: 'rgba(201,169,110,0.2)',
-    quadrants: [
-      { label: 'Ethical Governance &\nTransparency Protocols' },
-      { label: 'Agent Prompt\n& Identity Design' },
-      { label: 'Scalable Architecture\n& Systems Integration' },
-      { label: 'Impact &\nCompliance Audits' },
-    ],
+    id: 'agents',
+    title: 'Accountable Agent Architecture',
+    position: 'bottom-center',
+    items: ['AI node configuration', 'Security parameters', 'Transparency bodies', 'Governance protocols'],
   },
   {
-    title: 'Process Optimization & Roadmaps',
-    bg: '#0C3C32',
-    titleColor: '#C9A96E',
-    labelColor: '#C9A96E',
-    borderColor: 'rgba(201,169,110,0.2)',
-    quadrants: [
-      { label: 'Workflow\nOptimization' },
-      { label: 'Strategic\nRoadmapping' },
-      { label: 'Performance\nAnalysis' },
-      { label: 'Systems\nIntegration' },
-    ],
+    id: 'websites',
+    title: 'Website Audits and Design',
+    position: 'bottom-right',
+    items: ['User flows', 'Accessibility checks', 'Performance review', 'Interaction design'],
   },
-]
-
-const tools = [
-  { icon: '\u{1F4D0}', label: 'Measure' },
-  { icon: '✏️', label: 'Draft' },
-  { icon: '\u{1F4CF}', label: 'Align' },
-  { icon: '\u{1F9F9}', label: 'Clear' },
 ]
 
 export default function ServicesPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden">
+    <main className="relative min-h-screen overflow-hidden" style={{ background: '#0a1f1c' }}>
       <CommandNavigation />
 
-      <div className="flex min-h-screen">
-        {/* Tool Palette Sidebar */}
-        <aside
-          className="hidden md:flex flex-col items-center gap-1 pt-24 pb-8 px-2 shrink-0"
-          style={{
-            width: '56px',
-            background: 'rgba(0,57,51,0.06)',
-            borderRight: '1px solid rgba(0,57,51,0.12)',
-          }}
-        >
-          {tools.map((tool, i) => (
-            <div
-              key={i}
-              className="flex flex-col items-center justify-center w-10 h-10 rounded-md cursor-default transition-colors duration-200"
-              style={{
-                background: i === 0 ? 'rgba(0,57,51,0.1)' : 'transparent',
-                border: i === 0 ? '1px solid rgba(0,57,51,0.15)' : '1px solid transparent',
-              }}
-              title={tool.label}
-            >
-              <span style={{ fontSize: '1.1rem', lineHeight: 1 }}>{tool.icon}</span>
-            </div>
-          ))}
-
-          <div className="w-6 h-px my-3" style={{ background: 'rgba(0,57,51,0.12)' }} />
-
-          {services.map((s, i) => (
-            <div
-              key={i}
-              className="w-2 h-2 rounded-full my-1"
-              style={{ background: 'rgba(0,57,51,0.2)' }}
-              title={s.title}
-            />
-          ))}
-
-          <div className="mt-auto">
-            <span
-              className="font-anurati block"
-              style={{
-                fontSize: '0.45rem',
-                letterSpacing: '0.1em',
-                color: 'rgba(0,57,51,0.25)',
-                writingMode: 'vertical-rl',
-                textOrientation: 'mixed',
-              }}
-            >
-              M0NA MACHIN3
-            </span>
-          </div>
-        </aside>
-
-        {/* Work Canvas */}
+      {/* Desk surface */}
+      <div className="fixed inset-0 z-0">
+        {/* Dark teal base with subtle gradient for depth */}
         <div
-          className="flex-1 relative"
+          className="absolute inset-0"
           style={{
-            backgroundColor: '#FFFAF6',
-            backgroundImage: `
-              linear-gradient(rgba(0,57,51,0.25) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0,57,51,0.25) 1px, transparent 1px),
-              linear-gradient(rgba(0,57,51,0.08) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0,57,51,0.08) 1px, transparent 1px)
-            `,
-            backgroundSize: '80px 80px, 80px 80px, 20px 20px, 20px 20px',
+            background: 'linear-gradient(160deg, #0d2926 0%, #0a201d 30%, #081a18 60%, #0b1f1c 100%)',
           }}
-        >
-          <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10">
+        />
 
-            {/* Header */}
-            <header className="pt-24 pb-14">
-              <div className="mb-5 flex items-center gap-3">
-                <div className="h-px flex-1 max-w-[60px]" style={{ background: 'rgba(0,57,51,0.25)' }} />
-                <span
-                  className="font-anurati text-xs tracking-[0.3em] uppercase"
-                  style={{ color: 'rgba(0,57,51,0.45)' }}
-                >
-                  Service Index
-                </span>
+        {/* Blueprint grid — minor lines */}
+        <div
+          className="absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(100,200,190,0.5) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(100,200,190,0.5) 1px, transparent 1px)
+            `,
+            backgroundSize: '20px 20px',
+          }}
+        />
+
+        {/* Blueprint grid — major lines */}
+        <div
+          className="absolute inset-0 opacity-[0.1]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(100,200,190,0.7) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(100,200,190,0.7) 1px, transparent 1px)
+            `,
+            backgroundSize: '80px 80px',
+          }}
+        />
+
+        {/* Desk lamp warm glow — upper left */}
+        <div
+          className="absolute -top-10 left-[15%] w-[500px] h-[400px]"
+          style={{
+            background: 'radial-gradient(ellipse at 50% 20%, rgba(255,200,120,0.08), transparent 70%)',
+          }}
+        />
+
+        {/* Secondary warm glow — center */}
+        <div
+          className="absolute top-[30%] left-[40%] w-[600px] h-[400px]"
+          style={{
+            background: 'radial-gradient(ellipse, rgba(184,130,70,0.04), transparent 60%)',
+          }}
+        />
+
+        {/* Vignette edges */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(ellipse at 50% 45%, transparent 30%, rgba(0,0,0,0.4) 100%)',
+          }}
+        />
+
+        {/* Desk edge — bottom */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-8"
+          style={{
+            background: 'linear-gradient(to top, rgba(60,40,20,0.3), transparent)',
+            borderTop: '1px solid rgba(140,100,60,0.15)',
+          }}
+        />
+      </div>
+
+      {/* Content layer */}
+      <div className="relative z-10 min-h-screen flex flex-col">
+
+        {/* Center desk area — scattered papers */}
+        <div className="flex-1 flex items-center justify-center px-4 py-20">
+          <div className="relative w-full max-w-3xl">
+            {/* Main paper — Accountability Framework */}
+            <div
+              className="relative mx-auto w-[90%] max-w-lg rounded-sm"
+              style={{
+                background: 'linear-gradient(135deg, #f5f0e8, #ede7dc)',
+                padding: '2rem 2.5rem',
+                transform: 'rotate(-1deg)',
+                boxShadow: '0 8px 40px rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.2)',
+              }}
+            >
+              <h2
+                className="font-anurati text-center mb-6 tracking-[0.15em] uppercase"
+                style={{ fontSize: '0.55rem', color: 'rgba(30,30,30,0.5)' }}
+              >
+                Actuarium Results &amp; Accountability Framework
+              </h2>
+
+              {/* Geometric sketch placeholder */}
+              <div className="flex justify-center mb-6">
+                <svg width="160" height="120" viewBox="0 0 160 120" fill="none" style={{ opacity: 0.25 }}>
+                  <polygon points="80,10 140,90 20,90" stroke="#8B5E3C" strokeWidth="1" fill="none" />
+                  <polygon points="80,30 120,80 40,80" stroke="#8B5E3C" strokeWidth="0.5" fill="none" />
+                  <circle cx="80" cy="60" r="25" stroke="#8B5E3C" strokeWidth="0.5" fill="none" />
+                  <line x1="30" y1="60" x2="130" y2="60" stroke="#8B5E3C" strokeWidth="0.3" />
+                  <line x1="80" y1="10" x2="80" y2="100" stroke="#8B5E3C" strokeWidth="0.3" />
+                </svg>
               </div>
 
-              <h1
-                className="font-aspal tracking-tight mb-4"
-                style={{ fontSize: '3.5rem', lineHeight: '1.1', color: '#1a1a1a' }}
-              >
-                The Drafting Table
-              </h1>
-
-              <p
-                className="font-caviar max-w-xl"
-                style={{ fontSize: '1.125rem', lineHeight: '1.7', color: 'rgba(0,57,51,0.55)' }}
-              >
-                Every project begins here — measured, considered, and drawn with care.
-                These are the services I draft from.
-              </p>
-            </header>
-
-            {/* Service book covers */}
-            <section className="pb-28 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service, idx) => (
-                <div
-                  key={idx}
-                  className="group relative rounded-xl overflow-hidden transition-transform duration-500 hover:-translate-y-1"
-                  style={{
-                    background: service.bg,
-                    boxShadow: `
-                      0 4px 20px rgba(0,0,0,0.08),
-                      0 1px 4px rgba(0,0,0,0.05),
-                      inset 0 1px 0 rgba(255,255,255,0.4)
-                    `,
-                    aspectRatio: '1 / 1.05',
-                  }}
-                >
-                  {/* Book edge texture — left spine */}
+              <div className="space-y-2">
+                {['Technical transparency & efficiency', 'Systems framework assessment', 'Branding final refinement'].map((line, i) => (
                   <div
-                    className="absolute top-2 bottom-2 left-0 w-1 rounded-r-sm"
+                    key={i}
+                    className="h-px"
                     style={{
-                      background: `linear-gradient(180deg, ${service.borderColor}, transparent 30%, transparent 70%, ${service.borderColor})`,
+                      background: `linear-gradient(90deg, rgba(139,94,60,${0.15 + i * 0.05}), transparent ${70 - i * 15}%)`,
                     }}
                   />
+                ))}
+              </div>
 
-                  {/* Corner ornaments for dark cards */}
-                  {(service.bg === '#1A2744' || service.bg === '#0C3C32') && (
-                    <>
-                      <div
-                        className="absolute top-3 left-3 w-4 h-4"
-                        style={{
-                          borderTop: `1px solid ${service.borderColor}`,
-                          borderLeft: `1px solid ${service.borderColor}`,
-                        }}
-                      />
-                      <div
-                        className="absolute top-3 right-3 w-4 h-4"
-                        style={{
-                          borderTop: `1px solid ${service.borderColor}`,
-                          borderRight: `1px solid ${service.borderColor}`,
-                        }}
-                      />
-                      <div
-                        className="absolute bottom-3 left-3 w-4 h-4"
-                        style={{
-                          borderBottom: `1px solid ${service.borderColor}`,
-                          borderLeft: `1px solid ${service.borderColor}`,
-                        }}
-                      />
-                      <div
-                        className="absolute bottom-3 right-3 w-4 h-4"
-                        style={{
-                          borderBottom: `1px solid ${service.borderColor}`,
-                          borderRight: `1px solid ${service.borderColor}`,
-                        }}
-                      />
-                    </>
-                  )}
-
-                  <div className="relative h-full flex flex-col p-5 md:p-6">
-                    {/* Title */}
-                    <h2
-                      className="font-anurati text-center mb-4 tracking-[0.12em] uppercase"
-                      style={{
-                        fontSize: '0.7rem',
-                        lineHeight: '1.6',
-                        color: service.titleColor,
-                      }}
-                    >
-                      {service.title}
-                    </h2>
-
-                    {/* 2x2 Quadrant Panel */}
-                    <div
-                      className="flex-1 rounded-lg overflow-hidden grid grid-cols-2 grid-rows-2"
-                      style={{
-                        border: `1px solid ${service.borderColor}`,
-                        boxShadow: `inset 0 2px 8px rgba(0,0,0,0.06)`,
-                      }}
-                    >
-                      {service.quadrants.map((q, qi) => (
-                        <div
-                          key={qi}
-                          className="relative flex items-end p-3 md:p-4 transition-colors duration-300"
-                          style={{
-                            background: (service.bg === '#1A2744' || service.bg === '#0C3C32')
-                              ? 'rgba(255,255,255,0.04)'
-                              : 'rgba(255,255,255,0.5)',
-                            borderRight: qi % 2 === 0 ? `1px solid ${service.borderColor}` : 'none',
-                            borderBottom: qi < 2 ? `1px solid ${service.borderColor}` : 'none',
-                          }}
-                        >
-                          <span
-                            className="font-caviar font-bold uppercase leading-tight"
-                            style={{
-                              fontSize: '0.65rem',
-                              letterSpacing: '0.06em',
-                              color: service.labelColor,
-                              whiteSpace: 'pre-line',
-                            }}
-                          >
-                            {q.label}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </section>
-
-            {/* Footer CTA */}
-            <section className="pb-20 text-center">
-              <div
-                className="h-px mx-auto mb-8 max-w-[180px]"
-                style={{ background: 'linear-gradient(90deg, transparent, rgba(0,57,51,0.12), transparent)' }}
-              />
-              <p className="font-caviar mb-1" style={{ fontSize: '0.9rem', color: 'rgba(30,30,30,0.4)' }}>
-                Ready to draft something together?
-              </p>
               <p
-                className="font-anurati"
-                style={{ fontSize: '0.55rem', letterSpacing: '0.3em', color: 'rgba(0,57,51,0.35)' }}
+                className="font-caviar mt-4 text-center italic"
+                style={{ fontSize: '0.7rem', color: 'rgba(30,30,30,0.3)' }}
               >
-                START WITH /CONNECT
+                M0na Machin3 — Drafting Table
               </p>
-            </section>
+            </div>
 
+            {/* Secondary paper — tilted right */}
+            <div
+              className="absolute -top-6 -right-4 md:right-8 w-48 h-32 rounded-sm hidden md:block"
+              style={{
+                background: 'linear-gradient(145deg, #f0ebe3, #e8e2d8)',
+                transform: 'rotate(4deg)',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.25)',
+                padding: '1rem',
+              }}
+            >
+              <div className="space-y-1.5">
+                {[70, 55, 40, 60, 30].map((w, i) => (
+                  <div
+                    key={i}
+                    className="h-px"
+                    style={{
+                      width: `${w}%`,
+                      background: 'rgba(139,94,60,0.15)',
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Small note — bottom left */}
+            <div
+              className="absolute -bottom-4 -left-2 md:left-4 w-36 h-24 rounded-sm hidden md:block"
+              style={{
+                background: 'linear-gradient(160deg, #f2ede5, #eae4da)',
+                transform: 'rotate(-3deg)',
+                boxShadow: '0 3px 15px rgba(0,0,0,0.2)',
+                padding: '0.75rem',
+              }}
+            >
+              <div className="space-y-1">
+                {[50, 65, 35].map((w, i) => (
+                  <div
+                    key={i}
+                    className="h-px"
+                    style={{ width: `${w}%`, background: 'rgba(139,94,60,0.12)' }}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* Glassmorphic service HUD panels */}
+        <div className="absolute inset-0 pointer-events-none">
+
+          {/* Visual Branding — top left */}
+          <div
+            className="pointer-events-auto absolute top-20 left-4 md:left-8 lg:left-12 w-[280px] md:w-[320px]"
+            style={{
+              background: 'rgba(12,30,28,0.65)',
+              backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(180,140,80,0.25)',
+              borderRadius: '6px',
+              padding: '1rem 1.25rem',
+              boxShadow: '0 4px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)',
+            }}
+          >
+            <h3
+              className="font-anurati tracking-[0.15em] uppercase mb-3"
+              style={{ fontSize: '0.55rem', color: 'rgba(220,200,160,0.9)' }}
+            >
+              Visual Branding and Design
+            </h3>
+            <div className="grid grid-cols-4 gap-2 mb-3">
+              {['#8B5E3C', '#C9A96E', '#2C3E5A', '#E8E2D8'].map((c, i) => (
+                <div key={i} className="h-4 rounded-sm" style={{ background: c, opacity: 0.8 }} />
+              ))}
+            </div>
+            <div className="flex gap-3 items-end">
+              <span style={{ fontFamily: 'serif', fontSize: '1.5rem', color: 'rgba(220,200,160,0.7)' }}>Aa</span>
+              <span style={{ fontFamily: 'sans-serif', fontSize: '1.1rem', color: 'rgba(220,200,160,0.5)' }}>Aa</span>
+              <div className="flex gap-1.5 ml-auto">
+                {['M', 'M', 'M'].map((l, i) => (
+                  <span
+                    key={i}
+                    className="font-anurati"
+                    style={{
+                      fontSize: '0.6rem',
+                      color: 'rgba(220,200,160,0.4)',
+                      padding: '2px 4px',
+                      border: '1px solid rgba(180,140,80,0.15)',
+                      borderRadius: '2px',
+                    }}
+                  >
+                    {l}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Process Optimization — top right */}
+          <div
+            className="pointer-events-auto absolute top-20 right-4 md:right-8 lg:right-12 w-[280px] md:w-[320px]"
+            style={{
+              background: 'rgba(12,30,28,0.65)',
+              backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(180,140,80,0.25)',
+              borderRadius: '6px',
+              padding: '1rem 1.25rem',
+              boxShadow: '0 4px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)',
+            }}
+          >
+            <h3
+              className="font-anurati tracking-[0.15em] uppercase mb-3"
+              style={{ fontSize: '0.55rem', color: 'rgba(220,200,160,0.9)' }}
+            >
+              Process Optimization and Roadmaps
+            </h3>
+            <div className="space-y-1.5">
+              {['Discovery', 'Analysis', 'Roadmap', 'Milestones'].map((step, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <div
+                    className="w-1.5 h-1.5 rounded-full"
+                    style={{ background: i < 2 ? 'rgba(100,200,180,0.6)' : 'rgba(180,140,80,0.4)' }}
+                  />
+                  <div
+                    className="flex-1 h-px"
+                    style={{ background: `rgba(100,200,180,${0.15 + i * 0.05})` }}
+                  />
+                  <span
+                    className="font-caviar"
+                    style={{ fontSize: '0.6rem', color: 'rgba(220,200,160,0.5)' }}
+                  >
+                    {step}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Actuarium Audits — bottom left */}
+          <div
+            className="pointer-events-auto absolute bottom-16 left-4 md:left-8 lg:left-12 w-[280px] md:w-[300px]"
+            style={{
+              background: 'rgba(12,30,28,0.65)',
+              backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(180,140,80,0.25)',
+              borderRadius: '6px',
+              padding: '1rem 1.25rem',
+              boxShadow: '0 4px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)',
+            }}
+          >
+            <h3
+              className="font-anurati tracking-[0.15em] uppercase mb-3"
+              style={{ fontSize: '0.55rem', color: 'rgba(220,200,160,0.9)' }}
+            >
+              Actuarium Audits
+            </h3>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+              {['Data classification', 'Data visualization', 'Risk heatmaps', 'Trend analysis'].map((item, i) => (
+                <span
+                  key={i}
+                  className="font-caviar"
+                  style={{ fontSize: '0.55rem', color: 'rgba(220,200,160,0.45)' }}
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+            {/* Mini bar chart */}
+            <div className="flex items-end gap-1 mt-3 h-6">
+              {[40, 65, 50, 80, 35, 70, 55].map((h, i) => (
+                <div
+                  key={i}
+                  className="flex-1 rounded-t-sm"
+                  style={{
+                    height: `${h}%`,
+                    background: i === 3
+                      ? 'rgba(180,140,80,0.5)'
+                      : 'rgba(100,200,180,0.25)',
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Accountable Agent Architecture — bottom center */}
+          <div
+            className="pointer-events-auto absolute bottom-16 left-1/2 -translate-x-1/2 w-[280px] md:w-[320px] hidden md:block"
+            style={{
+              background: 'rgba(12,30,28,0.65)',
+              backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(180,140,80,0.25)',
+              borderRadius: '6px',
+              padding: '1rem 1.25rem',
+              boxShadow: '0 4px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)',
+            }}
+          >
+            <h3
+              className="font-anurati tracking-[0.15em] uppercase mb-3"
+              style={{ fontSize: '0.55rem', color: 'rgba(220,200,160,0.9)' }}
+            >
+              Accountable Agent Architecture
+            </h3>
+            {/* Node diagram */}
+            <div className="flex items-center justify-center gap-3 mb-2">
+              {['AI', 'AI', 'AI'].map((label, i) => (
+                <div key={i} className="flex flex-col items-center">
+                  <div
+                    className="w-7 h-7 rounded-full flex items-center justify-center"
+                    style={{
+                      border: '1px solid rgba(100,200,180,0.3)',
+                      background: 'rgba(100,200,180,0.08)',
+                    }}
+                  >
+                    <span style={{ fontSize: '0.45rem', color: 'rgba(100,200,180,0.7)' }}>{label}</span>
+                  </div>
+                  {i < 2 && (
+                    <div className="w-8 h-px mt-1" style={{ background: 'rgba(180,140,80,0.2)' }} />
+                  )}
+                </div>
+              ))}
+            </div>
+            <span
+              className="font-caviar block text-center"
+              style={{ fontSize: '0.5rem', color: 'rgba(220,200,160,0.35)' }}
+            >
+              Security parameters &middot; Governance protocols
+            </span>
+          </div>
+
+          {/* Website Audits — bottom right */}
+          <div
+            className="pointer-events-auto absolute bottom-16 right-4 md:right-8 lg:right-12 w-[280px] md:w-[300px]"
+            style={{
+              background: 'rgba(12,30,28,0.65)',
+              backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(180,140,80,0.25)',
+              borderRadius: '6px',
+              padding: '1rem 1.25rem',
+              boxShadow: '0 4px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)',
+            }}
+          >
+            <h3
+              className="font-anurati tracking-[0.15em] uppercase mb-3"
+              style={{ fontSize: '0.55rem', color: 'rgba(220,200,160,0.9)' }}
+            >
+              Website Audits and Design
+            </h3>
+            <div className="grid grid-cols-3 gap-1.5">
+              {['User frames', 'User flow', 'Accessibility', 'Wireframes', 'Performance', 'UX audit'].map((item, i) => (
+                <div
+                  key={i}
+                  className="rounded-sm flex items-center justify-center"
+                  style={{
+                    height: '24px',
+                    background: 'rgba(100,200,180,0.06)',
+                    border: '1px solid rgba(100,200,180,0.1)',
+                  }}
+                >
+                  <span
+                    className="font-caviar"
+                    style={{ fontSize: '0.4rem', color: 'rgba(220,200,160,0.4)' }}
+                  >
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile fallback — stacked cards */}
+        <div className="md:hidden relative z-20 px-4 pb-20 space-y-4">
+          {services.map((service) => (
+            <div
+              key={service.id}
+              style={{
+                background: 'rgba(12,30,28,0.75)',
+                backdropFilter: 'blur(16px)',
+                border: '1px solid rgba(180,140,80,0.25)',
+                borderRadius: '6px',
+                padding: '1rem 1.25rem',
+              }}
+            >
+              <h3
+                className="font-anurati tracking-[0.15em] uppercase mb-2"
+                style={{ fontSize: '0.55rem', color: 'rgba(220,200,160,0.9)' }}
+              >
+                {service.title}
+              </h3>
+              <div className="grid grid-cols-2 gap-1">
+                {service.items.map((item, i) => (
+                  <span
+                    key={i}
+                    className="font-caviar"
+                    style={{ fontSize: '0.6rem', color: 'rgba(220,200,160,0.45)' }}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </main>
   )
