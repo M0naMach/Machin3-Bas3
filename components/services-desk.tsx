@@ -298,6 +298,7 @@ function ExpandedPanel({
         <div className="p-6 md:p-8">
           {/* Title */}
           <h2
+            id="service-dialog-title"
             className="font-anurati tracking-[0.14em] uppercase mb-6 pr-10"
             style={{ fontSize: '0.7rem', lineHeight: '1.6', color: service.titleColor }}
           >
