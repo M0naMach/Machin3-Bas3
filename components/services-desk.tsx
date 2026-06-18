@@ -239,8 +239,8 @@ function ExpandedPanel({
 
             <div className="flex-1">
               <h2
-                className="font-anurati tracking-[0.12em] uppercase mb-4"
-                style={{ fontSize: '0.7rem', lineHeight: '1.6', color: service.titleColor }}
+                className="font-aspal tracking-tight mb-4"
+                style={{ fontSize: '1.4rem', lineHeight: '1.3', color: service.titleColor }}
               >
                 {service.title}
               </h2>
@@ -322,6 +322,54 @@ function ExpandedPanel({
   )
 }
 
+function ServiceCard({
+  service,
+  onClick,
+  mobile,
+}: {
+  service: ServiceData
+  onClick: () => void
+  mobile?: boolean
+}) {
+  return (
+    <div
+      className={`group cursor-pointer rounded-xl overflow-hidden transition-all duration-300 ${
+        mobile ? 'active:scale-[0.98]' : 'hover:scale-[1.03]'
+      }`}
+      style={{
+        width: mobile ? '100%' : 'clamp(240px, 22vw, 320px)',
+        background: 'rgba(255,255,255,0.05)',
+        backdropFilter: 'blur(20px)',
+        border: `1px solid ${service.borderColor}`,
+        boxShadow: `0 4px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06)`,
+      }}
+      onClick={onClick}
+    >
+      <Image
+        src={service.image}
+        alt={service.title}
+        width={680}
+        height={680}
+        className="w-full h-auto"
+      />
+      <div className="px-4 py-3" style={{ borderTop: `1px solid ${service.borderColor}` }}>
+        <p
+          className="font-aspal tracking-tight"
+          style={{ fontSize: '0.95rem', lineHeight: '1.3', color: 'rgba(235,225,210,0.9)' }}
+        >
+          {service.title}
+        </p>
+        <p
+          className="font-caviar mt-1"
+          style={{ fontSize: '0.65rem', letterSpacing: '0.1em', color: 'rgba(180,170,155,0.5)' }}
+        >
+          {service.pricing.starting}
+        </p>
+      </div>
+    </div>
+  )
+}
+
 export default function ServicesDeskClient() {
   const [expandedId, setExpandedId] = useState<string | null>(null)
   const handleClose = useCallback(() => setExpandedId(null), [])
@@ -357,59 +405,18 @@ export default function ServicesDeskClient() {
       </div>
 
       {/* Desktop: Glassmorphic UI panels — 2 top, 1 center, 2 bottom */}
-      <div className="relative z-10 hidden md:flex flex-col items-center justify-center gap-8 px-8 py-16" style={{ minHeight: '100vh' }}>
-        {/* Top row */}
-        <div className="flex gap-8 justify-center">
-          {[services[0], services[1]].map((service) => (
-            <div
-              key={service.id}
-              className="cursor-pointer transition-all duration-300 hover:scale-[1.03] rounded-xl overflow-hidden"
-              style={{
-                width: 'clamp(240px, 22vw, 320px)',
-                background: 'rgba(255,255,255,0.04)',
-                backdropFilter: 'blur(16px)',
-                border: '1px solid rgba(180,83,9,0.2)',
-                boxShadow: '0 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05)',
-              }}
-              onClick={() => setExpandedId(service.id)}
-            >
-              <Image src={service.image} alt={service.title} width={680} height={680} className="w-full h-auto" />
-            </div>
+      <div className="relative z-10 hidden md:flex flex-col items-center justify-center gap-10 px-8 py-16" style={{ minHeight: '100vh' }}>
+        <div className="flex gap-10 justify-center">
+          {[services[0], services[1]].map((s) => (
+            <ServiceCard key={s.id} service={s} onClick={() => setExpandedId(s.id)} />
           ))}
         </div>
-        {/* Center */}
         <div className="flex justify-center">
-          <div
-            className="cursor-pointer transition-all duration-300 hover:scale-[1.03] rounded-xl overflow-hidden"
-            style={{
-              width: 'clamp(240px, 22vw, 320px)',
-              background: 'rgba(255,255,255,0.04)',
-              backdropFilter: 'blur(16px)',
-              border: '1px solid rgba(180,83,9,0.2)',
-              boxShadow: '0 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05)',
-            }}
-            onClick={() => setExpandedId(services[2].id)}
-          >
-            <Image src={services[2].image} alt={services[2].title} width={680} height={680} className="w-full h-auto" />
-          </div>
+          <ServiceCard service={services[2]} onClick={() => setExpandedId(services[2].id)} />
         </div>
-        {/* Bottom row */}
-        <div className="flex gap-8 justify-center">
-          {[services[3], services[4]].map((service) => (
-            <div
-              key={service.id}
-              className="cursor-pointer transition-all duration-300 hover:scale-[1.03] rounded-xl overflow-hidden"
-              style={{
-                width: 'clamp(240px, 22vw, 320px)',
-                background: 'rgba(255,255,255,0.04)',
-                backdropFilter: 'blur(16px)',
-                border: '1px solid rgba(180,83,9,0.2)',
-                boxShadow: '0 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05)',
-              }}
-              onClick={() => setExpandedId(service.id)}
-            >
-              <Image src={service.image} alt={service.title} width={680} height={680} className="w-full h-auto" />
-            </div>
+        <div className="flex gap-10 justify-center">
+          {[services[3], services[4]].map((s) => (
+            <ServiceCard key={s.id} service={s} onClick={() => setExpandedId(s.id)} />
           ))}
         </div>
       </div>
@@ -434,25 +441,12 @@ export default function ServicesDeskClient() {
         {[...services]
           .sort((a, b) => a.mobileOrder - b.mobileOrder)
           .map((service) => (
-            <div
+            <ServiceCard
               key={service.id}
-              className="cursor-pointer active:scale-[0.98] transition-transform rounded-xl overflow-hidden"
-              style={{
-                background: 'rgba(255,255,255,0.04)',
-                backdropFilter: 'blur(16px)',
-                border: '1px solid rgba(180,83,9,0.2)',
-                boxShadow: '0 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05)',
-              }}
+              service={service}
               onClick={() => setExpandedId(service.id)}
-            >
-              <Image
-                src={service.image}
-                alt={service.title}
-                width={680}
-                height={680}
-                className="w-full h-auto"
-              />
-            </div>
+              mobile
+            />
           ))}
       </div>
 
