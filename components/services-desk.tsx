@@ -331,37 +331,33 @@ function ServiceCard({
   onClick: () => void
   mobile?: boolean
 }) {
+  const dark = isDarkPanel(service.bgExpanded)
+
   return (
     <div
       className={`group cursor-pointer rounded-xl overflow-hidden transition-all duration-300 ${
-        mobile ? 'active:scale-[0.98]' : 'hover:scale-[1.03]'
+        mobile ? 'active:scale-[0.98]' : 'hover:scale-[1.03] hover:border-opacity-60'
       }`}
       style={{
-        width: mobile ? '100%' : 'clamp(240px, 22vw, 320px)',
+        width: mobile ? '100%' : 'clamp(220px, 20vw, 280px)',
         background: 'rgba(255,255,255,0.05)',
         backdropFilter: 'blur(20px)',
         border: `1px solid ${service.borderColor}`,
-        boxShadow: `0 4px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06)`,
+        boxShadow: '0 4px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06)',
       }}
       onClick={onClick}
     >
-      <Image
-        src={service.image}
-        alt={service.title}
-        width={680}
-        height={680}
-        className="w-full h-auto"
-      />
-      <div className="px-4 py-3" style={{ borderTop: `1px solid ${service.borderColor}` }}>
+      <div className="px-5 py-5">
         <p
           className="font-aspal tracking-tight"
-          style={{ fontSize: '0.95rem', lineHeight: '1.3', color: 'rgba(235,225,210,0.9)' }}
+          style={{ fontSize: mobile ? '1.2rem' : '1.05rem', lineHeight: '1.3', color: 'rgba(235,225,210,0.9)' }}
         >
           {service.title}
         </p>
+        <div className="h-px my-3" style={{ background: service.borderColor }} />
         <p
-          className="font-caviar mt-1"
-          style={{ fontSize: '0.65rem', letterSpacing: '0.1em', color: 'rgba(180,170,155,0.5)' }}
+          className="font-caviar"
+          style={{ fontSize: '0.75rem', lineHeight: '1.6', color: 'rgba(180,170,155,0.55)' }}
         >
           {service.pricing.starting}
         </p>
