@@ -239,8 +239,8 @@ function ExpandedPanel({
 
             <div className="flex-1">
               <h2
-                className="font-aspal tracking-tight mb-4"
-                style={{ fontSize: '1.4rem', lineHeight: '1.3', color: service.titleColor }}
+                className="font-caviar font-bold tracking-wide mb-4"
+                style={{ fontSize: '1.3rem', lineHeight: '1.3', color: service.titleColor }}
               >
                 {service.title}
               </h2>
@@ -349,8 +349,8 @@ function ServiceCard({
     >
       <div className="px-5 py-5">
         <p
-          className="font-aspal tracking-tight"
-          style={{ fontSize: mobile ? '1.2rem' : '1.05rem', lineHeight: '1.3', color: 'rgba(235,225,210,0.9)' }}
+          className="font-caviar font-bold tracking-wide"
+          style={{ fontSize: mobile ? '1.1rem' : '0.95rem', lineHeight: '1.3', color: 'rgba(235,225,210,0.9)' }}
         >
           {service.title}
         </p>
