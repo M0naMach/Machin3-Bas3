@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { lockBodyScroll, unlockBodyScroll } from '@/lib/body-scroll-lock'
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
 
 interface ServiceData {
   id: string
@@ -174,40 +175,25 @@ function ExpandedPanel({
   service: ServiceData
   onClose: () => void
 }) {
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
-    }
-    document.addEventListener('keydown', handleKey)
-    return () => document.removeEventListener('keydown', handleKey)
-  }, [onClose])
-
   const dark = isDarkPanel(service.bgExpanded)
   const textPrimary = dark ? 'rgba(220,200,160,0.92)' : service.titleColor
   const textSecondary = dark ? 'rgba(220,200,160,0.6)' : `${service.titleColor}99`
   const textBody = dark ? 'rgba(220,200,160,0.7)' : `${service.titleColor}cc`
 
   return (
-    <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
-      onClick={onClose}
-    >
-      <div
-        className="absolute inset-0"
-        style={{ background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(10px)' }}
-      />
-
-      <div
-        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-xl"
+    <Dialog open onOpenChange={(open) => !open && onClose()}>
+      <DialogContent
+        showCloseButton={false}
+        className="w-full max-h-[90vh] overflow-y-auto rounded-xl p-0 gap-0 border-0 sm:max-w-3xl"
         style={{
           background: service.bgExpanded,
           backdropFilter: 'blur(24px)',
           border: `1px solid ${service.borderColor}`,
           boxShadow: '0 24px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08)',
         }}
-        onClick={(e) => e.stopPropagation()}
       >
         <button
+          type="button"
           onClick={onClose}
           className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center transition-opacity hover:opacity-80 z-10"
           style={{
@@ -238,12 +224,14 @@ function ExpandedPanel({
             </div>
 
             <div className="flex-1">
-              <h2
-                className="font-caviar font-bold tracking-wide mb-4"
-                style={{ fontSize: '1.3rem', lineHeight: '1.3', color: service.titleColor }}
-              >
-                {service.title}
-              </h2>
+              <DialogTitle asChild>
+                <h2
+                  className="font-caviar font-bold tracking-wide mb-4"
+                  style={{ fontSize: '1.3rem', lineHeight: '1.3', color: service.titleColor }}
+                >
+                  {service.title}
+                </h2>
+              </DialogTitle>
 
               <p
                 className="font-caviar"
@@ -317,8 +305,8 @@ function ExpandedPanel({
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   )
 }
 
