@@ -370,11 +370,9 @@ export default function ServicesDeskClient() {
   const expandedService = services.find((s) => s.id === expandedId) ?? null
 
   useEffect(() => {
-    if (expandedId) {
-      lockBodyScroll()
-    } else {
-      unlockBodyScroll()
-    }
+    if (!expandedId) return
+
+    lockBodyScroll()
     return () => unlockBodyScroll()
   }, [expandedId])
 
