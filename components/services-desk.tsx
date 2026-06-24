@@ -192,6 +192,7 @@ function ExpandedPanel({
           boxShadow: '0 24px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08)',
         }}
       >
+        <DialogTitle className="sr-only">{service.title}</DialogTitle>
         <button
           type="button"
           onClick={onClose}
