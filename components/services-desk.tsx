@@ -331,8 +331,6 @@ function ServiceCard({
   onClick: () => void
   mobile?: boolean
 }) {
-  const dark = isDarkPanel(service.bgExpanded)
-
   return (
     <div
       className={`group cursor-pointer rounded-xl overflow-hidden transition-all duration-300 ${
