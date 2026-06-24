@@ -116,10 +116,10 @@ Machin3-Bas3/
 
 ### Available Scripts
 ```bash
-pnpm dev          # Start development server
-pnpm build        # Build for production
-pnpm start        # Start production server
-pnpm lint         # Run ESLint
+npm run dev        # Start development server
+npm run lint       # Run ESLint
+npm run pages:build # Build for Cloudflare Pages (Edge compat)
+npm run preview    # Build + run local Pages preview
 ```
 
 ### Portfolio Routing
