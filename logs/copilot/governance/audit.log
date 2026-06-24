@@ -46,3 +46,15 @@
   "governance_level": "standard",
   "cwd": "/home/runner/work/Machin3-Bas3/Machin3-Bas3"
 }
+{
+  "timestamp": "2026-06-24T00:46:31Z",
+  "event": "session_start",
+  "governance_level": "standard",
+  "cwd": "/home/runner/work/Machin3-Bas3/Machin3-Bas3"
+}
+{
+  "timestamp": "2026-06-24T00:46:31Z",
+  "event": "prompt_scanned",
+  "governance_level": "standard",
+  "status": "clean"
+}
