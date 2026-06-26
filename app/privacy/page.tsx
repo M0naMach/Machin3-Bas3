@@ -26,9 +26,9 @@ export default function PrivacyPage() {
             <h1 className="font-title text-5xl md:text-6xl tracking-wide opalescent-text">Privacy Policy</h1>
           </div>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Your privacy and data security are fundamental to everything we build at M0na Machin3
+            Your privacy and data security are fundamental to how we work at M0na Machin3
           </p>
-          <p className="text-sm text-muted-foreground mt-4">Last updated: January 2026</p>
+          <p className="text-sm text-muted-foreground mt-4">Last updated: June 2026</p>
         </div>
 
         {/* Content */}
@@ -39,14 +39,14 @@ export default function PrivacyPage() {
               Our Privacy Philosophy
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              At M0na Machin3, we believe that meaningful AI companionship requires trust, and trust requires
-              transparency. We are committed to protecting your privacy while building AI that truly understands and
-              grows with you.
+              At M0na Machin3, we believe that good consulting relationships require trust, and trust requires
+              transparency. Whether we are designing your brand, optimizing your processes, or architecting
+              accountable AI systems, we handle your information with care and intention.
             </p>
             <div className="bg-primary/10 rounded-lg p-4 border border-primary/20">
               <p className="text-foreground font-medium">
-                We will never sell your personal data. Your conversations and interactions with our AI companions are
-                private and used solely to improve your experience.
+                We will never sell your personal data. Any project materials, business information, or communications
+                you share with us are kept confidential and used solely to deliver our services.
               </p>
             </div>
           </div>
@@ -75,11 +75,11 @@ export default function PrivacyPage() {
                 </ul>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-3 text-foreground">AI Interaction Data</h3>
+                <h3 className="text-xl font-semibold mb-3 text-foreground">Project & Engagement Data</h3>
                 <ul className="space-y-2 text-muted-foreground">
-                  <li>• Conversations with AI companions (stored securely and privately)</li>
-                  <li>• Preferences and customization settings</li>
-                  <li>• Usage patterns to improve AI responses and personality</li>
+                  <li>• Design assets, brand materials, and deliverables shared during engagements</li>
+                  <li>• AI audit findings and architecture documentation</li>
+                  <li>• Process optimization data and roadmap artifacts</li>
                 </ul>
               </div>
             </div>
