@@ -33,6 +33,7 @@ export default function Home() {
       {/* The Invitation Section */}
       <section className="py-20 bg-card">
         <div className="max-w-4xl mx-auto px-6 text-center">
+          {/* TODO: update this headline — "render your vision" needs to change */}
           <h2 className="text-3xl md:text-4xl font-light mb-12 text-foreground">Ready to render your vision?</h2>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
