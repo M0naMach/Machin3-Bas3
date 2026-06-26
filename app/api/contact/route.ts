@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     // Create a new page in the Notion database
     const response = await notion.pages.create({
       parent: {
-        database_id: DATABASE_ID!,
+        database_id: 2841f4e3830f81e182e9d50abbf75eeb,
       },
       properties: {
         Name: {
