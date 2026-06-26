@@ -24,6 +24,10 @@ export const metadata: Metadata = {
   title: "M0na Machin3 - Human connection, coded with care",
   description:
     "Creating meaningful digital experiences through thoughtful design and development. Where reflection becomes connection in the digital space.",
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
+  },
   other: {
     "Cache-Control": "no-cache, no-store, must-revalidate",
     Pragma: "no-cache",
