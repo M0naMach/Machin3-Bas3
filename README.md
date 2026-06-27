@@ -31,7 +31,7 @@ A personal website built with Next.js, exploring the intersection of design, tec
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
+- Node.js 20+ 
 - npm
 
 ### Installation
@@ -116,6 +116,7 @@ npm run dev        # Start development server
 npm run lint       # Run ESLint
 npm run pages:build # Build for Cloudflare Pages (Edge compat)
 npm run preview    # Build + run local Pages preview
+npm test              # Run tests
 ```
 
 ### Portfolio Routing
@@ -126,7 +127,13 @@ If you want the website's `Portfolio` link and `/portfolio` route to hand off to
 NEXT_PUBLIC_PORTFOLIO_URL=https://your-portfolio.pages.dev
 ```
 
-If that variable is not set, the site keeps using the local `/portfolio` page by default.
+Similarly, the `/actuarium` route and the **AI Audit Actuarium** link in the footer use:
+
+```bash
+NEXT_PUBLIC_ACTUARIUM_URL=https://your-actuarium.pages.dev
+```
+
+If either variable is not set, the site uses the default hardcoded URLs. Server-side redirects in `next.config.mjs` handle these routes at the edge; the individual pages provide a client-side fallback.
 
 ### GitHub Copilot Agents
 
