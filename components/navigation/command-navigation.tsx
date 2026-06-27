@@ -260,7 +260,7 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
     if (searchTerm === "philosophy" || searchTerm === "mission") return cmd.command === "readme"
     if (searchTerm === "offerings") return cmd.command === "services"
     if (searchTerm === "audit" || searchTerm === "ai") return cmd.command === "actuarium"
-    if (searchTerm === "journey" || searchTerm === "journey") return cmd.command === "timeline"
+    if (searchTerm === "journey") return cmd.command === "timeline"
 
     return (
       cmd.command.toLowerCase().includes(searchTerm) ||
