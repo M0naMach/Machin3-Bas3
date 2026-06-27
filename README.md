@@ -31,7 +31,7 @@ A personal website built with Next.js, exploring the intersection of design, tec
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
+- Node.js 20+ 
 - npm
 
 ### Installation
@@ -112,13 +112,13 @@ Machin3-Bas3/
 
 ### Available Scripts
 ```bash
-npm run dev        # Start development server
-npm run lint       # Run ESLint
-npm run pages:build # Build for Cloudflare Pages (Edge compat)
-npm run preview    # Build + run local Pages preview
+npm run dev           # Start development server
+npm run pages:build   # Build for Cloudflare Pages Edge Runtime (use this, not npm run build)
+npm run lint          # Run ESLint
+npm test              # Run tests
 ```
 
-### Portfolio Routing
+### Portfolio & External Project Routing
 
 If you want the website's `Portfolio` link and `/portfolio` route to hand off to a separate Cloudflare Pages site, set this environment variable in your deployment:
 
@@ -126,7 +126,13 @@ If you want the website's `Portfolio` link and `/portfolio` route to hand off to
 NEXT_PUBLIC_PORTFOLIO_URL=https://your-portfolio.pages.dev
 ```
 
-If that variable is not set, the site redirects to `https://machin3.space/portfolio` by default.
+Similarly, the `/actuarium` route and the **AI Audit Actuarium** link in the footer use:
+
+```bash
+NEXT_PUBLIC_ACTUARIUM_URL=https://your-actuarium.pages.dev
+```
+
+If either variable is not set, the site uses the default hardcoded URLs. Server-side redirects in `next.config.mjs` handle these routes at the edge; the individual pages provide a client-side fallback.
 
 ### GitHub Copilot Agents
 
