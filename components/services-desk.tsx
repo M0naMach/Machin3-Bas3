@@ -336,6 +336,8 @@ function ServiceCard({
 
   return (
     <article
+      role="button"
+      tabIndex={0}
       className="relative w-full cursor-pointer transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98] flex flex-col justify-between overflow-hidden"
       style={{
         aspectRatio: '1.8125',
@@ -348,6 +350,7 @@ function ServiceCard({
         boxSizing: 'border-box',
       }}
       onClick={onClick}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick() } }}
     >
       {/* Shimmer strip */}
       <div

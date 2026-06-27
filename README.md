@@ -25,14 +25,14 @@ A personal website built with Next.js, exploring the intersection of design, tec
 - **Services**: Interactive drafting desk with expandable service cards
 - **Timeline**: Project journey and development process
 - **Vision**: Purpose and direction statement
-- **Audit**: Process and methodology overview
+- **Actuarium**: AI audit methodology and redirect
 - **README**: In-site documentation viewer
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js 18+ 
-- pnpm (recommended) or npm
+- npm
 
 ### Installation
 
@@ -44,15 +44,11 @@ A personal website built with Next.js, exploring the intersection of design, tec
 
 2. **Install dependencies**
    ```bash
-   pnpm install
-   # or
-   npm install
+   npm ci
    ```
 
 3. **Run the development server**
    ```bash
-   pnpm dev
-   # or
    npm run dev
    ```
 
@@ -82,7 +78,7 @@ Machin3-Bas3/
 │   ├── services/          # Services drafting desk page
 │   ├── timeline/          # Timeline page
 │   ├── vision/            # Vision/purpose page
-│   ├── audit/             # Audit methodology page
+│   ├── actuarium/         # Actuarium redirect page
 │   ├── readme/            # In-site README page
 │   ├── portfolio/         # Portfolio redirect
 │   ├── privacy/           # Privacy policy
@@ -130,7 +126,7 @@ If you want the website's `Portfolio` link and `/portfolio` route to hand off to
 NEXT_PUBLIC_PORTFOLIO_URL=https://your-portfolio.pages.dev
 ```
 
-If that variable is not set, the site keeps using the local `/portfolio` page.
+If that variable is not set, the site redirects to `https://machin3.space/portfolio` by default.
 
 ### GitHub Copilot Agents
 
