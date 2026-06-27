@@ -126,7 +126,7 @@ If you want the website's `Portfolio` link and `/portfolio` route to hand off to
 NEXT_PUBLIC_PORTFOLIO_URL=https://your-portfolio.pages.dev
 ```
 
-If that variable is not set, the site redirects to `https://machin3.space/portfolio` by default.
+If that variable is not set, the site keeps using the local `/portfolio` page by default.
 
 ### GitHub Copilot Agents
 
