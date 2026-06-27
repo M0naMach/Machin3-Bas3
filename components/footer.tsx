@@ -1,4 +1,12 @@
+"use client"
+
+import { getPortfolioHref } from "@/lib/portfolio"
+import { getActuariumHref } from "@/lib/actuarium"
+
 export function Footer() {
+  const portfolioHref = getPortfolioHref()
+  const actuariumHref = getActuariumHref()
+
   return (
     <footer className="bg-card border-t border-border py-12">
       <div className="max-w-6xl mx-auto px-6">
@@ -13,6 +21,11 @@ export function Footer() {
                 </a>
               </li>
               <li>
+                <a href="/vision" className="hover:text-secondary transition-colors cursor-pointer">
+                  Vision
+                </a>
+              </li>
+              <li>
                 <a
                   href="https://linkedin.com/in/m0nalisasmil3d/"
                   target="_blank"
@@ -20,6 +33,38 @@ export function Footer() {
                   className="hover:text-secondary transition-colors cursor-pointer"
                 >
                   LinkedIn
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Proj3cts */}
+          <div>
+            <h3 className="font-semibold text-foreground mb-4">Proj3cts</h3>
+            <ul className="space-y-2 text-muted-foreground">
+              <li>
+                <a
+                  href={portfolioHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-secondary transition-colors cursor-pointer"
+                >
+                  Portfolio
+                </a>
+              </li>
+              <li>
+                <a
+                  href={actuariumHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-secondary transition-colors cursor-pointer"
+                >
+                  AI Actuarium
+                </a>
+              </li>
+              <li>
+                <a href="/services" className="hover:text-secondary transition-colors cursor-pointer">
+                  Services
                 </a>
               </li>
             </ul>
@@ -60,12 +105,8 @@ export function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
-
-          {/* Copyright */}
-          <div>
-            <p className="text-muted-foreground text-sm">
-              © <span className="font-sans opalescent-text-small">M0na Machin3</span> 2025
+            <p className="text-muted-foreground text-sm mt-6">
+              &copy; <span className="font-sans opalescent-text-small">M0na Machin3</span> 2025
             </p>
           </div>
         </div>

@@ -22,37 +22,36 @@ A personal website built with Next.js, exploring the intersection of design, tec
 ### 📱 Pages & Sections
 - **Home**: Hero section with animated timeline
 - **Work**: Portfolio and collaboration information
+- **Vision**: Creative direction and canvas
 - **Timeline**: Project journey and development process
-- **Notion Integration**: Setup and migration tools
-- **Command Demo**: Interactive navigation showcase
+- **Services**: Available services and offerings
+- **README**: About the project and mission
+- **Portfolio**: Showcase (external — `p0rtf0li0-spac3.m0nalisa.workers.dev`)
+- **AI Audit Actuarium**: AI evaluation framework (external — `ai-audit-actuarium.pages.dev`)
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
-- pnpm (recommended) or npm
+- Node.js 20+ 
+- npm
 
 ### Installation
 
 1. **Clone the repository**
-   \`\`\`bash
-   git clone https://github.com/your-username/machin3-bas3.git
+   ```bash
+   git clone https://github.com/M0naLisaSmil3d/machin3-bas3.git
    cd machin3-bas3
-   \`\`\`
+   ```
 
 2. **Install dependencies**
-   \`\`\`bash
-   pnpm install
-   # or
-   npm install
-   \`\`\`
+   ```bash
+   npm ci
+   ```
 
 3. **Run the development server**
-   \`\`\`bash
-   pnpm dev
-   # or
+   ```bash
    npm run dev
-   \`\`\`
+   ```
 
 4. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
@@ -94,7 +93,7 @@ machin3-bas3/
 
 ## 🛠️ Technology Stack
 
-- **Framework**: Next.js 14 with App Router
+- **Framework**: Next.js 15 with App Router
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS with custom animations
 - **UI Components**: Radix UI primitives
@@ -104,14 +103,14 @@ machin3-bas3/
 ## 📝 Development
 
 ### Available Scripts
-\`\`\`bash
-pnpm dev          # Start development server
-pnpm build        # Build for production
-pnpm start        # Start production server
-pnpm lint         # Run ESLint
-\`\`\`
+```bash
+npm run dev           # Start development server
+npm run pages:build   # Build for Cloudflare Pages Edge Runtime (use this, not npm run build)
+npm run lint          # Run ESLint
+npm test              # Run tests
+```
 
-### Portfolio Routing
+### Portfolio & External Project Routing
 
 If you want the website's `Portfolio` link and `/portfolio` route to hand off to a separate Cloudflare Pages site, set this environment variable in your deployment:
 
@@ -119,7 +118,13 @@ If you want the website's `Portfolio` link and `/portfolio` route to hand off to
 NEXT_PUBLIC_PORTFOLIO_URL=https://your-portfolio.pages.dev
 ```
 
-If that variable is not set, the site keeps using the local `/portfolio` page.
+Similarly, the `/actuarium` route and the **AI Audit Actuarium** link in the footer use:
+
+```bash
+NEXT_PUBLIC_ACTUARIUM_URL=https://your-actuarium.pages.dev
+```
+
+If either variable is not set, the site uses the default hardcoded URLs. Server-side redirects in `next.config.mjs` handle these routes at the edge; the individual pages provide a client-side fallback.
 
 ### GitHub Copilot Agents
 
