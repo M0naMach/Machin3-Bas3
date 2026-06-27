@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { Client } from "@notionhq/client"
 
-export const runtime = 'edge'
+export const runtime = "edge"
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
@@ -18,10 +18,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Name, email, and message are required" }, { status: 400 })
     }
 
+
+    if (!DATABASE_ID) {
+      return NextResponse.json({ error: "Server misconfiguration: missing Notion database ID" }, { status: 500 })
+    }
+
     // Create a new page in the Notion database
     const response = await notion.pages.create({
       parent: {
-        database_id: 2841f4e3830f81e182e9d50abbf75eeb,
+        database_id: DATABASE_ID,
       },
       properties: {
         Name: {
