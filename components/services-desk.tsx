@@ -349,14 +349,6 @@ function ServiceCard({
         padding: 'clamp(16px, 1.67vw, 28px)',
         boxSizing: 'border-box',
       }}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault()
-          onClick()
-        }
-      }}
       onClick={onClick}
       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick() } }}
     >
