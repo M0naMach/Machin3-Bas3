@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { Terminal } from 'lucide-react'
 import { getPortfolioHref } from "@/lib/portfolio"
+import { getActuariumHref } from "@/lib/actuarium"
 import { lockBodyScroll, unlockBodyScroll } from "@/lib/body-scroll-lock"
 
 interface NavigationCommand {
@@ -132,6 +133,86 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
         try {
           if (typeof window !== "undefined" && window.location) {
             window.location.href = "/services"
+          }
+        } catch (error) {
+          // Fail silently
+        }
+        setIsOpen(false)
+        setInput("")
+      },
+    },
+    {
+      command: "work",
+      label: "Work",
+      description: "Portfolio and collaboration showcase",
+      action: () => {
+        try {
+          if (typeof window !== "undefined" && window.location) {
+            window.location.href = "/work"
+          }
+        } catch (error) {
+          // Fail silently
+        }
+        setIsOpen(false)
+        setInput("")
+      },
+    },
+    {
+      command: "vision",
+      label: "Vision",
+      description: "Purpose and creative direction",
+      action: () => {
+        try {
+          if (typeof window !== "undefined" && window.location) {
+            window.location.href = "/vision"
+          }
+        } catch (error) {
+          // Fail silently
+        }
+        setIsOpen(false)
+        setInput("")
+      },
+    },
+    {
+      command: "journey",
+      label: "Timeline",
+      description: "Project journey and development process",
+      action: () => {
+        try {
+          if (typeof window !== "undefined" && window.location) {
+            window.location.href = "/timeline"
+          }
+        } catch (error) {
+          // Fail silently
+        }
+        setIsOpen(false)
+        setInput("")
+      },
+    },
+    {
+      command: "actuarium",
+      label: "AI Actuarium",
+      description: "AI audit and evaluation framework",
+      action: () => {
+        try {
+          if (typeof window !== "undefined" && window.location) {
+            window.location.href = getActuariumHref()
+          }
+        } catch (error) {
+          // Fail silently
+        }
+        setIsOpen(false)
+        setInput("")
+      },
+    },
+    {
+      command: "support",
+      label: "Support",
+      description: "Get help and find answers to common questions",
+      action: () => {
+        try {
+          if (typeof window !== "undefined" && window.location) {
+            window.location.href = "/support"
           }
         } catch (error) {
           // Fail silently
