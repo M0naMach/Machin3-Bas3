@@ -349,19 +349,9 @@ function ServiceCard({
         padding: 'clamp(16px, 1.67vw, 28px)',
         boxSizing: 'border-box',
       }}
+      aria-haspopup="dialog"
       onClick={onClick}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter') {
-          e.preventDefault()
-          onClick()
-        }
-      }}
-      onKeyUp={(e) => {
-        if (e.key === ' ' || e.key === 'Spacebar') {
-          e.preventDefault()
-          onClick()
-        }
-      }}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick() } }}
     >
       {/* Shimmer strip */}
       <div
