@@ -58,3 +58,27 @@
   "governance_level": "standard",
   "status": "clean"
 }
+{
+  "timestamp": "2026-06-27T19:59:22Z",
+  "event": "session_start",
+  "governance_level": "standard",
+  "cwd": "/home/runner/work/Machin3-Bas3/Machin3-Bas3"
+}
+{
+  "timestamp": "2026-06-27T19:59:22Z",
+  "event": "prompt_scanned",
+  "governance_level": "standard",
+  "status": "clean"
+}
+{
+  "timestamp": "2026-06-27T19:59:22Z",
+  "event": "prompt_scanned",
+  "governance_level": "standard",
+  "status": "clean"
+}
+{
+  "timestamp": "2026-06-27T19:59:23Z",
+  "event": "session_start",
+  "governance_level": "standard",
+  "cwd": "/home/runner/work/Machin3-Bas3/Machin3-Bas3"
+}
