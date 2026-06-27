@@ -350,7 +350,18 @@ function ServiceCard({
         boxSizing: 'border-box',
       }}
       onClick={onClick}
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick() } }}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault()
+          onClick()
+        }
+      }}
+      onKeyUp={(e) => {
+        if (e.key === ' ' || e.key === 'Spacebar') {
+          e.preventDefault()
+          onClick()
+        }
+      }}
     >
       {/* Shimmer strip */}
       <div
