@@ -1,4 +1,4 @@
-const DEFAULT_PORTFOLIO_URL = "https://machin3.space/portfolio";
+const DEFAULT_PORTFOLIO_URL = "";
 
 const rawPortfolioUrl = process.env.NEXT_PUBLIC_PORTFOLIO_URL?.trim() || DEFAULT_PORTFOLIO_URL;
 
