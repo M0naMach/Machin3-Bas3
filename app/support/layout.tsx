@@ -5,6 +5,6 @@ export const metadata = {
   description: 'Get answers to common questions, understand our project process, and learn how to get in touch with M0na Machin3.',
 }
 
-export default function SupportLayout({ children }: { children: React.ReactNode }) {
+export default function SupportLayout({ children }: { children: import('react').ReactNode }) {
   return <>{children}</>
 }
