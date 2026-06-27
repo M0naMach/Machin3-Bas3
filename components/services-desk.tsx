@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { Shield, Database, GitBranch, Monitor, Palette } from 'lucide-react'
 import { lockBodyScroll, unlockBodyScroll } from '@/lib/body-scroll-lock'
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
 
 interface ServiceData {
   id: string
@@ -12,6 +13,7 @@ interface ServiceData {
   image: string
   icon: 'shield' | 'database' | 'gitbranch' | 'monitor' | 'palette'
   gradientAngle: number
+  isDark: boolean
   bgExpanded: string
   titleColor: string
   labelColor: string
@@ -43,6 +45,7 @@ const services: ServiceData[] = [
     image: '/SERVICES-Accountable.png',
     icon: 'shield',
     gradientAngle: 135,
+    isDark: true,
     bgExpanded: 'rgba(22,32,58,0.96)',
     titleColor: '#C9A96E',
     labelColor: 'rgba(201,169,110,0.8)',
@@ -71,6 +74,7 @@ const services: ServiceData[] = [
     image: '/SERVICES-Actuarium.png',
     icon: 'database',
     gradientAngle: 210,
+    isDark: false,
     bgExpanded: 'rgba(210,220,235,0.96)',
     titleColor: '#2C3E5A',
     labelColor: 'rgba(44,62,90,0.8)',
@@ -99,6 +103,7 @@ const services: ServiceData[] = [
     image: '/SERVICES-Automations-nobg.png',
     icon: 'gitbranch',
     gradientAngle: 45,
+    isDark: true,
     bgExpanded: 'rgba(10,45,38,0.94)',
     titleColor: '#C9A96E',
     labelColor: 'rgba(220,200,160,0.75)',
@@ -127,6 +132,7 @@ const services: ServiceData[] = [
     image: '/SERVICES-Web.png',
     icon: 'monitor',
     gradientAngle: 160,
+    isDark: false,
     bgExpanded: 'rgba(252,248,242,0.97)',
     titleColor: '#8B5E3C',
     labelColor: 'rgba(139,94,60,0.8)',
@@ -155,6 +161,7 @@ const services: ServiceData[] = [
     image: '/SERVICES-Branding.png',
     icon: 'palette',
     gradientAngle: 300,
+    isDark: true,
     bgExpanded: 'rgba(30,28,26,0.94)',
     titleColor: '#C9A96E',
     labelColor: 'rgba(220,200,160,0.8)',
@@ -178,10 +185,6 @@ const services: ServiceData[] = [
   },
 ]
 
-function isDarkPanel(bg: string) {
-  return bg.includes('30,28,26') || bg.includes('10,45,38') || bg.includes('22,32,58')
-}
-
 function ExpandedPanel({
   service,
   onClose,
@@ -189,41 +192,28 @@ function ExpandedPanel({
   service: ServiceData
   onClose: () => void
 }) {
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
-    }
-    document.addEventListener('keydown', handleKey)
-    return () => document.removeEventListener('keydown', handleKey)
-  }, [onClose])
-
-  const dark = isDarkPanel(service.bgExpanded)
-  const textPrimary = dark ? 'rgba(220,200,160,0.92)' : service.titleColor
-  const textSecondary = dark ? 'rgba(220,200,160,0.6)' : `${service.titleColor}99`
-  const textBody = dark ? 'rgba(220,200,160,0.7)' : `${service.titleColor}cc`
+  const textPrimary = service.isDark ? 'rgba(220,200,160,0.92)' : service.titleColor
+  const textSecondary = service.isDark ? 'rgba(220,200,160,0.6)' : `${service.titleColor}99`
+  const textBody = service.isDark ? 'rgba(220,200,160,0.7)' : `${service.titleColor}cc`
 
   return (
-    <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
-      onClick={onClose}
-    >
-      <div
-        className="absolute inset-0"
-        style={{ background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(10px)' }}
-      />
-
-      <div
-        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-xl"
+    <Dialog open onOpenChange={(open) => !open && onClose()}>
+      <DialogContent
+        showCloseButton={false}
+        className="w-full max-h-[90vh] overflow-y-auto rounded-xl p-0 gap-0 border-0 sm:max-w-3xl"
         style={{
           background: service.bgExpanded,
           backdropFilter: 'blur(24px)',
           border: `1px solid ${service.borderColor}`,
           boxShadow: '0 24px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08)',
         }}
-        onClick={(e) => e.stopPropagation()}
       >
+        <DialogTitle className="sr-only">{service.title}</DialogTitle>
+
         <button
+          type="button"
           onClick={onClose}
+          aria-label="Close"
           className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center transition-opacity hover:opacity-80 z-10"
           style={{
             background: service.accentColor,
@@ -233,7 +223,7 @@ function ExpandedPanel({
             padding: 0,
           }}
         >
-          &times;
+          <span aria-hidden="true">&times;</span>
         </button>
 
         <div className="p-6 md:p-8">
@@ -330,8 +320,8 @@ function ExpandedPanel({
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   )
 }
 
