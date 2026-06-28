@@ -26,9 +26,9 @@ export default function TermsPage() {
             <h1 className="font-title text-5xl md:text-6xl tracking-wide opalescent-text">Terms of Service</h1>
           </div>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Clear, fair terms that protect both you and M0na Machin3 as we build the future of AI companionship together
+            Clear, fair terms that protect both you and M0na Machin3 as we work together on design, strategy, and technology
           </p>
-          <p className="text-sm text-muted-foreground mt-4">Last updated: January 2026</p>
+          <p className="text-sm text-muted-foreground mt-4">Last updated: June 2026</p>
         </div>
 
         {/* Content */}
@@ -39,9 +39,9 @@ export default function TermsPage() {
               Our Commitment
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              These terms reflect our values: transparency, fairness, and mutual respect. We're building AI companions
-              that enhance human connection, and our terms are designed to protect that mission while ensuring a
-              positive experience for everyone.
+              These terms reflect our values: transparency, fairness, and mutual respect. We provide design, consulting,
+              and AI architecture services that put people first, and our terms are designed to protect that mission
+              while ensuring a positive experience for everyone.
             </p>
             <div className="bg-primary/10 rounded-lg p-4 border border-primary/20">
               <p className="text-foreground font-medium">
@@ -60,18 +60,18 @@ export default function TermsPage() {
               <div>
                 <h3 className="text-xl font-semibold mb-3 text-foreground">Current Services</h3>
                 <ul className="space-y-2 text-muted-foreground">
-                  <li>• Custom bot development for Discord and Twitch platforms</li>
-                  <li>• Business support services including administrative assistance</li>
-                  <li>• Design and branding services for digital and physical media</li>
-                  <li>• Strategic clarity and system optimization consulting</li>
-                  <li>• AI companion development and consultation</li>
+                  <li>• Visual Branding & Design (from $2,500)</li>
+                  <li>• Process Optimization & Roadmaps (from $1,800)</li>
+                  <li>• AI Actuarium Audits (from $3,000)</li>
+                  <li>• Website Design & Development (from $3,500)</li>
+                  <li>• Accountable AI Architecture (from $4,000)</li>
                 </ul>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-3 text-foreground">Future Services</h3>
+                <h3 className="text-xl font-semibold mb-3 text-foreground">Evolving Services</h3>
                 <p className="text-muted-foreground">
-                  As we develop AI companion technology, new services may be added. You'll be notified of any changes to
-                  terms that affect existing services.
+                  As our practice grows, new services and packages may be introduced. You will be notified of any changes
+                  to terms that affect existing engagements.
                 </p>
               </div>
             </div>
@@ -109,26 +109,28 @@ export default function TermsPage() {
           <div className="bg-card/80 backdrop-blur-sm rounded-xl p-8 border border-border">
             <h2 className="text-3xl font-semibold mb-6 text-foreground flex items-center gap-3">
               <AlertTriangle className="w-8 h-8 text-chart-4" />
-              AI Companion Guidelines
+              AI & Technology Services
             </h2>
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-semibold mb-3 text-foreground">Ethical Use</h3>
+                <h3 className="text-xl font-semibold mb-3 text-foreground">Responsible AI Practices</h3>
                 <p className="text-muted-foreground mb-4">
-                  Our AI companions are designed to support human wellbeing and growth. They should be used in ways that
-                  enhance, not replace, human relationships and personal development.
+                  Our AI architecture and audit services are grounded in accountability, transparency, and
+                  human-centered design. We help organizations build AI systems that are fair, explainable, and aligned
+                  with their values.
                 </p>
                 <ul className="space-y-1 text-muted-foreground text-sm">
-                  <li>• AI companions are not substitutes for professional medical or psychological care</li>
-                  <li>• Interactions should be respectful and constructive</li>
-                  <li>• AI companions are designed to encourage healthy human connections</li>
+                  <li>• AI Actuarium Audits evaluate risk, bias, and compliance across your AI systems</li>
+                  <li>• Accountable AI Architecture engagements produce documentation and governance frameworks</li>
+                  <li>• Recommendations are advisory and do not constitute legal or regulatory compliance guarantees</li>
                 </ul>
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-3 text-foreground">Data and Privacy</h3>
                 <p className="text-muted-foreground">
-                  Your interactions with AI companions are private and used solely to improve your experience. We never
-                  share personal conversations or use them for purposes beyond service improvement.
+                  Any data shared during consulting engagements is treated as confidential and used solely for the
+                  purpose of delivering the agreed-upon services. We never share client information for purposes
+                  beyond your engagement.
                 </p>
               </div>
             </div>
@@ -147,8 +149,8 @@ export default function TermsPage() {
               <div className="bg-muted/30 rounded-lg p-4">
                 <h3 className="text-lg font-semibold mb-2 text-foreground">Important Note</h3>
                 <p className="text-muted-foreground text-sm">
-                  AI companions are not medical devices or professional counseling services. If you're experiencing
-                  mental health concerns, please consult with qualified healthcare professionals.
+                  AI audit findings and architecture recommendations are advisory in nature. They do not constitute
+                  legal advice or guarantee regulatory compliance. Consult qualified legal counsel for compliance matters.
                 </p>
               </div>
             </div>

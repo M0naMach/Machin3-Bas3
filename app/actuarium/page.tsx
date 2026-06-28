@@ -1,22 +1,14 @@
-"use client"
-
-import { useEffect } from "react"
+import { redirect } from "next/navigation"
 import { getActuariumHref } from "@/lib/actuarium"
 
 export default function ActuariumPage() {
-  const actuariumHref = getActuariumHref()
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.location.replace(actuariumHref)
-    }
-  }, [actuariumHref])
-
-  return (
-    <div className="min-h-screen grid place-items-center bg-background text-foreground px-6 text-center">
-      <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">
-        Redirecting to AI Audit Actuarium&hellip;
-      </p>
-    </div>
-  )
+  const href = getActuariumHref()
+  if (href === "/actuarium") {
+    return (
+      <main className="min-h-screen bg-background flex items-center justify-center">
+        <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">Actuarium is not configured.</p>
+      </main>
+    )
+  }
+  redirect(href)
 }

@@ -110,54 +110,6 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
       },
     },
     {
-      command: "work",
-      label: "Work",
-      description: "See what's being built",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/work"
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
-    },
-    {
-      command: "vision",
-      label: "Vision",
-      description: "The canvas and creative direction",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/vision"
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
-    },
-    {
-      command: "timeline",
-      label: "Timeline",
-      description: "The journey and milestones",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/timeline"
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
-    },
-    {
       command: "portfolio",
       label: "Portfolio",
       description: "View my portfolio showcase",
@@ -174,9 +126,73 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
       },
     },
     {
+      command: "services",
+      label: "Services",
+      description: "View all available services and offerings",
+      action: () => {
+        try {
+          if (typeof window !== "undefined" && window.location) {
+            window.location.href = "/services"
+          }
+        } catch (error) {
+          // Fail silently
+        }
+        setIsOpen(false)
+        setInput("")
+      },
+    },
+    {
+      command: "work",
+      label: "Work",
+      description: "Portfolio and collaboration showcase",
+      action: () => {
+        try {
+          if (typeof window !== "undefined" && window.location) {
+            window.location.href = "/work"
+          }
+        } catch (error) {
+          // Fail silently
+        }
+        setIsOpen(false)
+        setInput("")
+      },
+    },
+    {
+      command: "vision",
+      label: "Vision",
+      description: "Purpose and creative direction",
+      action: () => {
+        try {
+          if (typeof window !== "undefined" && window.location) {
+            window.location.href = "/vision"
+          }
+        } catch (error) {
+          // Fail silently
+        }
+        setIsOpen(false)
+        setInput("")
+      },
+    },
+    {
+      command: "journey",
+      label: "Timeline",
+      description: "Project journey and development process",
+      action: () => {
+        try {
+          if (typeof window !== "undefined" && window.location) {
+            window.location.href = "/timeline"
+          }
+        } catch (error) {
+          // Fail silently
+        }
+        setIsOpen(false)
+        setInput("")
+      },
+    },
+    {
       command: "actuarium",
-      label: "AI Audit Actuarium",
-      description: "Systematic AI evaluation framework",
+      label: "AI Actuarium",
+      description: "AI audit and evaluation framework",
       action: () => {
         try {
           if (typeof window !== "undefined" && window.location) {
@@ -190,13 +206,13 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
       },
     },
     {
-      command: "services",
-      label: "Services",
-      description: "View all available services and offerings",
+      command: "support",
+      label: "Support",
+      description: "Get help and find answers to common questions",
       action: () => {
         try {
           if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/services"
+            window.location.href = "/support"
           }
         } catch (error) {
           // Fail silently
@@ -259,8 +275,6 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
     const searchTerm = input.toLowerCase()
     if (searchTerm === "philosophy" || searchTerm === "mission") return cmd.command === "readme"
     if (searchTerm === "offerings") return cmd.command === "services"
-    if (searchTerm === "audit" || searchTerm === "ai") return cmd.command === "actuarium"
-    if (searchTerm === "journey") return cmd.command === "timeline"
 
     return (
       cmd.command.toLowerCase().includes(searchTerm) ||
@@ -569,7 +583,7 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
                       <div className="text-center py-8">
                         <div className="text-base mb-2 text-muted-foreground">No commands found</div>
                         <div className="text-sm text-muted-foreground">
-                          Try: hom3bas3, work, vision, timeline, portfolio, actuarium, services, readme, privacy, terms
+                          Try typing "hom3bas3", "portfolio", "services", "readme", "privacy", or "terms"
                         </div>
                       </div>
                     )}

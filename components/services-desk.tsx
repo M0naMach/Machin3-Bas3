@@ -1,146 +1,56 @@
 'use client'
 
-import { useState, useEffect, useCallback, useRef, type CSSProperties } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
+import { Shield, Database, GitBranch, Monitor, Palette } from 'lucide-react'
 import { lockBodyScroll, unlockBodyScroll } from '@/lib/body-scroll-lock'
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
 
 interface ServiceData {
   id: string
   title: string
-  bg: string
+  descriptor: string
+  image: string
+  icon: 'shield' | 'database' | 'gitbranch' | 'monitor' | 'palette'
+  gradientAngle: number
+  isDark: boolean
   bgExpanded: string
   titleColor: string
   labelColor: string
   borderColor: string
   accentColor: string
-  quadrants: string[]
   description: string
   deliverables: string[]
+  price: string
   pricing: {
     starting: string
     note: string
   }
-  rotation: string
-  zIndex: number
-  position: Record<string, string>
   mobileOrder: number
 }
 
+const ICON_MAP = {
+  shield: Shield,
+  database: Database,
+  gitbranch: GitBranch,
+  monitor: Monitor,
+  palette: Palette,
+} as const
+
 const services: ServiceData[] = [
-  {
-    id: 'branding',
-    title: 'Visual Branding & Design',
-    bg: 'rgba(40,40,40,0.55)',
-    bgExpanded: 'rgba(30,28,26,0.92)',
-    titleColor: '#C9A96E',
-    labelColor: 'rgba(220,200,160,0.8)',
-    borderColor: 'rgba(180,140,80,0.3)',
-    accentColor: 'rgba(180,140,80,0.15)',
-    quadrants: [
-      'Logo Design &\nIdentity Systems',
-      'Typography\n& Voice',
-      'Color Theory\n& Palettes',
-      'Brand Structure\n& Frameworks',
-    ],
-    description:
-      'Purpose-driven visual systems that translate who you are into what people see. From logo suites to full brand ecosystems — color, type, and layout engineered for emotional resonance and cross-medium consistency.',
-    deliverables: [
-      'Brand identity audit & strategic direction',
-      'Logo design & iconography suite',
-      'Color system & typography framework',
-      'Brand guidelines & asset deployment kit',
-      'Templates, layouts & accessibility review',
-    ],
-    pricing: {
-      starting: 'From $2,500',
-      note: 'Scoped per project after discovery call',
-    },
-    rotation: '-2deg',
-    zIndex: 5,
-    position: { top: '8%', left: '2%' },
-    mobileOrder: 1,
-  },
-  {
-    id: 'roadmaps',
-    title: 'Process Optimization & Roadmaps',
-    bg: 'rgba(12,60,50,0.6)',
-    bgExpanded: 'rgba(10,45,38,0.92)',
-    titleColor: '#C9A96E',
-    labelColor: 'rgba(220,200,160,0.75)',
-    borderColor: 'rgba(180,140,80,0.25)',
-    accentColor: 'rgba(100,200,180,0.12)',
-    quadrants: [
-      'Workflow\nOptimization',
-      'Strategic\nRoadmapping',
-      'Performance\nAnalysis',
-      'Systems\nIntegration',
-    ],
-    description:
-      "Structured thinking for when the workflow doesn't match the vision. I diagram what exists, identify friction, and architect a simpler path forward — with milestones you can actually hit.",
-    deliverables: [
-      'Current-state process mapping',
-      'Bottleneck analysis & friction report',
-      'Optimized workflow design',
-      'Implementation roadmap with milestones',
-      'Accountability scaffold & review cadence',
-    ],
-    pricing: {
-      starting: 'From $1,800',
-      note: 'Scoped per project after discovery call',
-    },
-    rotation: '1.5deg',
-    zIndex: 6,
-    position: { top: '5%', left: '35%' },
-    mobileOrder: 2,
-  },
-  {
-    id: 'actuarium',
-    title: 'AI Actuarium Audits',
-    bg: 'rgba(200,215,230,0.65)',
-    bgExpanded: 'rgba(210,220,235,0.95)',
-    titleColor: '#2C3E5A',
-    labelColor: 'rgba(44,62,90,0.8)',
-    borderColor: 'rgba(44,62,90,0.15)',
-    accentColor: 'rgba(44,62,90,0.08)',
-    quadrants: [
-      'Algorithmic Risk &\nCoherence Checks',
-      'Forensic &\nDeterministic Calculation',
-      'Dual Visual\nModel',
-      'Transparent Result\nTranslation',
-    ],
-    description:
-      "Comprehensive audits that quantify risk, surface blind spots, and ground decisions in data. Whether it's operational exposure, system reliability, or strategic alignment — the numbers tell the story.",
-    deliverables: [
-      'Risk exposure assessment & scoring',
-      'Data integrity & compliance review',
-      'Operational efficiency metrics',
-      'Findings report with severity tiers',
-      'Remediation plan & priority matrix',
-    ],
-    pricing: {
-      starting: 'From $3,000',
-      note: 'Scoped per project after discovery call',
-    },
-    rotation: '2.5deg',
-    zIndex: 4,
-    position: { top: '6%', right: '2%' },
-    mobileOrder: 3,
-  },
   {
     id: 'agents',
     title: 'Accountable AI Architecture',
-    bg: 'rgba(26,39,68,0.8)',
-    bgExpanded: 'rgba(22,32,58,0.95)',
+    descriptor: 'Agent design, ethical governance & system architecture for AI that you can actually explain.',
+    image: '/SERVICES-Accountable.png',
+    icon: 'shield',
+    gradientAngle: 135,
+    isDark: true,
+    bgExpanded: 'rgba(22,32,58,0.96)',
     titleColor: '#C9A96E',
     labelColor: 'rgba(201,169,110,0.8)',
     borderColor: 'rgba(201,169,110,0.25)',
     accentColor: 'rgba(201,169,110,0.1)',
-    quadrants: [
-      'Ethical Governance &\nTransparency Protocols',
-      'Agent Prompt\n& Identity Design',
-      'Scalable Architecture\n& Systems Integration',
-      'Impact &\nCompliance Audits',
-    ],
     description:
       'Design and deployment of AI agent systems with built-in accountability, transparency, and human oversight. Agents that do real work — with audit trails, guardrails, and clear lines of responsibility.',
     deliverables: [
@@ -150,30 +60,84 @@ const services: ServiceData[] = [
       'Integration spec & deployment plan',
       'Governance documentation & runbook',
     ],
+    price: '$500–$7,500',
     pricing: {
       starting: 'From $4,000',
       note: 'Scoped per project after discovery call',
     },
-    rotation: '-1.5deg',
-    zIndex: 7,
-    position: { bottom: '8%', left: '5%' },
-    mobileOrder: 4,
+    mobileOrder: 1,
+  },
+  {
+    id: 'actuarium',
+    title: 'AI Actuarium Audit',
+    descriptor: "Forensic review of your existing AI — surfaces what it's really doing vs. what it's supposed to. AI Actuarium® framework.",
+    image: '/SERVICES-Actuarium.png',
+    icon: 'database',
+    gradientAngle: 210,
+    isDark: false,
+    bgExpanded: 'rgba(210,220,235,0.96)',
+    titleColor: '#2C3E5A',
+    labelColor: 'rgba(44,62,90,0.8)',
+    borderColor: 'rgba(44,62,90,0.15)',
+    accentColor: 'rgba(44,62,90,0.08)',
+    description:
+      "Comprehensive audits that quantify risk, surface blind spots, and ground decisions in data. Whether it's operational exposure, system reliability, or strategic alignment — the numbers tell the story.",
+    deliverables: [
+      'Risk exposure assessment & scoring',
+      'Data integrity & compliance review',
+      'Operational efficiency metrics',
+      'Findings report with severity tiers',
+      'Remediation plan & priority matrix',
+    ],
+    price: '$900–$5,000 + $750–$1,500/mo',
+    pricing: {
+      starting: 'From $3,000',
+      note: 'Scoped per project after discovery call',
+    },
+    mobileOrder: 2,
+  },
+  {
+    id: 'roadmaps',
+    title: 'Process Optimization & Roadmap',
+    descriptor: 'Workflow audit, strategic roadmap, and systems integration for operations that need to scale.',
+    image: '/SERVICES-Automations-nobg.png',
+    icon: 'gitbranch',
+    gradientAngle: 45,
+    isDark: true,
+    bgExpanded: 'rgba(10,45,38,0.94)',
+    titleColor: '#C9A96E',
+    labelColor: 'rgba(220,200,160,0.75)',
+    borderColor: 'rgba(180,140,80,0.25)',
+    accentColor: 'rgba(100,200,180,0.12)',
+    description:
+      "Structured thinking for when the workflow doesn't match the vision. I diagram what exists, identify friction, and architect a simpler path forward — with milestones you can actually hit.",
+    deliverables: [
+      'Current-state process mapping',
+      'Bottleneck analysis & friction report',
+      'Optimized workflow design',
+      'Implementation roadmap with milestones',
+      'Accountability scaffold & review cadence',
+    ],
+    price: '$250–$6,000',
+    pricing: {
+      starting: 'From $1,800',
+      note: 'Scoped per project after discovery call',
+    },
+    mobileOrder: 3,
   },
   {
     id: 'websites',
     title: 'Website Design & Development',
-    bg: 'rgba(255,250,246,0.7)',
-    bgExpanded: 'rgba(252,248,242,0.96)',
+    descriptor: 'Full-stack websites in Next.js — from information architecture through launch.',
+    image: '/SERVICES-Web.png',
+    icon: 'monitor',
+    gradientAngle: 160,
+    isDark: false,
+    bgExpanded: 'rgba(252,248,242,0.97)',
     titleColor: '#8B5E3C',
     labelColor: 'rgba(139,94,60,0.8)',
     borderColor: 'rgba(139,94,60,0.15)',
     accentColor: 'rgba(139,94,60,0.06)',
-    quadrants: [
-      'Digital Landscape\n& Structure',
-      'Digital Aesthetics\n& Interaction Design',
-      'Website Audit &\nPerformance Review',
-      'Global Network &\nInnovation Systems',
-    ],
     description:
       'End-to-end web evaluation and design — from accessibility and performance audits to full redesigns. Sites that load fast, convert intentionally, and look like they belong to you.',
     deliverables: [
@@ -183,67 +147,43 @@ const services: ServiceData[] = [
       'Redesign mockups & prototypes',
       'Implementation spec & handoff package',
     ],
+    price: '$400–$5,500',
     pricing: {
       starting: 'From $3,500',
       note: 'Scoped per project after discovery call',
     },
-    rotation: '1deg',
-    zIndex: 5,
-    position: { bottom: '6%', right: '3%' },
+    mobileOrder: 4,
+  },
+  {
+    id: 'branding',
+    title: 'Visual Branding & Design',
+    descriptor: 'Logo systems, color, typography, and brand frameworks built to last.',
+    image: '/SERVICES-Branding.png',
+    icon: 'palette',
+    gradientAngle: 300,
+    isDark: true,
+    bgExpanded: 'rgba(30,28,26,0.94)',
+    titleColor: '#C9A96E',
+    labelColor: 'rgba(220,200,160,0.8)',
+    borderColor: 'rgba(180,140,80,0.3)',
+    accentColor: 'rgba(180,140,80,0.15)',
+    description:
+      'Purpose-driven visual systems that translate who you are into what people see. From logo suites to full brand ecosystems — color, type, and layout engineered for emotional resonance and cross-medium consistency.',
+    deliverables: [
+      'Brand identity audit & strategic direction',
+      'Logo design & iconography suite',
+      'Color system & typography framework',
+      'Brand guidelines & asset deployment kit',
+      'Templates, layouts & accessibility review',
+    ],
+    price: '$450–$3,500',
+    pricing: {
+      starting: 'From $2,500',
+      note: 'Scoped per project after discovery call',
+    },
     mobileOrder: 5,
   },
 ]
-
-function isDarkCard(bg: string) {
-  const match = bg.match(/rgba?\((\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})/i)
-  if (!match) return false
-
-  const [, rText, gText, bText] = match
-  const r = Number.parseInt(rText, 10)
-  const g = Number.parseInt(gText, 10)
-  const b = Number.parseInt(bText, 10)
-  const luminance = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
-
-  return luminance < 0.45
-}
-
-function QuadrantGrid({ service, compact }: { service: ServiceData; compact?: boolean }) {
-  const dark = isDarkCard(service.bg)
-  return (
-    <div
-      className="rounded-lg overflow-hidden grid grid-cols-2 grid-rows-2"
-      style={{
-        border: `1px solid ${service.borderColor}`,
-        boxShadow: 'inset 0 2px 10px rgba(0,0,0,0.1)',
-      }}
-    >
-      {service.quadrants.map((label, qi) => (
-        <div
-          key={qi}
-          className="flex items-end p-3"
-          style={{
-            minHeight: compact ? '60px' : '70px',
-            background: dark ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.45)',
-            borderRight: qi % 2 === 0 ? `1px solid ${service.borderColor}` : 'none',
-            borderBottom: qi < 2 ? `1px solid ${service.borderColor}` : 'none',
-          }}
-        >
-          <span
-            className="font-caviar font-bold uppercase leading-tight"
-            style={{
-              fontSize: '0.55rem',
-              letterSpacing: '0.04em',
-              color: service.labelColor,
-              whiteSpace: 'pre-line',
-            }}
-          >
-            {label}
-          </span>
-        </div>
-      ))}
-    </div>
-  )
-}
 
 function ExpandedPanel({
   service,
@@ -252,57 +192,29 @@ function ExpandedPanel({
   service: ServiceData
   onClose: () => void
 }) {
-  const closeButtonRef = useRef<HTMLButtonElement>(null)
-
-  useEffect(() => {
-    closeButtonRef.current?.focus()
-  }, [])
-
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
-    }
-    document.addEventListener('keydown', handleKey)
-    return () => document.removeEventListener('keydown', handleKey)
-  }, [onClose])
-
-  const dark = isDarkCard(service.bgExpanded)
-  const textPrimary = dark ? 'rgba(220,200,160,0.92)' : service.titleColor
-  const textSecondary = dark ? 'rgba(220,200,160,0.6)' : `${service.titleColor}99`
-  const textBody = dark ? 'rgba(220,200,160,0.7)' : `${service.titleColor}cc`
-  const dividerColor = service.borderColor
+  const textPrimary = service.isDark ? 'rgba(220,200,160,0.92)' : service.titleColor
+  const textSecondary = service.isDark ? 'rgba(220,200,160,0.6)' : `${service.titleColor}99`
+  const textBody = service.isDark ? 'rgba(220,200,160,0.7)' : `${service.titleColor}cc`
 
   return (
-    <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
-      onClick={onClose}
-    >
-      {/* Backdrop */}
-      <div
-        className="absolute inset-0 animate-in fade-in duration-300"
-        style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)' }}
-      />
-
-      {/* Panel */}
-      <div
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="service-dialog-title"
-        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-xl animate-in zoom-in-95 fade-in duration-300"
+    <Dialog open onOpenChange={(open) => !open && onClose()}>
+      <DialogContent
+        showCloseButton={false}
+        className="w-full max-h-[90vh] overflow-y-auto rounded-xl p-0 gap-0 border-0 sm:max-w-3xl"
         style={{
           background: service.bgExpanded,
           backdropFilter: 'blur(24px)',
           border: `1px solid ${service.borderColor}`,
           boxShadow: '0 24px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08)',
         }}
-        onClick={(e) => e.stopPropagation()}
       >
-        {/* Close button */}
+        <DialogTitle className="sr-only">{service.title}</DialogTitle>
+
         <button
-          ref={closeButtonRef}
           type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center transition-colors z-10"
+          aria-label="Close"
+          className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center transition-opacity hover:opacity-80 z-10"
           style={{
             background: service.accentColor,
             border: `1px solid ${service.borderColor}`,
@@ -310,40 +222,45 @@ function ExpandedPanel({
             fontSize: '1rem',
             padding: 0,
           }}
-          >
-            <span aria-hidden="true">&times;</span>
-            <span className="sr-only">Close service details</span>
-          </button>
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
 
         <div className="p-6 md:p-8">
-          {/* Title */}
-          <h2
-            id="service-dialog-title"
-            className="font-anurati tracking-[0.14em] uppercase mb-6 pr-10"
-            style={{ fontSize: '0.7rem', lineHeight: '1.6', color: service.titleColor }}
-          >
-            {service.title}
-          </h2>
+          <div className="md:flex md:gap-8 mb-6">
+            <div className="shrink-0 mb-4 md:mb-0 md:w-[220px]">
+              <Image
+                src={service.image}
+                alt={service.title}
+                width={440}
+                height={440}
+                className="w-full h-auto rounded-lg"
+                style={{
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.25)',
+                }}
+              />
+            </div>
 
-          {/* Quadrant grid — smaller in expanded view */}
-          <div className="mb-6 max-w-xs">
-            <QuadrantGrid service={service} compact />
+            <div className="flex-1">
+              <h2
+                className="font-caviar font-bold tracking-wide mb-4"
+                style={{ fontSize: '1.3rem', lineHeight: '1.3', color: service.titleColor }}
+              >
+                {service.title}
+              </h2>
+
+              <p
+                className="font-caviar"
+                style={{ fontSize: '0.95rem', lineHeight: '1.75', color: textBody }}
+              >
+                {service.description}
+              </p>
+            </div>
           </div>
 
-          {/* Divider */}
-          <div className="h-px mb-6" style={{ background: dividerColor }} />
+          <div className="h-px mb-6" style={{ background: service.borderColor }} />
 
-          {/* Description */}
-          <p
-            className="font-caviar mb-6"
-            style={{ fontSize: '0.95rem', lineHeight: '1.75', color: textBody }}
-          >
-            {service.description}
-          </p>
-
-          {/* Deliverables + Pricing — side by side on desktop */}
           <div className="md:flex md:gap-8">
-            {/* Deliverables */}
             <div className="flex-1 mb-6 md:mb-0">
               <h3
                 className="font-anurati tracking-[0.2em] uppercase mb-3"
@@ -366,7 +283,6 @@ function ExpandedPanel({
               </ul>
             </div>
 
-            {/* Pricing */}
             <div
               className="md:w-[200px] shrink-0 rounded-lg p-4"
               style={{
@@ -393,7 +309,6 @@ function ExpandedPanel({
                 {service.pricing.note}
               </p>
 
-              {/* CTA */}
               <div className="mt-4 pt-3" style={{ borderTop: `1px solid ${service.borderColor}` }}>
                 <span
                   className="font-anurati block text-center"
@@ -405,197 +320,148 @@ function ExpandedPanel({
             </div>
           </div>
         </div>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
+function ServiceCard({
+  service,
+  onClick,
+}: {
+  service: ServiceData
+  onClick: () => void
+}) {
+  const IconComponent = ICON_MAP[service.icon]
+
+  return (
+    <article
+      role="button"
+      tabIndex={0}
+      className="relative w-full cursor-pointer transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 flex flex-col justify-between overflow-hidden"
+      style={{
+        aspectRatio: '1.8125',
+        background: `linear-gradient(${service.gradientAngle}deg, rgba(252,240,232,0.90) 0%, rgba(243,232,255,0.82) 35%, rgba(224,245,255,0.85) 65%, rgba(220,255,248,0.78) 100%)`,
+        backdropFilter: 'blur(24px)',
+        WebkitBackdropFilter: 'blur(24px)',
+        border: '1.5px solid rgba(184,115,51,0.70)',
+        borderRadius: 'clamp(10px, 0.83vw, 16px)',
+        padding: 'clamp(16px, 1.67vw, 28px)',
+        boxSizing: 'border-box',
+      }}
+      aria-haspopup="dialog"
+      onClick={onClick}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick() } }}
+    >
+      {/* Shimmer strip */}
+      <div
+        className="absolute inset-x-0 top-0 h-[3px] pointer-events-none"
+        style={{
+          background: 'linear-gradient(90deg, rgba(235,140,184,1) 0%, rgba(204,140,242,1) 28%, rgba(115,184,250,1) 58%, rgba(77,230,210,1) 82%, rgba(235,140,184,0.5) 100%)',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Content row */}
+      <div className="flex items-start" style={{ gap: 'clamp(12px, 1vw, 18px)', marginTop: '6px' }}>
+        {/* Icon box */}
+        <div
+          className="shrink-0 flex items-center justify-center"
+          style={{
+            width: 'clamp(52px, 4.4vw, 80px)',
+            height: 'clamp(52px, 4.4vw, 80px)',
+            border: '1px solid rgba(184,115,51,0.60)',
+            borderRadius: 'clamp(8px, 0.6vw, 12px)',
+            color: 'rgba(184,115,51,0.85)',
+          }}
+          aria-hidden="true"
+        >
+          <IconComponent style={{ width: '55%', height: '55%' }} />
+        </div>
+
+        {/* Text stack */}
+        <div className="min-w-0 flex flex-col" style={{ gap: 'clamp(4px, 0.3vw, 8px)' }}>
+          <h3
+            className="font-caviar font-bold m-0"
+            style={{
+              fontSize: 'clamp(18px, 2.2vw, 36px)',
+              lineHeight: '1.15',
+              color: 'rgb(184,115,51)',
+              textShadow: '0 0 6px rgba(255,255,230,0.95), 0 0 18px rgba(255,185,64,0.80), 0 0 36px rgba(153,235,255,0.50), 0 0 64px rgba(255,217,128,0.30)',
+            }}
+          >
+            {service.title}
+          </h3>
+          <p
+            className="font-caviar m-0"
+            style={{
+              fontSize: 'clamp(13px, 1vw, 17px)',
+              lineHeight: '1.5',
+              color: 'rgba(60,40,20,0.70)',
+            }}
+          >
+            {service.descriptor}
+          </p>
+        </div>
       </div>
-    </div>
+
+      {/* Price badge */}
+      <div
+        className="self-end font-caviar font-bold whitespace-nowrap"
+        style={{
+          clipPath: 'polygon(0% 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%)',
+          background: 'rgb(184,115,51)',
+          color: '#fff',
+          fontSize: 'clamp(11px, 0.85vw, 14px)',
+          padding: 'clamp(6px, 0.5vw, 10px) clamp(12px, 1vw, 18px)',
+          borderRadius: '3px 3px 0 3px',
+        }}
+        aria-label={`Price range: ${service.price}`}
+      >
+        {service.price}
+      </div>
+    </article>
   )
 }
 
 export default function ServicesDeskClient() {
   const [expandedId, setExpandedId] = useState<string | null>(null)
-
   const handleClose = useCallback(() => setExpandedId(null), [])
-
   const expandedService = services.find((s) => s.id === expandedId) ?? null
 
   useEffect(() => {
     if (!expandedId) return
-
     lockBodyScroll()
     return () => unlockBodyScroll()
   }, [expandedId])
 
   return (
     <>
-      {/* === Desk Surface Background === */}
+      {/* Desk background */}
       <div className="fixed inset-0 z-0">
         <Image
           src="/SERVICE_PAGE-Full.png"
           alt=""
-          aria-hidden="true"
           fill
-          priority
           className="object-cover"
           style={{ objectPosition: 'center 40%' }}
+          priority
         />
         <div
           className="absolute inset-0"
           style={{
-            background: 'radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.4) 100%)',
+            background: 'radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.35) 100%)',
           }}
         />
       </div>
 
-      {/* === Desktop: Scattered cards === */}
-      <div className="relative z-10 hidden md:block" style={{ minHeight: '100vh' }}>
-        <h2 className="sr-only">The Drafting Table</h2>
-        {services.map((service) => {
-          const posStyle: CSSProperties = {
-            position: 'absolute',
-            width: 'clamp(280px, 30vw, 380px)',
-            zIndex: service.zIndex,
-            transform: `rotate(${service.rotation})`,
-            ...service.position,
-          }
-
-          return (
-            <div
-              key={service.id}
-              className="group transition-all duration-500 hover:scale-[1.03] hover:z-50 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A96E]/60"
-              style={posStyle}
-              role="button"
-              tabIndex={0}
-              aria-haspopup="dialog"
-              onClick={() => setExpandedId(service.id)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault()
-                  setExpandedId(service.id)
-                }
-              }}
-            >
-              <div
-                className="rounded-xl overflow-hidden"
-                style={{
-                  background: service.bg,
-                  backdropFilter: 'blur(20px)',
-                  border: `1px solid ${service.borderColor}`,
-                  boxShadow:
-                    '0 8px 40px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08)',
-                }}
-              >
-                <div className="p-4 pb-3">
-                  <div
-                    className="font-anurati tracking-[0.12em] uppercase text-center"
-                    style={{ fontSize: '0.6rem', lineHeight: '1.6', color: service.titleColor }}
-                  >
-                    {service.title}
-                  </div>
-                </div>
-
-                <div className="mx-3 mb-3">
-                  <QuadrantGrid service={service} />
-                </div>
-              </div>
-            </div>
-          )
-        })}
-
-        {/* Center gold M0NA card */}
-        <div
-          className="absolute z-[3]"
-          style={{
-            top: '42%',
-            left: '50%',
-            transform: 'translate(-50%, -50%) rotate(-0.5deg)',
-            width: '160px',
-          }}
-        >
-          <div
-            className="rounded-md p-4 text-center"
-            style={{
-              background: 'linear-gradient(135deg, #C9A96E, #DFC28A)',
-              boxShadow: '0 6px 25px rgba(0,0,0,0.3)',
-            }}
-          >
-            <span
-              className="font-anurati block"
-              style={{ fontSize: '1.2rem', color: '#1a1a1a', letterSpacing: '0.15em' }}
-            >
-              M0NA
-            </span>
-            <span
-              className="font-caviar block mt-1"
-              style={{
-                fontSize: '0.5rem',
-                color: 'rgba(26,26,26,0.5)',
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-              }}
-            >
-              Machin3
-            </span>
-          </div>
-        </div>
-
-        {/* Scattered papers */}
-        <div className="absolute z-[2]" style={{ top: '30%', left: '38%', transform: 'rotate(-4deg)' }}>
-          <div
-            className="w-52 h-40 rounded-sm"
-            style={{
-              background: 'linear-gradient(135deg, #f5f0e8, #ede7dc)',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.25)',
-              padding: '1rem',
-            }}
-          >
-            <div className="space-y-2">
-              {[65, 80, 50, 70, 40, 60].map((w, i) => (
-                <div
-                  key={i}
-                  className="h-px"
-                  style={{ width: `${w}%`, background: 'rgba(139,94,60,0.12)' }}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute z-[2]" style={{ top: '35%', left: '50%', transform: 'rotate(2deg)' }}>
-          <div
-            className="w-56 h-44 rounded-sm"
-            style={{
-              background: 'linear-gradient(145deg, #f0ebe3, #e8e2d8)',
-              boxShadow: '0 5px 25px rgba(0,0,0,0.25)',
-              padding: '1.25rem',
-            }}
-          >
-            <p
-              className="font-anurati text-center mb-3"
-              style={{ fontSize: '0.4rem', color: 'rgba(30,30,30,0.35)', letterSpacing: '0.1em' }}
-            >
-              Actuarium Results &amp; Accountability Framework
-            </p>
-            <svg
-              width="100%"
-              height="70"
-              viewBox="0 0 160 70"
-              fill="none"
-              style={{ opacity: 0.2 }}
-              aria-hidden="true"
-              focusable="false"
-            >
-              <polygon points="80,5 130,60 30,60" stroke="#8B5E3C" strokeWidth="0.8" fill="none" />
-              <polygon points="80,15 115,52 45,52" stroke="#8B5E3C" strokeWidth="0.5" fill="none" />
-              <circle cx="80" cy="38" r="18" stroke="#8B5E3C" strokeWidth="0.5" fill="none" />
-              <line x1="40" y1="38" x2="120" y2="38" stroke="#8B5E3C" strokeWidth="0.3" />
-              <line x1="80" y1="5" x2="80" y2="65" stroke="#8B5E3C" strokeWidth="0.3" />
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      {/* === Mobile: Stacked cards === */}
-      <div className="md:hidden relative z-10 px-4 pt-24 pb-20 space-y-5">
-        <header className="mb-8">
+      {/* Services grid */}
+      <div
+        className="relative z-10 w-full"
+        style={{ padding: 'clamp(32px, 4vw, 80px) clamp(24px, 4.4vw, 80px)' }}
+      >
+        {/* Mobile header */}
+        <header className="md:hidden mb-6">
           <h2
             className="font-aspal tracking-tight mb-2"
             style={{ fontSize: '2.5rem', lineHeight: '1.1', color: 'rgba(235,225,210,0.95)' }}
@@ -606,44 +472,57 @@ export default function ServicesDeskClient() {
             className="font-caviar"
             style={{ fontSize: '0.95rem', lineHeight: '1.6', color: 'rgba(180,170,155,0.6)' }}
           >
-            Every project begins here.
+            Tap a card to explore.
           </p>
         </header>
 
-        {[...services]
-          .sort((a, b) => a.mobileOrder - b.mobileOrder)
-          .map((service) => (
-            <button
-              key={service.id}
-              type="button"
-              className="w-full rounded-xl overflow-hidden cursor-pointer active:scale-[0.98] transition-transform text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A96E]/60"
-              style={{
-                background: service.bg,
-                backdropFilter: 'blur(20px)',
-                border: `1px solid ${service.borderColor}`,
-                boxShadow: '0 6px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06)',
-              }}
-              onClick={() => setExpandedId(service.id)}
-              aria-haspopup="dialog"
-            >
-              <div className="p-4 pb-3">
-                <div
-                  className="font-anurati tracking-[0.12em] uppercase text-center"
-                  style={{ fontSize: '0.6rem', lineHeight: '1.6', color: service.titleColor }}
-                >
-                  {service.title}
-                </div>
-              </div>
-
-              <div className="mx-3 mb-3">
-                <QuadrantGrid service={service} compact />
-              </div>
-            </button>
-          ))}
+        <div className="services-grid">
+          {[...services]
+            .sort((a, b) => a.mobileOrder - b.mobileOrder)
+            .map((service) => (
+              <ServiceCard
+                key={service.id}
+                service={service}
+                onClick={() => setExpandedId(service.id)}
+              />
+            ))}
+        </div>
       </div>
 
-      {/* === Expanded panel overlay === */}
+      {/* Expanded overlay */}
       {expandedService && <ExpandedPanel service={expandedService} onClose={handleClose} />}
+
+      <style jsx>{`
+        .services-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(min(100%, 580px), 1fr));
+          gap: clamp(16px, 2vw, 32px);
+          max-width: 1440px;
+          margin: 0 auto;
+        }
+
+        @media (min-width: 1280px) {
+          .services-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          .services-grid > :last-child:nth-child(odd) {
+            grid-column: 1 / -1;
+            max-width: calc(50% - 16px);
+            margin: 0 auto;
+          }
+        }
+
+        @media (min-width: 1600px) {
+          .services-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+          .services-grid > :last-child:nth-child(odd) {
+            grid-column: auto;
+            max-width: none;
+            margin: 0;
+          }
+        }
+      `}</style>
     </>
   )
 }

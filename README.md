@@ -2,7 +2,7 @@
 
 > **Human connection, coded with care.**
 
-A personal website built with Next.js, exploring the intersection of design, technology, and human connection. This is my digital space where I share my work, thoughts, and the journey of building meaningful digital experiences.
+A personal website built with Next.js, exploring the intersection of design, technology, and human connection. This is my digital space where I share my work, services, and the journey of building meaningful digital experiences.
 
 ## ✨ Features
 
@@ -13,21 +13,20 @@ A personal website built with Next.js, exploring the intersection of design, tec
 - **Smooth Animations**: Boot sequence and glassmorphic design
 
 ### 🎨 Modern Design
-- **Custom Typography**: Anurati, Aspal, and PoiretOne fonts
+- **Custom Typography**: Anurati, Aspal, PoiretOne, and Caviar Dreams fonts
 - **Radix UI Components**: Accessible, customizable component library
-- **Tailwind CSS**: Utility-first styling with custom animations
+- **Tailwind CSS v4**: Utility-first styling with custom animations
 - **Theme Support**: Light/dark mode with system preference detection
 - **Responsive Design**: Optimized for all device sizes
 
 ### 📱 Pages & Sections
-- **Home**: Hero section with animated timeline
-- **Work**: Portfolio and collaboration information
-- **Vision**: Creative direction and canvas
+- **Home**: Hero section with animated CTA
+- **Work**: Portfolio and collaboration showcase
+- **Services**: Interactive drafting desk with expandable service cards
 - **Timeline**: Project journey and development process
-- **Services**: Available services and offerings
-- **README**: About the project and mission
-- **Portfolio**: Showcase (external — `p0rtf0li0-spac3.m0nalisa.workers.dev`)
-- **AI Audit Actuarium**: AI evaluation framework (external — `ai-audit-actuarium.pages.dev`)
+- **Vision**: Purpose and direction statement
+- **Actuarium**: AI audit methodology and redirect
+- **README**: In-site documentation viewer
 
 ## 🚀 Getting Started
 
@@ -39,8 +38,8 @@ A personal website built with Next.js, exploring the intersection of design, tec
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/M0naLisaSmil3d/machin3-bas3.git
-   cd machin3-bas3
+   git clone https://github.com/M0naMach/Machin3-Bas3.git
+   cd Machin3-Bas3
    ```
 
 2. **Install dependencies**
@@ -70,47 +69,57 @@ A personal website built with Next.js, exploring the intersection of design, tec
 
 ## 🏗️ Project Structure
 
-\`\`\`
-machin3-bas3/
+```
+Machin3-Bas3/
 ├── app/                    # Next.js app directory
 │   ├── page.tsx           # Home page
 │   ├── layout.tsx         # Root layout
-│   ├── work/              # Work section
+│   ├── work/              # Work/portfolio section
+│   ├── services/          # Services drafting desk page
 │   ├── timeline/          # Timeline page
-│   ├── notion-setup/      # Notion setup page
-│   ├── notion-migration/  # Notion migration page
-│   └── command-nav-demo/  # Command navigation demo
+│   ├── vision/            # Vision/purpose page
+│   ├── actuarium/         # Actuarium redirect page
+│   ├── readme/            # In-site README page
+│   ├── portfolio/         # Portfolio redirect
+│   ├── privacy/           # Privacy policy
+│   ├── terms/             # Terms of service
+│   └── api/               # API routes (contact, form)
 ├── components/            # React components
 │   ├── navigation/        # Command navigation system
-│   ├── notion/           # Notion-specific components
-│   └── ui/               # Reusable UI components
+│   ├── services-desk.tsx  # Interactive services desk client
+│   ├── portfolio/         # Portfolio-specific components
+│   └── ui/               # Reusable UI components (Radix)
 ├── lib/                  # Utility libraries
 │   ├── notion/           # Notion API client
+│   ├── auth/             # Auth manager
+│   ├── mentorship/       # Personality phrases
 │   └── utils.ts          # Shared utilities
 ├── types/                # TypeScript type definitions
 └── public/               # Static assets and fonts
-\`\`\`
+```
 
 ## 🛠️ Technology Stack
 
 - **Framework**: Next.js 15 with App Router
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS with custom animations
+- **Styling**: Tailwind CSS v4 with custom animations
 - **UI Components**: Radix UI primitives
 - **Icons**: Lucide React
-- **Fonts**: Custom fonts (Anurati, Aspal, PoiretOne)
+- **Fonts**: Custom fonts (Anurati, Aspal, PoiretOne, Caviar Dreams)
+- **Deployment**: Cloudflare Pages via Wrangler
 
 ## 📝 Development
 
 ### Available Scripts
 ```bash
-npm run dev           # Start development server
-npm run pages:build   # Build for Cloudflare Pages Edge Runtime (use this, not npm run build)
-npm run lint          # Run ESLint
+npm run dev        # Start development server
+npm run lint       # Run ESLint
+npm run pages:build # Build for Cloudflare Pages (Edge compat)
+npm run preview    # Build + run local Pages preview
 npm test              # Run tests
 ```
 
-### Portfolio & External Project Routing
+### Portfolio Routing
 
 If you want the website's `Portfolio` link and `/portfolio` route to hand off to a separate Cloudflare Pages site, set this environment variable in your deployment:
 
