@@ -65,7 +65,7 @@ export function Footer() {
           {/* Copyright */}
           <div>
             <p className="text-muted-foreground text-sm">
-              © <span className="font-sans opalescent-text-small">M0na Machin3</span> 2025
+              © <span className="font-sans opalescent-text-small">M0na Machin3</span> 2026
             </p>
           </div>
         </div>
