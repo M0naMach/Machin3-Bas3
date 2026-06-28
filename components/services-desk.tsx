@@ -67,7 +67,7 @@ const services: ServiceData[] = [
       note: 'Scoped per project after discovery call',
     },
     mobileOrder: 1,
-    position: { top: '8%', left: '5%' },
+    position: { top: '79.75%', left: '63.49%' },
   },
   {
     id: 'actuarium',
@@ -97,7 +97,7 @@ const services: ServiceData[] = [
       note: 'Scoped per project after discovery call',
     },
     mobileOrder: 2,
-    position: { top: '6%', left: '38%' },
+    position: { top: '19.79%', left: '-3.96%' },
   },
   {
     id: 'roadmaps',
@@ -127,7 +127,7 @@ const services: ServiceData[] = [
       note: 'Scoped per project after discovery call',
     },
     mobileOrder: 3,
-    position: { top: '10%', left: '71%' },
+    position: { top: '4.81%', left: '30.30%' },
   },
   {
     id: 'websites',
@@ -157,7 +157,7 @@ const services: ServiceData[] = [
       note: 'Scoped per project after discovery call',
     },
     mobileOrder: 4,
-    position: { top: '52%', left: '15%' },
+    position: { top: '4.81%', left: '75.30%' },
   },
   {
     id: 'branding',
@@ -187,7 +187,7 @@ const services: ServiceData[] = [
       note: 'Scoped per project after discovery call',
     },
     mobileOrder: 5,
-    position: { top: '50%', left: '55%' },
+    position: { top: '53.23%', left: '77.38%' },
   },
 ]
 
@@ -464,7 +464,7 @@ export default function ServicesDeskClient() {
       </div>
 
       {/* Services container — relative parent for absolute cards */}
-      <div className="relative z-10 w-full min-h-screen">
+      <div className="relative z-10 w-full min-h-screen overflow-hidden">
         {[...services]
           .sort((a, b) => a.mobileOrder - b.mobileOrder)
           .map((service) => (
