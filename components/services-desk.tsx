@@ -27,6 +27,7 @@ interface ServiceData {
     note: string
   }
   mobileOrder: number
+  position: { top: string; left: string }
 }
 
 const ICON_MAP = {
@@ -66,6 +67,7 @@ const services: ServiceData[] = [
       note: 'Scoped per project after discovery call',
     },
     mobileOrder: 1,
+    position: { top: '8%', left: '5%' },
   },
   {
     id: 'actuarium',
@@ -95,6 +97,7 @@ const services: ServiceData[] = [
       note: 'Scoped per project after discovery call',
     },
     mobileOrder: 2,
+    position: { top: '6%', left: '38%' },
   },
   {
     id: 'roadmaps',
@@ -124,6 +127,7 @@ const services: ServiceData[] = [
       note: 'Scoped per project after discovery call',
     },
     mobileOrder: 3,
+    position: { top: '10%', left: '71%' },
   },
   {
     id: 'websites',
@@ -153,6 +157,7 @@ const services: ServiceData[] = [
       note: 'Scoped per project after discovery call',
     },
     mobileOrder: 4,
+    position: { top: '52%', left: '15%' },
   },
   {
     id: 'branding',
@@ -182,6 +187,7 @@ const services: ServiceData[] = [
       note: 'Scoped per project after discovery call',
     },
     mobileOrder: 5,
+    position: { top: '50%', left: '55%' },
   },
 ]
 
@@ -338,14 +344,18 @@ function ServiceCard({
     <article
       role="button"
       tabIndex={0}
-      className="relative w-full cursor-pointer transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 flex flex-col justify-between overflow-hidden"
+      className="absolute cursor-pointer transition-transform duration-300 hover:scale-[1.03] active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 flex flex-col justify-between overflow-hidden"
       style={{
+        width: '21.12%',
+        aspectRatio: '406 / 224',
+        top: service.position.top,
+        left: service.position.left,
         background: `linear-gradient(${service.gradientAngle}deg, rgba(252,240,232,0.90) 0%, rgba(243,232,255,0.82) 35%, rgba(224,245,255,0.85) 65%, rgba(220,255,248,0.78) 100%)`,
         backdropFilter: 'blur(24px)',
         WebkitBackdropFilter: 'blur(24px)',
         border: '1px solid rgba(184,115,51,0.50)',
         borderRadius: 'clamp(8px, 0.6vw, 12px)',
-        padding: 'clamp(12px, 1.2vw, 20px)',
+        padding: 'clamp(10px, 1vw, 18px)',
         boxSizing: 'border-box',
       }}
       aria-haspopup="dialog"
@@ -453,64 +463,22 @@ export default function ServicesDeskClient() {
         />
       </div>
 
-      {/* Services grid */}
-      <div
-        className="relative z-10 w-full"
-        style={{ padding: 'clamp(32px, 4vw, 80px) clamp(24px, 4.4vw, 80px)' }}
-      >
-        {/* Mobile header */}
-        <header className="md:hidden mb-6">
-          <h2
-            className="font-aspal tracking-tight mb-2"
-            style={{ fontSize: '2.5rem', lineHeight: '1.1', color: 'rgba(235,225,210,0.95)' }}
-          >
-            The Drafting Table
-          </h2>
-          <p
-            className="font-caviar"
-            style={{ fontSize: '0.95rem', lineHeight: '1.6', color: 'rgba(180,170,155,0.6)' }}
-          >
-            Tap a card to explore.
-          </p>
-        </header>
-
-        <div className="services-grid">
-          {[...services]
-            .sort((a, b) => a.mobileOrder - b.mobileOrder)
-            .map((service) => (
-              <ServiceCard
-                key={service.id}
-                service={service}
-                onClick={() => setExpandedId(service.id)}
-              />
-            ))}
-        </div>
+      {/* Services container — relative parent for absolute cards */}
+      <div className="relative z-10 w-full min-h-screen">
+        {[...services]
+          .sort((a, b) => a.mobileOrder - b.mobileOrder)
+          .map((service) => (
+            <ServiceCard
+              key={service.id}
+              service={service}
+              onClick={() => setExpandedId(service.id)}
+            />
+          ))}
       </div>
 
       {/* Expanded overlay */}
       {expandedService && <ExpandedPanel service={expandedService} onClose={handleClose} />}
 
-      <style jsx>{`
-        .services-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
-          gap: clamp(12px, 1.5vw, 20px);
-          max-width: 1200px;
-          margin: 0 auto;
-        }
-
-        @media (min-width: 768px) {
-          .services-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-
-        @media (min-width: 1024px) {
-          .services-grid {
-            grid-template-columns: repeat(3, 1fr);
-          }
-        }
-      `}</style>
     </>
   )
 }
