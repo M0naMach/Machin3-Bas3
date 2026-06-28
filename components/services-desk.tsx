@@ -60,9 +60,9 @@ const services: ServiceData[] = [
       'Integration spec & deployment plan',
       'Governance documentation & runbook',
     ],
-    price: '$500–$7,500',
+    price: 'Contact for details',
     pricing: {
-      starting: 'From $4,000',
+      starting: 'Contact for details',
       note: 'Scoped per project after discovery call',
     },
     mobileOrder: 1,
@@ -89,9 +89,9 @@ const services: ServiceData[] = [
       'Findings report with severity tiers',
       'Remediation plan & priority matrix',
     ],
-    price: '$900–$5,000 + $750–$1,500/mo',
+    price: 'Contact for details',
     pricing: {
-      starting: 'From $3,000',
+      starting: 'Contact for details',
       note: 'Scoped per project after discovery call',
     },
     mobileOrder: 2,
@@ -118,9 +118,9 @@ const services: ServiceData[] = [
       'Implementation roadmap with milestones',
       'Accountability scaffold & review cadence',
     ],
-    price: '$250–$6,000',
+    price: 'Contact for details',
     pricing: {
-      starting: 'From $1,800',
+      starting: 'Contact for details',
       note: 'Scoped per project after discovery call',
     },
     mobileOrder: 3,
@@ -147,9 +147,9 @@ const services: ServiceData[] = [
       'Redesign mockups & prototypes',
       'Implementation spec & handoff package',
     ],
-    price: '$400–$5,500',
+    price: 'Contact for details',
     pricing: {
-      starting: 'From $3,500',
+      starting: 'Contact for details',
       note: 'Scoped per project after discovery call',
     },
     mobileOrder: 4,
@@ -176,9 +176,9 @@ const services: ServiceData[] = [
       'Brand guidelines & asset deployment kit',
       'Templates, layouts & accessibility review',
     ],
-    price: '$450–$3,500',
+    price: 'Contact for details',
     pricing: {
-      starting: 'From $2,500',
+      starting: 'Contact for details',
       note: 'Scoped per project after discovery call',
     },
     mobileOrder: 5,
@@ -263,8 +263,8 @@ function ExpandedPanel({
           <div className="md:flex md:gap-8">
             <div className="flex-1 mb-6 md:mb-0">
               <h3
-                className="font-anurati tracking-[0.2em] uppercase mb-3"
-                style={{ fontSize: '0.5rem', color: textSecondary }}
+                className="font-caviar font-bold tracking-[0.15em] uppercase mb-3"
+                style={{ fontSize: '0.65rem', color: textSecondary }}
               >
                 Deliverables
               </h3>
@@ -291,8 +291,8 @@ function ExpandedPanel({
               }}
             >
               <h3
-                className="font-anurati tracking-[0.2em] uppercase mb-3"
-                style={{ fontSize: '0.5rem', color: textSecondary }}
+                className="font-caviar font-bold tracking-[0.15em] uppercase mb-3"
+                style={{ fontSize: '0.65rem', color: textSecondary }}
               >
                 Pricing
               </h3>
@@ -311,10 +311,10 @@ function ExpandedPanel({
 
               <div className="mt-4 pt-3" style={{ borderTop: `1px solid ${service.borderColor}` }}>
                 <span
-                  className="font-anurati block text-center"
-                  style={{ fontSize: '0.45rem', letterSpacing: '0.2em', color: textSecondary }}
+                  className="font-caviar font-bold block text-center uppercase"
+                  style={{ fontSize: '0.6rem', letterSpacing: '0.15em', color: textSecondary }}
                 >
-                  /CONNECT TO START
+                  /Connect to Start
                 </span>
               </div>
             </div>
@@ -340,13 +340,12 @@ function ServiceCard({
       tabIndex={0}
       className="relative w-full cursor-pointer transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 flex flex-col justify-between overflow-hidden"
       style={{
-        aspectRatio: '1.8125',
         background: `linear-gradient(${service.gradientAngle}deg, rgba(252,240,232,0.90) 0%, rgba(243,232,255,0.82) 35%, rgba(224,245,255,0.85) 65%, rgba(220,255,248,0.78) 100%)`,
         backdropFilter: 'blur(24px)',
         WebkitBackdropFilter: 'blur(24px)',
-        border: '1.5px solid rgba(184,115,51,0.70)',
-        borderRadius: 'clamp(10px, 0.83vw, 16px)',
-        padding: 'clamp(16px, 1.67vw, 28px)',
+        border: '1px solid rgba(184,115,51,0.50)',
+        borderRadius: 'clamp(8px, 0.6vw, 12px)',
+        padding: 'clamp(12px, 1.2vw, 20px)',
         boxSizing: 'border-box',
       }}
       aria-haspopup="dialog"
@@ -363,15 +362,15 @@ function ServiceCard({
       />
 
       {/* Content row */}
-      <div className="flex items-start" style={{ gap: 'clamp(12px, 1vw, 18px)', marginTop: '6px' }}>
+      <div className="flex items-start" style={{ gap: 'clamp(8px, 0.8vw, 14px)', marginTop: '4px' }}>
         {/* Icon box */}
         <div
           className="shrink-0 flex items-center justify-center"
           style={{
-            width: 'clamp(52px, 4.4vw, 80px)',
-            height: 'clamp(52px, 4.4vw, 80px)',
-            border: '1px solid rgba(184,115,51,0.60)',
-            borderRadius: 'clamp(8px, 0.6vw, 12px)',
+            width: 'clamp(36px, 3vw, 52px)',
+            height: 'clamp(36px, 3vw, 52px)',
+            border: '1px solid rgba(184,115,51,0.50)',
+            borderRadius: 'clamp(6px, 0.5vw, 10px)',
             color: 'rgba(184,115,51,0.85)',
           }}
           aria-hidden="true"
@@ -380,14 +379,13 @@ function ServiceCard({
         </div>
 
         {/* Text stack */}
-        <div className="min-w-0 flex flex-col" style={{ gap: 'clamp(4px, 0.3vw, 8px)' }}>
+        <div className="min-w-0 flex flex-col" style={{ gap: 'clamp(2px, 0.2vw, 6px)' }}>
           <h3
             className="font-caviar font-bold m-0"
             style={{
-              fontSize: 'clamp(18px, 2.2vw, 36px)',
-              lineHeight: '1.15',
+              fontSize: 'clamp(14px, 1.4vw, 22px)',
+              lineHeight: '1.2',
               color: 'rgb(184,115,51)',
-              textShadow: '0 0 6px rgba(255,255,230,0.95), 0 0 18px rgba(255,185,64,0.80), 0 0 36px rgba(153,235,255,0.50), 0 0 64px rgba(255,217,128,0.30)',
             }}
           >
             {service.title}
@@ -395,9 +393,9 @@ function ServiceCard({
           <p
             className="font-caviar m-0"
             style={{
-              fontSize: 'clamp(13px, 1vw, 17px)',
-              lineHeight: '1.5',
-              color: 'rgba(60,40,20,0.70)',
+              fontSize: 'clamp(11px, 0.8vw, 14px)',
+              lineHeight: '1.45',
+              color: 'rgba(60,40,20,0.65)',
             }}
           >
             {service.descriptor}
@@ -407,16 +405,16 @@ function ServiceCard({
 
       {/* Price badge */}
       <div
-        className="self-end font-caviar font-bold whitespace-nowrap"
+        className="self-end font-caviar whitespace-nowrap"
         style={{
-          clipPath: 'polygon(0% 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%)',
-          background: 'rgb(184,115,51)',
-          color: '#fff',
-          fontSize: 'clamp(11px, 0.85vw, 14px)',
-          padding: 'clamp(6px, 0.5vw, 10px) clamp(12px, 1vw, 18px)',
-          borderRadius: '3px 3px 0 3px',
+          background: 'rgba(184,115,51,0.12)',
+          color: 'rgba(184,115,51,0.8)',
+          fontSize: 'clamp(9px, 0.7vw, 12px)',
+          padding: 'clamp(4px, 0.3vw, 6px) clamp(8px, 0.7vw, 12px)',
+          borderRadius: '4px',
+          border: '1px solid rgba(184,115,51,0.25)',
+          letterSpacing: '0.05em',
         }}
-        aria-label={`Price range: ${service.price}`}
       >
         {service.price}
       </div>
@@ -495,31 +493,21 @@ export default function ServicesDeskClient() {
       <style jsx>{`
         .services-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(min(100%, 580px), 1fr));
-          gap: clamp(16px, 2vw, 32px);
-          max-width: 1440px;
+          grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+          gap: clamp(12px, 1.5vw, 20px);
+          max-width: 1200px;
           margin: 0 auto;
         }
 
-        @media (min-width: 1280px) {
+        @media (min-width: 768px) {
           .services-grid {
             grid-template-columns: repeat(2, 1fr);
           }
-          .services-grid > :last-child:nth-child(odd) {
-            grid-column: 1 / -1;
-            max-width: calc(50% - 16px);
-            margin: 0 auto;
-          }
         }
 
-        @media (min-width: 1600px) {
+        @media (min-width: 1024px) {
           .services-grid {
             grid-template-columns: repeat(3, 1fr);
-          }
-          .services-grid > :last-child:nth-child(odd) {
-            grid-column: auto;
-            max-width: none;
-            margin: 0;
           }
         }
       `}</style>

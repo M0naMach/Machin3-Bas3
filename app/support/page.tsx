@@ -203,7 +203,7 @@ export default function SupportPage() {
               conversation, not a commitment.
             </p>
             <Button asChild>
-              <Link href="/services">
+              <Link href="/work">
                 Start a Conversation
               </Link>
             </Button>

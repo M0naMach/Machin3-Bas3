@@ -153,7 +153,7 @@ export default function PrivacyPage() {
               reach out. We're committed to transparency and will respond to all privacy-related inquiries promptly.
             </p>
             <Button asChild>
-              <Link href="/services">
+              <Link href="/work">
                 Contact Us About Privacy
               </Link>
             </Button>
