@@ -132,7 +132,7 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
       action: () => {
         try {
           if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/work"
+            window.location.href = "/services"
           }
         } catch (error) {
           // Fail silently
@@ -144,7 +144,7 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
     {
       command: "work",
       label: "Work",
-      description: "Current projects and collaborations",
+      description: "Portfolio and collaboration showcase",
       action: () => {
         try {
           if (typeof window !== "undefined" && window.location) {

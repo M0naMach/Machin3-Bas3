@@ -1,4 +1,4 @@
-import CommandNavigation from "@/components/navigation/command-navigation"
+import { CommandNavigation } from "@/components/navigation/command-navigation"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, HelpCircle, Route, MessageCircle, Clock, Sparkles } from "lucide-react"
 import Link from "next/link"
