@@ -21,11 +21,6 @@ interface ServiceData {
   accentColor: string
   description: string
   deliverables: string[]
-  price: string
-  pricing: {
-    starting: string
-    note: string
-  }
   mobileOrder: number
   position: { top: string; left: string }
 }
@@ -61,11 +56,6 @@ const services: ServiceData[] = [
       'Integration spec & deployment plan',
       'Governance documentation & runbook',
     ],
-    price: 'Contact for details',
-    pricing: {
-      starting: 'Contact for details',
-      note: 'Scoped per project after discovery call',
-    },
     mobileOrder: 1,
     position: { top: '79.75%', left: '63.49%' },
   },
@@ -91,11 +81,6 @@ const services: ServiceData[] = [
       'Findings report with severity tiers',
       'Remediation plan & priority matrix',
     ],
-    price: 'Contact for details',
-    pricing: {
-      starting: 'Contact for details',
-      note: 'Scoped per project after discovery call',
-    },
     mobileOrder: 2,
     position: { top: '19.79%', left: '-3.96%' },
   },
@@ -121,11 +106,6 @@ const services: ServiceData[] = [
       'Implementation roadmap with milestones',
       'Accountability scaffold & review cadence',
     ],
-    price: 'Contact for details',
-    pricing: {
-      starting: 'Contact for details',
-      note: 'Scoped per project after discovery call',
-    },
     mobileOrder: 3,
     position: { top: '4.81%', left: '30.30%' },
   },
@@ -151,11 +131,6 @@ const services: ServiceData[] = [
       'Redesign mockups & prototypes',
       'Implementation spec & handoff package',
     ],
-    price: 'Contact for details',
-    pricing: {
-      starting: 'Contact for details',
-      note: 'Scoped per project after discovery call',
-    },
     mobileOrder: 4,
     position: { top: '4.81%', left: '75.30%' },
   },
@@ -181,11 +156,6 @@ const services: ServiceData[] = [
       'Brand guidelines & asset deployment kit',
       'Templates, layouts & accessibility review',
     ],
-    price: 'Contact for details',
-    pricing: {
-      starting: 'Contact for details',
-      note: 'Scoped per project after discovery call',
-    },
     mobileOrder: 5,
     position: { top: '53.23%', left: '77.38%' },
   },
@@ -266,64 +236,26 @@ function ExpandedPanel({
 
           <div className="h-px mb-6" style={{ background: service.borderColor }} />
 
-          <div className="md:flex md:gap-8">
-            <div className="flex-1 mb-6 md:mb-0">
-              <h3
-                className="font-caviar font-bold tracking-[0.15em] uppercase mb-3"
-                style={{ fontSize: '0.65rem', color: textSecondary }}
-              >
-                Deliverables
-              </h3>
-              <ul className="space-y-2">
-                {service.deliverables.map((item, i) => (
-                  <li key={i} className="font-caviar flex items-start gap-2.5">
-                    <span
-                      className="shrink-0 mt-[8px] block w-1.5 h-px"
-                      style={{ background: service.borderColor }}
-                    />
-                    <span style={{ fontSize: '0.8rem', lineHeight: '1.5', color: textBody }}>
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div
-              className="md:w-[200px] shrink-0 rounded-lg p-4"
-              style={{
-                background: service.accentColor,
-                border: `1px solid ${service.borderColor}`,
-              }}
+          <div>
+            <h3
+              className="font-caviar font-bold tracking-[0.15em] uppercase mb-3"
+              style={{ fontSize: '0.65rem', color: textSecondary }}
             >
-              <h3
-                className="font-caviar font-bold tracking-[0.15em] uppercase mb-3"
-                style={{ fontSize: '0.65rem', color: textSecondary }}
-              >
-                Pricing
-              </h3>
-              <p
-                className="font-caviar font-bold mb-1"
-                style={{ fontSize: '1.1rem', color: textPrimary }}
-              >
-                {service.pricing.starting}
-              </p>
-              <p
-                className="font-caviar"
-                style={{ fontSize: '0.7rem', lineHeight: '1.5', color: textSecondary }}
-              >
-                {service.pricing.note}
-              </p>
-
-              <div className="mt-4 pt-3" style={{ borderTop: `1px solid ${service.borderColor}` }}>
-                <span
-                  className="font-caviar font-bold block text-center uppercase"
-                  style={{ fontSize: '0.6rem', letterSpacing: '0.15em', color: textSecondary }}
-                >
-                  /Connect to Start
-                </span>
-              </div>
-            </div>
+              Deliverables
+            </h3>
+            <ul className="space-y-2">
+              {service.deliverables.map((item, i) => (
+                <li key={i} className="font-caviar flex items-start gap-2.5">
+                  <span
+                    className="shrink-0 mt-[8px] block w-1.5 h-px"
+                    style={{ background: service.borderColor }}
+                  />
+                  <span style={{ fontSize: '0.8rem', lineHeight: '1.5', color: textBody }}>
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </DialogContent>
@@ -413,21 +345,6 @@ function ServiceCard({
         </div>
       </div>
 
-      {/* Price badge */}
-      <div
-        className="self-end font-caviar whitespace-nowrap"
-        style={{
-          background: 'rgba(184,115,51,0.12)',
-          color: 'rgba(184,115,51,0.8)',
-          fontSize: 'clamp(9px, 0.7vw, 12px)',
-          padding: 'clamp(4px, 0.3vw, 6px) clamp(8px, 0.7vw, 12px)',
-          borderRadius: '4px',
-          border: '1px solid rgba(184,115,51,0.25)',
-          letterSpacing: '0.05em',
-        }}
-      >
-        {service.price}
-      </div>
     </article>
   )
 }
