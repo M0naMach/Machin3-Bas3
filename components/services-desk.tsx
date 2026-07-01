@@ -335,10 +335,9 @@ function ServiceCard({
   const IconComponent = ICON_MAP[service.icon]
 
   return (
-    <article
-      role="button"
-      tabIndex={0}
-      className="relative w-full cursor-pointer transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 flex flex-col justify-between overflow-hidden"
+    <button
+      type="button"
+      className="relative w-full cursor-pointer transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 flex flex-col justify-between overflow-hidden appearance-none text-left"
       style={{
         aspectRatio: '1.8125',
         background: `linear-gradient(${service.gradientAngle}deg, rgba(252,240,232,0.90) 0%, rgba(243,232,255,0.82) 35%, rgba(224,245,255,0.85) 65%, rgba(220,255,248,0.78) 100%)`,
@@ -351,7 +350,6 @@ function ServiceCard({
       }}
       aria-haspopup="dialog"
       onClick={onClick}
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick() } }}
     >
       {/* Shimmer strip */}
       <div
@@ -420,7 +418,7 @@ function ServiceCard({
       >
         {service.price}
       </div>
-    </article>
+    </button>
   )
 }
 
