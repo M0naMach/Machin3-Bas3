@@ -583,7 +583,7 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
                       <div className="text-center py-8">
                         <div className="text-base mb-2 text-muted-foreground">No commands found</div>
                         <div className="text-sm text-muted-foreground">
-                          Try typing "hom3bas3", "portfolio", "services", "readme", "privacy", or "terms"
+                          Try typing "hom3bas3", "work", "vision", "journey", "portfolio", "actuarium", "services", "readme", "privacy", or "terms"
                         </div>
                       </div>
                     )}
