@@ -507,7 +507,7 @@ export default function ServicesDeskClient() {
           }
           .services-grid > :last-child:nth-child(odd) {
             grid-column: 1 / -1;
-            max-width: calc(50% - 16px);
+            max-width: calc(50% - clamp(16px, 2vw, 32px) / 2);
             margin: 0 auto;
           }
         }
