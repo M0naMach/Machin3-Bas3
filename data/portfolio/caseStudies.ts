@@ -13,15 +13,15 @@
  *   Real content → string path from public/ (entry is complete and committed)
  */
 
-import { CaseStudy } from "@/app/components/CaseStudyCard";
+import type { CaseStudy } from "@/components/portfolio/CaseStudyCard";
 
 // ── Placeholder imports ───────────────────────────────────────────────────────
 // Remove an import and replace image with a public/ path when the entry is done.
-import phCodeWork01    from "@/assets/placeholders/code/Machin3s_at_Work01.png";
-import phCodeWork04    from "@/assets/placeholders/code/Machin3s_at_Work04.png";
-import phCodeWork06    from "@/assets/placeholders/code/Machin3s_at_Work06.png";
-import phCodeConst03   from "@/assets/placeholders/code/Under_Machin3_Construction03.png";
-import phIconsWork02   from "@/assets/placeholders/craft/icons/Machin3s_at_Work02.png";
+const phCodeWork01 = "/Machin3s_at_Work01.png";
+const phCodeWork04 = "/Machin3s_at_Work04.png";
+const phCodeWork06 = "/Machin3s_at_Work06.png";
+const phCodeConst03 = "/Under_Machin3_Construction03.png";
+const phIconsWork02 = "/Machin3s_at_Work02.png";
 import phCollWork05    from "@/assets/placeholders/craft/collections/Machin3s_at_Work05.jpg";
 import phCollConst01   from "@/assets/placeholders/craft/collections/Under_Machin3_Construction01.png";
 import phCompConst02   from "@/assets/placeholders/compositions/Under_Machin3_Construction02.png";
@@ -246,10 +246,10 @@ Some naming was just not possible to retain across platforms, but I strived to r
 4. **Consistent file naming** - Maintaining a consistent naming convention is a fundamental to a repository's *rules of rhythm*. Simply put... it makes it easier to find things. Incorporating the UID for the corresponding directory/ volume allows you to know exactly what file and which category you're in, no matter how many clicks it took to get there. 5. **Zero-guess navigation** - Every file has a home. Every home is on the map. Every inhabitant has a clearly defined address...
 
 The result is a structure that feels natural to navigate, scales without breaking, and doesn't try to mimic a mental system that your mind can't compute.",
-    result: "BEFORE VS AFTER
+    result: `BEFORE VS AFTER
 **Before (ad hoc structure):**
 
-```
+\`\`\`
 project/
 ├── main.py
 ├── utils.py
@@ -259,7 +259,7 @@ project/
 ├── data/
 ├── prompts/
 └── ...
-```
+\`\`\`
 
 **bin/** No idea what that means. Why are my executables in there?
 
@@ -269,7 +269,7 @@ project/
 
 **After ECOSYSTEM:**
 
-```
+\`\`\`
 PROJECT_NAME/
 ├── ECOSYSTEM.md
 ├── README.md
@@ -302,7 +302,7 @@ You achieve:
     description: "A narrative-structured approach to technical documentation, designed for clarity, memorability, and cognitive accessibility.",
     category: "composition",
     image: phCodeWork06,
-    tags: [Template, ],
+    tags: ["Template"],
     date: "Mar 2026",
     displayMode: "detailed",
     // R-Series -- fill in when ready
@@ -380,7 +380,7 @@ The substrates. What tools, languages, frameworks, or principles were used to bu
     title: "Vintag3_D3cay",
     description: "A collection of blemished water lilies, captured in the quiet space between living and fading. Dark water, heavy shadows, and the textured beauty of things that have started to let go.",
     category: "craft",
-    image: /craft/Vintag3_D3cay/CoverArt-Vintag3_D3cay.jpeg",
+    image: "/craft/Vintag3_D3cay/CoverArt-Vintag3_D3cay.jpeg",
     tags: ["Water Lilies", "Mixed Media", "Landscape", "Material Art"],
     date: "Apr 2026",
     displayMode: "detailed",

@@ -276,7 +276,7 @@ function ExpandedPanel({
                 style={{ fontSize: '0.5rem', color: textSecondary }}
               >
                 {service.title}
-              </h2>
+              </h3>
 
               <p
                 className="font-caviar"
@@ -396,8 +396,8 @@ function ServiceCard({
             {service.descriptor}
           </p>
         </div>
-      </DialogContent>
-    </Dialog>
+      </div>
+    </article>
   )
 }
 
