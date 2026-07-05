@@ -21,6 +21,11 @@ interface ServiceData {
   accentColor: string
   description: string
   deliverables: string[]
+  price: string
+  pricing: {
+    starting: string
+    note: string
+  }
   mobileOrder: number
   position: { top: string; left: string }
 }
@@ -343,6 +348,89 @@ function ServiceCard({
             {service.descriptor}
           </p>
         </div>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
+function ServiceCard({
+  service,
+  onClick,
+}: {
+  service: ServiceData
+  onClick: () => void
+}) {
+  const IconComponent = ICON_MAP[service.icon]
+
+  return (
+    <article
+      role="button"
+      tabIndex={0}
+      className="relative w-full cursor-pointer transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 flex flex-col justify-between overflow-hidden"
+      style={{
+        aspectRatio: '1.8125',
+        background: `linear-gradient(${service.gradientAngle}deg, rgba(252,240,232,0.90) 0%, rgba(243,232,255,0.82) 35%, rgba(224,245,255,0.85) 65%, rgba(220,255,248,0.78) 100%)`,
+        backdropFilter: 'blur(24px)',
+        WebkitBackdropFilter: 'blur(24px)',
+        border: '1.5px solid rgba(184,115,51,0.70)',
+        borderRadius: 'clamp(10px, 0.83vw, 16px)',
+        padding: 'clamp(16px, 1.67vw, 28px)',
+        boxSizing: 'border-box',
+      }}
+      aria-haspopup="dialog"
+      onClick={onClick}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick() } }}
+    >
+      {/* Shimmer strip */}
+      <div
+        className="absolute inset-x-0 top-0 h-[3px] pointer-events-none"
+        style={{
+          background: 'linear-gradient(90deg, rgba(235,140,184,1) 0%, rgba(204,140,242,1) 28%, rgba(115,184,250,1) 58%, rgba(77,230,210,1) 82%, rgba(235,140,184,0.5) 100%)',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Content row */}
+      <div className="flex items-start" style={{ gap: 'clamp(12px, 1vw, 18px)', marginTop: '6px' }}>
+        {/* Icon box */}
+        <div
+          className="shrink-0 flex items-center justify-center"
+          style={{
+            width: 'clamp(52px, 4.4vw, 80px)',
+            height: 'clamp(52px, 4.4vw, 80px)',
+            border: '1px solid rgba(184,115,51,0.60)',
+            borderRadius: 'clamp(8px, 0.6vw, 12px)',
+            color: 'rgba(184,115,51,0.85)',
+          }}
+          aria-hidden="true"
+        >
+          <IconComponent style={{ width: '55%', height: '55%' }} />
+        </div>
+
+        {/* Text stack */}
+        <div className="min-w-0 flex flex-col" style={{ gap: 'clamp(4px, 0.3vw, 8px)' }}>
+          <h3
+            className="font-caviar font-bold m-0"
+            style={{
+              fontSize: 'clamp(18px, 2.2vw, 36px)',
+              lineHeight: '1.15',
+              color: 'rgb(184,115,51)',
+              textShadow: '0 0 6px rgba(255,255,230,0.95), 0 0 18px rgba(255,185,64,0.80), 0 0 36px rgba(153,235,255,0.50), 0 0 64px rgba(255,217,128,0.30)',
+            }}
+          >
+            {service.title}
+          </h3>
+          <p
+            className="font-caviar m-0"
+            style={{
+              fontSize: 'clamp(13px, 1vw, 17px)',
+              lineHeight: '1.5',
+              color: 'rgba(60,40,20,0.70)',
+            }}
+          >
+            {service.descriptor}
+          </p>
+        </div>
       </div>
 
     </article>
@@ -380,22 +468,74 @@ export default function ServicesDeskClient() {
         />
       </div>
 
-      {/* Services container — relative parent for absolute cards */}
-      <div className="relative z-10 w-full min-h-screen overflow-hidden">
-        {[...services]
-          .sort((a, b) => a.mobileOrder - b.mobileOrder)
-          .map((service) => (
-            <ServiceCard
-              key={service.id}
-              service={service}
-              onClick={() => setExpandedId(service.id)}
-            />
-          ))}
+      {/* Services grid */}
+      <div
+        className="relative z-10 w-full"
+        style={{ padding: 'clamp(32px, 4vw, 80px) clamp(24px, 4.4vw, 80px)' }}
+      >
+        {/* Mobile header */}
+        <header className="md:hidden mb-6">
+          <h2
+            className="font-aspal tracking-tight mb-2"
+            style={{ fontSize: '2.5rem', lineHeight: '1.1', color: 'rgba(235,225,210,0.95)' }}
+          >
+            The Drafting Table
+          </h2>
+          <p
+            className="font-caviar"
+            style={{ fontSize: '0.95rem', lineHeight: '1.6', color: 'rgba(180,170,155,0.6)' }}
+          >
+            Tap a card to explore.
+          </p>
+        </header>
+
+        <div className="services-grid">
+          {[...services]
+            .sort((a, b) => a.mobileOrder - b.mobileOrder)
+            .map((service) => (
+              <ServiceCard
+                key={service.id}
+                service={service}
+                onClick={() => setExpandedId(service.id)}
+              />
+            ))}
+        </div>
       </div>
 
       {/* Expanded overlay */}
       {expandedService && <ExpandedPanel service={expandedService} onClose={handleClose} />}
 
+      <style jsx>{`
+        .services-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(min(100%, 580px), 1fr));
+          gap: clamp(16px, 2vw, 32px);
+          max-width: 1440px;
+          margin: 0 auto;
+        }
+
+        @media (min-width: 1280px) {
+          .services-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          .services-grid > :last-child:nth-child(odd) {
+            grid-column: 1 / -1;
+            max-width: calc(50% - 16px);
+            margin: 0 auto;
+          }
+        }
+
+        @media (min-width: 1600px) {
+          .services-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+          .services-grid > :last-child:nth-child(odd) {
+            grid-column: auto;
+            max-width: none;
+            margin: 0;
+          }
+        }
+      `}</style>
     </>
   )
 }
