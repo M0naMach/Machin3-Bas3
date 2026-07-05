@@ -174,7 +174,7 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
       },
     },
     {
-      command: "timeline",
+      command: "journey",
       label: "Timeline",
       description: "Project journey and development process",
       action: () => {
