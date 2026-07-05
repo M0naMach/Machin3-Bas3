@@ -10,7 +10,7 @@ export default function SupportPage() {
       <div className="absolute top-6 left-6 z-20">
         <Button asChild variant="outline" className="bg-card/80 backdrop-blur-sm hover:bg-card">
           <Link href="/">
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-4 h-4" aria-hidden="true" />
             Back to Home
           </Link>
         </Button>
@@ -20,7 +20,7 @@ export default function SupportPage() {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <HelpCircle className="w-12 h-12 text-primary" />
+            <HelpCircle className="w-12 h-12 text-primary" aria-hidden="true" />
             <h1 className="font-title text-5xl md:text-6xl tracking-wide opalescent-text">Support</h1>
           </div>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">

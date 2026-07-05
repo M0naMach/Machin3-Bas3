@@ -21,6 +21,11 @@ interface ServiceData {
   accentColor: string
   description: string
   deliverables: string[]
+  price: string
+  pricing: {
+    starting: string
+    note: string
+  }
   mobileOrder: number
   position: { top: string; left: string }
 }
