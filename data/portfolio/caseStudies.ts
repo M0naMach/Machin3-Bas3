@@ -13,18 +13,18 @@
  *   Real content → string path from public/ (entry is complete and committed)
  */
 
-import { CaseStudy } from "@/components/portfolio/CaseStudyCard";
+import type { CaseStudy } from "@/components/portfolio/CaseStudyCard";
 
-// ── Placeholder images ───────────────────────────────────────────────────────
-// Using public/ paths until assets directory is set up.
-const phCodeWork01    = "/Machin3s_at_Work06.png";
-const phCodeWork04    = "/Machin3s_at_Work06.png";
-const phCodeWork06    = "/Machin3s_at_Work06.png";
-const phCodeConst03   = "/Machin3s_at_Work06.png";
-const phIconsWork02   = "/Machin3s_at_Work06.png";
-const phCollWork05    = "/Machin3s_at_Work06.png";
-const phCollConst01   = "/Machin3s_at_Work06.png";
-const phCompConst02   = "/Machin3s_at_Work06.png";
+// ── Placeholder imports ───────────────────────────────────────────────────────
+// Remove an import and replace image with a public/ path when the entry is done.
+const phCodeWork01 = "/Machin3s_at_Work01.png";
+const phCodeWork04 = "/Machin3s_at_Work04.png";
+const phCodeWork06 = "/Machin3s_at_Work06.png";
+const phCodeConst03 = "/Under_Machin3_Construction03.png";
+const phIconsWork02 = "/Machin3s_at_Work02.png";
+import phCollWork05    from "@/assets/placeholders/craft/collections/Machin3s_at_Work05.jpg";
+import phCollConst01   from "@/assets/placeholders/craft/collections/Under_Machin3_Construction01.png";
+import phCompConst02   from "@/assets/placeholders/compositions/Under_Machin3_Construction02.png";
 
 export const caseStudies: CaseStudy[] = [
   {
@@ -86,8 +86,7 @@ The Actuarium framework doesn't just deliver a surgical health score; it uses py
     date: "April 2026",
     displayMode: "detailed",
     redundancy: "Every handoff is a risk. Research suggests that architecture and design firms spend a disproportionate share of their time on redundant, routine, and high stakes tasks. Architecture firms bleed time and money when triaging leads that don’t fit their market, answering repetitive code questions, drafting RFIs, transcribing site notes, renaming render files, and drafting client emails. To keep it simple, tasks that are necessary but not billable, not creative, and not what anyone entered this profession to do, take up the most time and lead to the most friction. These tasks are low‑judgment but high‑stakes, meaning a mistake in code citation or a mislabeled render can delay a project or damage client confidence.",
-    rhyme: `The system was built around a simple rule: an agent that tries
-to do everything does nothing well.
+    rhyme: "The system was built around a simple rule: an agent that tries to do everything does nothing well.
 
 Think of this suite as a digital architecture firm within the firm; a silent, reliable crew of specialist colleagues who never sleep, never forget a code amendment, and never send a file without a naming convention.
 
@@ -99,8 +98,8 @@ Each agent is a dedicated "department":
 · Agent‑04 is the field inspector’s scribe: turning fragmented voice notes into a crisp, actionable punch list.
 · Agent‑05 is the studio’s asset manager: organising render batches and crafting polished client emails in one seamless motion.
 
-Each agent is a discrete module. Swappable, auditable, independently updatable.`,
-    reason: `This particular suite is built on five independent, state‑machine‑driven LLM prompts, each designed for a distinct function. They are not general‑purpose; they are tightly constrained to a single responsibility, with:
+Each agent is a discrete module. Swappable, auditable, independently updatable.",
+    reason: "This particular suite is built on five independent, state‑machine‑driven LLM prompts, each designed for a distinct function. They are not general‑purpose; they are tightly constrained to a single responsibility, with:
     
 - Explicit state tracking (turn counts, escalation tiers, confidence levels)
 - Rigid output schemas (JSON only for Agents 04 & 05; four‑part plain‑text structure for Agent‑03; natural conversation for Agents 01 & 02 but with hard gate‑keeping)
@@ -234,19 +233,19 @@ Utilizes several strategies that benefit all neurodivergent profiles and improve
 ⠀
 I mapped each Notion Volume to a corresponding repo category, renaming descriptors in an attempt to mirror the mental model.
 
-\`MEMORY\` → \`CONTEXT\`, \`REAL ESTATE\` → \`STRUCTURE\`
+`MEMORY` → `CONTEXT`, `REAL ESTATE` → `STRUCTURE`
 
 Some naming was just not possible to retain across platforms, but I strived to remain as close as possible in order to still trigger the same recall.
 
-\`ACTUARIUM\` → \`APPLICATIONS\` (Kept the 'A' connection) \`ART ATELIER\` → \`OBSERVATORY\` (Kept a relation to visuals and the act of looking)
+`ACTUARIUM` → `APPLICATIONS` (Kept the 'A' connection) `ART ATELIER` → `OBSERVATORY` (Kept a relation to visuals and the act of looking)
 
 *There's always room for improvement and further iteration.*
 
-3. **Git‑ignore refinement** – Explicitly added \`VOL‑05‑USER/\` and incorporated \`.gitignore\` to prevent accidental commits of sensitive data. Sometimes it can get tricky when using personal information for a repository. Between remembering to take it out and/or remembering the data you're pulling from it, that limbo can cause unnecessary chaos. By implementing this design, you can kill two birds with one stone (figuratively speaking). 
+3. **Git‑ignore refinement** – Explicitly added `VOL‑05‑USER/` and incorporated `.gitignore` to prevent accidental commits of sensitive data. Sometimes it can get tricky when using personal information for a repository. Between remembering to take it out and/or remembering the data you're pulling from it, that limbo can cause unnecessary chaos. By implementing this design, you can kill two birds with one stone (figuratively speaking). 
 
 4. **Consistent file naming** - Maintaining a consistent naming convention is a fundamental to a repository's *rules of rhythm*. Simply put... it makes it easier to find things. Incorporating the UID for the corresponding directory/ volume allows you to know exactly what file and which category you're in, no matter how many clicks it took to get there. 5. **Zero-guess navigation** - Every file has a home. Every home is on the map. Every inhabitant has a clearly defined address...
 
-The result is a structure that feels natural to navigate, scales without breaking, and doesn't try to mimic a mental system that your mind can't compute.`,
+The result is a structure that feels natural to navigate, scales without breaking, and doesn't try to mimic a mental system that your mind can't compute.",
     result: `BEFORE VS AFTER
 **Before (ad hoc structure):**
 
@@ -281,7 +280,7 @@ PROJECT_NAME/
 │   ├── COMM-SCOPE.md
 │   └── CONTRIBUTING.md
 └── ...
-\`\`\`
+```
 This alleviates:
  
 - Second guessing where things belong
@@ -295,7 +294,7 @@ You achieve:
 - **Cognitive consistency** - The same mental model made to span multiple platforms (filesystem, Notion, File Explorer, Obsidian, GitHub, and any future platforms). The volumes map directly to customized categories, reducing mental translation overhead.
 - **Privacy by default** - User-specific and sensitive files are automatically excluded from version control, preventing accidental exposure.
 - **Scalable architecture** - New volumes can be added at any time without restructuring existing ones. The project can grow indefinitely without becoming chaotic.
-- **Onboarding clarity** - New contributors (or the creator returning after a break) can read \`SCAF-Tree.md\` and immediately understand where everything lives.`,
+- **Onboarding clarity** - New contributors (or the creator returning after a break) can read `SCAF-Tree.md` and immediately understand where everything lives.`,
   },
   {
     id: "r-series",
@@ -307,7 +306,7 @@ You achieve:
     date: "Mar 2026",
     displayMode: "detailed",
     // R-Series -- fill in when ready
-    redundancy: `Most READMEs follow a functional structure (Installation → Usage → API). That works when you can visualize the system. But for those of us who think in words and stories, a *narrative arc* makes the system hold still long enough to understand.
+    redundancy: "Most READMEs follow a functional structure (Installation → Usage → API). That works when you can visualize the system. But for those of us who think in words and stories, a *narrative arc* makes the system hold still long enough to understand.
 
 R‑Series uses alliterative headings as mnemonic anchors, guiding the reader through a complete story of the project:
 

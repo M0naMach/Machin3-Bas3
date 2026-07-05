@@ -241,6 +241,54 @@ function ExpandedPanel({
 
           <div className="h-px mb-6" style={{ background: service.borderColor }} />
 
+          <div className="md:flex md:gap-8">
+            <div className="flex-1 mb-6 md:mb-0">
+              <h3
+                className="font-anurati tracking-[0.2em] uppercase mb-3"
+                style={{ fontSize: '0.5rem', color: textSecondary }}
+              >
+                Deliverables
+              </h3>
+              <ul className="space-y-2">
+                {service.deliverables.map((item, i) => (
+                  <li key={i} className="font-caviar flex items-start gap-2.5">
+                    <span
+                      className="shrink-0 mt-[8px] block w-1.5 h-px"
+                      style={{ background: service.borderColor }}
+                    />
+                    <span style={{ fontSize: '0.8rem', lineHeight: '1.5', color: textBody }}>
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div
+              className="md:w-[200px] shrink-0 rounded-lg p-4"
+              style={{
+                background: service.accentColor,
+                border: `1px solid ${service.borderColor}`,
+              }}
+            >
+              <h3
+                className="font-anurati tracking-[0.2em] uppercase mb-3"
+                style={{ fontSize: '0.5rem', color: textSecondary }}
+              >
+                {service.title}
+              </h3>
+
+              <p
+                className="font-caviar"
+                style={{ fontSize: '0.95rem', lineHeight: '1.75', color: textBody }}
+              >
+                {service.description}
+              </p>
+            </div>
+          </div>
+
+          <div className="h-px mb-6" style={{ background: service.borderColor }} />
+
           <div>
             <h3
               className="font-caviar font-bold tracking-[0.15em] uppercase mb-3"
@@ -348,8 +396,8 @@ function ServiceCard({
             {service.descriptor}
           </p>
         </div>
-      </DialogContent>
-    </Dialog>
+      </div>
+    </article>
   )
 }
 
@@ -520,7 +568,7 @@ export default function ServicesDeskClient() {
           }
           .services-grid > :last-child:nth-child(odd) {
             grid-column: 1 / -1;
-            max-width: calc(50% - 16px);
+            max-width: calc(50% - clamp(16px, 2vw, 32px) / 2);
             margin: 0 auto;
           }
         }
