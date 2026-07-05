@@ -175,7 +175,7 @@ export default function TermsPage() {
               please don't hesitate to reach out.
             </p>
             <Button asChild>
-              <Link href="/services">
+              <Link href="/work">
                 Contact Us
               </Link>
             </Button>

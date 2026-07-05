@@ -63,7 +63,7 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/services" className="hover:text-secondary transition-colors cursor-pointer">
+                <a href="/work" className="hover:text-secondary transition-colors cursor-pointer">
                   Services
                 </a>
               </li>

@@ -21,12 +21,8 @@ interface ServiceData {
   accentColor: string
   description: string
   deliverables: string[]
-  price: string
-  pricing: {
-    starting: string
-    note: string
-  }
   mobileOrder: number
+  position: { top: string; left: string }
 }
 
 const ICON_MAP = {
@@ -60,12 +56,8 @@ const services: ServiceData[] = [
       'Integration spec & deployment plan',
       'Governance documentation & runbook',
     ],
-    price: '$500–$7,500',
-    pricing: {
-      starting: 'From $4,000',
-      note: 'Scoped per project after discovery call',
-    },
     mobileOrder: 1,
+    position: { top: '79.75%', left: '63.49%' },
   },
   {
     id: 'actuarium',
@@ -89,12 +81,8 @@ const services: ServiceData[] = [
       'Findings report with severity tiers',
       'Remediation plan & priority matrix',
     ],
-    price: '$900–$5,000 + $750–$1,500/mo',
-    pricing: {
-      starting: 'From $3,000',
-      note: 'Scoped per project after discovery call',
-    },
     mobileOrder: 2,
+    position: { top: '19.79%', left: '-3.96%' },
   },
   {
     id: 'roadmaps',
@@ -118,12 +106,8 @@ const services: ServiceData[] = [
       'Implementation roadmap with milestones',
       'Accountability scaffold & review cadence',
     ],
-    price: '$250–$6,000',
-    pricing: {
-      starting: 'From $1,800',
-      note: 'Scoped per project after discovery call',
-    },
     mobileOrder: 3,
+    position: { top: '4.81%', left: '30.30%' },
   },
   {
     id: 'websites',
@@ -147,12 +131,8 @@ const services: ServiceData[] = [
       'Redesign mockups & prototypes',
       'Implementation spec & handoff package',
     ],
-    price: '$400–$5,500',
-    pricing: {
-      starting: 'From $3,500',
-      note: 'Scoped per project after discovery call',
-    },
     mobileOrder: 4,
+    position: { top: '4.81%', left: '75.30%' },
   },
   {
     id: 'branding',
@@ -176,12 +156,8 @@ const services: ServiceData[] = [
       'Brand guidelines & asset deployment kit',
       'Templates, layouts & accessibility review',
     ],
-    price: '$450–$3,500',
-    pricing: {
-      starting: 'From $2,500',
-      note: 'Scoped per project after discovery call',
-    },
     mobileOrder: 5,
+    position: { top: '53.23%', left: '77.38%' },
   },
 ]
 
@@ -294,31 +270,126 @@ function ExpandedPanel({
                 className="font-anurati tracking-[0.2em] uppercase mb-3"
                 style={{ fontSize: '0.5rem', color: textSecondary }}
               >
-                Pricing
-              </h3>
-              <p
-                className="font-caviar font-bold mb-1"
-                style={{ fontSize: '1.1rem', color: textPrimary }}
-              >
-                {service.pricing.starting}
-              </p>
+                {service.title}
+              </h2>
+
               <p
                 className="font-caviar"
-                style={{ fontSize: '0.7rem', lineHeight: '1.5', color: textSecondary }}
+                style={{ fontSize: '0.95rem', lineHeight: '1.75', color: textBody }}
               >
-                {service.pricing.note}
+                {service.description}
               </p>
-
-              <div className="mt-4 pt-3" style={{ borderTop: `1px solid ${service.borderColor}` }}>
-                <span
-                  className="font-anurati block text-center"
-                  style={{ fontSize: '0.45rem', letterSpacing: '0.2em', color: textSecondary }}
-                >
-                  /CONNECT TO START
-                </span>
-              </div>
             </div>
           </div>
+
+          <div className="h-px mb-6" style={{ background: service.borderColor }} />
+
+          <div>
+            <h3
+              className="font-caviar font-bold tracking-[0.15em] uppercase mb-3"
+              style={{ fontSize: '0.65rem', color: textSecondary }}
+            >
+              Deliverables
+            </h3>
+            <ul className="space-y-2">
+              {service.deliverables.map((item, i) => (
+                <li key={i} className="font-caviar flex items-start gap-2.5">
+                  <span
+                    className="shrink-0 mt-[8px] block w-1.5 h-px"
+                    style={{ background: service.borderColor }}
+                  />
+                  <span style={{ fontSize: '0.8rem', lineHeight: '1.5', color: textBody }}>
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
+function ServiceCard({
+  service,
+  onClick,
+}: {
+  service: ServiceData
+  onClick: () => void
+}) {
+  const IconComponent = ICON_MAP[service.icon]
+
+  return (
+    <article
+      role="button"
+      tabIndex={0}
+      className="absolute cursor-pointer transition-transform duration-300 hover:scale-[1.03] active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 flex flex-col justify-between overflow-hidden"
+      style={{
+        width: '21.12%',
+        aspectRatio: '406 / 224',
+        top: service.position.top,
+        left: service.position.left,
+        background: `linear-gradient(${service.gradientAngle}deg, rgba(252,240,232,0.90) 0%, rgba(243,232,255,0.82) 35%, rgba(224,245,255,0.85) 65%, rgba(220,255,248,0.78) 100%)`,
+        backdropFilter: 'blur(24px)',
+        WebkitBackdropFilter: 'blur(24px)',
+        border: '1px solid rgba(184,115,51,0.50)',
+        borderRadius: 'clamp(8px, 0.6vw, 12px)',
+        padding: 'clamp(10px, 1vw, 18px)',
+        boxSizing: 'border-box',
+      }}
+      aria-haspopup="dialog"
+      onClick={onClick}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick() } }}
+    >
+      {/* Shimmer strip */}
+      <div
+        className="absolute inset-x-0 top-0 h-[3px] pointer-events-none"
+        style={{
+          background: 'linear-gradient(90deg, rgba(235,140,184,1) 0%, rgba(204,140,242,1) 28%, rgba(115,184,250,1) 58%, rgba(77,230,210,1) 82%, rgba(235,140,184,0.5) 100%)',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Content row */}
+      <div className="flex items-start" style={{ gap: 'clamp(8px, 0.8vw, 14px)', marginTop: '4px' }}>
+        {/* Icon box */}
+        <div
+          className="shrink-0 flex items-center justify-center"
+          style={{
+            width: 'clamp(36px, 3vw, 52px)',
+            height: 'clamp(36px, 3vw, 52px)',
+            border: '1px solid rgba(184,115,51,0.50)',
+            borderRadius: 'clamp(6px, 0.5vw, 10px)',
+            color: 'rgba(184,115,51,0.85)',
+          }}
+          aria-hidden="true"
+        >
+          <IconComponent style={{ width: '55%', height: '55%' }} />
+        </div>
+
+        {/* Text stack */}
+        <div className="min-w-0 flex flex-col" style={{ gap: 'clamp(2px, 0.2vw, 6px)' }}>
+          <h3
+            className="font-caviar font-bold m-0"
+            style={{
+              fontSize: 'clamp(14px, 1.4vw, 22px)',
+              lineHeight: '1.2',
+              color: 'rgb(184,115,51)',
+            }}
+          >
+            {service.title}
+          </h3>
+          <p
+            className="font-caviar m-0"
+            style={{
+              fontSize: 'clamp(11px, 0.8vw, 14px)',
+              lineHeight: '1.45',
+              color: 'rgba(60,40,20,0.65)',
+            }}
+          >
+            {service.descriptor}
+          </p>
         </div>
       </DialogContent>
     </Dialog>
@@ -405,21 +476,6 @@ function ServiceCard({
         </div>
       </div>
 
-      {/* Price badge */}
-      <div
-        className="self-end font-caviar font-bold whitespace-nowrap"
-        style={{
-          clipPath: 'polygon(0% 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%)',
-          background: 'rgb(184,115,51)',
-          color: '#fff',
-          fontSize: 'clamp(11px, 0.85vw, 14px)',
-          padding: 'clamp(6px, 0.5vw, 10px) clamp(12px, 1vw, 18px)',
-          borderRadius: '3px 3px 0 3px',
-        }}
-        aria-label={`Price range: ${service.price}`}
-      >
-        {service.price}
-      </div>
     </article>
   )
 }
