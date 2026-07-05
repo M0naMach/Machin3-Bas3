@@ -13,6 +13,7 @@
  *   Real content → string path from public/ (entry is complete and committed)
  */
 
+<<<<<<< Updated upstream
 import type { CaseStudy } from "@/components/portfolio/CaseStudyCard";
 
 // ── Placeholder imports ───────────────────────────────────────────────────────
@@ -22,6 +23,17 @@ const phCodeWork04 = "/Machin3s_at_Work04.png";
 const phCodeWork06 = "/Machin3s_at_Work06.png";
 const phCodeConst03 = "/Under_Machin3_Construction03.png";
 const phIconsWork02 = "/Machin3s_at_Work02.png";
+=======
+import { CaseStudy } from "@/app/components/CaseStudyCard";
+
+// ── Placeholder imports ───────────────────────────────────────────────────────
+// Remove an import and replace image with a public/ path when the entry is done.
+import phCodeWork01    from "@/assets/placeholders/code/Machin3s_at_Work01.png";
+import phCodeWork04    from "@/assets/placeholders/code/Machin3s_at_Work04.png";
+import phCodeWork06    from "@/assets/placeholders/code/Machin3s_at_Work06.png";
+import phCodeConst03   from "@/assets/placeholders/code/Under_Machin3_Construction03.png";
+import phIconsWork02   from "@/assets/placeholders/craft/icons/Machin3s_at_Work02.png";
+>>>>>>> Stashed changes
 import phCollWork05    from "@/assets/placeholders/craft/collections/Machin3s_at_Work05.jpg";
 import phCollConst01   from "@/assets/placeholders/craft/collections/Under_Machin3_Construction01.png";
 import phCompConst02   from "@/assets/placeholders/compositions/Under_Machin3_Construction02.png";
@@ -39,6 +51,7 @@ export const caseStudies: CaseStudy[] = [
     github: "https://github.com/M0naLisaSmil3d/AI-Audit-Actuarium",
     featured: true,
     displayMode: "detailed",
+<<<<<<< Updated upstream
     redundancy: `Previously AI evaluation was a mess of intuition and subjective "vibes." Different auditors would stare at the same system, with skewed perceptions, and see different realities. There was no way to quantify risk, no repeatable method to track a system's evolution, and no single source of truth for what constituted a failure.`,
     rhyme: `Instead of treating an audit as merely a checklist of pass/fail items, we strived to reframe it as an actuarial balance sheet. Think of the Actuarium not as a teacher with a red pen, but as a mechanic's diagnostic computer. You don't need to know if the car is "good"; you need to know which specific part is failing.
 
@@ -52,6 +65,21 @@ We aren't trying to catch AI with "misaligned" pattern-matching. We're trying au
   - Including all columns: Actual question, Primary Axis, Weight (1-3), Polarity (POS or NEG), & Secondary Tags. (Only a sample is provided of our Actuarium; the full Actuarium is proprietary.)
 - The Actual Formula`,
     refinement: `We weren't ashamed of our seams; to get this far in AI we stay sharp to the stumbles we make along the way. So, to be efficient, we soudered the stretched seams of context limits and arbitrary outputs to stats and mathematical science. We utilized logical precision and with an underlying creative vision, were able to bypass predominant issues quickly so that the real problem-makers could answer to the Actuarium.
+=======
+    redundancy: "Previously AI evaluation was a mess of intuition and subjective "vibes." Different auditors would stare at the same system, with skewed perceptions, and see different realities. There was no way to quantify risk, no repeatable method to track a system's evolution, and no single source of truth for what constituted a failure.",
+    rhyme: "Instead of treating an audit as merely a checklist of pass/fail items, we strived to reframe it as an actuarial balance sheet. Think of the Actuarium not as a teacher with a red pen, but as a mechanic's diagnostic computer. You don't need to know if the car is "good"; you need to know which specific part is failing.
+
+The system acts as a Signal-to-Noise filter. It separates the "engine knocking" (Critical Data Issues) from the "paint scratching" (Tone/Formatting). It doesn't just give you a score; it points an arrow at the exact subsystem that is broken.",
+    reason: "The Actuarium is deeply rooted, in its architectural beauty, to a well grounded belief that the solution to un-Accountable AI, and their systems, had to be found in a deterministic framework.
+
+If the physics are sound, the results will always be the same. No guessing. No rounding. No AI.
+
+We aren't trying to catch AI with "misaligned" pattern-matching. We're trying audit where the integrity didn't hold and the accountabilty isn't being programmed.",
+    machin3Mechanics: "- Master Actuarium Checklist Guide: A guide to formatting your questions to maintain a CSV file that holds meticulously curated questions that can easily be mapped to diagnostic sections for comparrison, and that removes all ambiguity after polarization.
+  - Including all columns: Actual question, Primary Axis, Weight (1-3), Polarity (POS or NEG), & Secondary Tags. (Only a sample is provided of our Actuarium; the full Actuarium is proprietary.)
+- The Actual Formula",
+    refinement: "We weren't ashamed of our seams; to get this far in AI we stay sharp to the stumbles we make along the way. So, to be efficient, we soudered the stretched seams of context limits and arbitrary outputs to stats and mathematical science. We utilized logical precision and with an underlying creative vision, were able to bypass predominant issues quickly so that the real problem-makers could answer to the Actuarium.
+>>>>>>> Stashed changes
 
 - **Weighting**: Items are weighted (1–3) by criticality.
 - **Surgical Scoring**: 1.0 for ideal, 0.5 for partial, 0.0 for failure. For NEG items, we invert the score to maintain integrity.
@@ -63,8 +91,13 @@ Because systems are compiled of components meant to compute together... so its c
 **After some iteration we implemented**:
 **Polarity**: We distinguish between a "yes" that builds value (POS) and a "yes" that reveals a flaw (NEG).
 
+<<<<<<< Updated upstream
 We derived the Negative Denominator Method to ensure the math couldn't be faked.`,
     result: `Accountable Architecture Success looks like a coordinate, not a grade.
+=======
+We derived the Negative Denominator Method to ensure the math couldn't be faked.",
+    result: "Accountable Architecture Success looks like a coordinate, not a grade.
+>>>>>>> Stashed changes
 
 You run the audit, and instead of a vague "C+," you get a report that says: "Architecture: 3.3/15 (CRITICAL)."
 
@@ -74,7 +107,11 @@ The Actuarium framework doesn't just deliver a surgical health score; it uses py
 - Per-Axis Visibility: You can see exactly which pillar of your architecture is crumbling.
 - Issue Surface: Failing tags are aggregated to guide remediation, not just criticism.
 - Physics Over Instructions: The audit proves that when instructions fail, the physics of the system still work.
+<<<<<<< Updated upstream
 - What was corrected: Subjectivity, inconsistency, and the siphoning of potential through vague metrics.`,
+=======
+- What was corrected: Subjectivity, inconsistency, and the siphoning of potential through vague metrics.",
+>>>>>>> Stashed changes
   },
   {
     id: "plus_0ne",
@@ -86,7 +123,12 @@ The Actuarium framework doesn't just deliver a surgical health score; it uses py
     date: "April 2026",
     displayMode: "detailed",
     redundancy: "Every handoff is a risk. Research suggests that architecture and design firms spend a disproportionate share of their time on redundant, routine, and high stakes tasks. Architecture firms bleed time and money when triaging leads that don’t fit their market, answering repetitive code questions, drafting RFIs, transcribing site notes, renaming render files, and drafting client emails. To keep it simple, tasks that are necessary but not billable, not creative, and not what anyone entered this profession to do, take up the most time and lead to the most friction. These tasks are low‑judgment but high‑stakes, meaning a mistake in code citation or a mislabeled render can delay a project or damage client confidence.",
+<<<<<<< Updated upstream
     rhyme: "The system was built around a simple rule: an agent that tries to do everything does nothing well.
+=======
+    rhyme: "The system was built around a simple rule: an agent that tries
+to do everything does nothing well.
+>>>>>>> Stashed changes
 
 Think of this suite as a digital architecture firm within the firm; a silent, reliable crew of specialist colleagues who never sleep, never forget a code amendment, and never send a file without a naming convention.
 
@@ -112,9 +154,15 @@ The architectural pattern is modular and composable:
 - Every agent outputs structured data that feeds directly into downstream systems (CRM, project management, file servers, email clients).
 
 The "physics" of the solution is deterministic prompt engineering--every question has a gate, every output has a schema, and every uncertainty has a documented fallback. This ensures the system is predictable, auditable, and safe for production use, even with hostile or confused users."
+<<<<<<< Updated upstream
     machin3Mechanics: "**Per-Agent Directories** - Each agent directory contains a \`prompt.ts\` file that exports a single named string constant. Each agent’s system prompt is a self‑contained spec (v2.2, v1.3, etc.) with internal state variables, escalation logic, and confidence protocols. The prompt is code, versioned, diff-able, and reviewable. 
 
 **Compliance Cache** - \`VOL-08-KNOWLEDGE_BASE/zoning_energy_cache.xml\` holds pre-verified compliance reference data for Agent-03. The XML format is structured, parseable, and update-friendly. When a jurisdiction adopts a new code edition, the update happens in one file in one volume.
+=======
+    machin3Mechanics: "**Per-Agent Directories** - Each agent directory contains a `prompt.ts` file that exports a single named string constant. Each agent’s system prompt is a self‑contained spec (v2.2, v1.3, etc.) with internal state variables, escalation logic, and confidence protocols. The prompt is code, versioned, diff-able, and reviewable. 
+
+**Compliance Cache** - `VOL-08-KNOWLEDGE_BASE/zoning_energy_cache.xml` holds pre-verified compliance reference data for Agent-03. The XML format is structured, parseable, and update-friendly. When a jurisdiction adopts a new code edition, the update happens in one file in one volume.
+>>>>>>> Stashed changes
 **Ecosystem Framework** - This project is built on the R Ecosystem architecture and is licensed under the GNU AGPL-3.0. Full license text: [VOL-12-COMMERCIAL/LICENSE.md](./VOL-12-COMMERCIAL/LICENSE.md)
 **State Machine Design** – Agents 01 and 02 use explicit state transitions; Agents 03–05 use rule‑based deterministic flows.
 **JSON schema enforcement** – Agents 04 and 05 output only strictly valid JSON; Agent‑01 produces structured internal data; Agent‑03 outputs a four‑section plain‑text format.
@@ -123,8 +171,13 @@ The "physics" of the solution is deterministic prompt engineering--every questio
 **React/NIM integration** – The frontend orchestrates initial messages and context passing between agents.
 **Production guardrails** – Turn‑count tracking, escalation tiers (1–3), budget‑revisit flags, and confidence tiers (HIGH/MEDIUM/LOW/UNKNOWN) are built into every agent.
 
+<<<<<<< Updated upstream
 Principle: "Never guess--ask, flag, or escalate." This is enforced at the prompt level, not via external tooling.`,
     refinement: `The prompt architecture follows a single ownership rule: one
+=======
+Principle: "Never guess--ask, flag, or escalate." This is enforced at the prompt level, not via external tooling.",
+    refinement: "The prompt architecture follows a single ownership rule: one
+>>>>>>> Stashed changes
 agent, one file. Each agent file exports a system prompt, a set of behavioral constraints, and any domain-specific context the agent needs. They are imported at the API route level.
 
 - Agent‑01’s language standard - We deliberately banned transactional phrases like "I need" or "please provide" and replaced them with curious, warm openings. This synthesises the logical need for data capture with the creative imperative of human rapport. Tradeoff: more conversational overhead, but the gain in trust and lower abandonment outweighs it.
@@ -136,8 +189,13 @@ agent, one file. Each agent file exports a system prompt, a set of behavioral co
 
 Biggest tradeoff: Strictness vs. flexibility. We chose strict gates to guarantee data completeness and reduce ambiguity. This means agents will push back if information is missing, but we softened that with warm language and permission‑based re‑asks (e.g., budget revisit at State 6). The result: higher quality intake data with lower friction than a typical form.
 
+<<<<<<< Updated upstream
 **Every agent has a lane. Every lane has a volume. Every volume has a home.**`,
     result: `The answer here is the same as it is in any well-maintained
+=======
+**Every agent has a lane. Every lane has a volume. Every volume has a home.**",
+    result: "The answer here is the same as it is in any well-maintained
+>>>>>>> Stashed changes
 codebase: single responsibility, version history, and a review process that leaves a record. The Ecosystem project architecture extends that same thinking to every layer of the project, from configuration to documentation to AI behavior. 
 
 Before (Manual, fragmented process):
@@ -169,7 +227,11 @@ Success is measured by:
 · Punch‑list accuracy ≥ 95% (agreed by site leads)
 · Render‑delivery time < 2 minutes from batch upload to email draft
 
+<<<<<<< Updated upstream
 The suite doesn’t just automate... it elevates the firm’s capacity to focus on what matters: creating spaces that matter, with clients who trust them.`,
+=======
+The suite doesn’t just automate... it elevates the firm’s capacity to focus on what matters: creating spaces that matter, with clients who trust them.",
+>>>>>>> Stashed changes
   },
   
   {
@@ -178,11 +240,19 @@ The suite doesn’t just automate... it elevates the firm’s capacity to focus 
     description: "A Volume‑Based Architecture for **Cognitive Consistency** Across Platforms",
     category: "coding",
     image: phCodeWork04,
+<<<<<<< Updated upstream
     tags: ["Template", "Organization", "Neurodivergent", "Semantic Recall"],
     date: "Mar 2026",
     displayMode: "detailed",
     // R-Series -- fill in when ready
     redundancy: `Learning, building, and maintaining complex systems often leads to **architectural entropy**. Before this architecture, my coding paper trail was living as dismembered concepts scattered across Notion, Bear, Obsidian, Notepad, TextEdit, OneNote, and Notes. My files, drives, and cloud storage became additional pain points on my record, formalizing my habitual offenses for procrastination, ADHD, unyielding creativity, and the excitement of a new found passion. A passion that I was scaling through hands-on training and the lack of formal education left me with the ability to build, but not the ability to properly plan a directory. Every time I switched contexts, I had to track down my last remembrance of referencing the file. This always consists of statements like: "How did X file get saved here?", or looking for "Send to Bear" on my Share Screen failing to realize I had the wrong phone.
+=======
+    tags: [Template, Organization, Neurodivergent, Semantic Recall],
+    date: "Mar 2026",
+    displayMode: "detailed",
+    // R-Series -- fill in when ready
+    redundancy: "Learning, building, and maintaining complex systems often leads to **architectural entropy**. Before this architecture, my coding paper trail was living as dismembered concepts scattered across Notion, Bear, Obsidian, Notepad, TextEdit, OneNote, and Notes. My files, drives, and cloud storage became additional pain points on my record, formalizing my habitual offenses for procrastination, ADHD, unyielding creativity, and the excitement of a new found passion. A passion that I was scaling through hands-on training and the lack of formal education left me with the ability to build, but not the ability to properly plan a directory. Every time I switched contexts, I had to track down my last remembrance of referencing the file. This always consists of statements like: "How did X file get saved here?", or looking for "Send to Bear" on my Share Screen failing to realize I had the wrong phone.
+>>>>>>> Stashed changes
 
 This memory recall, based strictly on context and references, is necessary for me due to something you'll hear referenced throughout my projects. Not as a "pity party" princess, but as a practical, and personal, explanation for my coding concepts and the creative bypass used in my work. I have Aphantasia, and don’t have the ability to "picture this" or "visualize" the last place I saw something.
 
@@ -192,8 +262,13 @@ This memory recall, based strictly on context and references, is necessary for m
 - **Stunted systems** – Projects get underway, but only ever mature as far as your ability to reconnect with the application currently being constructed: making full production level development seem impossible.
 - **Cross-platform dissonance** – If you use Notion, local files, and cloud storage, each has a different organization, multiplying the confusion.
 
+<<<<<<< Updated upstream
 **The struggle was real, and the structure needed scaffolding.**`,
     rhyme: `It made sense to create a solution that treated file structure as **cognitive mirrors** of the users's mental processing. Customizing a physical representation of how their brain *already* organizes information naturally and then scaling it to be flexible across their beloved stack.
+=======
+**The struggle was real, and the structure needed scaffolding.**",
+    rhyme: "It made sense to create a solution that treated file structure as **cognitive mirrors** of the users's mental processing. Customizing a physical representation of how their brain *already* organizes information naturally and then scaling it to be flexible across their beloved stack.
+>>>>>>> Stashed changes
 
 Instead of fighting against the driver for control of the wheel, you build the track to match its destined course. There's less friction, and you both make progress together... enjoying the ride, just cruising to the tune of your personal flow.
 
@@ -203,8 +278,13 @@ Everything has a place.
 
 This place; **Th3 N3ighb0rh00d**... I know better than the neighborhood I grew up in. I finally attained acceptance and a humble sense of pride when I showed up to meet my passion and processing protocol at the intersection of ***Craft and Code***.
 
+<<<<<<< Updated upstream
 Now let's get down to the **Reason** behind the **Rhyme**.`,
     reason: `The structural foundation of this **Ecosystem** isn't a belief-based approach. It rests on the beams brought directly from cognitive science: how brains are configured to encode, store, and retrieve information in all kinds of beautifully diverse ways. It's not magic or a well placed metaphor... It's just mental mapping mechanics.
+=======
+Now let's get down to the **Reason** behind the **Rhyme**.",
+    reason: "The structural foundation of this **Ecosystem** isn't a belief-based approach. It rests on the beams brought directly from cognitive science: how brains are configured to encode, store, and retrieve information in all kinds of beautifully diverse ways. It's not magic or a well placed metaphor... It's just mental mapping mechanics.
+>>>>>>> Stashed changes
 
 Traditional filesystems favor spatial memory. You "know" where something sits because you can see its placement in your mind. However, spatial mapping is exactly the mechanism missing for aphantasic minds. Semantic navigation trades visualization for vocabulary. Knowing what something is and what it does requires no mental imagery, only clean, consistent categorization. 
 
@@ -221,11 +301,19 @@ Sensory processing differences affect how the nervous system receives, organizes
 
 **Universal strategies with cross-neurotype benefits**
 Utilizes several strategies that benefit all neurodivergent profiles and improve code quality for neurotypical developers.
+<<<<<<< Updated upstream
 `,
     machin3Mechanics: `- **R-Series briefing**
 - *Original Ecosystem design**
 - **Personally designed documentation templates**`,
     refinement: `The current **Ecosystem** evolved through several iterations to reach its present form.
+=======
+",
+    machin3Mechanics: "- **R-Series briefing**
+- *Original Ecosystem design**
+- **Personally designed documentation templates**",
+    refinement: "The current **Ecosystem** evolved through several iterations to reach its present form.
+>>>>>>> Stashed changes
 
 1. **Volume numbering** – Introduced numbered **VOLUMES** to create a book-based bond, contained and categorized separation, and stable structure for a sequential system. The numbering secures a stable, sortable sequence, while the descriptive suffix spells out its specific purpose. This dual-key directory delivers both a fixed foundation and a readable framework.
 2. **Cognitive mirroring** – Replicating an already working volume-based framework and applying it to my repositories, would be way more beneficial than trying to redefine a whole new system. That decision came with one primary issue... I don't know how to create a repository. So instead I had to rely on **Volumes** being categorized by ***fundamentals*** and ***function***.
@@ -246,10 +334,17 @@ Some naming was just not possible to retain across platforms, but I strived to r
 4. **Consistent file naming** - Maintaining a consistent naming convention is a fundamental to a repository's *rules of rhythm*. Simply put... it makes it easier to find things. Incorporating the UID for the corresponding directory/ volume allows you to know exactly what file and which category you're in, no matter how many clicks it took to get there. 5. **Zero-guess navigation** - Every file has a home. Every home is on the map. Every inhabitant has a clearly defined address...
 
 The result is a structure that feels natural to navigate, scales without breaking, and doesn't try to mimic a mental system that your mind can't compute.",
+<<<<<<< Updated upstream
     result: `BEFORE VS AFTER
 **Before (ad hoc structure):**
 
 \`\`\`
+=======
+    result: "BEFORE VS AFTER
+**Before (ad hoc structure):**
+
+```
+>>>>>>> Stashed changes
 project/
 ├── main.py
 ├── utils.py
@@ -259,7 +354,11 @@ project/
 ├── data/
 ├── prompts/
 └── ...
+<<<<<<< Updated upstream
 \`\`\`
+=======
+```
+>>>>>>> Stashed changes
 
 **bin/** No idea what that means. Why are my executables in there?
 
@@ -269,7 +368,11 @@ project/
 
 **After ECOSYSTEM:**
 
+<<<<<<< Updated upstream
 \`\`\`
+=======
+```
+>>>>>>> Stashed changes
 PROJECT_NAME/
 ├── ECOSYSTEM.md
 ├── README.md
@@ -294,7 +397,11 @@ You achieve:
 - **Cognitive consistency** - The same mental model made to span multiple platforms (filesystem, Notion, File Explorer, Obsidian, GitHub, and any future platforms). The volumes map directly to customized categories, reducing mental translation overhead.
 - **Privacy by default** - User-specific and sensitive files are automatically excluded from version control, preventing accidental exposure.
 - **Scalable architecture** - New volumes can be added at any time without restructuring existing ones. The project can grow indefinitely without becoming chaotic.
+<<<<<<< Updated upstream
 - **Onboarding clarity** - New contributors (or the creator returning after a break) can read `SCAF-Tree.md` and immediately understand where everything lives.`,
+=======
+- **Onboarding clarity** - New contributors (or the creator returning after a break) can read `SCAF-Tree.md` and immediately understand where everything lives.",
+>>>>>>> Stashed changes
   },
   {
     id: "r-series",
@@ -302,7 +409,11 @@ You achieve:
     description: "A narrative-structured approach to technical documentation, designed for clarity, memorability, and cognitive accessibility.",
     category: "composition",
     image: phCodeWork06,
+<<<<<<< Updated upstream
     tags: ["Template"],
+=======
+    tags: [Template, ],
+>>>>>>> Stashed changes
     date: "Mar 2026",
     displayMode: "detailed",
     // R-Series -- fill in when ready
@@ -319,11 +430,19 @@ R‑Series uses alliterative headings as mnemonic anchors, guiding the reader th
 [One-line description]
 
 Just as we did here, *Redundancy* will answer these questions:
+<<<<<<< Updated upstream
 What problem does this solve? What friction or drift necessitated this project? Be specific about why the old way wasn't working.`,
     rhyme: "*The creative reframe* How do you want users to *think* about this project? What's the metaphor, the story, the shift in perspective?",
     reason: "*The logical cor* How does it work? What's the architecture, the algorithm, the physics of the solution?",
     machin3Mechanics: `*Machin3 M3chanics* (This is  mainly used for IP specs. Have fun naming!!)
 The substrates. What tools, languages, frameworks, or principles were used to build it?`,
+=======
+What problem does this solve? What friction or drift necessitated this project? Be specific about why the old way wasn't working.",
+    rhyme: "*The creative reframe* How do you want users to *think* about this project? What's the metaphor, the story, the shift in perspective?",
+    reason: "*The logical cor* How does it work? What's the architecture, the algorithm, the physics of the solution?",
+    machin3Mechanics: "*Machin3 M3chanics* (This is  mainly used for IP specs. Have fun naming!!)
+The substrates. What tools, languages, frameworks, or principles were used to build it?",
+>>>>>>> Stashed changes
     refinement: "*The synthesis* What specific choices did you make to weld the creative and logical together? What tradeoffs did you navigate?",
     result: "*The outcome* What does success look like? Show before/after, metrics, or examples.",
   },
@@ -380,7 +499,11 @@ The substrates. What tools, languages, frameworks, or principles were used to bu
     title: "Vintag3_D3cay",
     description: "A collection of blemished water lilies, captured in the quiet space between living and fading. Dark water, heavy shadows, and the textured beauty of things that have started to let go.",
     category: "craft",
+<<<<<<< Updated upstream
     image: "/craft/Vintag3_D3cay/CoverArt-Vintag3_D3cay.jpeg",
+=======
+    image: /craft/Vintag3_D3cay/CoverArt-Vintag3_D3cay.jpeg",
+>>>>>>> Stashed changes
     tags: ["Water Lilies", "Mixed Media", "Landscape", "Material Art"],
     date: "Apr 2026",
     displayMode: "detailed",
@@ -392,7 +515,11 @@ The substrates. What tools, languages, frameworks, or principles were used to bu
     "/craft/Vintag3_D3cay/Lily-04.png",
     "/craft/Vintag3_D3cay/Lily-05.png",
     "/craft/Vintag3_D3cay/Lily-06.png",
+<<<<<<< Updated upstream
     "/craft/Vintag3_D3cay/ART-VIND3C-perfume_bottle.jpeg",
+=======
+    "/craft/Vintag3_D3cay/ART-VIND3C-perfume_bottle.jpeg
+>>>>>>> Stashed changes
     ],
   },
   {
