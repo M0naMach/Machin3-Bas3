@@ -21,11 +21,6 @@ interface ServiceData {
   accentColor: string
   description: string
   deliverables: string[]
-  price: string
-  pricing: {
-    starting: string
-    note: string
-  }
   mobileOrder: number
   position: { top: string; left: string }
 }
@@ -241,54 +236,6 @@ function ExpandedPanel({
 
           <div className="h-px mb-6" style={{ background: service.borderColor }} />
 
-          <div className="md:flex md:gap-8">
-            <div className="flex-1 mb-6 md:mb-0">
-              <h3
-                className="font-anurati tracking-[0.2em] uppercase mb-3"
-                style={{ fontSize: '0.5rem', color: textSecondary }}
-              >
-                Deliverables
-              </h3>
-              <ul className="space-y-2">
-                {service.deliverables.map((item, i) => (
-                  <li key={i} className="font-caviar flex items-start gap-2.5">
-                    <span
-                      className="shrink-0 mt-[8px] block w-1.5 h-px"
-                      style={{ background: service.borderColor }}
-                    />
-                    <span style={{ fontSize: '0.8rem', lineHeight: '1.5', color: textBody }}>
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div
-              className="md:w-[200px] shrink-0 rounded-lg p-4"
-              style={{
-                background: service.accentColor,
-                border: `1px solid ${service.borderColor}`,
-              }}
-            >
-              <h3
-                className="font-anurati tracking-[0.2em] uppercase mb-3"
-                style={{ fontSize: '0.5rem', color: textSecondary }}
-              >
-                {service.title}
-              </h3>
-
-              <p
-                className="font-caviar"
-                style={{ fontSize: '0.95rem', lineHeight: '1.75', color: textBody }}
-              >
-                {service.description}
-              </p>
-            </div>
-          </div>
-
-          <div className="h-px mb-6" style={{ background: service.borderColor }} />
-
           <div>
             <h3
               className="font-caviar font-bold tracking-[0.15em] uppercase mb-3"
@@ -397,10 +344,10 @@ function ServiceCard({
           </p>
         </div>
       </div>
+
     </article>
   )
 }
-
 
 export default function ServicesDeskClient() {
   const [expandedId, setExpandedId] = useState<string | null>(null)
@@ -422,7 +369,7 @@ export default function ServicesDeskClient() {
           alt=""
           fill
           className="object-cover"
-          style={{ objectPosition: 'center 40%' }}
+          style={{ objectPosition: 'center center' }}
           priority
         />
         <div
@@ -433,74 +380,22 @@ export default function ServicesDeskClient() {
         />
       </div>
 
-      {/* Services grid */}
-      <div
-        className="relative z-10 w-full"
-        style={{ padding: 'clamp(32px, 4vw, 80px) clamp(24px, 4.4vw, 80px)' }}
-      >
-        {/* Mobile header */}
-        <header className="md:hidden mb-6">
-          <h2
-            className="font-aspal tracking-tight mb-2"
-            style={{ fontSize: '2.5rem', lineHeight: '1.1', color: 'rgba(235,225,210,0.95)' }}
-          >
-            The Drafting Table
-          </h2>
-          <p
-            className="font-caviar"
-            style={{ fontSize: '0.95rem', lineHeight: '1.6', color: 'rgba(180,170,155,0.6)' }}
-          >
-            Tap a card to explore.
-          </p>
-        </header>
-
-        <div className="services-grid">
-          {[...services]
-            .sort((a, b) => a.mobileOrder - b.mobileOrder)
-            .map((service) => (
-              <ServiceCard
-                key={service.id}
-                service={service}
-                onClick={() => setExpandedId(service.id)}
-              />
-            ))}
-        </div>
+      {/* Services container — matches desk image 1800×1200 (3:2) so % positions align */}
+      <div className="relative z-10 w-full overflow-hidden" style={{ aspectRatio: '1800 / 1200', minHeight: '100vh' }}>
+        {[...services]
+          .sort((a, b) => a.mobileOrder - b.mobileOrder)
+          .map((service) => (
+            <ServiceCard
+              key={service.id}
+              service={service}
+              onClick={() => setExpandedId(service.id)}
+            />
+          ))}
       </div>
 
       {/* Expanded overlay */}
       {expandedService && <ExpandedPanel service={expandedService} onClose={handleClose} />}
 
-      <style jsx>{`
-        .services-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(min(100%, 580px), 1fr));
-          gap: clamp(16px, 2vw, 32px);
-          max-width: 1440px;
-          margin: 0 auto;
-        }
-
-        @media (min-width: 1280px) {
-          .services-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-          .services-grid > :last-child:nth-child(odd) {
-            grid-column: 1 / -1;
-            max-width: calc(50% - clamp(16px, 2vw, 32px) / 2);
-            margin: 0 auto;
-          }
-        }
-
-        @media (min-width: 1600px) {
-          .services-grid {
-            grid-template-columns: repeat(3, 1fr);
-          }
-          .services-grid > :last-child:nth-child(odd) {
-            grid-column: auto;
-            max-width: none;
-            margin: 0;
-          }
-        }
-      `}</style>
     </>
   )
 }
