@@ -369,7 +369,7 @@ export default function ServicesDeskClient() {
           alt=""
           fill
           className="object-cover"
-          style={{ objectPosition: 'center 40%' }}
+          style={{ objectPosition: 'center center' }}
           priority
         />
         <div
@@ -380,8 +380,8 @@ export default function ServicesDeskClient() {
         />
       </div>
 
-      {/* Services container — relative parent for absolute cards */}
-      <div className="relative z-10 w-full min-h-screen overflow-hidden">
+      {/* Services container — matches desk image 1800×1200 (3:2) so % positions align */}
+      <div className="relative z-10 w-full overflow-hidden" style={{ aspectRatio: '1800 / 1200', minHeight: '100vh' }}>
         {[...services]
           .sort((a, b) => a.mobileOrder - b.mobileOrder)
           .map((service) => (
