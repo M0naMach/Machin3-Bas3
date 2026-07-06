@@ -287,7 +287,7 @@ function ServiceCard({
         WebkitBackdropFilter: 'blur(24px)',
         border: '1px solid rgba(184,115,51,0.50)',
         borderRadius: 'clamp(8px, 0.6vw, 12px)',
-        padding: 'clamp(10px, 1vw, 18px)',
+        padding: 'clamp(6px, 0.5vw, 10px)',
         boxSizing: 'border-box',
       }}
       aria-haspopup="dialog"
@@ -304,15 +304,15 @@ function ServiceCard({
       />
 
       {/* Content row */}
-      <div className="flex items-start" style={{ gap: 'clamp(8px, 0.8vw, 14px)', marginTop: '4px' }}>
+      <div className="flex items-start" style={{ gap: 'clamp(4px, 0.4vw, 8px)', marginTop: '2px' }}>
         {/* Icon box */}
         <div
           className="shrink-0 flex items-center justify-center"
           style={{
-            width: 'clamp(36px, 3vw, 52px)',
-            height: 'clamp(36px, 3vw, 52px)',
+            width: 'clamp(20px, 1.6vw, 32px)',
+            height: 'clamp(20px, 1.6vw, 32px)',
             border: '1px solid rgba(184,115,51,0.50)',
-            borderRadius: 'clamp(6px, 0.5vw, 10px)',
+            borderRadius: 'clamp(4px, 0.3vw, 6px)',
             color: 'rgba(184,115,51,0.85)',
           }}
           aria-hidden="true"
@@ -321,11 +321,11 @@ function ServiceCard({
         </div>
 
         {/* Text stack */}
-        <div className="min-w-0 flex flex-col" style={{ gap: 'clamp(2px, 0.2vw, 6px)' }}>
+        <div className="min-w-0 flex flex-col" style={{ gap: 'clamp(1px, 0.1vw, 3px)' }}>
           <h3
             className="font-caviar font-bold m-0"
             style={{
-              fontSize: 'clamp(14px, 1.4vw, 22px)',
+              fontSize: 'clamp(9px, 0.75vw, 14px)',
               lineHeight: '1.2',
               color: 'rgb(184,115,51)',
             }}
@@ -335,8 +335,8 @@ function ServiceCard({
           <p
             className="font-caviar m-0"
             style={{
-              fontSize: 'clamp(11px, 0.8vw, 14px)',
-              lineHeight: '1.45',
+              fontSize: 'clamp(7px, 0.5vw, 10px)',
+              lineHeight: '1.35',
               color: 'rgba(60,40,20,0.65)',
             }}
           >
