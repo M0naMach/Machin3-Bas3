@@ -266,9 +266,11 @@ function ExpandedPanel({
 function ServiceCard({
   service,
   onClick,
+  mobile,
 }: {
   service: ServiceData
   onClick: () => void
+  mobile: boolean
 }) {
   const IconComponent = ICON_MAP[service.icon]
 
@@ -276,18 +278,22 @@ function ServiceCard({
     <article
       role="button"
       tabIndex={0}
-      className="absolute cursor-pointer transition-transform duration-300 hover:scale-[1.03] active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 flex flex-col justify-between overflow-hidden"
+      className={`cursor-pointer transition-transform duration-300 hover:scale-[1.03] active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 flex flex-col justify-between overflow-hidden ${mobile ? 'relative' : 'absolute'}`}
       style={{
-        width: '21.12%',
-        aspectRatio: '406 / 224',
-        top: service.position.top,
-        left: service.position.left,
+        ...(mobile
+          ? { width: '100%', padding: '14px 16px', borderRadius: '12px' }
+          : {
+              width: '21.12%',
+              aspectRatio: '406 / 224',
+              top: service.position.top,
+              left: service.position.left,
+              borderRadius: 'clamp(8px, 0.6vw, 12px)',
+              padding: 'clamp(6px, 0.5vw, 10px)',
+            }),
         background: `linear-gradient(${service.gradientAngle}deg, rgba(252,240,232,0.90) 0%, rgba(243,232,255,0.82) 35%, rgba(224,245,255,0.85) 65%, rgba(220,255,248,0.78) 100%)`,
         backdropFilter: 'blur(24px)',
         WebkitBackdropFilter: 'blur(24px)',
         border: '1px solid rgba(184,115,51,0.50)',
-        borderRadius: 'clamp(8px, 0.6vw, 12px)',
-        padding: 'clamp(6px, 0.5vw, 10px)',
         boxSizing: 'border-box',
       }}
       aria-haspopup="dialog"
@@ -304,15 +310,15 @@ function ServiceCard({
       />
 
       {/* Content row */}
-      <div className="flex items-start" style={{ gap: 'clamp(4px, 0.4vw, 8px)', marginTop: '2px' }}>
+      <div className="flex items-start" style={{ gap: mobile ? '12px' : 'clamp(4px, 0.4vw, 8px)', marginTop: '2px' }}>
         {/* Icon box */}
         <div
           className="shrink-0 flex items-center justify-center"
           style={{
-            width: 'clamp(20px, 1.6vw, 32px)',
-            height: 'clamp(20px, 1.6vw, 32px)',
+            width: mobile ? '36px' : 'clamp(20px, 1.6vw, 32px)',
+            height: mobile ? '36px' : 'clamp(20px, 1.6vw, 32px)',
             border: '1px solid rgba(184,115,51,0.50)',
-            borderRadius: 'clamp(4px, 0.3vw, 6px)',
+            borderRadius: mobile ? '8px' : 'clamp(4px, 0.3vw, 6px)',
             color: 'rgba(184,115,51,0.85)',
           }}
           aria-hidden="true"
@@ -321,11 +327,11 @@ function ServiceCard({
         </div>
 
         {/* Text stack */}
-        <div className="min-w-0 flex flex-col" style={{ gap: 'clamp(1px, 0.1vw, 3px)' }}>
+        <div className="min-w-0 flex flex-col" style={{ gap: mobile ? '4px' : 'clamp(1px, 0.1vw, 3px)' }}>
           <h3
             className="font-caviar font-bold m-0"
             style={{
-              fontSize: 'clamp(9px, 0.75vw, 14px)',
+              fontSize: mobile ? '16px' : 'clamp(9px, 0.75vw, 14px)',
               lineHeight: '1.2',
               color: 'rgb(184,115,51)',
             }}
@@ -335,7 +341,7 @@ function ServiceCard({
           <p
             className="font-caviar m-0"
             style={{
-              fontSize: 'clamp(7px, 0.5vw, 10px)',
+              fontSize: mobile ? '13px' : 'clamp(7px, 0.5vw, 10px)',
               lineHeight: '1.35',
               color: 'rgba(60,40,20,0.65)',
             }}
@@ -349,10 +355,23 @@ function ServiceCard({
   )
 }
 
+function useIsMobile(breakpoint = 768) {
+  const [mobile, setMobile] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${breakpoint}px)`)
+    setMobile(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setMobile(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [breakpoint])
+  return mobile
+}
+
 export default function ServicesDeskClient() {
   const [expandedId, setExpandedId] = useState<string | null>(null)
   const handleClose = useCallback(() => setExpandedId(null), [])
   const expandedService = services.find((s) => s.id === expandedId) ?? null
+  const mobile = useIsMobile()
 
   useEffect(() => {
     if (!expandedId) return
@@ -380,18 +399,49 @@ export default function ServicesDeskClient() {
         />
       </div>
 
-      {/* Services container — matches desk image 1800×1200 (3:2) so % positions align */}
-      <div className="relative z-10 w-full overflow-hidden" style={{ aspectRatio: '1800 / 1200', minHeight: '100vh' }}>
-        {[...services]
-          .sort((a, b) => a.mobileOrder - b.mobileOrder)
-          .map((service) => (
-            <ServiceCard
-              key={service.id}
-              service={service}
-              onClick={() => setExpandedId(service.id)}
-            />
-          ))}
-      </div>
+      {mobile ? (
+        /* Mobile: stacked cards with scroll */
+        <div className="relative z-10 w-full min-h-screen flex flex-col gap-4 px-5 py-8">
+          <header className="mb-2">
+            <h2
+              className="font-aspal tracking-tight mb-1"
+              style={{ fontSize: '2rem', lineHeight: '1.1', color: 'rgba(235,225,210,0.95)' }}
+            >
+              The Drafting Table
+            </h2>
+            <p
+              className="font-caviar"
+              style={{ fontSize: '0.9rem', lineHeight: '1.6', color: 'rgba(180,170,155,0.6)' }}
+            >
+              Tap a card to explore.
+            </p>
+          </header>
+          {[...services]
+            .sort((a, b) => a.mobileOrder - b.mobileOrder)
+            .map((service) => (
+              <ServiceCard
+                key={service.id}
+                service={service}
+                mobile
+                onClick={() => setExpandedId(service.id)}
+              />
+            ))}
+        </div>
+      ) : (
+        /* Desktop: absolute positioned cards matching desk image */
+        <div className="relative z-10 w-full overflow-hidden" style={{ aspectRatio: '1800 / 1200', minHeight: '100vh' }}>
+          {[...services]
+            .sort((a, b) => a.mobileOrder - b.mobileOrder)
+            .map((service) => (
+              <ServiceCard
+                key={service.id}
+                service={service}
+                mobile={false}
+                onClick={() => setExpandedId(service.id)}
+              />
+            ))}
+        </div>
+      )}
 
       {/* Expanded overlay */}
       {expandedService && <ExpandedPanel service={expandedService} onClose={handleClose} />}
