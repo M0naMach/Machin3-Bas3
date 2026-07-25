@@ -82,7 +82,7 @@ const services: ServiceData[] = [
       'Remediation plan & priority matrix',
     ],
     mobileOrder: 2,
-    position: { top: '19.79%', left: '-3.96%' },
+    position: { top: '19.79%', left: '8%' },
   },
   {
     id: 'roadmaps',
@@ -290,7 +290,7 @@ function ServiceCard({
               borderRadius: 'clamp(8px, 0.6vw, 12px)',
               padding: 'clamp(6px, 0.5vw, 10px)',
             }),
-        background: `linear-gradient(${service.gradientAngle}deg, rgba(252,240,232,0.90) 0%, rgba(243,232,255,0.82) 35%, rgba(224,245,255,0.85) 65%, rgba(220,255,248,0.78) 100%)`,
+        background: 'rgba(10,31,28,0.88)',
         backdropFilter: 'blur(24px)',
         WebkitBackdropFilter: 'blur(24px)',
         border: '1px solid rgba(184,115,51,0.50)',
@@ -304,7 +304,7 @@ function ServiceCard({
       <div
         className="absolute inset-x-0 top-0 h-[3px] pointer-events-none"
         style={{
-          background: 'linear-gradient(90deg, rgba(235,140,184,1) 0%, rgba(204,140,242,1) 28%, rgba(115,184,250,1) 58%, rgba(77,230,210,1) 82%, rgba(235,140,184,0.5) 100%)',
+          background: 'linear-gradient(90deg, rgba(184,115,51,0.6) 0%, rgba(184,115,51,0.9) 50%, rgba(184,115,51,0.6) 100%)',
         }}
         aria-hidden="true"
       />
@@ -331,7 +331,7 @@ function ServiceCard({
           <h3
             className="font-caviar font-bold m-0"
             style={{
-              fontSize: mobile ? '16px' : 'clamp(9px, 0.75vw, 14px)',
+              fontSize: mobile ? '14px' : 'clamp(7px, 0.65vw, 12px)',
               lineHeight: '1.2',
               color: 'rgb(184,115,51)',
             }}
@@ -341,9 +341,9 @@ function ServiceCard({
           <p
             className="font-caviar m-0"
             style={{
-              fontSize: mobile ? '13px' : 'clamp(7px, 0.5vw, 10px)',
+              fontSize: mobile ? '12px' : 'clamp(6px, 0.45vw, 9px)',
               lineHeight: '1.35',
-              color: 'rgba(60,40,20,0.65)',
+              color: 'rgba(200,190,170,0.65)',
             }}
           >
             {service.descriptor}
