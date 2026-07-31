@@ -38,7 +38,7 @@ const services: ServiceData[] = [
     id: 'agents',
     title: 'Accountable AI Architecture',
     descriptor: 'Agent design, ethical governance & system architecture for AI that you can actually explain.',
-    image: '/SERVICES-Accountable.png',
+    image: '/PUBL-Service_Cards/SERVICES-Accountable.png',
     icon: 'shield',
     gradientAngle: 135,
     isDark: true,
@@ -63,7 +63,7 @@ const services: ServiceData[] = [
     id: 'actuarium',
     title: 'AI Actuarium Audit',
     descriptor: "Forensic review of your existing AI — surfaces what it's really doing vs. what it's supposed to. AI Actuarium® framework.",
-    image: '/SERVICES-Actuarium.png',
+    image: '/PUBL-Service_Cards/SERVICES-Actuarium.png',
     icon: 'database',
     gradientAngle: 210,
     isDark: false,
@@ -88,7 +88,7 @@ const services: ServiceData[] = [
     id: 'roadmaps',
     title: 'Process Optimization & Roadmap',
     descriptor: 'Workflow audit, strategic roadmap, and systems integration for operations that need to scale.',
-    image: '/SERVICES-Automations-nobg.png',
+    image: '/PUBL-Service_Cards/SERVICES-Automations-nobg.png',
     icon: 'gitbranch',
     gradientAngle: 45,
     isDark: true,
@@ -113,7 +113,7 @@ const services: ServiceData[] = [
     id: 'websites',
     title: 'Website Design & Development',
     descriptor: 'Full-stack websites in Next.js — from information architecture through launch.',
-    image: '/SERVICES-Web.png',
+    image: '/PUBL-Service_Cards/SERVICES-Web.png',
     icon: 'monitor',
     gradientAngle: 160,
     isDark: false,
@@ -138,7 +138,7 @@ const services: ServiceData[] = [
     id: 'branding',
     title: 'Visual Branding & Design',
     descriptor: 'Logo systems, color, typography, and brand frameworks built to last.',
-    image: '/SERVICES-Branding.png',
+    image: '/PUBL-Service_Cards/SERVICES-Branding.png',
     icon: 'palette',
     gradientAngle: 300,
     isDark: true,
@@ -384,7 +384,7 @@ export default function ServicesDeskClient() {
       {/* Desk background */}
       <div className="fixed inset-0 z-0">
         <Image
-          src="/SERVICE_PAGE-Full.png"
+          src="/PUBL-Service_Page/SERVICE_PAGE-Full.png"
           alt=""
           fill
           className="object-cover"

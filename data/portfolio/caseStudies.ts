@@ -17,14 +17,14 @@ import type { CaseStudy } from "@/components/portfolio/CaseStudyCard";
 
 // ── Placeholder imports ───────────────────────────────────────────────────────
 // Remove an import and replace image with a public/ path when the entry is done.
-const phCodeWork01 = "/Machin3s_at_Work01.png";
-const phCodeWork04 = "/Machin3s_at_Work04.png";
-const phCodeWork06 = "/Machin3s_at_Work06.png";
-const phCodeConst03 = "/Under_Machin3_Construction03.png";
-const phIconsWork02 = "/Machin3s_at_Work02.png";
-const phCollWork05 = "/Machin3s_at_Work05.jpg";
-const phCollConst01 = "/Under_Machin3_Construction01.png";
-const phCompConst02 = "/Under_Machin3_Construction02.png";
+const phCodeWork01 = "/PUBL-Images/Machin3s_at_Work01.png";
+const phCodeWork04 = "/PUBL-Images/Machin3s_at_Work04.png";
+const phCodeWork06 = "/PUBL-Images/Machin3s_at_Work06.png";
+const phCodeConst03 = "/PUBL-Images/Under_Machin3_Construction03.png";
+const phIconsWork02 = "/PUBL-Images/Machin3s_at_Work02.png";
+const phCollWork05 = "/PUBL-Images/Machin3s_at_Work05.jpg";
+const phCollConst01 = "/PUBL-Images/Under_Machin3_Construction01.png";
+const phCompConst02 = "/PUBL-Images/Under_Machin3_Construction02.png";
 
 export const caseStudies: CaseStudy[] = [
   {

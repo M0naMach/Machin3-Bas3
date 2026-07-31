@@ -25,8 +25,8 @@ export const metadata: Metadata = {
   description:
     "Creating meaningful digital experiences through thoughtful design and development. Where reflection becomes connection in the digital space.",
   icons: {
-    icon: "/icon.png",
-    apple: "/apple-icon.png",
+    icon: "/PUBL-Logo/icon.png",
+    apple: "/PUBL-Logo/apple-icon.png",
   },
   other: {
     "Cache-Control": "no-cache, no-store, must-revalidate",

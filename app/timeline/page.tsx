@@ -23,7 +23,7 @@ export default function Timeline() {
         <div className="text-center max-w-2xl mx-auto px-6">
           <div className="mb-8 flex justify-center">
             <Image
-              src="/Machin3s_at_Work01.png"
+              src="/PUBL-Images/Machin3s_at_Work01.png"
               alt="Machin3 Engineers at Work"
               width={500}
               height={375}

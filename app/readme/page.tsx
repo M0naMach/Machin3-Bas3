@@ -24,7 +24,7 @@ export default function ReadmePage() {
         <div className="text-center max-w-2xl mx-auto px-6">
           <div className="mb-8 flex justify-center">
             <Image
-              src="/Under_Machin3_Construction02.png"
+              src="/PUBL-Images/Under_Machin3_Construction02.png"
               alt="Under Machin3 Construction"
               width={480}
               height={270}
