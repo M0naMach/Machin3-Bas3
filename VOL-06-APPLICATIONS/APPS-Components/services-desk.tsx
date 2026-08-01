@@ -1,10 +1,7 @@
-'use client'
-
 import { useState, useEffect, useCallback } from 'react'
-import Image from 'next/image'
 import { Shield, Database, GitBranch, Monitor, Palette } from 'lucide-react'
-import { lockBodyScroll, unlockBodyScroll } from '@/lib/body-scroll-lock'
-import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
+import { lockBodyScroll, unlockBodyScroll } from '@lib/LIBR-Utils/body-scroll-lock'
+import { Dialog, DialogContent, DialogTitle } from '@apps/APPS-Components/ui/dialog'
 
 interface ServiceData {
   id: string
@@ -205,7 +202,7 @@ function ExpandedPanel({
         <div className="p-6 md:p-8">
           <div className="md:flex md:gap-8 mb-6">
             <div className="shrink-0 mb-4 md:mb-0 md:w-[220px]">
-              <Image
+              <img
                 src={service.image}
                 alt={service.title}
                 width={440}
@@ -383,13 +380,11 @@ export default function ServicesDeskClient() {
     <>
       {/* Desk background */}
       <div className="fixed inset-0 z-0">
-        <Image
+        <img
           src="/PUBL-Service_Page/SERVICE_PAGE-Full.png"
           alt=""
-          fill
-          className="object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: 'center center' }}
-          priority
         />
         <div
           className="absolute inset-0"

@@ -1,9 +1,7 @@
-"use client"
-
-import { CommandNavigation } from "@/components/navigation/command-navigation"
-import { Button } from "@/components/ui/button"
+import CommandNavigation from "@apps/APPS-Components/navigation/command-navigation"
+import { Button } from "@apps/APPS-Components/ui/button"
 import { ArrowLeft, FileText, Scale, Handshake, AlertTriangle, Gavel, Heart } from "lucide-react"
-import Link from "next/link"
+import { Link } from "react-router-dom"
 
 export default function TermsPage() {
   return (
@@ -11,7 +9,7 @@ export default function TermsPage() {
       {/* Back Navigation */}
       <div className="absolute top-6 left-6 z-20">
         <Button asChild variant="outline" className="bg-card/80 backdrop-blur-sm hover:bg-card">
-          <Link href="/">
+          <Link to="/">
             <ArrowLeft className="w-4 h-4" />
             Back to Home
           </Link>
@@ -175,7 +173,7 @@ export default function TermsPage() {
               please don't hesitate to reach out.
             </p>
             <Button asChild>
-              <Link href="/work">
+              <Link to="/work">
                 Contact Us
               </Link>
             </Button>

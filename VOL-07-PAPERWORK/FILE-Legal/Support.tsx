@@ -1,7 +1,7 @@
-import { CommandNavigation } from "@/components/navigation/command-navigation"
-import { Button } from "@/components/ui/button"
+import CommandNavigation from "@apps/APPS-Components/navigation/command-navigation"
+import { Button } from "@apps/APPS-Components/ui/button"
 import { ArrowLeft, HelpCircle, Route, MessageCircle, Clock, Sparkles } from "lucide-react"
-import Link from "next/link"
+import { Link } from "react-router-dom"
 
 export default function SupportPage() {
   return (
@@ -9,7 +9,7 @@ export default function SupportPage() {
       {/* Back Navigation */}
       <div className="absolute top-6 left-6 z-20">
         <Button asChild variant="outline" className="bg-card/80 backdrop-blur-sm hover:bg-card">
-          <Link href="/">
+          <Link to="/">
             <ArrowLeft className="w-4 h-4" aria-hidden="true" />
             Back to Home
           </Link>
@@ -203,7 +203,7 @@ export default function SupportPage() {
               conversation, not a commitment.
             </p>
             <Button asChild>
-              <Link href="/services">
+              <Link to="/work">
                 Start a Conversation
               </Link>
             </Button>

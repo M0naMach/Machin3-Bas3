@@ -1,10 +1,9 @@
-"use client"
-
 import { useState, useEffect, useRef } from "react"
+import { useNavigate } from "react-router-dom"
 import { Terminal } from 'lucide-react'
-import { getPortfolioHref } from "@/lib/portfolio"
-import { getActuariumHref } from "@/lib/actuarium"
-import { lockBodyScroll, unlockBodyScroll } from "@/lib/body-scroll-lock"
+import { getPortfolioHref } from "@lib/LIBR-Utils/portfolio"
+import { getActuariumHref } from "@lib/LIBR-Utils/actuarium"
+import { lockBodyScroll, unlockBodyScroll } from "@lib/LIBR-Utils/body-scroll-lock"
 
 interface NavigationCommand {
   command: string
@@ -28,6 +27,7 @@ const dynamicPrompts = [
 
 
 const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
+  const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
   const [input, setInput] = useState("")
   const [selectedIndex, setSelectedIndex] = useState(0)
@@ -44,7 +44,6 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
         }, 3000)
         return () => clearInterval(interval)
       } catch (error) {
-        // Fail silently for accessibility tools
         return () => {}
       }
     }
@@ -57,7 +56,6 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
         return () => unlockBodyScroll()
       }
     } catch (error) {
-      // Fail silently for accessibility tools
       return () => {}
     }
   }, [isOpen, compact])
@@ -92,182 +90,84 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
     }
   }, [isOpen, compact])
 
+  const navigateTo = (path: string) => {
+    navigate(path)
+    setIsOpen(false)
+    setInput("")
+  }
+
+  const openExternal = (url: string) => {
+    window.open(url, "_blank", "noopener,noreferrer")
+    setIsOpen(false)
+    setInput("")
+  }
+
   const commands: NavigationCommand[] = [
     {
       command: "hom3bas3",
       label: "Hom3 Bas3",
       description: "Return to the M0na Machin3 home page",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/"
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
+      action: () => navigateTo("/"),
     },
     {
       command: "portfolio",
       label: "Portfolio",
       description: "View my portfolio showcase",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = getPortfolioHref()
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
+      action: () => openExternal(getPortfolioHref()),
     },
     {
       command: "services",
       label: "Services",
       description: "View all available services and offerings",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/services"
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
+      action: () => navigateTo("/work"),
     },
     {
       command: "work",
       label: "Work",
       description: "Portfolio and collaboration showcase",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/work"
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
+      action: () => navigateTo("/work"),
     },
     {
       command: "vision",
       label: "Vision",
       description: "Purpose and creative direction",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/vision"
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
+      action: () => navigateTo("/vision"),
     },
     {
       command: "journey",
       label: "Timeline",
       description: "Project journey and development process",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/timeline"
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
+      action: () => navigateTo("/timeline"),
     },
     {
       command: "actuarium",
       label: "AI Actuarium",
       description: "AI audit and evaluation framework",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = getActuariumHref()
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
+      action: () => openExternal(getActuariumHref()),
     },
     {
       command: "support",
       label: "Support",
       description: "Get help and find answers to common questions",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/support"
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
+      action: () => navigateTo("/support"),
     },
     {
       command: "readme",
       label: "README",
       description: "Read about AI-human relationships and our mission",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/readme"
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
+      action: () => navigateTo("/readme"),
     },
     {
       command: "privacy",
       label: "Privacy Policy",
       description: "Learn about data privacy and security practices",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/privacy"
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
+      action: () => navigateTo("/privacy"),
     },
     {
       command: "terms",
       label: "Terms of Service",
       description: "View the terms and conditions",
-      action: () => {
-        try {
-          if (typeof window !== "undefined" && window.location) {
-            window.location.href = "/terms"
-          }
-        } catch (error) {
-          // Fail silently
-        }
-        setIsOpen(false)
-        setInput("")
-      },
+      action: () => navigateTo("/terms"),
     },
   ]
 
@@ -340,7 +240,6 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
     }
   }, [isOpen])
 
-  // Compact command item (no description, tighter spacing)
   const renderCompactCommand = (cmd: NavigationCommand, index: number) => {
     const optionId = `compact-option-${cmd.command}`
     return (
@@ -381,7 +280,6 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
     )
   }
 
-  // Full command item (with description)
   const renderFullCommand = (cmd: NavigationCommand, index: number) => {
     const optionId = `full-option-${cmd.command}`
     return (

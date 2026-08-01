@@ -1,7 +1,5 @@
-"use client"
-
-import { getPortfolioHref } from "@/lib/portfolio"
-import { getActuariumHref } from "@/lib/actuarium"
+import { getPortfolioHref } from "@lib/LIBR-Utils/portfolio"
+import { getActuariumHref } from "@lib/LIBR-Utils/actuarium"
 
 export function Footer() {
   const portfolioHref = getPortfolioHref()

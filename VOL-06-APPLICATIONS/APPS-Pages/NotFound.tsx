@@ -1,6 +1,4 @@
-import Link from "next/link"
-// Image component pre-imported for your convenience when adding custom artwork
-import Image from "next/image"
+import { Link } from "react-router-dom"
 
 export default function NotFound() {
   return (
@@ -9,43 +7,24 @@ export default function NotFound() {
         className="absolute inset-0 bg-gradient-to-br from-background via-muted to-card animate-pulse opacity-90"
         style={{ animationDuration: "8s" }}
       />
-      
+
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-        {/* 🎨 CUSTOMIZABLE: Add your own image here! 
-            Replace the commented section below with your custom artwork.
-            Supported formats: PNG, JPG, SVG, GIF, WebP
-            Example:
-            <div className="mb-8 flex justify-center">
-              <Image 
-                src="/your-custom-404-image.png" 
-                alt="404 Error" 
-                width={400} 
-                height={400}
-                className="w-full max-w-md"
-              />
-            </div>
-        */}
-        
         <div className="mb-8">
-          {/* 🎨 CUSTOMIZABLE: Change the heading text and styling */}
           <h1 className="font-title text-7xl md:text-[10rem] lg:text-[12rem] mb-6 tracking-wide opalescent-text leading-none">
             404
           </h1>
-          {/* 🎨 CUSTOMIZABLE: Change the subtitle */}
           <p className="text-lg md:text-xl font-light text-foreground/90 mb-4">
             Page Not Found
           </p>
         </div>
 
-        {/* 🎨 CUSTOMIZABLE: Change the description text */}
         <p className="text-base md:text-lg font-light leading-relaxed text-foreground/80 mb-12">
           The page you're looking for doesn't exist or has been moved.
         </p>
 
-        {/* 🎨 CUSTOMIZABLE: Change button text, links, and styling */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <Link
-            href="/"
+            to="/"
             className="px-8 py-4 rounded-lg font-medium text-lg
                        hover:opacity-90 transform hover:translate-y-[-2px]
                        transition-all duration-300 ease-out will-change-transform
@@ -64,7 +43,7 @@ export default function NotFound() {
           </Link>
 
           <Link
-            href="/work"
+            to="/work"
             className="px-8 py-4 rounded-lg font-medium text-lg
                        hover:opacity-90 transform hover:translate-y-[-2px]
                        transition-all duration-300 ease-out will-change-transform
