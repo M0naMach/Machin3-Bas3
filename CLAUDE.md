@@ -19,14 +19,18 @@ organized into a 14-volume structure (see `VOL-*` directories at repo root).
 
 - `VOL-06-APPLICATIONS` — the React/Vite app (pages, components, routing).
   This is where code lives and does not change structurally.
-- `VOL-04-PUBLIC` — public static assets (`publicDir` in `vite.config.ts`).
-  This is "MBBS" (Machin3-Bas3 Broadcasting Station) and now contains its own
-  internal 14-volume subdivision for organizing page-specific public assets:
-  `VOL-01-HOOD`, `VOL-02-COMMUNITY`, `VOL-03-CONTEXT`, `VOL-05-USER`,
-  `VOL-06-APPLICATIONS`, `VOL-07-PAPERWORK`, `VOL-08-KNOWLEDGE_BASE`,
-  `VOL-09-AUTOMATIONS`, `VOL-10-TERMINAL_CONTROL`, `VOL-11-LIBRARY`,
-  `VOL-12-COMMERCIAL`, `VOL-13-CNVS` (art), `VOL-14-SERVER`. Volume 4 is the
-  container itself, so it isn't nested inside itself.
+- `VOL-04-PUBLIC` (UID PUBL) — public static assets (`publicDir` in
+  `vite.config.ts`). Kept strictly for served assets — do not repurpose.
+  It contains its own internal 14-volume subdivision for organizing
+  page-specific public assets: `VOL-01-HOOD`, `VOL-02-COMMUNITY`,
+  `VOL-03-CONTEXT`, `VOL-05-USER`, `VOL-06-APPLICATIONS`, `VOL-07-PAPERWORK`,
+  `VOL-08-KNOWLEDGE_BASE`, `VOL-09-AUTOMATIONS`, `VOL-10-TERMINAL_CONTROL`,
+  `VOL-11-LIBRARY`, `VOL-12-COMMERCIAL`, `VOL-13-CNVS` (art), `VOL-14-SERVER`.
+  Volume 4 is the container itself, so it isn't nested inside itself.
+- `VOL-MBBS` — Machin3-Bas3 Broadcasting Station: social/external presence
+  links (Reddit, etc). Separate top-level volume, distinct from and not
+  nested inside `VOL-04-PUBLIC` — one holds served assets, the other holds
+  outbound social links.
 - No symlinks — the user has explicitly rejected symlink-based setups.
 
 ## Notes
