@@ -13,8 +13,17 @@
  *   Real content → string path from public/ (entry is complete and committed)
  */
 
-import type { CaseStudy } from "@/components/portfolio/CaseStudyCard";
+import type { CaseStudy as BaseCaseStudy } from "@/components/portfolio/CaseStudyCard";
 
+type CaseStudy = BaseCaseStudy & {
+  redundancy?: string;
+  rhyme?: string;
+  reason?: string;
+  machin3Mechanics?: string;
+  refinement?: string;
+  result?: string;
+  gallery?: string[];
+};
 // ── Placeholder imports ───────────────────────────────────────────────────────
 // Remove an import and replace image with a public/ path when the entry is done.
 const phCodeWork01 = "/PUBL-Images/Machin3s_at_Work01.png";
