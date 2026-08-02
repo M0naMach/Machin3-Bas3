@@ -1,0 +1,13 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://machin3.space/",
+      "service-doc": [
+        {
+          "href": "https://machin3.space/readme",
+          "type": "text/html"
+        }
+      ]
+    }
+  ]
+}

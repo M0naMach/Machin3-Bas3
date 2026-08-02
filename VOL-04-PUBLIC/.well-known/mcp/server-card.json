@@ -1,0 +1,11 @@
+{
+  "serverInfo": {
+    "name": "machin3.space",
+    "version": "1.0.0",
+    "description": "M0na Machin3 — Creative technologist, designer, and developer"
+  },
+  "capabilities": {
+    "resources": true
+  },
+  "homepage": "https://machin3.space"
+}

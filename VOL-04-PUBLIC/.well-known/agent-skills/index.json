@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
+  "skills": [
+    {
+      "name": "contact",
+      "type": "action",
+      "description": "Send a message to M0na Machin3 via the contact form on machin3.space",
+      "url": "https://machin3.space/support",
+      "sha256": ""
+    },
+    {
+      "name": "portfolio",
+      "type": "resource",
+      "description": "View M0na Machin3's design and development portfolio",
+      "url": "https://machin3.space/work",
+      "sha256": ""
+    }
+  ]
+}
