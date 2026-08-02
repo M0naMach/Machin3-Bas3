@@ -9,8 +9,8 @@
  * `tags` drive the "Technical Stack" chips in the detail view.
  *
  * IMAGE CONVENTION:
- *   Placeholder  → imported from src/assets/placeholders/ (entry not yet complete)
- *   Real content → string path from public/ (entry is complete and committed)
+ *   Placeholder  → string path from public/ placeholder assets (entry not yet complete)
+ *   Real content → string path from public/ project assets (entry is complete and committed)
  */
 
 import type { CaseStudy as BaseCaseStudy } from "@/components/portfolio/CaseStudyCard";
