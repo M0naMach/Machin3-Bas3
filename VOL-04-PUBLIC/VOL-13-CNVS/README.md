@@ -1,5 +1,5 @@
-# VOL-13-ART
+# VOL-13-CNVS
 
-Art page assets.
+Art page assets (UID CNVS).
 
 Public assets for this page volume live here.
