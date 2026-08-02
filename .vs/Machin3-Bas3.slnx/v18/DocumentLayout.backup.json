@@ -1,0 +1,76 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "H:\\VOL-14-C0NS3RVAT0Y\\SERV-REPOS\\Machin3-Bas3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\M0naLisaSmil3d\\AppData\\Local\\Temp\\TFSTemp\\vctmp23456_91030.GitHub_Pro-Auto_Agent.agent.e5d157d0.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\M0naLisaSmil3d\\AppData\\Local\\Temp\\TFSTemp\\vctmp23456_91030.GitHub_Pro-Auto_Agent.agent.e5d157d0.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|MarkdownPreview"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|H:\\VOL-14-C0NS3RVAT0Y\\SERV-REPOS\\Machin3-Bas3\\.github\\agents\\GitHub_Pro-Auto_Agent.agent.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.github\\agents\\GitHub_Pro-Auto_Agent.agent.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "vctmp23456_91030.GitHub_Pro-Auto_Agent.agent.e5d157d0.md",
+              "DocumentMoniker": "C:\\Users\\M0naLisaSmil3d\\AppData\\Local\\Temp\\TFSTemp\\vctmp23456_91030.GitHub_Pro-Auto_Agent.agent.e5d157d0.md",
+              "ToolTip": "C:\\Users\\M0naLisaSmil3d\\AppData\\Local\\Temp\\TFSTemp\\vctmp23456_91030.GitHub_Pro-Auto_Agent.agent.e5d157d0.md [Read Only]",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-08-02T02:35:33.19Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GitHub_Pro-Auto_Agent.agent.md",
+              "DocumentMoniker": "H:\\VOL-14-C0NS3RVAT0Y\\SERV-REPOS\\Machin3-Bas3\\.github\\agents\\GitHub_Pro-Auto_Agent.agent.md",
+              "RelativeDocumentMoniker": ".github\\agents\\GitHub_Pro-Auto_Agent.agent.md",
+              "ToolTip": "H:\\VOL-14-C0NS3RVAT0Y\\SERV-REPOS\\Machin3-Bas3\\.github\\agents\\GitHub_Pro-Auto_Agent.agent.md",
+              "RelativeToolTip": ".github\\agents\\GitHub_Pro-Auto_Agent.agent.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-08-02T02:35:27.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "vctmp23456_91030.GitHub_Pro-Auto_Agent.agent.e5d157d0.md [Preview]",
+              "DocumentMoniker": "C:\\Users\\M0naLisaSmil3d\\AppData\\Local\\Temp\\TFSTemp\\vctmp23456_91030.GitHub_Pro-Auto_Agent.agent.e5d157d0.md",
+              "ToolTip": "C:\\Users\\M0naLisaSmil3d\\AppData\\Local\\Temp\\TFSTemp\\vctmp23456_91030.GitHub_Pro-Auto_Agent.agent.e5d157d0.md [Preview]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-08-02T02:33:58.405Z",
+              "EditorCaption": " [Preview]"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
