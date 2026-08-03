@@ -25,8 +25,8 @@ fi
 
 echo "📦 Auto-committing changes from Copilot session..."
 
-# Stage all changes
-git add -A
+# Stage tracked changes only (avoid committing new/untracked files by default)
+git add -u
 
 # Create timestamped commit
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
