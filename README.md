@@ -2,7 +2,7 @@
 
 > **Human connection, coded with care.**
 
-A personal website built with Next.js, exploring the intersection of design, technology, and human connection. This is my digital space where I share my work, thoughts, and the journey of building meaningful digital experiences.
+A personal website built with Next.js, exploring the intersection of design, technology, and human connection. This is my digital space where I share my work, services, and the journey of building meaningful digital experiences.
 
 ## ✨ Features
 
@@ -13,46 +13,44 @@ A personal website built with Next.js, exploring the intersection of design, tec
 - **Smooth Animations**: Boot sequence and glassmorphic design
 
 ### 🎨 Modern Design
-- **Custom Typography**: Anurati, Aspal, and PoiretOne fonts
+- **Custom Typography**: Anurati, Aspal, PoiretOne, and Caviar Dreams fonts
 - **Radix UI Components**: Accessible, customizable component library
-- **Tailwind CSS**: Utility-first styling with custom animations
+- **Tailwind CSS v4**: Utility-first styling with custom animations
 - **Theme Support**: Light/dark mode with system preference detection
 - **Responsive Design**: Optimized for all device sizes
 
 ### 📱 Pages & Sections
-- **Home**: Hero section with animated timeline
-- **Work**: Portfolio and collaboration information
+- **Home**: Hero section with animated CTA
+- **Work**: Portfolio and collaboration showcase
+- **Services**: Interactive drafting desk with expandable service cards
 - **Timeline**: Project journey and development process
-- **Notion Integration**: Setup and migration tools
-- **Command Demo**: Interactive navigation showcase
+- **Vision**: Purpose and direction statement
+- **Actuarium**: AI audit methodology and redirect
+- **README**: In-site documentation viewer
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
-- pnpm (recommended) or npm
+- Node.js 20+ 
+- npm
 
 ### Installation
 
 1. **Clone the repository**
-   \`\`\`bash
-   git clone https://github.com/your-username/machin3-bas3.git
-   cd machin3-bas3
-   \`\`\`
+   ```bash
+   git clone https://github.com/M0naMach/Machin3-Bas3.git
+   cd Machin3-Bas3
+   ```
 
 2. **Install dependencies**
-   \`\`\`bash
-   pnpm install
-   # or
-   npm install
-   \`\`\`
+   ```bash
+   npm ci
+   ```
 
 3. **Run the development server**
-   \`\`\`bash
-   pnpm dev
-   # or
+   ```bash
    npm run dev
-   \`\`\`
+   ```
 
 4. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
@@ -71,45 +69,81 @@ A personal website built with Next.js, exploring the intersection of design, tec
 
 ## 🏗️ Project Structure
 
-\`\`\`
-machin3-bas3/
+```
+Machin3-Bas3/
 ├── app/                    # Next.js app directory
 │   ├── page.tsx           # Home page
 │   ├── layout.tsx         # Root layout
-│   ├── work/              # Work section
+│   ├── work/              # Work/portfolio section
+│   ├── services/          # Services drafting desk page
 │   ├── timeline/          # Timeline page
-│   ├── notion-setup/      # Notion setup page
-│   ├── notion-migration/  # Notion migration page
-│   └── command-nav-demo/  # Command navigation demo
+│   ├── vision/            # Vision/purpose page
+│   ├── actuarium/         # Actuarium redirect page
+│   ├── readme/            # In-site README page
+│   ├── portfolio/         # Portfolio redirect
+│   ├── privacy/           # Privacy policy
+│   ├── terms/             # Terms of service
+│   └── api/               # API routes (contact, form)
 ├── components/            # React components
 │   ├── navigation/        # Command navigation system
-│   ├── notion/           # Notion-specific components
-│   └── ui/               # Reusable UI components
+│   ├── services-desk.tsx  # Interactive services desk client
+│   ├── portfolio/         # Portfolio-specific components
+│   └── ui/               # Reusable UI components (Radix)
 ├── lib/                  # Utility libraries
 │   ├── notion/           # Notion API client
+│   ├── auth/             # Auth manager
+│   ├── mentorship/       # Personality phrases
 │   └── utils.ts          # Shared utilities
 ├── types/                # TypeScript type definitions
 └── public/               # Static assets and fonts
-\`\`\`
+```
 
 ## 🛠️ Technology Stack
 
-- **Framework**: Next.js 14 with App Router
+- **Framework**: Next.js 15 with App Router
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS with custom animations
+- **Styling**: Tailwind CSS v4 with custom animations
 - **UI Components**: Radix UI primitives
 - **Icons**: Lucide React
-- **Fonts**: Custom fonts (Anurati, Aspal, PoiretOne)
+- **Fonts**: Custom fonts (Anurati, Aspal, PoiretOne, Caviar Dreams)
+- **Deployment**: Cloudflare Pages via Wrangler
 
 ## 📝 Development
 
 ### Available Scripts
-\`\`\`bash
-pnpm dev          # Start development server
-pnpm build        # Build for production
-pnpm start        # Start production server
-pnpm lint         # Run ESLint
-\`\`\`
+```bash
+npm run dev        # Start development server
+npm run lint       # Run ESLint
+npm run pages:build # Build for Cloudflare Pages (Edge compat)
+npm run preview    # Build + run local Pages preview
+npm test              # Run tests
+```
+
+### Portfolio Routing
+
+If you want the website's `Portfolio` link and `/portfolio` route to hand off to a separate Cloudflare Pages site, set this environment variable in your deployment:
+
+```bash
+NEXT_PUBLIC_PORTFOLIO_URL=https://your-portfolio.pages.dev
+```
+
+Similarly, the `/actuarium` route and the **AI Audit Actuarium** link in the footer use:
+
+```bash
+NEXT_PUBLIC_ACTUARIUM_URL=https://your-actuarium.pages.dev
+```
+
+If either variable is not set, the site uses the default hardcoded URLs. Server-side redirects in `next.config.mjs` handle these routes at the edge; the individual pages provide a client-side fallback.
+
+### GitHub Copilot Agents
+
+This repository ships 34 custom GitHub Copilot agents for specialised AI assistance. See the [Using Copilot Agents guide](docs/USING-COPILOT-AGENTS.md) to learn:
+
+- How to open and select an agent in VS Code or GitHub.com
+- Which agent to use for each type of task
+- Tips for chaining agents together effectively
+
+Agent files live in [`.github/agents/`](.github/agents/).
 
 ### Repository Governance
 

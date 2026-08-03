@@ -1,0 +1,862 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Font-face declarations for all custom fonts */
+@font-face {
+  font-family: "Anurati";
+  src: url("/PUBL-Fonts/Anurati-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+@font-face {
+  font-family: "Aspal";
+  src: url("/PUBL-Fonts/Aspal.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PoiretOne";
+  src: url("/PUBL-Fonts/PoiretOne-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Added Caviar Dreams font-face declarations */
+@font-face {
+  font-family: "Caviar Dreams";
+  src: url("/PUBL-Fonts/CaviarDreams.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Caviar Dreams";
+  src: url("/PUBL-Fonts/CaviarDreams_Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Caviar Dreams";
+  src: url("/PUBL-Fonts/CaviarDreams_Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Caviar Dreams";
+  src: url("/PUBL-Fonts/CaviarDreams_BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Custom font utility classes */
+.font-anurati {
+  font-family: "Anurati", sans-serif;
+}
+
+.font-aspal {
+  font-family: "Aspal", sans-serif;
+}
+
+.font-poiret {
+  font-family: "PoiretOne", sans-serif;
+}
+
+.font-caviar {
+  font-family: "Caviar Dreams", sans-serif;
+}
+
+:root {
+  /* M0na Machin3 Command Navigation - Creamy ivory opal theme with dark text */
+  --background: oklch(0.9915 0.0057 84.57); /* Creamy ivory background like white opal */
+  --foreground: oklch(0.3233 0.1025 253.89); /* Dark charcoal text for contrast */
+  --card: oklch(0.9768 0.0045 78.3); /* Slightly darker ivory for cards */
+  --card-foreground: oklch(0.3233 0.1025 253.89); /* Dark text on cards */
+  --popover: oklch(1 0 0); /* Ivory popover background */
+  --popover-foreground: oklch(0.3233 0.1025 253.89); /* Dark text on popovers */
+  --primary: oklch(0.3094 0.049 188.65); /* Deep teal primary */
+  --primary-foreground: oklch(0.9915 0.0057 84.57); /* Ivory text on primary */
+  --secondary: oklch(0.5553 0.1455 49); /* Copper/rose gold secondary */
+  --secondary-foreground: oklch(0.9915 0.0057 84.57); /* Ivory text on secondary */
+  --muted: oklch(0.9649 0.0045 78.3); /* Muted ivory background */
+  --muted-foreground: oklch(0.4761 0.1066 250.75); /* Medium gray for muted text */
+  --accent: oklch(0.5771 0.2152 27.33); /* Coral red accent */
+  --accent-foreground: oklch(0.9915 0.0057 84.57); /* Ivory text on accent */
+  --command-text: #2c2c2c; /* Dark text for command navigation */
+  --command-accent: #dc2626; /* Coral accent for command navigation */
+  --font-terminal: "Anurati", monospace; /* Terminal font for command headers */
+  --destructive: oklch(0.5771 0.2152 27.33); /* Copper Color for destructive actions */
+  --destructive-foreground: oklch(0.9915 0.0057 84.57); /* Ivory text for destructive actions */
+  --border: oklch(0.9231 0.0063 75.4); /* Soft ivory border */
+  --input: oklch(0.9915 0.0057 84.57); /* Ivory input background */
+  --ring: rgba(8, 56, 53, 0.3); /* Teal focus ring */
+  --chart-1: oklch(0.5553 0.1455 49); /* Copper chart color */
+  --chart-2: oklch(0.5771 0.2152 27.33); /*  chart color */
+  --chart-3: oklch(0.3094 0.049 188.65); /* Blue chart color */
+  --chart-4: oklch(0.5021 0.2292 322.72); /* Purple chart color */
+  --chart-5: oklch(0.596 0.1274 163.23); /* Green chart color */
+  --radius: 0.5rem; /* Corner rounding for elements */
+  --sidebar: oklch(0.9915 0.0057 84.57); /* Ivory sidebar background */
+  --sidebar-foreground: oklch(0.3233 0.1025 253.89); /* Dark sidebar text */
+  --sidebar-primary: oklch(0.3094 0.049 188.65); /* Teal primary for sidebar */
+  --sidebar-primary-foreground: oklch(0.9915 0.0057 84.57); /* Ivory sidebar primary text */
+  --sidebar-accent: oklch(0.97 0 0); /* Copper sidebar accent */
+  --sidebar-accent-foreground: oklch(0.9915 0.0057 84.57); /* Ivory sidebar accent text */
+  --sidebar-border: oklch(0.9231 0.0063 75.4); /* Soft ivory sidebar border */
+  --sidebar-ring: rgba(8, 56, 53, 0.3); /* Teal sidebar focus ring */
+  --font-geist-sans: "Geist Sans", sans-serif;
+  --font-geist-mono: "Geist Mono", monospace;
+
+  /* Added terminal-specific color variables */
+  --command-text: rgba(255, 255, 255, 0.9);
+  --command-accent: #b45309;
+  --command-muted: rgba(255, 255, 255, 0.6);
+  --font-anurati: "Anurati", monospace; /* Added Anurati font variable */
+}
+
+.dark {
+  /* Enhanced dark theme with user-specified colors */
+  /* Updated background to user's specific dark color */
+  --background: oklch(0.1987 0.0246 194.77); /* User's dark background */
+  /* Updated foreground to user's specific cream font color */
+  --foreground: oklch(0.9379 0.01 52.83); /* User's cream font color */
+
+  /* Updated other colors to work with new background/foreground */
+  --card: oklch(0.22 0.025 194.77); /* Slightly lighter than background */
+  --card-foreground: oklch(0.9379 0.01 52.83); /* User's cream font */
+  --popover: oklch(0.24 0.03 194.77); /* Adjusted popover */
+  --popover-foreground: oklch(0.9379 0.01 52.83); /* User's cream font */
+  --primary: oklch(0.65 0.18 188); /* Vibrant teal-cyan */
+  --primary-foreground: oklch(0.1987 0.0246 194.77); /* Dark background for contrast */
+  --secondary: oklch(0.58 0.16 35); /* Rich copper-orange */
+  --secondary-foreground: oklch(0.9379 0.01 52.83); /* User's cream font */
+  --muted: oklch(0.25 0.03 194.77); /* Muted dark surface matching background tone */
+  --muted-foreground: oklch(0.837 0.084 37.9); /* User's secondary font color - warmer cream */
+  --accent: oklch(0.68 0.22 25); /* Vibrant coral-red */
+  --accent-foreground: oklch(0.1987 0.0246 194.77); /* Dark text on accent */
+  --destructive: oklch(0.62 0.25 15); /* Bright red-orange */
+  --destructive-foreground: oklch(0.9379 0.01 52.83); /* User's cream font */
+  --border: oklch(0.3 0.04 194.77); /* Subtle border matching background tone */
+  --input: oklch(0.28 0.04 194.77); /* Input background matching theme */
+  --ring: oklch(0.65 0.18 188); /* Teal focus ring */
+  --chart-1: oklch(0.65 0.18 188); /* Vibrant teal */
+  --chart-2: oklch(0.58 0.16 35); /* Rich copper */
+  --chart-3: oklch(0.68 0.22 25); /* Vibrant coral */
+  --chart-4: oklch(0.62 0.2 280); /* Purple-magenta */
+  --chart-5: oklch(0.6 0.15 140); /* Emerald green */
+  --radius: 0.5rem;
+  --sidebar: oklch(0.18 0.025 194.77); /* Sidebar background darker than main */
+  --sidebar-foreground: oklch(0.9379 0.01 52.83); /* User's cream font */
+  --sidebar-primary: oklch(0.65 0.18 188); /* Vibrant teal */
+  --sidebar-primary-foreground: oklch(0.1987 0.0246 194.77); /* Dark text */
+  --sidebar-accent: oklch(0.58 0.16 35); /* Rich copper */
+  --sidebar-accent-foreground: oklch(0.9379 0.01 52.83); /* User's cream font */
+  --sidebar-border: oklch(0.3 0.04 194.77); /* Subtle border */
+  --sidebar-ring: oklch(0.65 0.18 188); /* Teal focus ring */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Added custom font color variables to theme */
+  --color-font-warm: var(--font-warm);
+  --color-font-cool: var(--font-cool);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Added font family configurations for Tailwind */
+  --font-sans: "Caviar Dreams", sans-serif;
+  --font-serif: "PoiretOne", serif;
+  --font-mono: "Anurati", monospace;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Command navigation animations */
+.command-overlay-enter {
+  animation: commandOverlayEnter 0.3s ease-out forwards;
+}
+
+.command-overlay-exit {
+  animation: commandOverlayExit 0.2s ease-in forwards;
+}
+
+@keyframes commandOverlayEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes commandOverlayExit {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+.command-prompt-blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Added opalescent effects for M0na Machin3 branding */
+.opalescent-text {
+  background: linear-gradient(
+    135deg,
+    #083835 0%,
+    #b45309 15%,
+    #dc2626 30%,
+    #7c3aed 45%,
+    #0891b2 60%,
+    #059669 75%,
+    #b45309 90%,
+    #083835 100%
+  );
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: opalShimmer 4s ease-in-out infinite;
+  position: relative;
+}
+
+.opalescent-text::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(184, 83, 9, 0.3) 0%,
+    rgba(220, 38, 38, 0.2) 25%,
+    rgba(124, 58, 237, 0.3) 50%,
+    rgba(8, 145, 178, 0.2) 75%,
+    rgba(184, 83, 9, 0.3) 100%
+  );
+  background-size: 200% 200%;
+  animation: opalGlow 3s ease-in-out infinite;
+  border-radius: 4px;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.opalescent-text:hover::before {
+  opacity: 1;
+}
+
+.opalescent-text-small {
+  background: linear-gradient(135deg, #083835 0%, #b45309 25%, #dc2626 50%, #b45309 75%, #083835 100%);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: opalShimmer 3s ease-in-out infinite;
+}
+
+/* Updated green opalescent effect to include multi-colored shimmer while maintaining solid background */
+.opalescent-green {
+  background: #1d7151; /* Solid green base for proper contrast */
+  position: relative;
+  overflow: hidden;
+}
+
+.opalescent-green::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(8, 56, 53, 0.2) 0%,
+    rgba(184, 83, 9, 0.3) 15%,
+    rgba(220, 38, 38, 0.25) 30%,
+    rgba(124, 58, 237, 0.2) 45%,
+    rgba(8, 145, 178, 0.3) 60%,
+    rgba(5, 150, 105, 0.25) 75%,
+    rgba(184, 83, 9, 0.3) 90%,
+    rgba(8, 56, 53, 0.2) 100%
+  );
+  background-size: 300% 300%;
+  animation: opalShimmer 4s ease-in-out infinite;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.opalescent-green::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 20%,
+    rgba(184, 83, 9, 0.15) 30%,
+    rgba(220, 38, 38, 0.1) 40%,
+    rgba(124, 58, 237, 0.12) 50%,
+    rgba(8, 145, 178, 0.15) 60%,
+    rgba(5, 150, 105, 0.1) 70%,
+    transparent 80%
+  );
+  background-size: 200% 200%;
+  animation: opalGlow 3s ease-in-out infinite;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure content appears above shimmer effects */
+.opalescent-green > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Glassmorphic terminal overlay effects */
+.terminal-glassmorphic {
+  backdrop-filter: blur(16px);
+  /* Enhanced with more vibrant, fluorescent background gradients */
+  background: linear-gradient(
+    135deg,
+    rgba(8, 56, 53, 0.4) 0%,
+    rgba(184, 83, 9, 0.3) 25%,
+    rgba(220, 38, 38, 0.2) 50%,
+    rgba(184, 83, 9, 0.3) 75%,
+    rgba(8, 56, 53, 0.4) 100%
+  );
+  border: 1px solid rgba(184, 83, 9, 0.4);
+  /* Enhanced shadows with more vibrant glow effects */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 0 1px rgba(184, 83, 9, 0.2), 0
+    0 40px rgba(184, 83, 9, 0.15), 0 0 80px rgba(220, 38, 38, 0.1);
+  /* Added subtle opalescent shimmer */
+  position: relative;
+  overflow: hidden;
+}
+
+.terminal-glassmorphic::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Enhanced shimmer with more vibrant opalescent colors */
+  background: linear-gradient(
+    45deg,
+    transparent 20%,
+    rgba(184, 83, 9, 0.2) 30%,
+    rgba(220, 38, 38, 0.15) 40%,
+    rgba(124, 58, 237, 0.1) 50%,
+    rgba(8, 145, 178, 0.15) 60%,
+    rgba(5, 150, 105, 0.1) 70%,
+    transparent 80%
+  );
+  background-size: 300% 300%;
+  animation: terminalOpalShimmer 8s ease-in-out infinite;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Enhanced terminal with additional fluorescent glow layer */
+.terminal-glassmorphic::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    135deg,
+    rgba(184, 83, 9, 0.1) 0%,
+    rgba(220, 38, 38, 0.08) 25%,
+    rgba(124, 58, 237, 0.06) 50%,
+    rgba(8, 145, 178, 0.08) 75%,
+    rgba(184, 83, 9, 0.1) 100%
+  );
+  background-size: 400% 400%;
+  animation: terminalGlow 6s ease-in-out infinite;
+  border-radius: calc(1rem + 2px);
+  filter: blur(4px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Added pulsing glow animation for fluorescent effect */
+@keyframes terminalGlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+    opacity: 0.4;
+  }
+  33% {
+    background-position: 100% 0%;
+    opacity: 0.7;
+  }
+  66% {
+    background-position: 0% 100%;
+    opacity: 0.5;
+  }
+  75% {
+    background-position: 150% 150%;
+    opacity: 0.7;
+  }
+}
+
+/* Added new opalescent shimmer animation for more fluorescent effect */
+@keyframes terminalOpalShimmer {
+  0%,
+  100% {
+    background-position: -300% -300%;
+    opacity: 0.3;
+  }
+  25% {
+    background-position: 0% 0%;
+    opacity: 0.6;
+  }
+  50% {
+    background-position: 300% 300%;
+    opacity: 0.4;
+  }
+  75% {
+    background-position: 150% 150%;
+    opacity: 0.7;
+  }
+}
+
+/* Added shimmer animation for tangram pieces */
+@keyframes shimmer {
+  0%,
+  100% {
+    background-position: -200% 0;
+  }
+  50% {
+    background-position: 200% 0;
+  }
+}
+
+/* Added horizontal circuit timeline styles */
+.circuit-timeline {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(8, 56, 53, 0.3) 10%,
+    rgba(184, 83, 9, 0.5) 30%,
+    rgba(220, 38, 38, 0.6) 50%,
+    rgba(184, 83, 9, 0.5) 70%,
+    rgba(8, 56, 53, 0.3) 90%,
+    transparent 100%
+  );
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.circuit-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(184, 83, 9, 0.8) 30%,
+    rgba(220, 38, 38, 1) 50%,
+    rgba(184, 83, 9, 0.8) 70%,
+    transparent 100%
+  );
+  animation: circuitPulse 3s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.5), 0 0 40px rgba(184, 83, 9, 0.3);
+}
+
+@keyframes circuitPulse {
+  0%,
+  100% {
+    left: -100%;
+    opacity: 0;
+  }
+  50% {
+    left: 100%;
+    opacity: 1;
+  }
+}
+
+.timeline-node {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(220, 38, 38, 1) 0%, rgba(184, 83, 9, 0.8) 70%, transparent 100%);
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.8), 0 0 20px rgba(184, 83, 9, 0.4), inset 0 0 5px rgba(255, 255, 255, 0.3);
+  animation: nodeGlow 2s ease-in-out infinite alternate;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@keyframes nodeGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(220, 38, 38, 0.6), 0 0 10px rgba(184, 83, 9, 0.3), inset 0 0 3px rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(220, 38, 38, 1), 0 0 30px rgba(184, 83, 9, 0.6), inset 0 0 8px rgba(255, 255, 255, 0.4);
+  }
+}
+
+@keyframes opalShimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes opalGlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@layer utilities {
+  /* Updated font utilities to use the correct font variables */
+  .font-terminal {
+    font-family: var(--font-terminal), "Courier New", monospace; /* Added terminal font utility class */
+  }
+
+  /* Fixed mosaic grid layout to properly display all 4 service cards */
+  .mosaic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 1rem;
+    grid-template-areas:
+      "large large medium"
+      "large large tall"
+      "wide wide wide";
+  }
+
+  .mosaic-card-large {
+    grid-area: large;
+    transform: rotate(-0.5deg) translateY(-2px);
+    border-radius: 1rem 0.5rem 1.5rem 0.8rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1), 0 3px 12px rgba(184, 83, 9, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .mosaic-card-large:hover {
+    transform: rotate(-0.2deg) translateY(-4px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15), 0 5px 18px rgba(184, 83, 9, 0.2), inset 0 1px 0
+      rgba(255, 255, 255, 0.15);
+  }
+
+  .mosaic-card-medium {
+    grid-area: medium;
+    transform: rotate(0.8deg) translateX(3px);
+    border-radius: 0.8rem 1.2rem 0.6rem 1rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(220, 38, 38, 0.12), inset 0 1px 0
+      rgba(255, 255, 255, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .mosaic-card-medium:hover {
+    transform: rotate(0.4deg) translateX(1px) translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12), 0 4px 14px rgba(220, 38, 38, 0.18), inset 0 1px 0
+      rgba(255, 255, 255, 0.12);
+  }
+
+  .mosaic-card-tall {
+    grid-area: tall;
+    transform: rotate(-0.3deg) translateX(-2px);
+    border-radius: 1.3rem 0.7rem 1rem 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 4px 15px rgba(8, 56, 53, 0.18), inset 0 1px 0
+      rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .mosaic-card-tall:hover {
+    transform: rotate(0deg) translateX(-1px) translateY(-3px);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.16), 0 6px 20px rgba(8, 56, 53, 0.24), inset 0 1px 0
+      rgba(255, 255, 255, 0.14);
+  }
+
+  .mosaic-card-wide {
+    grid-area: wide;
+    transform: rotate(0.2deg) translateY(1px);
+    border-radius: 0.6rem 1.4rem 1rem 0.9rem;
+    box-shadow: 0 7px 22px rgba(0, 0, 0, 0.1), 0 3px 10px rgba(124, 58, 237, 0.14), inset 0 1px 0
+      rgba(255, 255, 255, 0.09);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .mosaic-card-wide:hover {
+    transform: rotate(-0.1deg) translateY(-2px);
+    box-shadow: 0 11px 32px rgba(0, 0, 0, 0.14), 0 5px 16px rgba(124, 58, 237, 0.2), inset 0 1px 0
+      rgba(255, 255, 255, 0.13);
+  }
+
+  /* Added subtle pseudo-elements for organic edge effects */
+  .mosaic-card-large::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(
+      135deg,
+      rgba(184, 83, 9, 0.1) 0%,
+      rgba(220, 38, 38, 0.05) 50%,
+      rgba(8, 56, 53, 0.08) 100%
+    );
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .mosaic-card-large:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Standard font size improvements for better readability */
+html {
+  font-size: 16px; /* Ensure base font size is standard */
+}
+
+body {
+  font-size: 1rem; /* 16px base */
+  line-height: 1.6;
+  font-family: "Caviar Dreams", sans-serif; /* Set Caviar Dreams as default body font */
+}
+
+/* Font hierarchy for M0na Machin3 */
+.font-title {
+  font-family: "Aspal", sans-serif; /* Company titles use Aspal */
+}
+
+.font-terminal {
+  font-family: "Anurati", monospace; /* Terminal/command elements use Anurati */
+}
+
+.font-body {
+  font-family: "Caviar Dreams", sans-serif; /* Body text uses Caviar Dreams */
+}
+
+/* Make headings more prominent and readable */
+h1 {
+  font-size: 3rem !important; /* 48px */
+  line-height: 1.2 !important;
+}
+
+h2 {
+  font-size: 2.25rem !important; /* 36px */
+  line-height: 1.3 !important;
+}
+
+h3 {
+  font-size: 1.875rem !important; /* 30px */
+  line-height: 1.4 !important;
+}
+
+/* Make paragraphs more readable */
+p {
+  font-size: 1.125rem !important; /* 18px */
+  line-height: 1.7 !important;
+}
+
+/* Make buttons more prominent */
+button {
+  font-size: 1.125rem !important; /* 18px */
+  padding: 0.75rem 1.5rem !important;
+}
+
+/* Override Tailwind's small text classes */
+.text-lg {
+  font-size: 1.25rem !important; /* 20px */
+}
+
+.text-xl {
+  font-size: 1.5rem !important; /* 24px */
+}
+
+.text-2xl {
+  font-size: 1.875rem !important; /* 30px */
+}
+
+.text-3xl {
+  font-size: 2.25rem !important; /* 36px */
+}
+
+.text-4xl {
+  font-size: 3rem !important; /* 48px */
+}
+
+.text-5xl {
+  font-size: 4rem !important; /* 64px */
+}
+
+/* Make the main title extra prominent */
+.opalescent-text {
+  font-size: 4.5rem !important; /* 72px */
+  font-weight: 700 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .opalescent-text {
+    font-size: 3rem !important; /* 48px on mobile */
+  }
+
+  h1 {
+    font-size: 2.5rem !important; /* 40px on mobile */
+  }
+
+  h2 {
+    font-size: 2rem !important; /* 32px on mobile */
+  }
+}
+
+/* Print-specific styles for dynamic resume */
+@media print {
+  @page {
+    size: letter;
+    margin: 0.5in;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Hide everything except the print template */
+  body > *:not(.print\:block) {
+    display: none !important;
+  }
+
+  /* Ensure print template shows */
+  .print\:block {
+    display: block !important;
+    position: static !important;
+    background: white !important;
+  }
+
+  /* Page breaks */
+  .page-break-before {
+    page-break-before: always;
+  }
+
+  .page-break-after {
+    page-break-after: always;
+  }
+
+  .page-break-avoid {
+    page-break-inside: avoid;
+  }
+
+  /* Remove shadows and effects for print */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Ensure links are visible */
+  a {
+    text-decoration: underline;
+    color: #000;
+  }
+
+  /* Print colors accurately */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

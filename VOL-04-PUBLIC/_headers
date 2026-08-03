@@ -1,0 +1,8 @@
+/*
+  X-Robots-Tag: noai, noimageai
+
+/
+  Link: </.well-known/agent-skills/index.json>; rel="agent-skills"
+  Link: </.well-known/mcp/server-card.json>; rel="mcp-server-card"
+  Link: </.well-known/api-catalog>; rel="api-catalog"
+  Link: </sitemap.xml>; rel="sitemap"
