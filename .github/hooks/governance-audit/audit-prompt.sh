@@ -83,9 +83,8 @@ if [[ ${#THREATS_FOUND[@]} -gt 0 ]]; then
   MAX_SEVERITY="0.0"
   for threat in "${THREATS_FOUND[@]}"; do
     IFS=$'\t' read -r category severity description evidence_encoded <<< "$threat"
-    evidence=""
     evidence=$(printf '%s' "$evidence_encoded" | base64 -d 2>/dev/null || echo "[redacted]")
-
+    if [[ "$category" == "credential_exposure" ]]; then evidence="[redacted]"; fi
     if [[ "$FIRST" != "true" ]]; then
       THREATS_JSON+=","
     fi
