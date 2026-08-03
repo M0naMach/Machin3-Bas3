@@ -39,3 +39,17 @@ organized into a 14-volume structure (see `VOL-*` directories at repo root).
   `.env*`, must never be committed.
 - Old Next.js directories (`app/`, `components/`, `lib/`, `hooks/`, `data/`)
   have been removed as part of the Vite migration — do not recreate them.
+
+## Deployment (Cloudflare Pages)
+
+- Build command should be `npm run build` (runs `tsc -b && vite build`),
+  output directory `dist`. This is a plain Vite build, not Next.js.
+- **Known issue (2026-08-02):** the Cloudflare Pages project's dashboard
+  build settings still had a leftover Next.js-era build command
+  (`npx @cloudflare/next-on-pages@1`), which fails outright — that package
+  isn't a dependency anymore. This setting lives in the Cloudflare dashboard
+  (Pages project → Settings → Builds & deployments), not in the repo, so it
+  can't be fixed via a commit. The user needs to change it there to
+  `npm run build` / output dir `dist` / framework preset "None" or "Vite".
+- `wrangler.jsonc` now sets `pages_build_output_dir: "dist"` so Cloudflare's
+  auto-detection has a valid config to fall back on.
