@@ -99,9 +99,11 @@ if [[ ${#THREATS_FOUND[@]} -gt 0 ]]; then
       '{"category":$cat,"severity":($sev|tonumber),"description":$desc,"evidence":$ev}')
 
     # Track max severity
-    if (( $(echo "$severity > $MAX_SEVERITY" | bc -l 2>/dev/null || echo 0) )); then
+
+    if awk -v sev="$severity" -v max="$MAX_SEVERITY" 'BEGIN { exit !(sev > max) }'; then
       MAX_SEVERITY="$severity"
     fi
+
   done
   THREATS_JSON+="]"
 
