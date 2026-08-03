@@ -20,7 +20,11 @@ TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 CWD=$(pwd)
 
 # Log session start (use jq for proper JSON encoding)
-jq -Rn --arg timestamp "$TIMESTAMP" --arg cwd "$CWD" '{"timestamp":$timestamp,"event":"sessionStart","cwd":$cwd}' >> logs/copilot/session.log
+if command -v jq &>/dev/null; then
+  jq -Rn --arg timestamp "$TIMESTAMP" --arg cwd "$CWD" '{"timestamp":$timestamp,"event":"sessionStart","cwd":$cwd}' >> logs/copilot/session.log
+else
+  printf '{"timestamp":"%s","event":"sessionStart","cwd":"%s"}\n' "$TIMESTAMP" "$CWD" >> logs/copilot/session.log
+fi
 
 echo "📝 Session logged"
 exit 0

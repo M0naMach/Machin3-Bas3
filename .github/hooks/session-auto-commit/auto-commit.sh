@@ -35,7 +35,25 @@ git commit -m "auto-commit: $TIMESTAMP" --no-verify 2>/dev/null || {
   exit 0
 }
 
-# Attempt to push
+# Attempt to push only when explicitly enabled and safe
+if [[ "${AUTO_COMMIT_PUSH:-false}" != "true" ]]; then
+  echo "✅ Changes committed locally (push skipped; set AUTO_COMMIT_PUSH=true to enable push)"
+  exit 0
+fi
+
+CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "")"
+case "$CURRENT_BRANCH" in
+  main|master|live-deploy)
+    echo "⚠️  Push skipped on protected branch: $CURRENT_BRANCH"
+    exit 0
+    ;;
+esac
+
+if ! git rev-parse --abbrev-ref --symbolic-full-name '@{u}' &>/dev/null; then
+  echo "⚠️  Push skipped - no upstream branch configured"
+  exit 0
+fi
+
 if git push 2>/dev/null; then
   echo "✅ Changes committed and pushed successfully"
 else
