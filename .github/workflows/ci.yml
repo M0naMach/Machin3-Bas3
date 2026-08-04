@@ -34,9 +34,5 @@ jobs:
       - name: Linting
         run: npm run lint
 
-      - name: Dry Run Build (Edge Compat Check)
-        # We run the specific Cloudflare build script to catch Edge Runtime errors early
-        run: npm run pages:build
-        env:
-          # If your build requires public vars, add them here or in repository secrets
-          NEXT_PUBLIC_SITE_URL: "http://localhost:3000"
+      - name: Build
+        run: npm run build

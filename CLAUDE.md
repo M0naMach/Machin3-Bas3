@@ -67,3 +67,16 @@ organized into a 14-volume structure (see `VOL-*` directories at repo root).
   — the latter is for Workers and fails with "Missing entry-point to Worker
   script" since this is a static Pages site, not a Worker. This is also a
   dashboard-only setting (Settings → Builds & deployments → Deploy command).
+- If that deploy command still 401s / can't find the project, add
+  `--project-name=audit-proxy` explicitly rather than relying on inference.
+- **Removed `.github/workflows/deploy.yml` (2026-08-04):** it was a second,
+  independent deploy path that ran on every push to `live-deploy` in
+  parallel with Cloudflare's native git integration (the dashboard build
+  system documented above). It was also completely stale — it called
+  `npm run pages:build` (a script that no longer exists post-Vite-migration)
+  and deployed `.vercel/output/static` (a Next.js/Vercel output path, not
+  Vite's `dist`). Don't recreate a GitHub Actions deploy workflow — the
+  Cloudflare dashboard's git integration is the one and only deploy path.
+- `ci.yml` and `node.js.yml` also referenced the dead `pages:build` script
+  (and `node.js.yml` referenced a nonexistent `npm test`) — fixed to just
+  run `npm run build`.
