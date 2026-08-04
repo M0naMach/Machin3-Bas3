@@ -58,3 +58,12 @@ organized into a 14-volume structure (see `VOL-*` directories at repo root).
   learned 2026-08-04 after a build failure. Don't add Workers-style fields
   (`observability`, `durable_objects`, etc.) here; this is a Pages project,
   not a Workers project.
+- `wrangler.jsonc`'s `"name"` field is `"audit-proxy"`, not `"machin3-bas3"`.
+  This must match the actual Cloudflare Pages project name Cloudflare has
+  registered — Cloudflare itself flagged the mismatch and requested this
+  exact value. Don't rename it back to match the repo name.
+- The Pages project's **Deploy command** (separate from Build command) must
+  be `npx wrangler pages deploy dist`, not the default `npx wrangler deploy`
+  — the latter is for Workers and fails with "Missing entry-point to Worker
+  script" since this is a static Pages site, not a Worker. This is also a
+  dashboard-only setting (Settings → Builds & deployments → Deploy command).
