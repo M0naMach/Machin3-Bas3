@@ -80,3 +80,13 @@ organized into a 14-volume structure (see `VOL-*` directories at repo root).
 - `ci.yml` and `node.js.yml` also referenced the dead `pages:build` script
   (and `node.js.yml` referenced a nonexistent `npm test`) — fixed to just
   run `npm run build`.
+
+## Linting
+
+- ESLint config is `eslint.config.js` (flat config, ESLint 9), not
+  `.eslintrc.json` — that file was Next.js-era (`next/core-web-vitals`,
+  `next/typescript`) and referenced packages that were uninstalled during
+  the Vite migration, so lint was silently broken until fixed 2026-08-04.
+  Standard Vite+React+TS setup: `typescript-eslint`, `eslint-plugin-react-hooks`,
+  `eslint-plugin-react-refresh`. Don't reintroduce `.eslintrc.json` or
+  `eslint-config-next`.
