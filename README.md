@@ -1,61 +1,57 @@
-# M0na Machin3 - Personal Website
+# M0na Machin3 — Personal Website
 
 > **Human connection, coded with care.**
 
-A personal website built with Next.js, exploring the intersection of design, technology, and human connection. This is my digital space where I share my work, services, and the journey of building meaningful digital experiences.
+A personal site and ecosystem for M0na Machin3 (machin3.space) — where work, services, art, and community live in one command-driven space.
 
-## ✨ Features
+## • The Redundancy
 
-### 🎯 Command Navigation
-- **Interactive Terminal Interface**: Press `/` to access the command palette
-- **Dynamic Prompts**: Rotating questions that invite exploration
-- **Easter Egg Commands**: Hidden interactions for discovery
-- **Smooth Animations**: Boot sequence and glassmorphic design
+This started as a Next.js site on Vercel, and it worked — until it didn't. Edge-runtime quirks, `next-on-pages` build failures on Cloudflare, and a pile of boilerplate that grew every time a new feature needed a new page. Worse, the site had no real organizing logic: pages, components, and assets were scattered wherever they landed, so every addition meant re-deciding where things belonged. That drift is what necessitated a rebuild — not new features, but a structure that could hold them.
 
-### 🎨 Modern Design
-- **Custom Typography**: Anurati, Aspal, PoiretOne, and Caviar Dreams fonts
-- **Radix UI Components**: Accessible, customizable component library
-- **Tailwind CSS v4**: Utility-first styling with custom animations
-- **Theme Support**: Light/dark mode with system preference detection
-- **Responsive Design**: Optimized for all device sizes
+## • The Rhyme
 
-### 📱 Pages & Sections
-- **Home**: Hero section with animated CTA
-- **Work**: Portfolio and collaboration showcase
-- **Services**: Interactive drafting desk with expandable service cards
-- **Timeline**: Project journey and development process
-- **Vision**: Purpose and direction statement
-- **Actuarium**: AI audit methodology and redirect
-- **README**: In-site documentation viewer
+Stop thinking of it as a website. Think of it as an **ecosystem** — a physical archive with 14 volumes, each one a distinct concern (structure, community, context, public, user, applications, paperwork, knowledge, automations, terminal control, library, commercial, observability, server). A page isn't just a route anymore; it's a room in a building you can walk into and know exactly where you are. The public-facing side of that archive — the Broadcasting Station — is where the world actually gets to look in.
 
-## 🚀 Getting Started
+## • The Reason
+
+The app itself is a plain Vite + React Router single-page app — no server runtime, no edge functions, just a static build. Code lives in `VOL-06-APPLICATIONS`; public assets live in `VOL-04-PUBLIC`, which now has its own internal 14-volume subdivision so every page's assets have a designated home. External hop-offs (portfolio, the Actuarium audit tool) are handled with Cloudflare `_redirects` at the edge rather than server-side routing. `VOL-MBBS` holds outbound social links, kept separate from served assets on purpose — one is content, the other is a directory of where else to find me.
+
+## • Machin3 M3chanics
+
+- **Framework**: React 19 + Vite 6, client-side routing via React Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **UI Components**: Radix UI primitives, `cmdk` for the command palette
+- **Icons**: Lucide React
+- **Fonts**: Custom fonts (Anurati, Aspal, PoiretOne, Caviar Dreams)
+- **Deployment**: Cloudflare Pages, native git integration (no GitHub Actions deploy step)
+
+## • The Refinement
+
+The whole Next.js layer came out — `app/`, `components/`, `lib/`, `hooks/`, `data/`, plus `next`, `next-themes`, `geist`, `@notionhq/client`, `react-hook-form`, `react-day-picker`, and `react-resizable-panels`, none of which the Vite build needed. That cut ~20,000 lines of dead/duplicate code and dropped Dependabot's count from 77 vulnerabilities to single digits. Portfolio and Actuarium routing moved from `NEXT_PUBLIC_*` env vars and Next config redirects to a single Cloudflare `_redirects` file. ESLint's config was fully dead (still pointing at `next/core-web-vitals` after `next` was uninstalled) and got replaced with a real Vite+React+TS flat config. And a second, independent GitHub Actions deploy workflow — stale, running a build script that no longer existed — got removed so there's exactly one deploy path: Cloudflare's own git integration.
+
+## • The Result
+
+A site that builds clean (`tsc -b && vite build`), lints clean, and deploys through one path instead of three competing ones. The command palette (press `/`) still works exactly as it always has — `hom3bas3`, `work`, `journey`, `readme`, and the easter eggs are all still there. What changed is everything underneath: the ecosystem now has a shape you can actually navigate.
+
+## Getting Started
 
 ### Prerequisites
-- Node.js 20+ 
+- Node.js 20+
 - npm
 
 ### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/M0naMach/Machin3-Bas3.git
-   cd Machin3-Bas3
-   ```
+```bash
+git clone https://github.com/M0naMach/Machin3-Bas3.git
+cd Machin3-Bas3
+npm ci
+npm run dev
+```
 
-2. **Install dependencies**
-   ```bash
-   npm ci
-   ```
+Then open [http://localhost:5173](http://localhost:5173).
 
-3. **Run the development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
-
-## 🎮 Usage
+## Usage
 
 ### Command Navigation
 - Press `/` anywhere on the site to open the command palette
@@ -67,73 +63,54 @@ A personal website built with Next.js, exploring the intersection of design, tec
   - `readme` - View this documentation
   - `hello`, `story`, `hope`, `help` - Easter egg commands
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 Machin3-Bas3/
-├── app/                    # Next.js app directory
-│   ├── page.tsx           # Home page
-│   ├── layout.tsx         # Root layout
-│   ├── work/              # Work/portfolio section
-│   ├── services/          # Services drafting desk page
-│   ├── timeline/          # Timeline page
-│   ├── vision/            # Vision/purpose page
-│   ├── actuarium/         # Actuarium redirect page
-│   ├── readme/            # In-site README page
-│   ├── portfolio/         # Portfolio redirect
-│   ├── privacy/           # Privacy policy
-│   ├── terms/             # Terms of service
-│   └── api/               # API routes (contact, form)
-├── components/            # React components
-│   ├── navigation/        # Command navigation system
-│   ├── services-desk.tsx  # Interactive services desk client
-│   ├── portfolio/         # Portfolio-specific components
-│   └── ui/               # Reusable UI components (Radix)
-├── lib/                  # Utility libraries
-│   ├── notion/           # Notion API client
-│   ├── auth/             # Auth manager
-│   ├── mentorship/       # Personality phrases
-│   └── utils.ts          # Shared utilities
-├── types/                # TypeScript type definitions
-└── public/               # Static assets and fonts
+├── VOL-01-STRUCTURE/       # Neighborhood/foundational concept
+├── VOL-02-COMMUNITY/       # Volunteer work, organizational affiliations
+├── VOL-03-CONTEXT/         # Background/context content
+├── VOL-04-PUBLIC/          # Public static assets (Vite publicDir)
+│   ├── VOL-01-HOOD/ … VOL-14-SERVER/   # Per-page asset sub-volumes
+│   ├── _headers            # Cloudflare response headers
+│   ├── _redirects          # Portfolio/Actuarium edge redirects
+│   ├── robots.txt / sitemap.xml / auth.md
+│   └── .well-known/        # Agent-readiness endpoints (MCP card, API catalog, etc.)
+├── VOL-05-USER/            # Client-facing assets (unused for this personal site)
+├── VOL-06-APPLICATIONS/    # The React/Vite app — pages, components, routing
+│   ├── APPS-Pages/
+│   ├── APPS-Components/
+│   └── APPS-main.tsx
+├── VOL-07-PAPERWORK/       # Legal (privacy, terms, support)
+├── VOL-08-KNOWLEDGE_BASE/
+├── VOL-09-AUTOMATIONS/     # GitHub Copilot agents, CI config
+├── VOL-10-TERMINAL_CONTROL/
+├── VOL-11-LIBRARY/         # Shared utils (@lib alias)
+├── VOL-12-COMMERCIAL/      # Corporate/licensing
+├── VOL-13-OBSERVABILITY/
+├── VOL-14-SERVER/
+├── VOL-MBBS/                # Social/broadcasting links (Reddit, etc)
+├── wrangler.jsonc
+└── vite.config.ts
 ```
 
-## 🛠️ Technology Stack
+## Technology Stack
 
-- **Framework**: Next.js 15 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS v4 with custom animations
-- **UI Components**: Radix UI primitives
-- **Icons**: Lucide React
-- **Fonts**: Custom fonts (Anurati, Aspal, PoiretOne, Caviar Dreams)
-- **Deployment**: Cloudflare Pages via Wrangler
+See [Machin3 M3chanics](#-machin3-m3chanics) above.
 
-## 📝 Development
+## Development
 
 ### Available Scripts
 ```bash
 npm run dev        # Start development server
-npm run lint       # Run ESLint
-npm run pages:build # Build for Cloudflare Pages (Edge compat)
-npm run preview    # Build + run local Pages preview
-npm test              # Run tests
+npm run build      # tsc -b && vite build
+npm run preview    # Preview the production build locally
+npm run lint        # Run ESLint
 ```
 
-### Portfolio Routing
+### Portfolio & Actuarium Routing
 
-If you want the website's `Portfolio` link and `/portfolio` route to hand off to a separate Cloudflare Pages site, set this environment variable in your deployment:
-
-```bash
-NEXT_PUBLIC_PORTFOLIO_URL=https://your-portfolio.pages.dev
-```
-
-Similarly, the `/actuarium` route and the **AI Audit Actuarium** link in the footer use:
-
-```bash
-NEXT_PUBLIC_ACTUARIUM_URL=https://your-actuarium.pages.dev
-```
-
-If either variable is not set, the site uses the default hardcoded URLs. Server-side redirects in `next.config.mjs` handle these routes at the edge; the individual pages provide a client-side fallback.
+`/portfolio` and `/actuarium` are handled entirely at the Cloudflare edge via [`VOL-04-PUBLIC/_redirects`](VOL-04-PUBLIC/_redirects) — no environment variables, no client-side fallback. Update that file directly to change either destination.
 
 ### GitHub Copilot Agents
 
@@ -157,18 +134,17 @@ This repository uses GitHub Rulesets to maintain code quality and protect import
 Pre-configured ruleset templates are available in [`.github/rulesets/`](.github/rulesets/).
 
 ### Key Dependencies
-- `next` - React framework
+- `react` / `react-router-dom` - App framework and routing
 - `@radix-ui/*` - Accessible UI primitives
-- `@notionhq/client` - Notion API integration
 - `tailwindcss` - Utility-first CSS
 - `lucide-react` - Icon library
 - `cmdk` - Command palette functionality
 
-## 📄 License
+## License
 
 This is my personal website. All rights reserved.
 
 ---
 
-**Where reflection becomes connection.**  
-*M0na Machin3 - 2025*
+**Where reflection becomes connection.**
+*M0na Machin3*
