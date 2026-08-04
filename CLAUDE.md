@@ -51,5 +51,10 @@ organized into a 14-volume structure (see `VOL-*` directories at repo root).
   (Pages project → Settings → Builds & deployments), not in the repo, so it
   can't be fixed via a commit. The user needs to change it there to
   `npm run build` / output dir `dist` / framework preset "None" or "Vite".
-- `wrangler.jsonc` now sets `pages_build_output_dir: "dist"` so Cloudflare's
-  auto-detection has a valid config to fall back on.
+- `wrangler.jsonc` must stay minimal for Pages: only `name` and
+  `pages_build_output_dir`. Cloudflare's Pages config validator rejects a
+  top-level `observability` block ("Configuration file for Pages projects
+  does not support 'observability'") and requires `name` to be present —
+  learned 2026-08-04 after a build failure. Don't add Workers-style fields
+  (`observability`, `durable_objects`, etc.) here; this is a Pages project,
+  not a Workers project.
