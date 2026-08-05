@@ -90,3 +90,23 @@ organized into a 14-volume structure (see `VOL-*` directories at repo root).
   Standard Vite+React+TS setup: `typescript-eslint`, `eslint-plugin-react-hooks`,
   `eslint-plugin-react-refresh`. Don't reintroduce `.eslintrc.json` or
   `eslint-config-next`.
+
+## Portfolio/Actuarium routing (2026-08-05 cleanup)
+
+- `/portfolio` and `/actuarium` are proxied (status `200`, not `302`) at the
+  edge via `VOL-04-PUBLIC/_redirects` — the address bar stays on
+  `machin3.space`. `getPortfolioHref()` (`VOL-11-LIBRARY/LIBR-Utils/portfolio.ts`)
+  always returns `/portfolio`; both `footer.tsx` and `command-navigation.tsx`
+  navigate to it as a same-tab full page load (`window.location.assign` /
+  plain `<a>`, not React Router `navigate()` — `/portfolio` isn't an app
+  route, it's handled entirely at the Cloudflare edge).
+- Removed `next.config.mjs` (dead — Vite never reads it, and its hardcoded
+  portfolio URL had a typo'd domain: `m0nalisa.workers.dev` instead of the
+  real `machin3.workers.dev`) and `VOL-14-SERVER/SERV-Workers/portfolio-proxy-worker.js`
+  (an orphaned Worker script with no wrangler config anywhere pointing to
+  it — dead weight duplicating what `_redirects` now does).
+- `.github/copilot-instructions.md` and its duplicate in
+  `VOL-09-AUTOMATIONS/AUTO-GitHub/` were still 100% Next.js-era (wrong dev
+  port, `pages:build`, `.vercel/output/static`, a `deploy.yml` that no
+  longer exists) — actively misleading for any Copilot agent. Rewritten to
+  match the real Vite/VOL-* setup. Keep both copies in sync when editing.

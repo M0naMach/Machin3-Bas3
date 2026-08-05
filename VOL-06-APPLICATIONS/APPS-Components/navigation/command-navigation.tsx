@@ -130,7 +130,7 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
     {
       command: "work",
       label: "Work",
-      description: "Portfolio and collaboration showcase",
+      description: "Services and collaboration showcase",
       action: () => navigateTo("/work"),
     },
     {
