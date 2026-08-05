@@ -43,8 +43,6 @@ export function Footer() {
               <li>
                 <a
                   href={portfolioHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="hover:text-secondary transition-colors cursor-pointer"
                 >
                   Portfolio

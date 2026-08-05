@@ -96,6 +96,12 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
     setInput("")
   }
 
+  const navigateSameTab = (path: string) => {
+    window.location.assign(path)
+    setIsOpen(false)
+    setInput("")
+  }
+
   const openExternal = (url: string) => {
     window.open(url, "_blank", "noopener,noreferrer")
     setIsOpen(false)
@@ -113,7 +119,7 @@ const CommandNavigation = ({ compact = false }: CommandNavigationProps) => {
       command: "portfolio",
       label: "Portfolio",
       description: "View my portfolio showcase",
-      action: () => openExternal(getPortfolioHref()),
+      action: () => navigateSameTab(getPortfolioHref()),
     },
     {
       command: "services",
