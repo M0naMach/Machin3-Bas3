@@ -38,6 +38,11 @@ organized into a 14-volume structure (see `VOL-*` directories at repo root).
   nested inside `VOL-04-PUBLIC` — one holds served assets, the other holds
   outbound social links.
 - No symlinks — the user has explicitly rejected symlink-based setups.
+- **Volume root docs are named `<UID>-SCOPE.md`, never `README.md`.** E.g.
+  `VOL-11-LIBRARY/LIBR-SCOPE.md`, `VOL-MBBS/MBBS-SCOPE.md`. A "README"
+  implies onboarding/getting-started content; these files instead define
+  what the volume is *for* — its scope. The repo-root `README.md` (the
+  actual GitHub-facing one) is the only exception.
 
 ## Notes
 
@@ -101,7 +106,7 @@ organized into a 14-volume structure (see `VOL-*` directories at repo root).
 
 - `/portfolio` and `/actuarium` are proxied (status `200`, not `302`) at the
   edge via `VOL-04-PUBLIC/_redirects` — the address bar stays on
-  `machin3.space`. `getPortfolioHref()` (`VOL-11-LIBRARY/LIBR-Utils/portfolio.ts`)
+  `machin3.space`. `getPortfolioHref()` (`VOL-06-APPLICATIONS/APPS-Utils/portfolio.ts`)
   always returns `/portfolio`; both `footer.tsx` and `command-navigation.tsx`
   navigate to it as a same-tab full page load (`window.location.assign` /
   plain `<a>`, not React Router `navigate()` — `/portfolio` isn't an app

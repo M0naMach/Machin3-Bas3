@@ -1,4 +1,4 @@
-# VOL-MBBS
+# VOL-MBBS — Scope (UID MBBS)
 
 Machin3-Bas3 Broadcasting Station — social/external presence links (Reddit, etc).
 

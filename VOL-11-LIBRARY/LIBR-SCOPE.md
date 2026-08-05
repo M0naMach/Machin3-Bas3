@@ -1,4 +1,4 @@
-# VOL-11-LIBRARY
+# VOL-11-LIBRARY — Scope (UID LIBR)
 
 Reference documentation, templates, and guides.
 
