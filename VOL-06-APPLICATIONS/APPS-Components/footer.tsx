@@ -104,7 +104,7 @@ export function Footer() {
               </li>
             </ul>
             <p className="text-muted-foreground text-sm mt-6">
-              &copy; <span className="font-sans opalescent-text-small">M0na Machin3</span> 2025
+              &copy; <span className="font-sans opalescent-text-small">M0na Machin3</span> {new Date().getFullYear()}
             </p>
           </div>
         </div>
