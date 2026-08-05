@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Shield, Database, GitBranch, Monitor, Palette } from 'lucide-react'
-import { lockBodyScroll, unlockBodyScroll } from '@lib/LIBR-Utils/body-scroll-lock'
+import { lockBodyScroll, unlockBodyScroll } from '@apps/APPS-Utils/body-scroll-lock'
 import { Dialog, DialogContent, DialogTitle } from '@apps/APPS-Components/ui/dialog'
 
 interface ServiceData {

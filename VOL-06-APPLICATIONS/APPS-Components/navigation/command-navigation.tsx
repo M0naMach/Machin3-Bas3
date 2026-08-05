@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { Terminal } from 'lucide-react'
-import { getPortfolioHref } from "@lib/LIBR-Utils/portfolio"
-import { getActuariumHref } from "@lib/LIBR-Utils/actuarium"
-import { lockBodyScroll, unlockBodyScroll } from "@lib/LIBR-Utils/body-scroll-lock"
+import { getPortfolioHref } from "@apps/APPS-Utils/portfolio"
+import { getActuariumHref } from "@apps/APPS-Utils/actuarium"
+import { lockBodyScroll, unlockBodyScroll } from "@apps/APPS-Utils/body-scroll-lock"
 
 interface NavigationCommand {
   command: string

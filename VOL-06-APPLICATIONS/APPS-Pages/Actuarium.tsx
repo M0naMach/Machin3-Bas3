@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { getActuariumHref } from "@lib/LIBR-Utils/actuarium"
+import { getActuariumHref } from "@apps/APPS-Utils/actuarium"
 
 export default function ActuariumPage() {
   const href = getActuariumHref()

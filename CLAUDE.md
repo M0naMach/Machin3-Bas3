@@ -18,7 +18,13 @@ organized into a 14-volume structure (see `VOL-*` directories at repo root).
 ## Structure
 
 - `VOL-06-APPLICATIONS` — the React/Vite app (pages, components, routing).
-  This is where code lives and does not change structurally.
+  This is where code lives and does not change structurally. Active runtime
+  utilities (`cn()`, portfolio/actuarium href helpers, body-scroll-lock)
+  live in `VOL-06-APPLICATIONS/APPS-Utils`, imported via `@apps/APPS-Utils/*`.
+- `VOL-11-LIBRARY` — reference documentation, templates, and guides ONLY.
+  Not for active application code, even small utility functions — those
+  belong in `APPS-Utils` above. (2026-08-05: moved `utils.ts`, `portfolio.ts`,
+  `actuarium.ts`, `body-scroll-lock.ts` out of here after this exact mistake.)
 - `VOL-04-PUBLIC` (UID PUBL) — public static assets (`publicDir` in
   `vite.config.ts`). Kept strictly for served assets — do not repurpose.
   It contains its own internal 14-volume subdivision for organizing

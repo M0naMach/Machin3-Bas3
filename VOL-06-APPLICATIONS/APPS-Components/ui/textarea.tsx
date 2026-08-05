@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { cn } from '@lib/LIBR-Utils/utils'
+import { cn } from '@apps/APPS-Utils/utils'
 
 function Textarea({ className, ...props }: React.ComponentProps<'textarea'>) {
   return (
